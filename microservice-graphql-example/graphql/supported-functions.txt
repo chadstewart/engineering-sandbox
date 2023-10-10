@@ -1,0 +1,12 @@
+Add an order
+View an order
+
+Add employees
+View employees
+
+Get all orders for a customer
+
+View products
+Get all orders for a product
+
+Get all products for a supplier
