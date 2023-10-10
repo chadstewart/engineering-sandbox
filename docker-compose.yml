@@ -1,0 +1,14 @@
+version: '3.8'
+
+volumes:
+  postgres-db:
+
+services:
+  db:
+    build: .
+    ports:
+      - "5432:5432"
+    volumes:
+      - type: volume
+        source: postgres-db
+        target: /test-volume
