@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "container": "npm install && npm start",
+    "container": "npm ci && npm start",
     "start": "npm run build && node dist/services/graphql-express-server.js",
     "dev": "tsx watch services/graphql-express-server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
