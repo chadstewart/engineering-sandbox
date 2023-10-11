@@ -5,10 +5,21 @@ volumes:
 
 services:
   db:
-    build: .
+    build:
+      context: .
+      target: postgres-container
     ports:
       - "5432:5432"
     volumes:
       - type: volume
         source: postgres-db
         target: /test-volume
+  graphql-server:
+    depends_on:
+      - db
+    build:
+      context: .
+      target: graphql-server
+    ports:
+    -  "4000:4000"
+    command: [npm ci]
