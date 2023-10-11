@@ -15,3 +15,4 @@ RUN mkdir /app
 COPY ./microservice-graphql-example /app
 WORKDIR /app
 EXPOSE 4000
+CMD npm run container
