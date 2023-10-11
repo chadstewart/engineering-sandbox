@@ -12,7 +12,7 @@ services:
     container_name: postgres-sandbox
     restart: always
     build:
-      context: .
+      context: ./northwind_psql_sql_example
       target: postgres-container
     ports:
       - "5432:5432"
@@ -26,7 +26,7 @@ services:
     depends_on:
       - db
     build:
-      context: .
+      context: ./microservice-graphql-example
       target: graphql-server
     ports:
     -  "4000:4000"
