@@ -9,6 +9,8 @@ networks:
 
 services:
   db:
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
     container_name: postgres-sandbox
     restart: always
     build:
@@ -22,6 +24,11 @@ services:
       - database
         
   graphql-server:
+    environment:
+      - POSTGRESQL_USER=${POSTGRESQL_USER}
+      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
+      - DATABASE_URL=${DATABASE_URL}
     container_name: graphql-sandbox
     depends_on:
       - db
