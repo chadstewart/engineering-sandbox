@@ -3,8 +3,6 @@ import https from "https";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
-import { Redis } from "ioredis";
-import { InitializeDB } from "./services/database";
 import routeAuth from "./middleware/route-authz";
 import rateLimit from "./middleware/rate-limit";
 import checkCache from "./middleware/check-cache";
@@ -12,12 +10,6 @@ import addToCache from "./middleware/add-to-cache";
 
 export const app = express();
 dotenv.config();
-
-//Initialize Database
-InitializeDB();
-
-//Initialize Redis
-export const redis = new Redis(`redis://${process.env.REDIS_USERNAME}:${process.env.REDIS_PASSWORD}@${process.env.REDIS_PUBLIC_URL}`);
 
 //Initialize Request Data Type
 app.use(express.json({ limit: "10mb" }));

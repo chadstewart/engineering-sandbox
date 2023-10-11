@@ -40,3 +40,18 @@ services:
     networks:
       - database
       - api
+
+  api-gateway:
+    environment:
+      - AUTH0_URL=${AUTH0_URL}
+      - REDIS_USERNAME=${REDIS_USERNAME}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PUBLIC_URL=${REDIS_PUBLIC_URL}
+    container_name: api-gateway-sandbox
+    build:
+      context: ./api-gateway-example
+      target: api-gateway
+    ports:
+    -  "4000:4001"
+    networks:
+      - api
