@@ -1,7 +1,11 @@
 version: '3.8'
 
 volumes:
-  postgres-db:
+  postgres-data:
+
+networks:
+  api:
+  database:
 
 services:
   db:
@@ -13,9 +17,9 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - type: volume
-        source: postgres-db
-        target: /test-volume
+      - postgres-data:/bitnami/postgresql/data
+    networks:
+      - database
         
   graphql-server:
     container_name: graphql-sandbox
@@ -26,3 +30,6 @@ services:
       target: graphql-server
     ports:
     -  "4000:4000"
+    networks:
+      - database
+      - api
