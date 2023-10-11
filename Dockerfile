@@ -5,7 +5,7 @@ RUN mkdir ./test-sql-db-dump
 COPY ./northwind_psql_sql_example/northwind.sql ./test-sql-db-dump
 EXPOSE 5432
 
-FROM node:lts as graphql-server
+FROM node:lts-alpine as graphql-server
 ENV POSTGRESQL_USER=postgres
 ENV POSTGRESQL_PASSWORD=postgres
 ENV POSTGRESQL_DATABASE=test
