@@ -52,6 +52,6 @@ services:
       context: ./api-gateway-example
       target: api-gateway
     ports:
-    -  "4000:4001"
+    -  "3000:3000"
     networks:
       - api

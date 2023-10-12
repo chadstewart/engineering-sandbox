@@ -3,5 +3,5 @@ USER 0
 RUN mkdir /app
 COPY ./ /app
 WORKDIR /app
-EXPOSE 4000
+EXPOSE 3000
 CMD npm run container
