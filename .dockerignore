@@ -1,5 +1,5 @@
 node_modules
 logs
-.env
+.env*
 *.js
 dist
