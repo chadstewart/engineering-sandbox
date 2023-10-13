@@ -1,6 +1,6 @@
 import { app } from "../app";
 
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
     console.log(`Server is live on ${port}`);
 });

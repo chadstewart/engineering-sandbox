@@ -66,3 +66,21 @@ services:
       -  "6379:6379"
     networks:
       - api
+        
+  rest-api:
+    environment:
+      - POSTGRESQL_USER=${POSTGRESQL_USER}
+      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
+      - DATABASE_URL=${DATABASE_URL}
+    container_name: rest-api-sandbox
+    depends_on:
+      - db
+    build:
+      context: ./microservice-orm-example
+      target: rest-api
+    ports:
+      - "3001:3001"
+    networks:
+      - database
+      - api

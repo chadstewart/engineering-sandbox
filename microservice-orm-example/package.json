@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "container": "npm ci && npm start",
+    "start": "npm run build && node dist/services/server.js",
     "dev": "tsx watch services/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
