@@ -7,6 +7,9 @@ import { getEmployeesByTerritories } from "../controllers/territories-controller
 import { getProducts, getProductDetails } from "../controllers/products-controller";
 import { getCustomerDetails, getCustomers, updateCustomerById } from "../controllers/customers-controller";
 import { getUSStates } from "../controllers/us-states-controller";
+import { getCategories, getCategoryDetails } from "../controllers/categories-controller";
+import { getSupplierDetails, getSuppliers } from "../controllers/suppliers-controller";
+import { getRegionDetails } from "../controllers/regions-controller";
 
 //Orders
 router.get("/orders/:page?", getOrders);
@@ -23,12 +26,23 @@ router.get("/customers/:page?", getCustomers);
 router.get("/customers/details/:customer_id?", getCustomerDetails);
 router.put("/customers/:customer_id", updateCustomerById);
 
+//Categories
+router.get("/categories/:page?", getCategories);
+router.get("/categories/details/:category_id?", getCategoryDetails);
+
 //Employees
 router.get("/employees/:page?", getEmployees);
 router.post("/employees", addEmployee);
 
+//Suppliers
+router.get("/suppliers/:page?", getSuppliers);
+router.get("/suppliers/details/:suppliers_id?", getSupplierDetails);
+
 //US States
 router.get("/states/:page?", getUSStates);
+
+//Regions
+router.get("/regions/details/:region_id?", getRegionDetails);
 
 //Territories
 router.get("/territories/employees/:territory_id?/:page?", getEmployeesByTerritories);
