@@ -3,5 +3,7 @@ USER 0
 RUN mkdir /app
 COPY ./ /app
 WORKDIR /app
+RUN npm ci --verbose
+RUN npm run build
 EXPOSE 4000
-CMD npm run container
+CMD node dist/services/graphql-express-server.js
