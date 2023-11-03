@@ -1,6 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
-import { checkForCredsData } from "../../../util/zod-types";
+import { checkForCredsData } from "./util/zod-types";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -16,7 +16,7 @@ export const getAuthentication = async (authCreds: zod.infer<typeof checkForCred
       expires_in: zod.number(),
       token_type: zod.string()
     }),
-    `${process.env.AUTH0_URL}`,
+    `${process.env.AUTH0_AUTHZ_URL}`,
     requestBody,
     CONFIG
   );

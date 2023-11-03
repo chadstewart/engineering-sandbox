@@ -1,41 +1,16 @@
-import { Request, Response, application } from "express";
-import zod from "zod";
-import { createZodFetcher } from "zod-fetch";
+import { Request, Response } from "express";
+import { getAuthentication } from "../../lib/api/external-apis/auth0";
+import { checkForCredsData } from "../../lib/api/external-apis/auth0/util/zod-types";
 
 export default async function getToken (req: Request, res: Response) {
-  const checkForCredsData = zod.object({
-    "client_id": zod.string(),
-    "client_secret": zod.string(),
-    "audience": zod.string().url(),
-    "grant_type": zod.string()
-  });
-
-  const fetchWithZod = createZodFetcher();
-
   try {
-    await checkForCredsData.parse(req.body);
+    const requestBody = await checkForCredsData.parse(req.body);
 
-    const data = await fetchWithZod(
-      zod.object({
-        access_token: zod.string(),
-        expires_in: zod.number(),
-        token_type: zod.string()
-      }),
-      `${process.env.AUTH0_URL}`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify(req.body)
-      }
-    );
+    const data = await getAuthentication(requestBody);
 
     return res.status(200).json({
       status: "success",
-      data: {
-        ...data
-      }
+      data
     });
 
   } catch ( error ) {

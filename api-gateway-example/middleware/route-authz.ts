@@ -9,9 +9,9 @@ export default async function routeAuth (req: Request, res: Response, next: Next
   if (authRoute) return next();
 
   const checkJwt = auth({
-    audience: 'https://api-gateway-fun.com',
-    issuerBaseURL: 'https://dev-shyos663p2j8yo8b.us.auth0.com/',
-    tokenSigningAlg: 'RS256'
+    audience: `${process.env.AUTH0_AUDIENCE_URL}`,
+    issuerBaseURL: `${process.env.AUTH0_URL}`,
+    tokenSigningAlg: `${process.env.AUTH0_SIGNING_ALG}`
   });
 
   checkJwt(req, res, (err) => {
