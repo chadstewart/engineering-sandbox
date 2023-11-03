@@ -1,0 +1,32 @@
+/*
+
+filename: pages/example-usage.tsx
+
+import { fetchExampleRequest } from "./example-api";
+import { InferGetServerSidePropsType } from "next";
+
+const exampleComponent: WithPageLayout<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ countriesData }) => {
+  
+  return (
+    <div>
+      {countriesData}
+    </div>
+  );
+}
+
+export const getServerSideProps = async () => {
+
+  try {
+    const countriesData = await fetchExampleRequest();
+  } catch (error) {
+    console.log(error);
+  }
+
+  return {
+    props: {
+      countriesData
+    }
+  };
+};
+
+*/
