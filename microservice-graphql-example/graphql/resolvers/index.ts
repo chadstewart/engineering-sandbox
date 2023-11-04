@@ -27,7 +27,7 @@ interface CreateEmployeeMutationArgs {
 export const resolvers = {
   Query: {
     getOrders: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => await checkResolverPerformance(context, () => orders(args.page)),
-    getOrderDetails: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => await checkResolverPerformance(context, () => orderDetailsGraphQL(args.page)),
+    getOrderDetails: async (_: any, args: { id: string }, context: ResolverContext) => await checkResolverPerformance(context, () => orderDetailsGraphQL(args.id)),
     getEmployees: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => await checkResolverPerformance(context, () => employees(args.page)),
     getCustomers: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => await checkResolverPerformance(context, () => customers(args.page)),
     getCustomerDetails: async (_: any, args: { id: string }, context: ResolverContext) => await checkResolverPerformance(context, () => customerDetails(args.id)),
