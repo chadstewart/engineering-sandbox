@@ -8,6 +8,8 @@ import { app } from "../app";
 import { typeDefs } from "../graphql/type-defs";
 import { resolvers } from "../graphql/resolvers";
 import { testPerformance } from "../lib/util/performance-test";
+import { auth } from "express-oauth2-jwt-bearer";
+import { GraphQLError } from "graphql";
 
 const PORT = 4000;
 
@@ -31,7 +33,23 @@ const startServer = async () => {
     cors<cors.CorsRequest>(),
     json(),
     expressMiddleware(server, {
-      context: async ({ req }) => {
+      context: async ({ req, res }) => {
+
+        const checkJwt = auth({
+          audience: `${process.env.AUTH0_AUDIENCE_URL}`,
+          issuerBaseURL: `${process.env.AUTH0_URL}`,
+          tokenSigningAlg: `${process.env.AUTH0_SIGNING_ALG}`
+        });
+      
+        checkJwt(req, res, (err) => {
+          if (err) throw new GraphQLError('User is not authenticated', {
+            extensions: {
+              code: 'UNAUTHENTICATED',
+              http: { status: 401 },
+            },
+          });
+        });
+
         let currentTime;
         const isNotIntrospectionQuery = req.body.operationName !== "IntrospectionQuery";
         if(isNotIntrospectionQuery) currentTime = testPerformance();

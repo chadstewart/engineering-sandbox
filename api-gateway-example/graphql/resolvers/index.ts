@@ -1,3 +1,4 @@
+import { getOrderDtails, getOrders } from "../../lib/api/internal-apis/orders";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
 import { updateCustomerZodSchema } from "../../lib/util/schemas/update-customer-zod-schema";
 import { ResolverContext } from "../../lib/util/types/context-resolver-types";
@@ -17,8 +18,8 @@ interface CreateEmployeeMutationArgs {
 
 export const resolvers = {
   Query: {
-    getOrders: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
-    getOrderDetails: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
+    getOrders: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => await getOrders(args.page),
+    getOrderDetails: async (_: any, args: { id: string }, context: ResolverContext) => await getOrderDtails(args.id),
     getEmployees: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
     getCustomers: async (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
     getCustomerDetails: async (_: any, args: { id: string }, context: ResolverContext) => null,
