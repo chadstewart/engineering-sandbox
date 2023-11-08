@@ -6,8 +6,8 @@ export const typeDefs = `#graphql
     order_date: String
     required_date: String
     shipped_date: String
-    ship_via: String
-    freight: String
+    ship_via: Int
+    freight: Int
     ship_name: String
     ship_address: String
     ship_city: String
