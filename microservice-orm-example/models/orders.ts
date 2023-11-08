@@ -6,12 +6,6 @@ import { addOrdersExistingCustomerZodSchema, addOrdersNewCustomerZodSchema } fro
 export const orders = async (page = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
   const queryData = await prisma.orders.findMany({
-    select: {
-      order_id: true,
-      order_date: true,
-      shipped_date: true,
-      ship_via: true
-    },
     skip,
     take
   });
@@ -19,7 +13,7 @@ export const orders = async (page = 1) => {
   const totalPages = await prisma.orders.count();
   
   const data = {
-    ...queryData,
+    queryData,
     totalPages
   };
 
