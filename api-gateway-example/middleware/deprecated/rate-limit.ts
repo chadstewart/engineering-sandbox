@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { redis } from "../services/redis";
+import { redis } from "../../services/redis";
 
 const REQUESTS_ALLOWED = 20;
 const TIME_LIMIT = 60;

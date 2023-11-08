@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { redis } from "../services/redis";
+import { redis } from "../../services/redis";
 
 const TTL = 600;
 

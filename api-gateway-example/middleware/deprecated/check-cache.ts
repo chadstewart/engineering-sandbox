@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { redis } from "../services/redis";
+import { redis } from "../../services/redis";
 
 export default async function checkCache (req: Request, res: Response, next: NextFunction) {
   const endpoint = req.url;

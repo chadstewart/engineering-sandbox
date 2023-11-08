@@ -3,10 +3,10 @@ import https from "https";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
-import routeAuth from "./middleware/route-authz";
-import rateLimit from "./middleware/rate-limit";
-import checkCache from "./middleware/check-cache";
-import addToCache from "./middleware/add-to-cache";
+/* import routeAuth from "./middleware/deprecated/route-authz";
+import rateLimit from "./middleware/deprecated/rate-limit";
+import checkCache from "./middleware/deprecated/check-cache";
+import addToCache from "./middleware/deprecated/add-to-cache"; */
 
 export const app = express();
 dotenv.config();
