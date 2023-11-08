@@ -17,7 +17,7 @@ app.use(express.json({ limit: "10mb" }));
 /* //Initialize Middlewares
 app.use(routeAuth);
 app.use(rateLimit);
-app.use(checkCache);
+app.use(checkCache); */
 
 //Initialize Routers
 import v1AuthRouter from "./v1/routes/authn-router";
@@ -26,5 +26,5 @@ import v1AuthRouter from "./v1/routes/authn-router";
 app.use("/v1/auth", v1AuthRouter);
 app.get("/", (req, res) => res.send("Hello World!!"));
 
-//Initialize Cache
+/* //Initialize Cache
 app.use(addToCache); */
