@@ -1,4 +1,6 @@
+import { Request } from "express";
+
 export interface ResolverContext {
   currentTime: Date,
-  requestBody: Object
+  requestObject: Request
 }

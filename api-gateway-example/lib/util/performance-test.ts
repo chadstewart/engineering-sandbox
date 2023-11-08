@@ -16,7 +16,7 @@ export const testPerformance = (prevTimestamp?: Date) => {
 export const checkResolverPerformance = async (context: ResolverContext, resolverCallback: Function) => {
   const result = await resolverCallback();
   const logObject = {
-    ...context.requestBody,
+    ...context.requestObject.body,
     result,
     queryTime: `${testPerformance(context.currentTime)} ms`
   };

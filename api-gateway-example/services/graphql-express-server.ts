@@ -53,7 +53,7 @@ const startServer = async () => {
         let currentTime;
         const isNotIntrospectionQuery = req.body.operationName !== "IntrospectionQuery";
         if(isNotIntrospectionQuery) currentTime = testPerformance();
-        return ({ currentTime, requestBody: req.body })
+        return ({ currentTime, requestObject: req })
       },
     }),
   );
