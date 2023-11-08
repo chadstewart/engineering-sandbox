@@ -7,9 +7,11 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import { app } from "../app";
 import { typeDefs } from "../graphql/type-defs";
 import { resolvers } from "../graphql/resolvers";
-import { testPerformance } from "../lib/util/performance-test";
-import { auth } from "express-oauth2-jwt-bearer";
 import { GraphQLError } from "graphql";
+import rateLimit from "../middleware/rate-limit";
+import routeAuth from "../middleware/route-authz";
+import checkCache from "../middleware/check-cache";
+import addToCache from "../middleware/add-to-cache";
 
 const PORT = 3000;
 
@@ -32,30 +34,15 @@ const startServer = async () => {
     '/graphql',
     cors<cors.CorsRequest>(),
     json(),
+    /* routeAuth,
+    rateLimit,
+    checkCache, */
     expressMiddleware(server, {
       context: async ({ req, res }) => {
-
-        const checkJwt = auth({
-          audience: `${process.env.AUTH0_AUDIENCE_URL}`,
-          issuerBaseURL: `${process.env.AUTH0_URL}`,
-          tokenSigningAlg: `${process.env.AUTH0_SIGNING_ALG}`
-        });
-      
-        /* checkJwt(req, res, (err) => {
-          if (err) throw new GraphQLError('User is not authenticated', {
-            extensions: {
-              code: 'UNAUTHENTICATED',
-              http: { status: 401 },
-            },
-          });
-        }); */
-
-        let currentTime;
-        const isNotIntrospectionQuery = req.body.operationName !== "IntrospectionQuery";
-        if(isNotIntrospectionQuery) currentTime = testPerformance();
-        return ({ currentTime, requestObject: req })
+        return ({ requestObject: req })
       },
     }),
+    /* addToCache */
   );
 
   await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));

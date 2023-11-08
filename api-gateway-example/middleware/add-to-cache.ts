@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { redis } from "../../services/redis";
+import { redis } from "../services/redis";
 
 const TTL = 600;
 
@@ -7,7 +7,8 @@ export default function addToCache (req: Request, res: Response) {
   const endpoint = req.url;
   
   const isAuthInRoute = endpoint.includes("auth");
-  if (isAuthInRoute) return;
+  const isAnIntrospectionQuery = req.body.operationName === "IntrospectionQuery";
+  if (isAuthInRoute || isAnIntrospectionQuery) return;
 
   const responseToUser = JSON.stringify(res.locals.responseToUser);
 

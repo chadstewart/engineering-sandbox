@@ -5,8 +5,7 @@ export default async function routeAuth (req: Request, res: Response, next: Next
   const indexRoute = req.path === "/" && req.method === "GET";
   const authRoute = req.path === "/v1/auth/token";
   
-  if (indexRoute) return next();
-  if (authRoute) return next();
+  if (indexRoute || authRoute) return next();
 
   const checkJwt = auth({
     audience: `${process.env.AUTH0_AUDIENCE_URL}`,
