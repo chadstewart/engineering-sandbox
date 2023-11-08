@@ -11,7 +11,7 @@ import { testPerformance } from "../lib/util/performance-test";
 import { auth } from "express-oauth2-jwt-bearer";
 import { GraphQLError } from "graphql";
 
-const PORT = 4000;
+const PORT = 3000;
 
 interface MyContext {
   token?: string;
@@ -41,26 +41,26 @@ const startServer = async () => {
           tokenSigningAlg: `${process.env.AUTH0_SIGNING_ALG}`
         });
       
-        checkJwt(req, res, (err) => {
+        /* checkJwt(req, res, (err) => {
           if (err) throw new GraphQLError('User is not authenticated', {
             extensions: {
               code: 'UNAUTHENTICATED',
               http: { status: 401 },
             },
           });
-        });
+        }); */
 
         let currentTime;
         const isNotIntrospectionQuery = req.body.operationName !== "IntrospectionQuery";
         if(isNotIntrospectionQuery) currentTime = testPerformance();
-        return ({ token: req.headers.token, currentTime, requestBody: req.body })
+        return ({ currentTime, requestBody: req.body })
       },
     }),
   );
 
   await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
   
-  console.log(`🚀  Server ready at: http://localhost:4000/graphql`);
+  console.log(`🚀  Server ready at: http://localhost:3000/graphql`);
 };
 
 startServer();

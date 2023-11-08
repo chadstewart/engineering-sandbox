@@ -14,7 +14,7 @@ dotenv.config();
 //Initialize Request Data Type
 app.use(express.json({ limit: "10mb" }));
 
-//Initialize Middlewares
+/* //Initialize Middlewares
 app.use(routeAuth);
 app.use(rateLimit);
 app.use(checkCache);
@@ -27,4 +27,4 @@ app.use("/v1/auth", v1AuthRouter);
 app.get("/", (req, res) => res.send("Hello World!!"));
 
 //Initialize Cache
-app.use(addToCache);
+app.use(addToCache); */
