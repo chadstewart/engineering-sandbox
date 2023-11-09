@@ -7,13 +7,10 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import { app } from "../app";
 import { typeDefs } from "../graphql/type-defs";
 import { resolvers } from "../graphql/resolvers";
-import { GraphQLError } from "graphql";
-import rateLimit from "../middleware/rate-limit";
-import routeAuth from "../middleware/route-authz";
-import checkCache from "../middleware/check-cache";
-import addToCache from "../middleware/add-to-cache";
 import { KeyvAdapter } from "@apollo/utils.keyvadapter";
 import Keyv from "keyv";
+import rateLimit from "../middleware/rate-limit";
+import routeAuth from "../middleware/route-authz";
 
 const PORT = 3000;
 
@@ -38,14 +35,12 @@ const startServer = async () => {
     cors<cors.CorsRequest>(),
     json(),
     /* routeAuth,
-    rateLimit,
-    checkCache, */
+    rateLimit,*/
     expressMiddleware(server, {
       context: async ({ req, res }) => {
         return ({ requestObject: req })
       },
-    }),
-    /* addToCache */
+    })
   );
 
   await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
