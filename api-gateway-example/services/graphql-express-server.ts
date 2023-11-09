@@ -12,6 +12,8 @@ import rateLimit from "../middleware/rate-limit";
 import routeAuth from "../middleware/route-authz";
 import checkCache from "../middleware/check-cache";
 import addToCache from "../middleware/add-to-cache";
+import { KeyvAdapter } from "@apollo/utils.keyvadapter";
+import Keyv from "keyv";
 
 const PORT = 3000;
 
@@ -25,6 +27,7 @@ const startServer = async () => {
   const server = new ApolloServer<MyContext>({
     typeDefs,
     resolvers,
+    cache: new KeyvAdapter(new Keyv(`redis://${process.env.REDIS_PUBLIC_URL}`)),
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
 
