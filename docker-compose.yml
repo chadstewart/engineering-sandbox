@@ -30,6 +30,7 @@ services:
       - AUTH0_AUDIENCE_URL=${AUTH0_AUDIENCE_URL}
       - AUTH0_SIGNING_ALG=${AUTH0_SIGNING_ALG}
       - REDIS_PUBLIC_URL=${REDIS_PUBLIC_URL}
+      - REST_API_URL=${REST_API_URL}
     container_name: api-gateway-sandbox
     depends_on:
       - redis

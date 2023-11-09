@@ -31,7 +31,7 @@ export const getOrders = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `http://rest-api:3001/v1/orders/${page}`
+    `${process.env.REST_API_URL}/v1/orders/${page}`
   );
   return data.data.queryData;
 };
@@ -56,7 +56,7 @@ export const getOrderDtails = async (orderId = '') => {
         totalPages: zod.number()
       })
     }),
-    `http://rest-api:3001/v1/orders/details/${orderId}`
+    `${process.env.REST_API_URL}/v1/orders/details/${orderId}`
   );
   return data;
 };
