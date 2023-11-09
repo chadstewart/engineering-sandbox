@@ -36,6 +36,27 @@ export const fetchPostExampleRequest = async (exampleRequest: *Request types*) =
 };
 ```
 
+## API Function Template
+
+```TypeScript
+import zod from "zod";
+import api from "../../config/api";
+
+const CONFIG: RequestInit = {
+  headers: {
+    "Content-Type": "application/json"
+  }
+};
+
+export const nameOfFunctionHere = async () => {
+  const data = await api.get(
+    zod.any(),
+    ``
+  );
+  return data;
+};
+```
+
 ## Types
 
 If types need to be used in the API, if they are only for the API then they should be added to the API folder under a 'util' folder. Otherwise, they need to be added to the main types folder for the application.
@@ -56,7 +77,7 @@ readonly interface Countries {
 While API functions can be called anywhere, they'll typically live in a controller or wherever business logic is written.
 
 ```TypeScript
-//filename: pages/example-usage.tsx
+//filename: v(*)/controllers/example-usage-controller.ts
 
 import { Request, Response } from "express";
 import { fetchExampleRequest } from "../../lib/api/internal-apis/example-api";
