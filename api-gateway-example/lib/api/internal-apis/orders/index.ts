@@ -46,12 +46,12 @@ export const getOrderDetails = async (orderId = '') => {
               order_date: zod.date().nullable(),
               shipped_date: zod.date().nullable()
           }),
+          products: zod.object({
+              product_id: zod.number(),
+          }),
           order_id: zod.number(),
           unit_price: zod.number(),
-          quantity: zod.number(),
-          products: zod.object({
-              product_id: zod.number()
-          })
+          quantity: zod.number()
         }).array()
       })
     }),
