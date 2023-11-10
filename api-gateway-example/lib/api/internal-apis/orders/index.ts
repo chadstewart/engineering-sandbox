@@ -36,7 +36,7 @@ export const getOrders = async (page = 1) => {
   return data.data.queryData;
 };
 
-export const getOrderDtails = async (orderId = '') => {
+export const getOrderDetails = async (orderId = '') => {
   const data = await api.get(
     zod.object({      
       status: zod.string(),
@@ -52,8 +52,7 @@ export const getOrderDtails = async (orderId = '') => {
           products: zod.object({
               product_id: zod.number()
           })
-        }).array(),
-        totalPages: zod.number()
+        }).array()
       })
     }),
     `${process.env.REST_API_URL}/v1/orders/details/${orderId}`

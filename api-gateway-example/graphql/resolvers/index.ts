@@ -1,4 +1,6 @@
-import { getOrderDtails, getOrders } from "../../lib/api/internal-apis/orders";
+import { getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
+import { getEmployees } from "../../lib/api/internal-apis/employees";
+import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
 import { updateCustomerZodSchema } from "../../lib/util/schemas/update-customer-zod-schema";
 import { ResolverContext } from "../../lib/util/types/context-resolver-types";
@@ -19,10 +21,10 @@ interface CreateEmployeeMutationArgs {
 export const resolvers = {
   Query: {
     getOrders: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getOrders(args.page),
-    getOrderDetails: (_: any, args: { id: string }, context: ResolverContext) => getOrderDtails(args.id),
-    getEmployees: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
-    getCustomers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
-    getCustomerDetails: (_: any, args: { id: string }, context: ResolverContext) => null,
+    getOrderDetails: (_: any, args: { id: string }, context: ResolverContext) => getOrderDetails(args.id),
+    getEmployees: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getEmployees(args.page),
+    getCustomers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getCustomers(args.page),
+    getCustomerDetails: (_: any, args: { id: string }, context: ResolverContext) => getCustomerDetails(args.id),
     getProducts:(_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
     getCategories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
     getSuppliers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
