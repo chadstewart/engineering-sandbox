@@ -3,7 +3,7 @@ import { prismaPaginationHelper } from "../util/pagination-helper";
 
 export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
-  const query = await prisma.employee_territories.findMany({
+  const queryData = await prisma.employee_territories.findMany({
     select: {
       employees: {
         select: {
@@ -35,7 +35,7 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
   });
   const totalRows = await prisma.employees.count();
   const data = {
-    query,
+    queryData,
     totalRows
   };
   return data;

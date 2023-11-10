@@ -3,6 +3,8 @@ import { getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/cu
 import { getEmployees } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
 import { getProducts } from "../../lib/api/internal-apis/products";
+import { getSuppliers } from "../../lib/api/internal-apis/suppliers";
+import { getTerritories } from "../../lib/api/internal-apis/territories";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
 import { updateCustomerZodSchema } from "../../lib/util/schemas/update-customer-zod-schema";
 import { ResolverContext } from "../../lib/util/types/context-resolver-types";
@@ -29,8 +31,8 @@ export const resolvers = {
     getCustomerDetails: (_: any, args: { id: string }, context: ResolverContext) => getCustomerDetails(args.id),
     getProducts:(_: any, args: QueryPaginationArgs, context: ResolverContext) => getProducts(args.page),
     getCategories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getCategories(args.page),
-    getSuppliers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
-    getEmployeeTerritories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null
+    getSuppliers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getSuppliers(args.page),
+    getEmployeeTerritories: (_: any, args: { page: number, territoryId: string}, context: ResolverContext) => getTerritories(args.territoryId, args.page)
   },
   Order: {
     customer: (parent: { customer_id: string }, context: ResolverContext) => null,
