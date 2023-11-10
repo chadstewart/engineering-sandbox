@@ -1,6 +1,8 @@
+import { getCategories } from "../../lib/api/internal-apis/categories";
 import { getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
 import { getEmployees } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
+import { getProducts } from "../../lib/api/internal-apis/products";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
 import { updateCustomerZodSchema } from "../../lib/util/schemas/update-customer-zod-schema";
 import { ResolverContext } from "../../lib/util/types/context-resolver-types";
@@ -25,8 +27,8 @@ export const resolvers = {
     getEmployees: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getEmployees(args.page),
     getCustomers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getCustomers(args.page),
     getCustomerDetails: (_: any, args: { id: string }, context: ResolverContext) => getCustomerDetails(args.id),
-    getProducts:(_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
-    getCategories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
+    getProducts:(_: any, args: QueryPaginationArgs, context: ResolverContext) => getProducts(args.page),
+    getCategories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getCategories(args.page),
     getSuppliers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null,
     getEmployeeTerritories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => null
   },
