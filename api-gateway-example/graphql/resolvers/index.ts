@@ -4,7 +4,7 @@ import { getEmployees, getEmployeesById } from "../../lib/api/internal-apis/empl
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
 import { getProductDetails, getProducts } from "../../lib/api/internal-apis/products";
 import { getSuppliers } from "../../lib/api/internal-apis/suppliers";
-import { getTerritories } from "../../lib/api/internal-apis/territories";
+import { getTerritories, getTerritoriesById } from "../../lib/api/internal-apis/territories";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
 import { updateCustomerZodSchema } from "../../lib/util/schemas/update-customer-zod-schema";
 import { ResolverContext } from "../../lib/util/types/context-resolver-types";
@@ -32,7 +32,7 @@ export const resolvers = {
     getProducts:(_: any, args: QueryPaginationArgs, context: ResolverContext) => getProducts(args.page),
     getCategories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getCategories(args.page),
     getSuppliers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getSuppliers(args.page),
-    getEmployeeTerritories: (_: any, args: { page: number, territoryId: string}, context: ResolverContext) => getTerritories(args.territoryId, args.page)
+    getEmployeeTerritories: (_: any, args: { page: number, territory_id: number}, context: ResolverContext) => getTerritories(args.page)
   },
   Order: {
     customer: (parent: { customer_id: string }, context: ResolverContext) => getCustomerDetails(parent.customer_id),
@@ -43,8 +43,8 @@ export const resolvers = {
     product: (parent: { product_id: number }, context: ResolverContext) => getProductDetails(parent.product_id)
   },
   EmployeeTerritory: {
-    employee: (parent: { employee_id: number }, context: ResolverContext) => null,
-    territory: (parent: { territory_id: number }, context: ResolverContext) => null
+    employee: (parent: { employee_id: number }, context: ResolverContext) => getEmployeesById(parent.employee_id),
+    territory: (parent: { territory_id: number }, context: ResolverContext) => getTerritoriesById(parent.territory_id)
   },
   Product: {
     supplier: (parent: { supplier_id: number }, context: ResolverContext) => null,

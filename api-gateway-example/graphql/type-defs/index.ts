@@ -167,7 +167,7 @@ export const typeDefs = `#graphql
     getProducts(authorization: String!, page: Int): [Product]
     getCategories(authorization: String!, page: Int): [Category]
     getSuppliers(authorization: String!, page: Int): [Supplier]
-    getEmployeeTerritories(authorization: String!, territoryId: String!, page: Int): [EmployeeTerritory]
+    getEmployeeTerritories(authorization: String!, territory_id: String!, page: Int): [EmployeeTerritory]
   }
 
   type Mutation {
