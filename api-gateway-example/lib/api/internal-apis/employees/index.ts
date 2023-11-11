@@ -26,3 +26,22 @@ export const getEmployees = async (page = 1) => {
   );
   return data.data.queryData;
 };
+
+export const getEmployeesById = async (employeeId = 1) => {
+  const data = await api.get(
+    zod.object({      
+      status: zod.string(),
+      data: zod.object({
+        queryData: zod.object({
+          employee_id: zod.number(),
+          first_name: zod.string(),
+          last_name: zod.string(),
+          title: zod.string().nullable(),
+          photo: zod.instanceof(Buffer).nullable()
+        }).array()
+      })
+    }),
+    `${process.env.REST_API_URL}/v1/employees/details/${employeeId}`
+  );
+  return data.data.queryData;
+};

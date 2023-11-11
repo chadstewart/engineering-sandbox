@@ -1,6 +1,6 @@
 import { getCategories } from "../../lib/api/internal-apis/categories";
 import { getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
-import { getEmployees } from "../../lib/api/internal-apis/employees";
+import { getEmployees, getEmployeesById } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
 import { getProducts } from "../../lib/api/internal-apis/products";
 import { getSuppliers } from "../../lib/api/internal-apis/suppliers";
@@ -35,8 +35,8 @@ export const resolvers = {
     getEmployeeTerritories: (_: any, args: { page: number, territoryId: string}, context: ResolverContext) => getTerritories(args.territoryId, args.page)
   },
   Order: {
-    customer: (parent: { customer_id: string }, context: ResolverContext) => null,
-    employee: (parent: { employee_id: number }, context: ResolverContext) => null
+    customer: (parent: { customer_id: string }, context: ResolverContext) => getCustomerDetails(parent.customer_id),
+    employee: (parent: { employee_id: number }, context: ResolverContext) => getEmployeesById(parent.employee_id)
   },
   OrderDetail: {
     order: (parent: { order_id: number }, context: ResolverContext) => null,
