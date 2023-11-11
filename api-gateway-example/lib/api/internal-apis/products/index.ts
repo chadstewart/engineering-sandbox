@@ -27,3 +27,31 @@ export const getProducts = async (page = 1) => {
   );
   return data.data.queryData;
 };
+
+export const getProductDetails = async (productId = 1) => {
+  const data = await api.get(
+    zod.object({      
+      status: zod.string(),
+      data: zod.object({
+        queryData: zod.object({
+          product_name: zod.string(),
+          unit_price: zod.number().nullable(),
+          discontinued: zod.number(),
+          categories: zod.object({
+              category_name: zod.string(),
+              description: zod.string().nullable()
+          }).nullable(),
+          suppliers: zod.object({
+              company_name: zod.string(),
+              contact_name: zod.string().nullable(),
+              contact_title: zod.string().nullable(),
+              phone: zod.string().nullable(),
+              homepage: zod.string().nullable()
+          }).nullable()
+        }).array()
+      })
+    }),
+    `${process.env.REST_API_URL}/v1/products/details/${productId}`
+  );
+  return data;
+};

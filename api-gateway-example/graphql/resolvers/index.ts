@@ -2,7 +2,7 @@ import { getCategories } from "../../lib/api/internal-apis/categories";
 import { getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
 import { getEmployees, getEmployeesById } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
-import { getProducts } from "../../lib/api/internal-apis/products";
+import { getProductDetails, getProducts } from "../../lib/api/internal-apis/products";
 import { getSuppliers } from "../../lib/api/internal-apis/suppliers";
 import { getTerritories } from "../../lib/api/internal-apis/territories";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
@@ -25,7 +25,7 @@ interface CreateEmployeeMutationArgs {
 export const resolvers = {
   Query: {
     getOrders: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getOrders(args.page),
-    getOrderDetails: (_: any, args: { id: string }, context: ResolverContext) => getOrderDetails(args.id),
+    getOrderDetails: (_: any, args: { id: number }, context: ResolverContext) => getOrderDetails(args.id),
     getEmployees: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getEmployees(args.page),
     getCustomers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getCustomers(args.page),
     getCustomerDetails: (_: any, args: { id: string }, context: ResolverContext) => getCustomerDetails(args.id),
@@ -39,8 +39,8 @@ export const resolvers = {
     employee: (parent: { employee_id: number }, context: ResolverContext) => getEmployeesById(parent.employee_id)
   },
   OrderDetail: {
-    order: (parent: { order_id: number }, context: ResolverContext) => null,
-    product: (parent: { product_id: number }, context: ResolverContext) => null
+    order: (parent: { order_id: number }, context: ResolverContext) => getOrderDetails(parent.order_id),
+    product: (parent: { product_id: number }, context: ResolverContext) => getProductDetails(parent.product_id)
   },
   EmployeeTerritory: {
     employee: (parent: { employee_id: number }, context: ResolverContext) => null,

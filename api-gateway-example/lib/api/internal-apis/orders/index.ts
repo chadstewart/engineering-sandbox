@@ -36,7 +36,7 @@ export const getOrders = async (page = 1) => {
   return data.data.queryData;
 };
 
-export const getOrderDetails = async (orderId = '') => {
+export const getOrderDetails = async (orderId = 1) => {
   const data = await api.get(
     zod.object({      
       status: zod.string(),
