@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { createEmployee, employees } from "../../models/employees";
+import { createEmployee, employees, employeesFromId } from "../../models/employees";
 import { createEmployeeZodSchema } from "../../util/schemas/employee-zod-schema";
 
 export async function getEmployees (req: Request, res: Response, next: NextFunction) {
@@ -19,6 +19,32 @@ export async function getEmployees (req: Request, res: Response, next: NextFunct
   }
 
   const data = await employees(page);
+
+  res.status(200).json({
+    status: "success",
+    data: data
+  });
+
+  return next();
+};
+
+export async function getEmployeeById (req: Request, res: Response, next: NextFunction) {
+  let employeeId = 0;
+
+  const isEmployeeIdInRoute = req.params.employee_id;
+  if(isEmployeeIdInRoute) employeeId = Number(req.params.employee_id);
+
+  const isEmployeeIdIsNaN = Number.isNaN(employeeId);
+  if(isEmployeeIdIsNaN) {
+    res.status(400).json({
+      status: "failed",
+      error: "employees/'employeeId' must be a number"
+    });
+
+    return next();
+  }
+
+  const data = await employeesFromId(employeeId);
 
   res.status(200).json({
     status: "success",

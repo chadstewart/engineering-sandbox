@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 import { getOrders, getOrderDetails, addOrderAddNewCustomer, addOrderAddExistingCustomer } from "../controllers/orders-controller";
-import { addEmployee, getEmployees } from "../controllers/employees-controller";
+import { addEmployee, getEmployeeById, getEmployees } from "../controllers/employees-controller";
 import { getEmployeesByTerritories } from "../controllers/territories-controller";
 import { getProducts, getProductDetails } from "../controllers/products-controller";
 import { getCustomerDetails, getCustomers, updateCustomerById } from "../controllers/customers-controller";
@@ -32,6 +32,7 @@ router.get("/categories/details/:category_id?", getCategoryDetails);
 
 //Employees
 router.get("/employees/:page?", getEmployees);
+router.get("/employees/details/:employee_id?", getEmployeeById);
 router.post("/employees", addEmployee);
 
 //Suppliers
