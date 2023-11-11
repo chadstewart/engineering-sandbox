@@ -40,3 +40,29 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
   };
   return data;
 };
+
+export const territories = async (page = 1) => {
+  const { skip, take } = prismaPaginationHelper(page);
+  const queryData = await prisma.territories.findMany({
+    skip,
+    take
+  });
+  const totalRows = await prisma.employees.count();
+  const data = {
+    queryData,
+    totalRows
+  };
+  return data;
+}
+
+export const territoriesById = async (territoryId = "") => {
+  const queryData = await prisma.territories.findMany({
+    where: {
+      territory_id: `${territoryId}`
+    }
+  });
+  const data = {
+    queryData
+  };
+  return data;
+}

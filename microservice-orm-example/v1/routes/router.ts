@@ -3,7 +3,7 @@ const router = express.Router();
 
 import { getOrders, getOrderDetails, addOrderAddNewCustomer, addOrderAddExistingCustomer } from "../controllers/orders-controller";
 import { addEmployee, getEmployeeById, getEmployees } from "../controllers/employees-controller";
-import { getEmployeesByTerritories } from "../controllers/territories-controller";
+import { getEmployeesByTerritories, getTerritories, getTerritoriesDetails } from "../controllers/territories-controller";
 import { getProducts, getProductDetails } from "../controllers/products-controller";
 import { getCustomerDetails, getCustomers, updateCustomerById } from "../controllers/customers-controller";
 import { getUSStates } from "../controllers/us-states-controller";
@@ -46,6 +46,8 @@ router.get("/states/:page?", getUSStates);
 router.get("/regions/details/:region_id?", getRegionDetails);
 
 //Territories
+router.get("/territories/:page?", getTerritories);
+router.get("/territories/details/:territory_id?", getTerritoriesDetails);
 router.get("/territories/employees/:territory_id?/:page?", getEmployeesByTerritories);
 
 export default router;
