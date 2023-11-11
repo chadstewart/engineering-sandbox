@@ -1,5 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
+import { createEmployeeZodSchema } from "../../../util/schemas/employee-zod-schema";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -42,6 +43,21 @@ export const getEmployeesById = async (employeeId = 1) => {
       })
     }),
     `${process.env.REST_API_URL}/v1/employees/details/${employeeId}`
+  );
+  return data.data.queryData;
+};
+
+export const addEmployees = async (requestBody: typeof createEmployeeZodSchema) => {
+  const data = await api.post(
+    zod.object({      
+      status: zod.string(),
+      data: zod.object({
+        queryData: zod.any().array()
+      })
+    }),
+    `${process.env.REST_API_URL}/v1/employees`,
+    requestBody,
+    CONFIG
   );
   return data.data.queryData;
 };
