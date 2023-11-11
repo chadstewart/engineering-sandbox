@@ -1,9 +1,9 @@
-import { getCategories } from "../../lib/api/internal-apis/categories";
+import { getCategories, getCategoryDetails } from "../../lib/api/internal-apis/categories";
 import { getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
 import { getEmployees, getEmployeesById } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
 import { getProductDetails, getProducts } from "../../lib/api/internal-apis/products";
-import { getSuppliers } from "../../lib/api/internal-apis/suppliers";
+import { getSupplierDetails, getSuppliers } from "../../lib/api/internal-apis/suppliers";
 import { getTerritories, getTerritoriesById } from "../../lib/api/internal-apis/territories";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
 import { updateCustomerZodSchema } from "../../lib/util/schemas/update-customer-zod-schema";
@@ -47,8 +47,8 @@ export const resolvers = {
     territory: (parent: { territory_id: number }, context: ResolverContext) => getTerritoriesById(parent.territory_id)
   },
   Product: {
-    supplier: (parent: { supplier_id: number }, context: ResolverContext) => null,
-    category: (parent: { category_id: number }, context: ResolverContext) => null
+    supplier: (parent: { supplier_id: number }, context: ResolverContext) => getSupplierDetails(parent.supplier_id),
+    category: (parent: { category_id: number }, context: ResolverContext) => getCategoryDetails(parent.category_id)
   },
   Territory: {
     region: (parent: { region_id: number }, context: ResolverContext) => null
