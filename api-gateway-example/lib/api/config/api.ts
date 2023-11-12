@@ -7,21 +7,21 @@ const api = {
   })
   .then(res => res.json())
   ),
-  post: createZodFetcher((url: URL | RequestInfo, body: any, config: RequestInit = {}) => fetch(url, {
+  post: createZodFetcher((url: URL | RequestInfo, body: unknown, config: RequestInit = {}) => fetch(url, {
     method: "POST",
     body: JSON.stringify(body),
     ...config
   })
   .then(res => res.json())
   ),
-  put: createZodFetcher((url: URL | RequestInfo, body: any, config: RequestInit = {}) => fetch(url, {
+  put: createZodFetcher((url: URL | RequestInfo, body: unknown, config: RequestInit = {}) => fetch(url, {
     method: "PUT",
     body: JSON.stringify(body),
     ...config
   })
   .then(res => res.json())
   ),
-  patch: createZodFetcher((url: URL | RequestInfo, body: any, config: RequestInit = {}) => fetch(url, {
+  patch: createZodFetcher((url: URL | RequestInfo, body: unknown, config: RequestInit = {}) => fetch(url, {
     method: "PATCH",
     body: JSON.stringify(body),
     ...config
