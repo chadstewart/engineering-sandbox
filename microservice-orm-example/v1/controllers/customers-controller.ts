@@ -67,15 +67,15 @@ export async function updateCustomerById (req: Request, res: Response, next: Nex
   });
 
   try {
-      await updateCustomerZodSchema.parse(req.body);
-      const data = await updateCustomer(customerId, req.body);
-    
-      res.status(204).json({
-        status: "success",
-        data: data
-      });
+    await updateCustomerZodSchema.parse(req.body);
+    const data = await updateCustomer(customerId, req.body);
+  
+    res.status(204).json({
+      status: "success",
+      data: data
+    });
 
-      return next();
+    return next();
   } catch (error) {
     res.status(400).json({
       status: "failed",

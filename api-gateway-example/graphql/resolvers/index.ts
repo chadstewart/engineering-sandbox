@@ -1,5 +1,5 @@
 import { getCategories, getCategoryDetails } from "../../lib/api/internal-apis/categories";
-import { getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
+import { addCustomer, getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
 import { addEmployees, getEmployees, getEmployeesById } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
 import { getProductDetails, getProducts } from "../../lib/api/internal-apis/products";
@@ -55,7 +55,7 @@ export const resolvers = {
     region: (parent: { region_id: number }, context: ResolverContext) => getRegionById(parent.region_id)
   },
   Mutation: {
-    updateCustomer: (_: any, args: CustomerMutationArgs, context: ResolverContext) => null,
+    updateCustomer: (_: any, args: CustomerMutationArgs, context: ResolverContext) => addCustomer(args.id, args.customerUserInput),
     createEmployee: (_: any, args: CreateEmployeeMutationArgs, context: ResolverContext) => addEmployees(args.createEmployeeInput)
   }
 };

@@ -9,21 +9,21 @@ const api = {
   ),
   post: createZodFetcher((url: URL | RequestInfo, body: any, config: RequestInit = {}) => fetch(url, {
     method: "POST",
-    body,
+    body: JSON.stringify(body),
     ...config
   })
   .then(res => res.json())
   ),
   put: createZodFetcher((url: URL | RequestInfo, body: any, config: RequestInit = {}) => fetch(url, {
     method: "PUT",
-    body,
+    body: JSON.stringify(body),
     ...config
   })
   .then(res => res.json())
   ),
   patch: createZodFetcher((url: URL | RequestInfo, body: any, config: RequestInit = {}) => fetch(url, {
     method: "PATCH",
-    body,
+    body: JSON.stringify(body),
     ...config
   })
   .then(res => res.json())

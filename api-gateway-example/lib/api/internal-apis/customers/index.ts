@@ -1,5 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
+import { updateCustomerZodSchema } from "../../../util/schemas/update-customer-zod-schema";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -26,7 +27,7 @@ export const getCustomers = async (page = 1) => {
   return data.data.queryData;
 };
 
-export const getCustomerDetails = async (orderId = '') => {
+export const getCustomerDetails = async (customerId = '') => {
   const data = await api.get(
     zod.object({      
       status: zod.string(),
@@ -45,7 +46,29 @@ export const getCustomerDetails = async (orderId = '') => {
         }).array()
       })
     }),
-    `${process.env.REST_API_URL}/v1/customers/details/${orderId}`
+    `${process.env.REST_API_URL}/v1/customers/details/${customerId}`
   );
   return data;
 };
+
+export const addCustomer = async (customerId = '', requestBody: typeof updateCustomerZodSchema ) => {
+  const data = await api.put(
+    zod.object({
+      customer_id: zod.string(),
+      company_name: zod.string(),
+      contact_name: zod.string().nullable(),
+      contact_title: zod.string().nullable(),
+      address: zod.string().nullable(),
+      city: zod.string().nullable(),
+      region: zod.string().nullable(),
+      postal_code: zod.string().nullable(),
+      country: zod.string().nullable(),
+      phone: zod.string().nullable(),
+      fax: zod.string().nullable()
+    }),
+    `${process.env.REST_API_URL}/v1/customers/${customerId}`,
+    requestBody,
+    CONFIG
+  );
+  return data;
+}
