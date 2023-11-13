@@ -6,6 +6,7 @@ volumes:
 networks:
   api:
   database:
+  front-end:
 
 services:
   db:
@@ -34,6 +35,7 @@ services:
     container_name: api-gateway-sandbox
     depends_on:
       - redis
+      - rest-api
     build:
       context: ./api-gateway-example
       target: api-gateway
@@ -70,3 +72,14 @@ services:
     networks:
       - database
       - api
+
+  react-prod:
+    container_name: react-sandbox
+    depends_on:
+      - api-gateway
+    build:
+      context: ./react-vite
+    ports:
+      - "4000:4000"
+    networks:
+      - front-end
