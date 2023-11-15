@@ -32,7 +32,9 @@ const startServer = async () => {
 
   app.use(
     '/graphql',
-    cors<cors.CorsRequest>(),
+    cors<cors.CorsRequest>({
+      origin: "http://172.20.0.2:4000"
+    }),
     json(),
     /* routeAuth,
     rateLimit,*/

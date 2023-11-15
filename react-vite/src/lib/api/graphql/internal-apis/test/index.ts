@@ -8,7 +8,7 @@ const CONFIG: RequestInit = {
 };
 
 export const testGraphQLQuery = async () => {
-  const requestBody = JSON.stringify({
+  const requestBody = {
     operationName: "GetOrders",
     query: `query GetOrders($authorization: String!) {
       getOrders(authorization: $authorization) {
@@ -18,7 +18,7 @@ export const testGraphQLQuery = async () => {
     variables: {
       authorization: "test"
     }
-  });
+  };
 
   const data = api.post(
     zod.object({
@@ -28,8 +28,8 @@ export const testGraphQLQuery = async () => {
         }).array()
       })
     }),
+    `http://172.20.0.3:3000/graphql`,
     requestBody,
-    `http://api-gateway:3000/graphql`,
     CONFIG
   );
 

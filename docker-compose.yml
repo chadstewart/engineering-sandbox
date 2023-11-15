@@ -7,6 +7,10 @@ networks:
   api:
   database:
   front-end:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
 
 services:
   db:
@@ -42,7 +46,9 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - api
+      front-end:
+        ipv4_address: 172.20.0.3
+      api:
 
   redis:
     container_name: redis-db
@@ -73,7 +79,7 @@ services:
       - database
       - api
 
-  react-prod:
+  react:
     container_name: react-sandbox
     depends_on:
       - api-gateway
@@ -82,4 +88,5 @@ services:
     ports:
       - "4000:4000"
     networks:
-      - front-end
+      front-end:
+        ipv4_address: 172.20.0.2
