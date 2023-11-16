@@ -2,13 +2,13 @@
 
 This is the API Layer for this project. When building APIs for internal or external services, they should be added here as functions to make them easily callable in the application.
 
-## Example API Function
+## Example REST API Function
 
 ```TypeScript
-//filename: lib/api/'internal or external api'/example-api.ts
+//filename: lib/api/rest/'internal or external api'/example-api.ts
 
 import zod from "zod";
-import api from "../config/api";
+import api from "@/lib/api/config/api";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -25,7 +25,7 @@ export const fetchExampleRequest = async () => {
 };
 
 export const fetchPostExampleRequest = async (exampleRequest: *Request types*) => {
-  const requestBody = JSON.stringify(exampleRequest);
+  const requestBody = exampleRequest;
   const data = await api.post(
     zod.any(),
     "https://restcountries.com/v2/all",
@@ -36,11 +36,63 @@ export const fetchPostExampleRequest = async (exampleRequest: *Request types*) =
 };
 ```
 
+## Example GraphQL API Function
+
+```TypeScript
+//filename: lib/api/graphql/'internal or external api'/example-api.ts
+
+import zod from "zod";
+import api from "@/lib/api/config/api";
+
+const CONFIG: RequestInit = {
+  headers: {
+    "Content-Type": "application/json"
+  }
+};
+
+export const testQuery = async (exampleRequest: *Request types*) => {
+  /*
+  An example request:
+
+  const requestBody = {
+    operationName: "GetOrders",
+    query: `query GetOrders($authorization: String!) {
+      getOrders(authorization: $authorization) {
+        order_id
+      }
+    }
+  */
+ 
+  const requestBody = {
+    operationName: "exampleOperation",
+    query: exampleRequest,
+    variables: {
+      authorization: "test"
+    }
+  };
+
+  const data = api.post(
+    zod.object({
+      data: zod.object({
+        getOrders: zod.object({
+          order_id: zod.string()
+        }).array()
+      })
+    }),
+    `http://apiurl.com/graphql`,
+    requestBody,
+    CONFIG
+  );
+
+  return data; 
+};
+```
+
 ## API Function Template
 
 ```TypeScript
 import zod from "zod";
-import api from "../../config/api";
+import api from "@/lib/api/config/api";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -74,34 +126,59 @@ readonly interface Countries {
 
 ## Example of API Function Usage
 
-While API functions can be called anywhere, they'll typically live in a controller or wherever business logic is written.
+API Functions can be called in Components directly or called in React Custom Hooks. This project uses `Tanstack Query` to help with data-fetching and displaying the fetched data.
 
-```TypeScript
-//filename: v(*)/controllers/example-usage-controller.ts
+Tanstack Query works with both REST API & GraphQL queries without any specific configuration for either.
 
-import { Request, Response } from "express";
-import { fetchExampleRequest } from "../../lib/api/internal-apis/example-api";
+```tsx
+//filename: /component/example-usage-component.ts
 
-export default async function getToken (req: Request, res: Response) {
-  try {
-    const data = await fetchExampleRequest();
+import { useState } from 'react'
+import reactLogo from '@/assets/react.svg'
+import viteLogo from '/vite.svg'
+import { Button } from '@/components/atoms/button/button'
+import { useQuery } from '@tanstack/react-query'
+import { testQuery } from '@/lib/api/graphql/internal-apis/test'
 
-    return res.status(200).json({
-      status: "success",
-      data
-    });
+function Test() {
+  const [count, setCount, error] = useState(0)
 
-  } catch ( error ) {
-  
-    return res.status(401).json({
-      status: "failed",
-      data: {
-        error: error
-      }
-    })
-  }
+  const { data, isLoading } = useQuery({
+    queryKey: ['responseData'],
+    queryFn: testQuery
+  });
 
-};
+  return (
+    <>
+      <div>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Ohh crud...</p>}
+        {data && <p>Data: {data?.getOrders.order_id}</p>}
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <Button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </Button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+}
+
+export default Test
+
 ```
 
 ## References for building this API Layer
