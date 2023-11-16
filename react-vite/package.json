@@ -11,7 +11,8 @@
     "generate": "graphql-codegen",
     "generate-watch": "graphql-codegen --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "reset-deps": "rm -rf node_modules && npm ci"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
@@ -45,7 +46,7 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
-    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -55,6 +56,6 @@
     "storybook": "^7.5.3",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^5.0.0"
   }
 }
