@@ -41,73 +41,33 @@ export const fetchPostExampleRequest = async (exampleRequest: *Request types*) =
 ```TypeScript
 //filename: lib/api/graphql/'internal or external api'/example-api.ts
 
-import zod from "zod";
 import api from "@/lib/api/config/api";
+import { graphql } from "@/gql";
 
-const CONFIG: RequestInit = {
-  headers: {
-    "Content-Type": "application/json"
-  }
-};
-
-export const testQuery = async (exampleRequest: *Request types*) => {
-  /*
-  An example request:
-
+export const testQuery = async () => {
   const requestBody = {
-    operationName: "GetOrders",
-    query: `query GetOrders($authorization: String!) {
-      getOrders(authorization: $authorization) {
+    query: graphql(/* GraphQL */ `
+    query testQuery($testVariable: String!) {
+      testQuery(testVariable: $testVariable) {
         order_id
       }
-    }
-  */
- 
-  const requestBody = {
-    operationName: "exampleOperation",
-    query: exampleRequest,
+    }`),
     variables: {
-      authorization: "test"
+      testVariable: "test"
     }
   };
 
-  const data = api.post(
-    zod.object({
-      data: zod.object({
-        getOrders: zod.object({
-          order_id: zod.string()
-        }).array()
-      })
-    }),
+  const data = api.graphqlQuery(
     `http://apiurl.com/graphql`,
-    requestBody,
-    CONFIG
+    requestBody.query,
+    requestBody.variables
   );
 
   return data; 
 };
 ```
 
-## API Function Template
-
-```TypeScript
-import zod from "zod";
-import api from "@/lib/api/config/api";
-
-const CONFIG: RequestInit = {
-  headers: {
-    "Content-Type": "application/json"
-  }
-};
-
-export const nameOfFunctionHere = async () => {
-  const data = await api.get(
-    zod.any(),
-    ``
-  );
-  return data;
-};
-```
+Note: Types for the graphql query is generated after the query is written. These can be generated in 2 ways, by running `npm run generate`, which will generates the types immediately or `npm run generate-watch` which generates types when code changes are detected.
 
 ## Types
 
