@@ -8,7 +8,7 @@ import { testGraphQLQuery } from '@/lib/api/graphql/internal-apis/test'
 function Test() {
   const [count, setCount] = useState(0)
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['responseData'],
     queryFn: testGraphQLQuery
   });
@@ -16,11 +16,9 @@ function Test() {
   return (
     <>
       <div>
-        {
-          isLoading ? 
-            <p>Loading...</p> :
-            <p>GraphQL Data: {data?.data.getOrders[0].order_id}</p>
-        }
+        { isLoading && <p>Loading...</p> }
+        { error && <p>Ohh... Well that's not good...</p> }
+        { data && <p>GraphQL Data: {data.getOrders![0]!.order_id}</p> }
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

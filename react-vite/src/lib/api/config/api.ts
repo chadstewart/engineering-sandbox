@@ -1,3 +1,4 @@
+import request from "graphql-request";
 import { createZodFetcher } from "zod-fetch";
 
 const api = {
@@ -33,7 +34,8 @@ const api = {
     ...config
   })
   .then(res => res.json())
-  )
+  ),
+  graphqlQuery: request
 };
 
 export default api;
