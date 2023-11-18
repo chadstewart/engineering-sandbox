@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from "@tanstack/react-router";
 import { Footer } from "@/components/organisms/footer/footer";
 import { Header } from "@/components/organisms/header/header";
 
