@@ -2,23 +2,23 @@ import { useState } from 'react'
 import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Button } from '@/components/atoms/button/button'
-import { useQuery } from '@tanstack/react-query'
-import { testGraphQLQuery } from '@/lib/api/graphql/internal-apis/test'
+/* import { useQuery } from '@tanstack/react-query'
+import { testGraphQLQuery } from '@/lib/api/graphql/internal-apis/test' */
 
 function Test() {
   const [count, setCount] = useState(0)
 
-  const { data, isLoading, error } = useQuery({
+ /*  const { data, isLoading, error } = useQuery({
     queryKey: ['responseData'],
     queryFn: testGraphQLQuery
-  });
+  }); */
 
   return (
     <>
       <div>
-        { isLoading && <p>Loading...</p> }
+        {/* { isLoading && <p>Loading...</p> }
         { error && <p>Ohh... Well that's not good...</p> }
-        { data && <p>GraphQL Data: {data.getOrders![0]!.order_id}</p> }
+        { data && <p>GraphQL Data: {data.getOrders![0]!.order_id}</p> } */}
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
