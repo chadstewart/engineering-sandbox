@@ -15,6 +15,7 @@
     "reset-deps": "rm -rf node_modules && npm ci"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-query": "^5.8.2",
     "@tanstack/react-router": "^0.0.1-beta.213",
