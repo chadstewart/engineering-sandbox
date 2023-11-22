@@ -5,7 +5,7 @@ import { MobileHeader } from "@/components/organisms/mobile-header/mobile-header
 
 export const MainLayout = () => {
   return (
-    <div className="flex flex-row">
+    <div className="flex">
       <Sidebar />
       <main className="w-full min-h-screen">
         <MobileHeader />

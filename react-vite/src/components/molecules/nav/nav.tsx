@@ -9,13 +9,15 @@ interface NavProps {
 export const Nav = ({ navItems }: NavProps) => {
   return (
     <nav aria-label="Main" className="w-full px-2" >
-      <ul>
+      <ul className="flex flex-col gap-2">
         {navItems.map((navItem, index) =>
           <Fragment key={index}>
-            <li className={`flex items-center h-12 ${navItems.length - 1 !== index && "border-b-2"}`}>
+            <li className={`flex items-center h-12 rounded-md hover:bg-sky-100`}>
               <NavItem
                 url={navItem.url}
                 text={navItem.text}
+                icon={navItem.icon}
+                iconAlt={navItem.iconAlt}
                 externalLink={navItem.externalLink}
                 externalLinkAlt={navItem.externalLinkAlt}
               />
