@@ -1,6 +1,6 @@
 import { RiExternalLinkLine } from "react-icons/ri";
 import Icon from "../icon/icon";
-import { NavItems } from "@/lib/types/nav-tem";
+import { NavItems } from "@/lib/types/nav-item";
 import { Link } from "@tanstack/react-router";
 
 type NavItemProps = NavItems;

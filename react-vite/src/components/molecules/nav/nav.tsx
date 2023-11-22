@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { NavItem } from "@/components/atoms/nav-item/nav-item";
-import { NavItems } from "@/lib/types/nav-tem";
+import { NavItems } from "@/lib/types/nav-item";
 
 interface NavProps {
   navItems: NavItems[];

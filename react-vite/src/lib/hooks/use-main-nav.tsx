@@ -1,4 +1,4 @@
-import { NavItems } from "../types/nav-tem";
+import { NavItems } from "../types/nav-item";
 import { IoHomeSharp } from "react-icons/io5";
 import { PiWrenchFill } from "react-icons/pi";
 
