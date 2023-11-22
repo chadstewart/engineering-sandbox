@@ -1,14 +1,13 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoMdMenu } from "react-icons/io";
-import { SidebarContent } from "../sidebar/sidebar-content";
+import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content";
 import Icon from "@/components/atoms/icon/icon";
+import { SidebarHeader } from "@/components/molecules/sidebar-header";
 
 export const MobileHeader = () => {
   return (
@@ -19,11 +18,7 @@ export const MobileHeader = () => {
         </SheetTrigger>
         <SheetContent side={"left"}>
           <SheetHeader>
-            <SheetTitle>Are you sure absolutely sure?</SheetTitle>
-            <SheetDescription>
-              This action cannot be undone. This will permanently delete your account
-              and remove your data from our servers.
-            </SheetDescription>
+            <SidebarHeader />
           </SheetHeader>
           <SidebarContent />
         </SheetContent>
