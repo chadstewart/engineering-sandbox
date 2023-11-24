@@ -11,12 +11,10 @@ const useMainNav = () => {
       iconAlt: "Home link icon"
     },
     {
-      url: "https://newsletter.techishiring.com/",
-      text: "Newsletter",
+      url: "/2",
+      text: "Test",
       icon: PiWrenchFill,
-      iconAlt: "Test link icon",
-      externalLink: true,
-      externalLinkAlt: "external link for TechIsHiring Newsletter"
+      iconAlt: "Test link icon"
     }
   ];
 
