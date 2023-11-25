@@ -14,9 +14,9 @@ export const NavItem = ({
   externalLinkAlt = ""
 }: NavItemProps) => {
   return (
-    <Link className="flex gap-2 w-full m-2" href={url} target={externalLink ? "_blank" : "_self"}>
+    <Link className="flex gap-2 w-full m-2" to={url} target={externalLink ? "_blank" : "_self"}>
       {icon && <Icon Icon={icon} iconAlt={iconAlt}/>}
-      <div>
+      <div className="font-bold">
         {text}
       </div>
       {externalLink && <Icon Icon={RiExternalLinkLine} iconAlt={externalLinkAlt} />}

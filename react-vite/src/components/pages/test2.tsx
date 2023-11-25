@@ -1,7 +1,48 @@
+import { Card, CardContent, CardHeader } from "../ui/card";
+
 const Test2 = () => {
   return (
-    <div>
-      I'm another page!
+    <div className="flex flex-wrap gap-6 justify-center p-4">
+      <Card className="min-w-[250px]">
+        <CardHeader>
+          This is a test.
+        </CardHeader>
+        <CardContent>
+          This is still a test!
+        </CardContent>
+      </Card>
+      <Card className="min-w-[250px]">
+        <CardHeader>
+          This is a test.
+        </CardHeader>
+        <CardContent>
+          This is still a test!
+        </CardContent>
+      </Card>
+      <Card className="min-w-[250px]">
+        <CardHeader>
+          This is a test.
+        </CardHeader>
+        <CardContent>
+          This is still a test!
+        </CardContent>
+      </Card>
+      <Card className="min-w-[250px]">
+        <CardHeader>
+          This is a test.
+        </CardHeader>
+        <CardContent>
+          This is still a test!
+        </CardContent>
+      </Card>
+      <Card className="min-w-[250px]">
+        <CardHeader>
+          This is a test.
+        </CardHeader>
+        <CardContent>
+          This is still a test!
+        </CardContent>
+      </Card>
     </div>
   );
 };
