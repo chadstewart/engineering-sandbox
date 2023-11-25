@@ -124,6 +124,13 @@ export const typeDefs = `#graphql
     description: String
   }
 
+  type Cat {
+    id: ID
+    width: Int
+    height: Int
+    url: String
+  }
+
   input CustomerUserInput {
     contact_name: String
     contact_title: String
@@ -158,20 +165,21 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    getOrders(authorization: String!, page: Int): [Order]
-    getOrderDetails(authorization: String!, id: ID!): [OrderDetail]
-    getShipppers(authorization: String!, page: Int): [Shipper]
-    getEmployees(authorization: String!, page: Int): [Employee]
-    getCustomers(authorization: String!, page: Int): [Customer]
-    getCustomerDetails(authorization: String!, id: ID!): [Customer]
-    getProducts(authorization: String!, page: Int): [Product]
-    getCategories(authorization: String!, page: Int): [Category]
-    getSuppliers(authorization: String!, page: Int): [Supplier]
-    getEmployeeTerritories(authorization: String!, territory_id: String!, page: Int): [EmployeeTerritory]
+    getOrders(page: Int): [Order]
+    getOrderDetails(id: ID!): [OrderDetail]
+    getShipppers(page: Int): [Shipper]
+    getEmployees(page: Int): [Employee]
+    getCustomers(page: Int): [Customer]
+    getCustomerDetails(id: ID!): [Customer]
+    getProducts(page: Int): [Product]
+    getCategories(page: Int): [Category]
+    getSuppliers(page: Int): [Supplier]
+    getEmployeeTerritories(territory_id: String!, page: Int): [EmployeeTerritory]
+    getCats(): [Cat]
   }
 
   type Mutation {
-    updateCustomer(authorization: String!, id: ID!, customerUserInput: CustomerUserInput): [Customer]
-    createEmployee(authorization: String!, createEmployeeInput: CreateEmployeeInput): [Employee]
+    updateCustomer(id: ID!, customerUserInput: CustomerUserInput): [Customer]
+    createEmployee(createEmployeeInput: CreateEmployeeInput): [Employee]
   }
 `;
