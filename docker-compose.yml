@@ -19,7 +19,7 @@ services:
     container_name: postgres-sandbox
     restart: always
     build:
-      context: ./northwind_psql_sql_example
+      context: ./back-end/northwind_psql_sql_example
       target: postgres-container
     ports:
       - "5432:5432"
@@ -41,7 +41,7 @@ services:
       - redis
       - rest-api
     build:
-      context: ./api-gateway-example
+      context: ./back-end/api-gateway-example
       target: api-gateway
     ports:
       - "3000:3000"
@@ -54,7 +54,7 @@ services:
     container_name: redis-db
     restart: always
     build:
-      context: ./redis-example
+      context: ./back-end/redis-example
       target: redis-container
     ports:
       -  "6379:6379"
@@ -71,7 +71,7 @@ services:
     depends_on:
       - db
     build:
-      context: ./microservice-orm-example
+      context: ./back-end/microservice-orm-example
       target: rest-api
     ports:
       - "3001:3001"
@@ -84,7 +84,7 @@ services:
     depends_on:
       - api-gateway
     build:
-      context: ./react-vite
+      context: ./front-end/react-vite
     ports:
       - "4000:4000"
     networks:

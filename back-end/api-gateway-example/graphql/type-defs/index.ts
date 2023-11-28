@@ -6,8 +6,8 @@ export const typeDefs = `#graphql
     order_date: String
     required_date: String
     shipped_date: String
-    ship_via: String
-    freight: Shipper
+    ship_via: Int
+    freight: Int
     ship_name: String
     ship_address: String
     ship_city: String
@@ -124,6 +124,13 @@ export const typeDefs = `#graphql
     description: String
   }
 
+  type Cat {
+    id: ID!
+    width: Int
+    height: Int
+    url: String
+  }
+
   input CustomerUserInput {
     contact_name: String
     contact_title: String
@@ -167,7 +174,8 @@ export const typeDefs = `#graphql
     getProducts(page: Int): [Product]
     getCategories(page: Int): [Category]
     getSuppliers(page: Int): [Supplier]
-    getEmployeeTerritories(page: Int): [EmployeeTerritory]
+    getEmployeeTerritories(territory_id: String!, page: Int): [EmployeeTerritory]
+    getCats: [Cat]
   }
 
   type Mutation {
