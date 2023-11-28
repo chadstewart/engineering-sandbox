@@ -13,7 +13,7 @@ export default defineConfig({
   server:{
     host: true,
     strictPort: true,
-    port: 4000
+    port: 4001
   },
   resolve: {
     alias: {
