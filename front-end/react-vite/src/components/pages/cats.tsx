@@ -6,7 +6,7 @@ import { Skeleton } from "../ui/skeleton";
 const Cats = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["responseData"],
-    queryFn: getCats
+    queryFn: () => getCats(false)
   });
 
   return (

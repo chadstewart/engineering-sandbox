@@ -1,18 +1,18 @@
 import api from "@/lib/api/config/api";
 import { graphql } from "@/gql";
 
-export const getCats = async () => {
+export const getCats = async (getDog = false) => {
   const requestBody = {
     query: graphql(/* GraphQL */ `
-    query GetCats {
-      getCats {
+    query GetCats($getDog: Boolean) {
+      getCats(getDog: $getDog) {
         url
         width
         height
       }
     }`),
     variables: {
-      
+      getDog
     }
   };
 
