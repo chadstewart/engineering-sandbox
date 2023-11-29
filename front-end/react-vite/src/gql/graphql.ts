@@ -16,6 +16,14 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type Cat = {
+  __typename?: 'Cat';
+  height?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  url?: Maybe<Scalars['String']['output']>;
+  width?: Maybe<Scalars['Int']['output']>;
+};
+
 export type Category = {
   __typename?: 'Category';
   category_id: Scalars['ID']['output'];
@@ -110,13 +118,11 @@ export type Mutation = {
 
 
 export type MutationCreateEmployeeArgs = {
-  authorization: Scalars['String']['input'];
   createEmployeeInput?: InputMaybe<CreateEmployeeInput>;
 };
 
 
 export type MutationUpdateCustomerArgs = {
-  authorization: Scalars['String']['input'];
   customerUserInput?: InputMaybe<CustomerUserInput>;
   id: Scalars['ID']['input'];
 };
@@ -170,6 +176,7 @@ export type Product = {
 export type Query = {
   __typename?: 'Query';
   getCategories?: Maybe<Array<Maybe<Category>>>;
+  getCats?: Maybe<Array<Maybe<Cat>>>;
   getCustomerDetails?: Maybe<Array<Maybe<Customer>>>;
   getCustomers?: Maybe<Array<Maybe<Customer>>>;
   getEmployeeTerritories?: Maybe<Array<Maybe<EmployeeTerritory>>>;
@@ -183,62 +190,52 @@ export type Query = {
 
 
 export type QueryGetCategoriesArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
 export type QueryGetCustomerDetailsArgs = {
-  authorization: Scalars['String']['input'];
   id: Scalars['ID']['input'];
 };
 
 
 export type QueryGetCustomersArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
 export type QueryGetEmployeeTerritoriesArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
   territory_id: Scalars['String']['input'];
 };
 
 
 export type QueryGetEmployeesArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
 export type QueryGetOrderDetailsArgs = {
-  authorization: Scalars['String']['input'];
   id: Scalars['ID']['input'];
 };
 
 
 export type QueryGetOrdersArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
 export type QueryGetProductsArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
 export type QueryGetShipppersArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
 export type QueryGetSuppliersArgs = {
-  authorization: Scalars['String']['input'];
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -279,12 +276,18 @@ export type Territory = {
   territory_id: Scalars['ID']['output'];
 };
 
+export type GetCatsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCatsQuery = { __typename?: 'Query', getCats?: Array<{ __typename?: 'Cat', url?: string | null, width?: number | null, height?: number | null } | null> | null };
+
 export type GetOrdersQueryVariables = Exact<{
-  authorization: Scalars['String']['input'];
+  page?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 
 export type GetOrdersQuery = { __typename?: 'Query', getOrders?: Array<{ __typename?: 'Order', order_id: string } | null> | null };
 
 
-export const GetOrdersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetOrders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"authorization"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"authorization"},"value":{"kind":"Variable","name":{"kind":"Name","value":"authorization"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order_id"}}]}}]}}]} as unknown as DocumentNode<GetOrdersQuery, GetOrdersQueryVariables>;
+export const GetCatsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCats"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCats"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<GetCatsQuery, GetCatsQueryVariables>;
+export const GetOrdersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetOrders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order_id"}}]}}]}}]} as unknown as DocumentNode<GetOrdersQuery, GetOrdersQueryVariables>;

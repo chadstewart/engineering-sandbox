@@ -1,5 +1,6 @@
 import { NavItems } from "../types/nav-item";
 import { IoHomeSharp } from "react-icons/io5";
+import { FaCat } from "react-icons/fa";
 import { PiWrenchFill } from "react-icons/pi";
 
 const useMainNav = () => {
@@ -9,6 +10,12 @@ const useMainNav = () => {
       text: "Home",
       icon: IoHomeSharp,
       iconAlt: "Home link icon"
+    },
+    {
+      url: "/cat",
+      text: "Cats",
+      icon: FaCat,
+      iconAlt: "Cat link icon"
     },
     {
       url: "/2",

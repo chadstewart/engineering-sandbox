@@ -1,16 +1,18 @@
 import api from "@/lib/api/config/api";
 import { graphql } from "@/gql";
 
-export const testGraphQLQuery = async () => {
+export const getCats = async () => {
   const requestBody = {
     query: graphql(/* GraphQL */ `
-    query GetOrders($page: Int) {
-      getOrders(page: $page) {
-        order_id
+    query GetCats {
+      getCats {
+        url
+        width
+        height
       }
     }`),
     variables: {
-      page: 1
+      
     }
   };
 
