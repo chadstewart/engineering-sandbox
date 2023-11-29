@@ -175,7 +175,7 @@ export const typeDefs = `#graphql
     getCategories(page: Int): [Category]
     getSuppliers(page: Int): [Supplier]
     getEmployeeTerritories(territory_id: String!, page: Int): [EmployeeTerritory]
-    getCats: [Cat]
+    getCats(getDog: Boolean): [Cat]
   }
 
   type Mutation {

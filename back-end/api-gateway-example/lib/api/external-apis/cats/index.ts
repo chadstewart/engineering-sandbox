@@ -7,7 +7,11 @@ const CONFIG: RequestInit = {
   }
 };
 
-export const getCats = async () => {
+export const getCats = async (getDog = false) => {
+  let whichAnimal = "cat";
+
+  if(getDog) whichAnimal = "dog";
+
   const data = await api.get(
     zod.object({      
       id: zod.string(),
@@ -15,7 +19,7 @@ export const getCats = async () => {
       height: zod.number(),
       url: zod.string()
     }).array(),
-    `https://api.thecatapi.com/v1/images/search?limit=10`
+    `https://api.the${whichAnimal}api.com/v1/images/search?limit=10`
   );
   return data;
 };

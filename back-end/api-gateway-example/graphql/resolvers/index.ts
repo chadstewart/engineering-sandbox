@@ -35,7 +35,7 @@ export const resolvers = {
     getCategories: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getCategories(args.page),
     getSuppliers: (_: any, args: QueryPaginationArgs, context: ResolverContext) => getSuppliers(args.page),
     getEmployeeTerritories: (_: any, args: { page: number, territory_id: number}, context: ResolverContext) => getTerritories(args.page),
-    getCats: (_: any, args: never, context: ResolverContext) => getCats()
+    getCats: (_: any, args: { getDog: boolean }, context: ResolverContext) => getCats(args.getDog)
   },
   Order: {
     customer: (parent: { customer_id: string }, context: ResolverContext) => getCustomerDetails(parent.customer_id),
