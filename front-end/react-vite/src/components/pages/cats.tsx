@@ -18,13 +18,17 @@ const Cats = () => {
   const { mutate, isPending: mutationPending, error: mutationError } = useMutation({
     mutationFn: () => getCats(false),
     onSuccess: data => setCats(prevState => {
-      if(prevState?.getCats && data?.getCats) return {
-        ...prevState,
-        getCats: [
-          ...prevState.getCats,
-          ...data.getCats
-        ]
+      if(prevState?.getCats && data?.getCats) {
+        const newState = {
+          ...prevState
+        };
+
+        newState.getCats?.push(...data.getCats);
+
+        return newState;
       }
+
+      return prevState;
     })
   });
 
@@ -92,7 +96,7 @@ const Cats = () => {
           {mutationPending && <Skeleton className="w-[50px] h-[20px] rounded-full"  />}
           {mutationError && "Well that's not good"}
           {!mutationError && !mutationPending && refreshes < MAX_REFRESH && "Get more cuties!"}
-          {refreshes >= MAX_REFRESH && "That's enough cuties!"}
+          {!mutationPending && refreshes >= MAX_REFRESH && "That's enough cuties!"}
         </Button>
       }
     </div>
