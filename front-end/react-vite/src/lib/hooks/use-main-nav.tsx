@@ -13,7 +13,7 @@ const useMainNav = () => {
     },
     {
       url: "/cat",
-      text: "Cats",
+      text: "Cute Animals",
       icon: FaCat,
       iconAlt: "Cat link icon"
     },

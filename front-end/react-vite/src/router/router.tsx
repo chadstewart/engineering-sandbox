@@ -3,7 +3,7 @@ import Test from "@/components/pages/test";
 import Test2 from "@/components/pages/test2";
 import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
-import Cats from "@/components/pages/cats";
+import CuteAnimals from "@/components/pages/cute-animals";
 
 const rootRoute = new RootRoute({
   component: MainLayout
@@ -24,7 +24,7 @@ const indexRoute = new Route({
 const catRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
   path: "/cat",
-  component: Cats,
+  component: CuteAnimals,
 });
 
 const secondPageRoute = new Route({
