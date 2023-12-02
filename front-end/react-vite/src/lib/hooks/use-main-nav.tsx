@@ -2,6 +2,8 @@ import { NavItems } from "../types/nav-item";
 import { IoHomeSharp } from "react-icons/io5";
 import { FaCat } from "react-icons/fa";
 import { PiWrenchFill } from "react-icons/pi";
+import { IoIosInformationCircle } from "react-icons/io";
+
 
 const useMainNav = () => {
   const navList: NavItems[] = [
@@ -9,19 +11,25 @@ const useMainNav = () => {
       url: "/",
       text: "Home",
       icon: IoHomeSharp,
-      iconAlt: "Home link icon"
+      iconAlt: "Home page link icon"
     },
     {
       url: "/cat",
       text: "Cute Animals",
       icon: FaCat,
-      iconAlt: "Cat link icon"
+      iconAlt: "Cat page link icon"
     },
     {
       url: "/2",
       text: "Test",
       icon: PiWrenchFill,
-      iconAlt: "Test link icon"
+      iconAlt: "Test page link icon"
+    },
+    {
+      url: "/about",
+      text: "About",
+      icon: IoIosInformationCircle,
+      iconAlt: "About page link icon"
     }
   ];
 
