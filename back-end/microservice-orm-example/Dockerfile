@@ -8,5 +8,6 @@ RUN mkdir /app && cp -a /tmp/node_modules /app
 COPY ./ /app
 WORKDIR /app
 RUN npm run build
+RUN npm run swagger-autogen
 EXPOSE 3001
 CMD node dist/services/server.js
