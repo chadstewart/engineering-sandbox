@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "^6.13.2",
     "eslint": "^8.55.0",
     "nodemon": "^2.0.22",
+    "prettier": "^3.1.0",
     "prisma": "^5.2.0",
     "tsx": "^3.12.7",
     "typescript": "^5.0.2"
