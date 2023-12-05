@@ -1,5 +1,5 @@
 interface InputObject {
-  [key: string] : any
+  [key: string] : unknown
 };
 
 export const removeUndefinedValuesFromObject = (obj: InputObject) => {

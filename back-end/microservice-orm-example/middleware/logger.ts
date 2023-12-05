@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import logger from "../services/logger";
 
 export default function serverLogger (req: Request, res: Response) {
-    const { rawHeaders, httpVersion, method, body, url, params } = req;
+    const { body } = req;
     const headers = res.getHeaders();
     const { statusCode, locals: { totalRequestTime } } = res;
 

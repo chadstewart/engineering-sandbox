@@ -42,7 +42,7 @@ export const employeesFromId = async (employeeId = 1) => {
   return data;
 };
 
-export const createEmployee = async (reqBody: any) => {
+export const createEmployee = async (reqBody: unknown) => {
   try {
     const createEmployeeSchema = await createEmployeeZodSchema.parse(reqBody);
 

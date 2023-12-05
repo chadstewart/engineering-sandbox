@@ -43,7 +43,7 @@ export const customerDetails = async (customerId: string) => {
   return queryData;
 };
 
-export const updateCustomer = async (customerId: string, reqBody: any) => {
+export const updateCustomer = async (customerId: string, reqBody: unknown) => {
   try {
     const updateCustomerSchema = removeUndefinedValuesFromObject(await updateCustomerZodSchema.parse(reqBody));
 

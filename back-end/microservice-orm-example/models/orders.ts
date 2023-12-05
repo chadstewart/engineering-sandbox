@@ -45,7 +45,7 @@ export const orderDetails = async (orderId = 0) => {
   return queryData;
 };
 
-export const addOrderNewCustomer = async (reqBody: any) => {
+export const addOrderNewCustomer = async (reqBody: unknown) => {
   try {
     const addOrdersSchema = await addOrdersNewCustomerZodSchema.parse(reqBody);
 
@@ -79,8 +79,7 @@ export const addOrderNewCustomer = async (reqBody: any) => {
         region,
         postal_code,
         country,
-        phone,
-        fax
+        phone
       }
     } = addOrdersSchema;
   
@@ -148,7 +147,7 @@ export const addOrderNewCustomer = async (reqBody: any) => {
   }
 };
 
-export const addOrderExistingCustomer = async (reqBody: any, customer_id: string) => {
+export const addOrderExistingCustomer = async (reqBody: unknown, customer_id: string) => {
   try {
     const addOrdersSchema = await addOrdersExistingCustomerZodSchema.parse(reqBody);
     
