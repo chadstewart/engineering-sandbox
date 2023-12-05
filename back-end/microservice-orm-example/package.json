@@ -8,6 +8,7 @@
     "dev": "tsx watch services/server.ts",
     "lint": "eslint ./**/*.ts",
     "format": "eslint ./**/*.ts -fix",
+    "swagger-autogen": "tsc && node dist/services/swagger-autogen.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -29,6 +30,7 @@
     "nodemon": "^2.0.22",
     "prettier": "^3.1.0",
     "prisma": "^5.2.0",
+    "swagger-autogen": "^2.23.7",
     "tsx": "^3.12.7",
     "typescript": "^5.0.2"
   }
