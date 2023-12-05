@@ -9,8 +9,8 @@ import { typeDefs } from "../graphql/type-defs";
 import { resolvers } from "../graphql/resolvers";
 import { KeyvAdapter } from "@apollo/utils.keyvadapter";
 import Keyv from "keyv";
-import rateLimit from "../middleware/rate-limit";
-import routeAuth from "../middleware/route-authz";
+/* import rateLimit from "../middleware/rate-limit";
+import routeAuth from "../middleware/route-authz"; */
 
 const PORT = 3000;
 
@@ -39,7 +39,7 @@ const startServer = async () => {
     /* routeAuth,
     rateLimit,*/
     expressMiddleware(server, {
-      context: async ({ req, res }) => {
+      context: async ({ req }) => {
         return ({ requestObject: req })
       },
     })
