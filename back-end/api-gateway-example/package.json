@@ -8,7 +8,7 @@
     "start": "npm run build && node dist/services/graphql-express-server.js",
     "dev": "tsx watch services/graphql-express-server.ts",
     "lint": "eslint ./**/*.ts",
-    "format": "eslint ./**/*.ts -fix",
+    "format": "eslint ./**/*.ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

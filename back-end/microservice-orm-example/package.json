@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "tsx watch services/server.ts",
     "lint": "eslint ./**/*.ts",
-    "format": "eslint ./**/*.ts -fix",
+    "format": "eslint ./**/*.ts --fix",
     "swagger-autogen": "tsc && node dist/services/swagger-autogen.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
