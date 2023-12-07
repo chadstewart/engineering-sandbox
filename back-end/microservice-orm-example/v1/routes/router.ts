@@ -1,15 +1,24 @@
 import express from "express";
-const router = express.Router();
-
-import { getOrders, getOrderDetails, addOrderAddNewCustomer, addOrderAddExistingCustomer } from "../controllers/orders-controller";
+import {
+  getOrders,
+  getOrderDetails,
+  addOrderAddNewCustomer,
+  addOrderAddExistingCustomer
+} from "../controllers/orders-controller";
 import { addEmployee, getEmployeeById, getEmployees } from "../controllers/employees-controller";
-import { getEmployeesByTerritories, getTerritories, getTerritoriesDetails } from "../controllers/territories-controller";
+import {
+  getEmployeesByTerritories,
+  getTerritories,
+  getTerritoriesDetails
+} from "../controllers/territories-controller";
 import { getProducts, getProductDetails } from "../controllers/products-controller";
 import { getCustomerDetails, getCustomers, updateCustomerById } from "../controllers/customers-controller";
 import { getUSStates } from "../controllers/us-states-controller";
 import { getCategories, getCategoryDetails } from "../controllers/categories-controller";
 import { getSupplierDetails, getSuppliers } from "../controllers/suppliers-controller";
 import { getRegionDetails } from "../controllers/regions-controller";
+
+const router = express.Router();
 
 //Orders
 router.get("/orders/:page?", getOrders);
