@@ -205,6 +205,25 @@
           "400": {
             "description": "Bad Request"
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "company_name": "Hello",
+                "contact_name": "Hello",
+                "contact_title": "Hello",
+                "address": "Hello",
+                "city": "Hello",
+                "region": "Hello",
+                "postal_code": "Hello",
+                "country": "Hello",
+                "phone": "Hello",
+                "fax": "Hello"
+              }
+            }
+          }
         }
       }
     },
@@ -315,33 +334,13 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "last_name": "Hello",
-                "first_name": "Hello",
-                "title": "Hello",
-                "title_of_courtesy": "Hello",
-                "birth_date": "A Date",
-                "hire_date": "A Date",
-                "address": "Hello",
-                "city": "Hello",
-                "region": "Hello",
-                "postal_code": "Hello",
-                "country": "Hello",
-                "home_phone": "Hello",
-                "extension": "Hello",
-                "photo": "Hello",
-                "notes": "Hello",
-                "reports_to": 1,
-                "photo_path": "Hello",
-                "territory_id": "Hello"
-              },
               "example": {
                 "last_name": "Hello",
                 "first_name": "Hello",
                 "title": "Hello",
                 "title_of_courtesy": "Hello",
-                "birth_date": "A Date",
-                "hire_date": "A Date",
+                "birth_date": "2023/12/1",
+                "hire_date": "2023/12/1",
                 "address": "Hello",
                 "city": "Hello",
                 "region": "Hello",
