@@ -58,6 +58,50 @@ export async function getOrderDetails(req: Request, res: Response, next: NextFun
 }
 
 export async function addOrderAddNewCustomer(req: Request, res: Response, next: NextFunction) {
+  /*  #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    example: {
+                      orders: {
+                        type: "object",
+                        employee_id: 1,
+                        order_date: "2023/12/1",
+                        required_date: "2023/12/1",
+                        shipped_date: "2023/12/1",
+                        ship_via: 1,
+                        freight: 1,
+                        ship_name: "Hello",
+                        ship_address: "Hello",
+                        ship_city: "Hello",
+                        ship_region: "Hello",
+                        ship_postal_code: "Hello",
+                        ship_country: "Hello"
+                      },
+                      order_details: {
+                        type: "object",
+                        product_id: 1,
+                        unit_price: 1,
+                        quantity: 1,
+                        discount: 1,
+                      },
+                      customers: {
+                        company_name: "Hello",
+                        contact_name: "Hello",
+                        contact_title: "Hello",
+                        address: "Hello",
+                        city: "Hello",
+                        region: "Hello",
+                        postal_code: "Hello",
+                        country: "Hello",
+                        phone: "Hello",
+                        fax: "Hello"
+                      }
+                    }    
+                }
+            }
+        } 
+    */
   try {
     const validRequestBody = await addOrdersNewCustomerZodSchema.parse(req.body);
 
