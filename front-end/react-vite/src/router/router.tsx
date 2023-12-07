@@ -1,5 +1,4 @@
 import { Router, RootRoute, Route } from "@tanstack/react-router";
-import Test2 from "@/components/pages/test2";
 import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
 import CuteAnimals from "@/components/pages/cute-animals";
@@ -34,15 +33,7 @@ const aboutRoute = new Route({
   component: About
 });
 
-const secondPageRoute = new Route({
-  getParentRoute: () => pageLayoutRoute,
-  path: "/2",
-  component: Test2
-});
-
-const routeTree = rootRoute.addChildren([
-  pageLayoutRoute.addChildren([indexRoute, catRoute, aboutRoute, secondPageRoute])
-]);
+const routeTree = rootRoute.addChildren([pageLayoutRoute.addChildren([indexRoute, catRoute, aboutRoute])]);
 
 const router = new Router({ routeTree });
 

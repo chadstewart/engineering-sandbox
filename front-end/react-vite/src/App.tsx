@@ -1,8 +1,7 @@
-import './App.css'
-import { AppContextProvider } from '@/context';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { RouterProvider } from '@tanstack/react-router';
-import router from './router/router';
+import { AppContextProvider } from "@/context";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RouterProvider } from "@tanstack/react-router";
+import router from "./router/router";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +12,7 @@ function App() {
         <RouterProvider router={router} />
       </QueryClientProvider>
     </AppContextProvider>
-  )
+  );
 }
 
-export default App
+export default App;
