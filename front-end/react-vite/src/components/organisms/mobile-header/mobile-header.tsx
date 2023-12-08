@@ -8,7 +8,7 @@ import { Logo } from "@/components/molecules/logo/logo";
 export const MobileHeader = () => {
   return (
     <aside className="flex gap-4 justify-between lg:hidden">
-      <Logo />
+      <Logo link />
       <Sheet>
         <SheetTrigger className="flex justify-start items-center">
           <Icon Icon={IoMdMenu} iconAlt="Main Menu open / close button" />
