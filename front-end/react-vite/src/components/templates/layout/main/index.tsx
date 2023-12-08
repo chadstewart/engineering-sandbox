@@ -7,11 +7,11 @@ export const MainLayout = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <main className="w-full min-h-screen">
+      <main className="w-full p-4 min-h-screen">
         <MobileHeader />
         <Outlet />
         <Footer />
       </main>
     </div>
-  )
+  );
 };

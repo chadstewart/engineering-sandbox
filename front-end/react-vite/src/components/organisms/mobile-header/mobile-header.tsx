@@ -1,9 +1,4 @@
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import { IoMdMenu } from "react-icons/io";
 import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content";
 import Icon from "@/components/atoms/icon/icon";
@@ -12,13 +7,13 @@ import { Logo } from "@/components/molecules/logo/logo";
 
 export const MobileHeader = () => {
   return (
-    <aside className="block lg:hidden">
+    <aside className="flex gap-4 justify-between lg:hidden">
+      <Logo />
       <Sheet>
-        <SheetTrigger className="flex justify-start items-center gap-4">
-          <Icon Icon={IoMdMenu} iconAlt="Main Menu open / close button"/>
-          <Logo />
+        <SheetTrigger className="flex justify-start items-center">
+          <Icon Icon={IoMdMenu} iconAlt="Main Menu open / close button" />
         </SheetTrigger>
-        <SheetContent side={"left"}>
+        <SheetContent side={"right"} className="bg-white">
           <SheetHeader>
             <SidebarHeader />
           </SheetHeader>
