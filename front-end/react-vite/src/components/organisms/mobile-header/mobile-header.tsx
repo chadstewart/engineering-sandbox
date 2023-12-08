@@ -2,7 +2,6 @@ import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/
 import { IoMdMenu } from "react-icons/io";
 import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content";
 import Icon from "@/components/atoms/icon/icon";
-import { SidebarHeader } from "@/components/molecules/sidebar-header";
 import { Logo } from "@/components/molecules/logo/logo";
 
 export const MobileHeader = () => {
@@ -15,7 +14,9 @@ export const MobileHeader = () => {
         </SheetTrigger>
         <SheetContent side={"right"} className="bg-white">
           <SheetHeader>
-            <SidebarHeader />
+            <header className="pt-4 pb-16">
+              <Logo />
+            </header>
           </SheetHeader>
           <SidebarContent />
         </SheetContent>

@@ -1,4 +1,4 @@
-import { SidebarHeader } from "@/components/molecules/sidebar-header";
+import { SidebarHeader } from "@/components/molecules/sidebar-header/sidebar-header";
 import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content";
 
 export const Sidebar = () => {
