@@ -16,6 +16,7 @@ export const typeDefs = `#graphql
     ship_country: String
     customer: [Customer]
     employee: [Employee]
+    totalPages: Int!
   }
 
   type OrderDetail {
@@ -71,6 +72,7 @@ export const typeDefs = `#graphql
     country: String
     phone: String
     fax: String
+    totalPages: Int!
   }
 
   type Product {
@@ -85,6 +87,7 @@ export const typeDefs = `#graphql
     discontinued: String
     supplier: [Supplier]
     category: [Category]
+    totalPages: Int!
   }
 
   type Category {
@@ -169,14 +172,14 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    getOrders(page: Int): [Order]
+    getOrders(page: Int): Order
     getOrderDetails(id: ID!): [OrderDetail]
     getTotalRevenue: Revenue
     getShipppers(page: Int): [Shipper]
     getEmployees(page: Int): [Employee]
-    getCustomers(page: Int): [Customer]
+    getCustomers(page: Int): Customer
     getCustomerDetails(id: ID!): [Customer]
-    getProducts(page: Int): [Product]
+    getProducts(page: Int): Product
     getCategories(page: Int): [Category]
     getSuppliers(page: Int): [Supplier]
     getEmployeeTerritories(territory_id: String!, page: Int): [EmployeeTerritory]
