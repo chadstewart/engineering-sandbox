@@ -7,20 +7,19 @@ const CONFIG: RequestInit = {
   }
 };
 
-export const getRegionById = async (regionId = 1) => {
+export const getTotalRevenue = async () => {
   const data = await api.get(
     zod.object({
       status: zod.string(),
       data: zod.object({
         queryData: zod
           .object({
-            region_id: zod.number(),
-            region_description: zod.string()
+            round: zod.number()
           })
           .array()
       })
     }),
-    `${process.env.REST_API_URL}/v1/regions/details/${regionId}`
+    `${process.env.REST_API_URL}/v1/revenue/total`
   );
   return data.data.queryData;
 };

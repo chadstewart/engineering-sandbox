@@ -28,6 +28,10 @@ export const typeDefs = `#graphql
     product: [Product]
   }
 
+  type Revenue {
+    round: Int!
+  }
+
   type Shipper {
     shipper_id: ID!
     company_name: String
@@ -167,6 +171,7 @@ export const typeDefs = `#graphql
   type Query {
     getOrders(page: Int): [Order]
     getOrderDetails(id: ID!): [OrderDetail]
+    getRevenue: [Revenue]
     getShipppers(page: Int): [Shipper]
     getEmployees(page: Int): [Employee]
     getCustomers(page: Int): [Customer]
