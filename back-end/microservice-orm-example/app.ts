@@ -11,9 +11,9 @@ dotenv.config();
 
 //Initialize Swagger Doc Server
 const swaggerOptions = {
-    swaggerOptions: {
-        docExpansion: true
-    }
+  swaggerOptions: {
+    docExpansion: true
+  }
 };
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs, swaggerOptions));
@@ -22,10 +22,14 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs, swaggerOptions));
 app.use(express.json({ limit: "10mb" }));
 
 //Initialize Routers
+import notDefined from "./middleware/not-defined";
 import v1Router from "./v1/routes/router";
 import serverLogger from "./middleware/logger";
 import { startPerformanceTest } from "./middleware/perf-test-start";
 import { endPerformanceTest } from "./middleware/perf-test-complete";
+
+//Initialize notDefined Middleware
+app.use(notDefined);
 
 //Initialize Performance Test
 app.use(startPerformanceTest);
