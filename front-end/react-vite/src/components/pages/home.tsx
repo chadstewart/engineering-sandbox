@@ -8,7 +8,7 @@ const Home = () => {
         <CardContent>This is still a test!</CardContent>
       </Card>
       <Card className="min-w-[250px]">
-        <CardHeader>Sales</CardHeader>
+        <CardHeader>Total Revenue</CardHeader>
         <CardContent>This is still a test!</CardContent>
       </Card>
       <Card className="min-w-[250px]">
