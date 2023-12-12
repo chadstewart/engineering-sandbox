@@ -1,7 +1,10 @@
 import { prisma } from "../services/database";
 import { generateCustomerId } from "../util/generate-customer-id";
 import { prismaPaginationHelper } from "../util/pagination-helper";
-import { addOrdersExistingCustomerZodSchema, addOrdersNewCustomerZodSchema } from "../util/schemas/add-orders-zod-schema";
+import {
+  addOrdersExistingCustomerZodSchema,
+  addOrdersNewCustomerZodSchema
+} from "../util/schemas/add-orders-zod-schema";
 
 export const orders = async (page = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
@@ -11,7 +14,7 @@ export const orders = async (page = 1) => {
   });
 
   const totalPages = await prisma.orders.count();
-  
+
   const data = {
     queryData,
     totalPages
@@ -64,25 +67,10 @@ export const addOrderNewCustomer = async (reqBody: unknown) => {
         ship_postal_code,
         ship_country
       },
-      order_details: {
-        product_id,
-        unit_price,
-        quantity,
-        discount
-      },
-      customers: {
-        company_name,
-        contact_name,
-        contact_title,
-        address,
-        city,
-        region,
-        postal_code,
-        country,
-        phone
-      }
+      order_details: { product_id, unit_price, quantity, discount },
+      customers: { company_name, contact_name, contact_title, address, city, region, postal_code, country, phone }
     } = addOrdersSchema;
-  
+
     const latestOrderIdsQuery = await prisma.orders.findMany({
       select: {
         order_id: true
@@ -92,11 +80,11 @@ export const addOrderNewCustomer = async (reqBody: unknown) => {
       },
       take: 1
     });
-  
+
     const newOrderId = latestOrderIdsQuery[0].order_id + 1;
 
     const newCustomerId = generateCustomerId(contact_name);
-    
+
     const queryData = await prisma.$transaction([
       prisma.customers.create({
         data: {
@@ -150,7 +138,7 @@ export const addOrderNewCustomer = async (reqBody: unknown) => {
 export const addOrderExistingCustomer = async (reqBody: unknown, customer_id: string) => {
   try {
     const addOrdersSchema = await addOrdersExistingCustomerZodSchema.parse(reqBody);
-    
+
     const {
       orders: {
         employee_id,
@@ -166,17 +154,12 @@ export const addOrderExistingCustomer = async (reqBody: unknown, customer_id: st
         ship_postal_code,
         ship_country
       },
-      order_details: {
-        product_id,
-        unit_price,
-        quantity,
-        discount
-      }
+      order_details: { product_id, unit_price, quantity, discount }
     } = addOrdersSchema;
 
     const latestOrderIdsQuery = await prisma.orders.findMany({
       select: {
-        order_id: true,
+        order_id: true
       },
       orderBy: {
         order_id: "desc"
@@ -185,7 +168,7 @@ export const addOrderExistingCustomer = async (reqBody: unknown, customer_id: st
     });
 
     const newOrderId = latestOrderIdsQuery[0].order_id + 1;
-  
+
     const queryData = await prisma.$transaction([
       prisma.orders.create({
         data: {
@@ -202,7 +185,7 @@ export const addOrderExistingCustomer = async (reqBody: unknown, customer_id: st
           ship_city,
           ship_region,
           ship_postal_code,
-          ship_country  
+          ship_country
         }
       }),
       prisma.order_details.create({

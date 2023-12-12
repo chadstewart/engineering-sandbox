@@ -17,6 +17,7 @@ import { getUSStates } from "../controllers/us-states-controller";
 import { getCategories, getCategoryDetails } from "../controllers/categories-controller";
 import { getSupplierDetails, getSuppliers } from "../controllers/suppliers-controller";
 import { getRegionDetails } from "../controllers/regions-controller";
+import { getTotalRevenue } from "../controllers/revenue-controller";
 
 const router = express.Router();
 
@@ -25,6 +26,9 @@ router.get("/orders/:page?", getOrders);
 router.get("/orders/details/:order_id?", getOrderDetails);
 router.post("/orders", addOrderAddNewCustomer);
 router.post("/orders/:customer_id", addOrderAddExistingCustomer);
+
+//Revenue
+router.get("/revenue/total", getTotalRevenue);
 
 //Products
 router.get("/products/:page?", getProducts);
