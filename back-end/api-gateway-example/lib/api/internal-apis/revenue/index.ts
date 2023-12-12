@@ -11,15 +11,16 @@ export const getTotalRevenue = async () => {
   const data = await api.get(
     zod.object({
       status: zod.string(),
-      data: zod.object({
-        queryData: zod
-          .object({
-            round: zod.number()
-          })
-          .array()
-      })
+      data: zod
+        .object({
+          round: zod.number()
+        })
+        .array()
     }),
     `${process.env.REST_API_URL}/v1/revenue/total`
   );
-  return data.data.queryData;
+  const result = data.data[0].round;
+  return {
+    round: result
+  };
 };

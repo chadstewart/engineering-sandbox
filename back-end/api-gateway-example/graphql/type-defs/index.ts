@@ -171,7 +171,7 @@ export const typeDefs = `#graphql
   type Query {
     getOrders(page: Int): [Order]
     getOrderDetails(id: ID!): [OrderDetail]
-    getRevenue: [Revenue]
+    getTotalRevenue: Revenue
     getShipppers(page: Int): [Shipper]
     getEmployees(page: Int): [Employee]
     getCustomers(page: Int): [Customer]
