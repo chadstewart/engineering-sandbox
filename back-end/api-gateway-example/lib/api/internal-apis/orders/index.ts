@@ -40,6 +40,7 @@ export const getOrders = async (page = 1) => {
   const result = data.data;
   return {
     ...result.queryData,
+    totalRows: result.totalRows,
     totalPages: result.totalPages
   };
 };
