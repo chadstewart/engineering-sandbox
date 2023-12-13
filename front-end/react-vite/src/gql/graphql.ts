@@ -66,6 +66,7 @@ export type Customer = {
   phone?: Maybe<Scalars['String']['output']>;
   postal_code?: Maybe<Scalars['String']['output']>;
   region?: Maybe<Scalars['String']['output']>;
+  totalPages: Scalars['Int']['output'];
 };
 
 export type CustomerUserInput = {
@@ -145,6 +146,7 @@ export type Order = {
   ship_region?: Maybe<Scalars['String']['output']>;
   ship_via?: Maybe<Scalars['Int']['output']>;
   shipped_date?: Maybe<Scalars['String']['output']>;
+  totalPages: Scalars['Int']['output'];
 };
 
 export type OrderDetail = {
@@ -168,6 +170,7 @@ export type Product = {
   reorder_level?: Maybe<Scalars['String']['output']>;
   supplier?: Maybe<Array<Maybe<Supplier>>>;
   supplier_id: Scalars['ID']['output'];
+  totalPages: Scalars['Int']['output'];
   unit_price?: Maybe<Scalars['Int']['output']>;
   units_in_stock?: Maybe<Scalars['Int']['output']>;
   units_on_order?: Maybe<Scalars['Int']['output']>;
@@ -178,14 +181,15 @@ export type Query = {
   getCategories?: Maybe<Array<Maybe<Category>>>;
   getCats?: Maybe<Array<Maybe<Cat>>>;
   getCustomerDetails?: Maybe<Array<Maybe<Customer>>>;
-  getCustomers?: Maybe<Array<Maybe<Customer>>>;
+  getCustomers?: Maybe<Customer>;
   getEmployeeTerritories?: Maybe<Array<Maybe<EmployeeTerritory>>>;
   getEmployees?: Maybe<Array<Maybe<Employee>>>;
   getOrderDetails?: Maybe<Array<Maybe<OrderDetail>>>;
-  getOrders?: Maybe<Array<Maybe<Order>>>;
-  getProducts?: Maybe<Array<Maybe<Product>>>;
+  getOrders?: Maybe<Order>;
+  getProducts?: Maybe<Product>;
   getShipppers?: Maybe<Array<Maybe<Shipper>>>;
   getSuppliers?: Maybe<Array<Maybe<Supplier>>>;
+  getTotalRevenue?: Maybe<Revenue>;
 };
 
 
@@ -250,6 +254,11 @@ export type Region = {
   region_id: Scalars['ID']['output'];
 };
 
+export type Revenue = {
+  __typename?: 'Revenue';
+  round: Scalars['Int']['output'];
+};
+
 export type Shipper = {
   __typename?: 'Shipper';
   company_name?: Maybe<Scalars['String']['output']>;
@@ -288,13 +297,19 @@ export type GetCatsQueryVariables = Exact<{
 
 export type GetCatsQuery = { __typename?: 'Query', getCats?: Array<{ __typename?: 'Cat', url?: string | null, width?: number | null, height?: number | null } | null> | null };
 
+export type GetHomeDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHomeDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'Order', totalPages: number } | null, getTotalRevenue?: { __typename?: 'Revenue', round: number } | null, getProducts?: { __typename?: 'Product', totalPages: number } | null, getCustomers?: { __typename?: 'Customer', totalPages: number } | null };
+
 export type GetOrdersQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 
-export type GetOrdersQuery = { __typename?: 'Query', getOrders?: Array<{ __typename?: 'Order', order_id: string } | null> | null };
+export type GetOrdersQuery = { __typename?: 'Query', getOrders?: { __typename?: 'Order', order_id: string } | null };
 
 
 export const GetCatsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCats"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCats"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"getDog"},"value":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<GetCatsQuery, GetCatsQueryVariables>;
+export const GetHomeDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomeData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getTotalRevenue"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"round"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}}]}}]} as unknown as DocumentNode<GetHomeDataQuery, GetHomeDataQueryVariables>;
 export const GetOrdersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetOrders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order_id"}}]}}]}}]} as unknown as DocumentNode<GetOrdersQuery, GetOrdersQueryVariables>;

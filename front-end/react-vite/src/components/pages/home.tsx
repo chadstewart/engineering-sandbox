@@ -1,23 +1,39 @@
+import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader } from "../ui/card";
+import { getHomeData } from "@/lib/api/graphql/internal-apis/home";
+import { Skeleton } from "../ui/skeleton";
 
 const Home = () => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["responseData"],
+    queryFn: getHomeData
+  });
+
   return (
     <div className="flex flex-wrap gap-6 justify-center p-4">
       <Card className="min-w-[250px]">
         <CardHeader>Orders</CardHeader>
-        <CardContent>This is still a test!</CardContent>
+        {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
+        {data?.getOrders?.totalPages && <CardContent>${data.getOrders.totalPages}</CardContent>}
+        {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
       <Card className="min-w-[250px]">
         <CardHeader>Total Revenue</CardHeader>
-        <CardContent>This is still a test!</CardContent>
+        {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
+        {data?.getTotalRevenue?.round && <CardContent>{data.getTotalRevenue.round}</CardContent>}
+        {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
       <Card className="min-w-[250px]">
         <CardHeader>Customers</CardHeader>
-        <CardContent>This is still a test!</CardContent>
+        {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
+        {data?.getCustomers?.totalPages && <CardContent>{data.getCustomers.totalPages}</CardContent>}
+        {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
       <Card className="min-w-[250px]">
         <CardHeader>Products</CardHeader>
-        <CardContent>This is still a test!</CardContent>
+        {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
+        {data?.getProducts?.totalPages && <CardContent>{data.getProducts.totalPages}</CardContent>}
+        {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
     </div>
   );

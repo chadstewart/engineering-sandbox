@@ -16,37 +16,39 @@ const PORT = 3000;
 
 interface MyContext {
   token?: string;
-};
+}
+
+const ALLOW_URLS = ["http://172.20.0.2:4000", "http://localhost:4000"];
 
 const startServer = async () => {
   const httpServer = http.createServer(app);
-  
+
   const server = new ApolloServer<MyContext>({
     typeDefs,
     resolvers,
     cache: new KeyvAdapter(new Keyv(`redis://${process.env.REDIS_PUBLIC_URL}`)),
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
   });
 
   await server.start();
 
   app.use(
-    '/graphql',
+    "/graphql",
     cors<cors.CorsRequest>({
-      origin: "http://172.20.0.2:4000"
+      origin: ALLOW_URLS
     }),
     json(),
     /* routeAuth,
     rateLimit,*/
     expressMiddleware(server, {
       context: async ({ req }) => {
-        return ({ requestObject: req })
-      },
+        return { requestObject: req };
+      }
     })
   );
 
   await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
-  
+
   console.log(`🚀  Server ready at: http://localhost:${PORT}/graphql`);
 };
 
