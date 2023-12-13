@@ -13,7 +13,7 @@ export const orders = async (page = 1) => {
     skip,
     take
   });
-  const totalRows = await prisma.customers.count();
+  const totalRows = await prisma.orders.count();
   const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
     queryData,
