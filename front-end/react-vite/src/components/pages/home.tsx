@@ -14,13 +14,13 @@ const Home = () => {
       <Card className="min-w-[250px]">
         <CardHeader>Orders</CardHeader>
         {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
-        {data?.getOrders?.totalRows && <CardContent>${data.getOrders.totalRows}</CardContent>}
+        {data?.getOrders?.totalRows && <CardContent>{data.getOrders.totalRows}</CardContent>}
         {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
       <Card className="min-w-[250px]">
         <CardHeader>Total Revenue</CardHeader>
         {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
-        {data?.getTotalRevenue?.round && <CardContent>{data.getTotalRevenue.round}</CardContent>}
+        {data?.getTotalRevenue?.round && <CardContent>${data.getTotalRevenue.round}</CardContent>}
         {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
       <Card className="min-w-[250px]">
