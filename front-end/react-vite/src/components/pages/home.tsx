@@ -14,7 +14,7 @@ const Home = () => {
       <Card className="min-w-[250px]">
         <CardHeader>Orders</CardHeader>
         {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
-        {data?.getOrders?.totalPages && <CardContent>${data.getOrders.totalPages}</CardContent>}
+        {data?.getOrders?.totalRows && <CardContent>${data.getOrders.totalRows}</CardContent>}
         {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
       <Card className="min-w-[250px]">
@@ -26,13 +26,13 @@ const Home = () => {
       <Card className="min-w-[250px]">
         <CardHeader>Customers</CardHeader>
         {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
-        {data?.getCustomers?.totalPages && <CardContent>{data.getCustomers.totalPages}</CardContent>}
+        {data?.getCustomers?.totalRows && <CardContent>{data.getCustomers.totalRows}</CardContent>}
         {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
       <Card className="min-w-[250px]">
         <CardHeader>Products</CardHeader>
         {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
-        {data?.getProducts?.totalPages && <CardContent>{data.getProducts.totalPages}</CardContent>}
+        {data?.getProducts?.totalRows && <CardContent>{data.getProducts.totalRows}</CardContent>}
         {error && <CardContent>Well that's not good...</CardContent>}
       </Card>
     </div>

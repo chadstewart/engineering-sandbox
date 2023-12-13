@@ -6,16 +6,16 @@ export const getHomeData = async () => {
     query: graphql(/* GraphQL */ `
       query GetHomeData {
         getOrders {
-          totalPages
+          totalRows
         }
         getTotalRevenue {
           round
         }
         getProducts {
-          totalPages
+          totalRows
         }
         getCustomers {
-          totalPages
+          totalRows
         }
       }
     `),

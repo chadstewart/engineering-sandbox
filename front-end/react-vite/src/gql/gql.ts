@@ -14,8 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n    query GetCats($getDog: Boolean) {\n      getCats(getDog: $getDog) {\n        url\n        width\n        height\n      }\n    }": types.GetCatsDocument,
-    "\n      query GetHomeData {\n        getOrders {\n          totalPages\n        }\n        getTotalRevenue {\n          round\n        }\n        getProducts {\n          totalPages\n        }\n        getCustomers {\n          totalPages\n        }\n      }\n    ": types.GetHomeDataDocument,
-    "\n    query GetOrders($page: Int) {\n      getOrders(page: $page) {\n        order_id\n      }\n    }": types.GetOrdersDocument,
+    "\n      query GetHomeData {\n        getOrders {\n          totalRows\n        }\n        getTotalRevenue {\n          round\n        }\n        getProducts {\n          totalRows\n        }\n        getCustomers {\n          totalRows\n        }\n      }\n    ": types.GetHomeDataDocument,
 };
 
 /**
@@ -39,11 +38,7 @@ export function graphql(source: "\n    query GetCats($getDog: Boolean) {\n      
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n      query GetHomeData {\n        getOrders {\n          totalPages\n        }\n        getTotalRevenue {\n          round\n        }\n        getProducts {\n          totalPages\n        }\n        getCustomers {\n          totalPages\n        }\n      }\n    "): (typeof documents)["\n      query GetHomeData {\n        getOrders {\n          totalPages\n        }\n        getTotalRevenue {\n          round\n        }\n        getProducts {\n          totalPages\n        }\n        getCustomers {\n          totalPages\n        }\n      }\n    "];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(source: "\n    query GetOrders($page: Int) {\n      getOrders(page: $page) {\n        order_id\n      }\n    }"): (typeof documents)["\n    query GetOrders($page: Int) {\n      getOrders(page: $page) {\n        order_id\n      }\n    }"];
+export function graphql(source: "\n      query GetHomeData {\n        getOrders {\n          totalRows\n        }\n        getTotalRevenue {\n          round\n        }\n        getProducts {\n          totalRows\n        }\n        getCustomers {\n          totalRows\n        }\n      }\n    "): (typeof documents)["\n      query GetHomeData {\n        getOrders {\n          totalRows\n        }\n        getTotalRevenue {\n          round\n        }\n        getProducts {\n          totalRows\n        }\n        getCustomers {\n          totalRows\n        }\n      }\n    "];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
