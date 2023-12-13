@@ -30,6 +30,7 @@ export const getOrders = async (page = 1) => {
             ship_country: zod.string().nullable()
           })
           .array(),
+        totalRows: zod.number(),
         totalPages: zod.number()
       })
     }),

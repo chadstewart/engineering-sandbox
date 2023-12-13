@@ -22,6 +22,7 @@ export const getProducts = async (page = 1) => {
             discontinued: zod.number()
           })
           .array(),
+        totalRows: zod.number(),
         totalPages: zod.number()
       })
     }),

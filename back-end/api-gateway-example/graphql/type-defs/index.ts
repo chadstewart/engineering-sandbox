@@ -16,6 +16,7 @@ export const typeDefs = `#graphql
     ship_country: String
     customer: [Customer]
     employee: [Employee]
+    totalRows: Int!
     totalPages: Int!
   }
 
@@ -72,6 +73,7 @@ export const typeDefs = `#graphql
     country: String
     phone: String
     fax: String
+    totalRows: Int!
     totalPages: Int!
   }
 
@@ -87,6 +89,7 @@ export const typeDefs = `#graphql
     discontinued: String
     supplier: [Supplier]
     category: [Category]
+    totalRows: Int!
     totalPages: Int!
   }
 

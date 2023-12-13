@@ -21,6 +21,7 @@ export const getCustomers = async (page = 1) => {
             contact_title: zod.string().nullable()
           })
           .array(),
+        totalRows: zod.number(),
         totalPages: zod.number()
       })
     }),
