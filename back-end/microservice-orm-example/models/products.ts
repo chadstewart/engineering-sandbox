@@ -1,5 +1,6 @@
 import { prisma } from "../services/database";
 import { prismaPaginationHelper } from "../util/pagination-helper";
+import { ROW_LIMIT } from "../util/row-limit";
 
 export const products = async (page = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
@@ -15,9 +16,11 @@ export const products = async (page = 1) => {
     skip,
     take
   });
-  const totalPages = await prisma.products.count();    
+  const totalRows = await prisma.customers.count();
+  const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
     queryData,
+    totalRows,
     totalPages
   };
   return data;

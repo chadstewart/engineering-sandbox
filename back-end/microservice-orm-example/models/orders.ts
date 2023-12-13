@@ -1,6 +1,7 @@
 import { prisma } from "../services/database";
 import { generateCustomerId } from "../util/generate-customer-id";
 import { prismaPaginationHelper } from "../util/pagination-helper";
+import { ROW_LIMIT } from "../util/row-limit";
 import {
   addOrdersExistingCustomerZodSchema,
   addOrdersNewCustomerZodSchema
@@ -12,14 +13,13 @@ export const orders = async (page = 1) => {
     skip,
     take
   });
-
-  const totalPages = await prisma.orders.count();
-
+  const totalRows = await prisma.customers.count();
+  const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
     queryData,
+    totalRows,
     totalPages
   };
-
   return data;
 };
 
