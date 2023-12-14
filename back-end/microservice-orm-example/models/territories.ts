@@ -36,12 +36,12 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
   });
 
   interface queryResponse {
-    sum: bigint;
+    count: bigint;
   }
 
   const countQuery = await prisma.$queryRaw<queryResponse[]>`
     Select
-      SUM ( 
+      COUNT ( 
         employees.employee_id
       )
     From
@@ -56,7 +56,7 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
       employee_territories.territory_id::int=${territoryId}::int`;
 
   // BigInt to Int conversion @.@
-  const totalRows = Number(`${countQuery[0].sum}`);
+  const totalRows = Number(`${countQuery[0].count}`);
 
   const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
