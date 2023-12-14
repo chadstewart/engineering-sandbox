@@ -1,5 +1,6 @@
 import { prisma } from "../services/database";
 import { prismaPaginationHelper } from "../util/pagination-helper";
+import { ROW_LIMIT } from "../util/row-limit";
 
 export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
@@ -25,7 +26,7 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
             }
           }
         }
-      },
+      }
     },
     where: {
       territory_id: `${territoryId}`
@@ -33,10 +34,35 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
     skip,
     take
   });
-  const totalRows = await prisma.employees.count();
+
+  interface queryResponse {
+    sum: bigint;
+  }
+
+  const countQuery = await prisma.$queryRaw<queryResponse[]>`
+    Select
+      SUM ( 
+        employees.employee_id
+      )
+    From
+      employee_territories
+    LEFT JOIN
+      employees on employees.employee_id=employee_territories.employee_id
+    LEFT JOIN
+      territories on employee_territories.territory_id=territories.territory_id
+    LEFT JOIN
+      region on territories.region_id=region.region_id
+    WHERE
+      employee_territories.territory_id::int=${territoryId}::int`;
+
+  // BigInt to Int conversion @.@
+  const totalRows = Number(`${countQuery[0].sum}`);
+
+  const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
     queryData,
-    totalRows
+    totalRows,
+    totalPages
   };
   return data;
 };
@@ -47,13 +73,15 @@ export const territories = async (page = 1) => {
     skip,
     take
   });
-  const totalRows = await prisma.employees.count();
+  const totalRows = await prisma.territories.count();
+  const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
     queryData,
-    totalRows
+    totalRows,
+    totalPages
   };
   return data;
-}
+};
 
 export const territoriesById = async (territoryId = "") => {
   const queryData = await prisma.territories.findMany({
@@ -65,4 +93,4 @@ export const territoriesById = async (territoryId = "") => {
     queryData
   };
   return data;
-}
+};

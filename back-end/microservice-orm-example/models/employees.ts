@@ -1,5 +1,6 @@
 import { prisma } from "../services/database";
 import { prismaPaginationHelper } from "../util/pagination-helper";
+import { ROW_LIMIT } from "../util/row-limit";
 import { createEmployeeZodSchema } from "../util/schemas/employee-zod-schema";
 
 export const employees = async (page = 1) => {
@@ -15,9 +16,11 @@ export const employees = async (page = 1) => {
     skip,
     take
   });
-  const totalPages = await prisma.employees.count();
+  const totalRows = await prisma.employees.count();
+  const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
     queryData,
+    totalRows,
     totalPages
   };
   return data;
@@ -100,7 +103,7 @@ export const createEmployee = async (reqBody: unknown) => {
           reports_to,
           photo_path
         }
-      }), 
+      }),
       prisma.employee_territories.create({
         data: {
           employee_id: employeeIdToAdd,
