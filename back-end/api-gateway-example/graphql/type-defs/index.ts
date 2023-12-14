@@ -31,7 +31,7 @@ export const typeDefs = `#graphql
   }
 
   type Revenue {
-    round: Int!
+    total_revenue: Int!
   }
 
   type Shipper {

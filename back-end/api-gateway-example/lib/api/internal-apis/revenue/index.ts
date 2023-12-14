@@ -13,14 +13,14 @@ export const getTotalRevenue = async () => {
       status: zod.string(),
       data: zod
         .object({
-          round: zod.number()
+          total_revenue: zod.number()
         })
         .array()
     }),
     `${process.env.REST_API_URL}/v1/revenue/total`
   );
-  const result = data.data[0].round;
+  const result = data.data[0].total_revenue;
   return {
-    round: result
+    total_revenue: result
   };
 };
