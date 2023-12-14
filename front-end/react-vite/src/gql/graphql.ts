@@ -30,6 +30,8 @@ export type Category = {
   category_name?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   picture?: Maybe<Scalars['String']['output']>;
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
 };
 
 export type CreateEmployeeInput = {
@@ -102,6 +104,8 @@ export type Employee = {
   reports_to?: Maybe<Scalars['Int']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   title_of_courtesy?: Maybe<Scalars['String']['output']>;
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
 };
 
 export type EmployeeTerritory = {
@@ -110,6 +114,8 @@ export type EmployeeTerritory = {
   employee_id: Scalars['ID']['output'];
   territory?: Maybe<Array<Maybe<Territory>>>;
   territory_id: Scalars['ID']['output'];
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
 };
 
 export type Mutation = {
@@ -259,7 +265,7 @@ export type Region = {
 
 export type Revenue = {
   __typename?: 'Revenue';
-  round: Scalars['Int']['output'];
+  total_revenue: Scalars['Int']['output'];
 };
 
 export type Shipper = {
@@ -283,6 +289,8 @@ export type Supplier = {
   postal_code?: Maybe<Scalars['String']['output']>;
   region?: Maybe<Scalars['String']['output']>;
   suppier_id: Scalars['ID']['output'];
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
 };
 
 export type Territory = {
@@ -303,8 +311,8 @@ export type GetCatsQuery = { __typename?: 'Query', getCats?: Array<{ __typename?
 export type GetHomeDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomeDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'Order', totalRows: number } | null, getTotalRevenue?: { __typename?: 'Revenue', round: number } | null, getProducts?: { __typename?: 'Product', totalRows: number } | null, getCustomers?: { __typename?: 'Customer', totalRows: number } | null };
+export type GetHomeDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'Order', totalRows: number } | null, getTotalRevenue?: { __typename?: 'Revenue', total_revenue: number } | null, getProducts?: { __typename?: 'Product', totalRows: number } | null, getCustomers?: { __typename?: 'Customer', totalRows: number } | null };
 
 
 export const GetCatsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCats"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCats"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"getDog"},"value":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<GetCatsQuery, GetCatsQueryVariables>;
-export const GetHomeDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomeData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getTotalRevenue"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"round"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}}]}}]} as unknown as DocumentNode<GetHomeDataQuery, GetHomeDataQueryVariables>;
+export const GetHomeDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomeData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getTotalRevenue"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total_revenue"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}}]}}]} as unknown as DocumentNode<GetHomeDataQuery, GetHomeDataQueryVariables>;

@@ -9,7 +9,7 @@ export const getHomeData = async () => {
           totalRows
         }
         getTotalRevenue {
-          round
+          total_revenue
         }
         getProducts {
           totalRows
