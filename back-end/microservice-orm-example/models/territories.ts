@@ -36,7 +36,7 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
   });
 
   interface queryResponse {
-    count: bigint;
+    total_rows: bigint;
   }
 
   const countQuery = await prisma.$queryRaw<queryResponse[]>`
@@ -44,6 +44,8 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
       COUNT ( 
         employees.employee_id
       )
+    AS
+      total_rows
     From
       employee_territories
     LEFT JOIN
@@ -56,7 +58,7 @@ export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
       employee_territories.territory_id::int=${territoryId}::int`;
 
   // BigInt to Int conversion @.@
-  const totalRows = Number(`${countQuery[0].count}`);
+  const totalRows = Number(`${countQuery[0].total_rows}`);
 
   const totalPages = Math.ceil(totalRows / ROW_LIMIT);
   const data = {
