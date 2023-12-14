@@ -9,33 +9,43 @@ const CONFIG: RequestInit = {
 
 export const getTerritories = async (page = 1) => {
   const data = await api.get(
-    zod.object({      
+    zod.object({
       status: zod.string(),
       data: zod.object({
-        queryData: zod.object({
-          territory_id: zod.string(),
-          territory_description: zod.string(),
-          region_id: zod.number()          
-        }).array(),
+        queryData: zod
+          .object({
+            territory_id: zod.string(),
+            territory_description: zod.string(),
+            region_id: zod.number()
+          })
+          .array(),
+        totalRows: zod.number(),
         totalPages: zod.number()
       })
     }),
     `${process.env.REST_API_URL}/v1/territories/${page}`
   );
-  return data.data.queryData;
+
+  const result = data.data;
+  return {
+    ...result.queryData,
+    totalRows: result.totalRows,
+    totalPages: result.totalPages
+  };
 };
 
 export const getTerritoriesById = async (territoryId = 1) => {
   const data = await api.get(
-    zod.object({      
+    zod.object({
       status: zod.string(),
       data: zod.object({
-        queryData: zod.object({
-          territory_id: zod.string(),
-          territory_description: zod.string(),
-          region_id: zod.number()          
-        }).array(),
-        totalPages: zod.number()
+        queryData: zod
+          .object({
+            territory_id: zod.string(),
+            territory_description: zod.string(),
+            region_id: zod.number()
+          })
+          .array()
       })
     }),
     `${process.env.REST_API_URL}/v1/territories/details/${territoryId}`

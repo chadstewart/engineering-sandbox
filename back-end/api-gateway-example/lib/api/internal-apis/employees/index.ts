@@ -10,36 +10,47 @@ const CONFIG: RequestInit = {
 
 export const getEmployees = async (page = 1) => {
   const data = await api.get(
-    zod.object({      
+    zod.object({
       status: zod.string(),
       data: zod.object({
-        queryData: zod.object({
-          employee_id: zod.number(),
-          first_name: zod.string(),
-          last_name: zod.string(),
-          title: zod.string().nullable(),
-          photo: zod.instanceof(Buffer).nullable()
-        }).array(),
+        queryData: zod
+          .object({
+            employee_id: zod.number(),
+            first_name: zod.string(),
+            last_name: zod.string(),
+            title: zod.string().nullable(),
+            photo: zod.instanceof(Buffer).nullable()
+          })
+          .array(),
+        totalRows: zod.number(),
         totalPages: zod.number()
       })
     }),
     `${process.env.REST_API_URL}/v1/employees/${page}`
   );
-  return data.data.queryData;
+
+  const result = data.data;
+  return {
+    ...result.queryData,
+    totalRows: result.totalRows,
+    totalPages: result.totalPages
+  };
 };
 
 export const getEmployeesById = async (employeeId = 1) => {
   const data = await api.get(
-    zod.object({      
+    zod.object({
       status: zod.string(),
       data: zod.object({
-        queryData: zod.object({
-          employee_id: zod.number(),
-          first_name: zod.string(),
-          last_name: zod.string(),
-          title: zod.string().nullable(),
-          photo: zod.instanceof(Buffer).nullable()
-        }).array()
+        queryData: zod
+          .object({
+            employee_id: zod.number(),
+            first_name: zod.string(),
+            last_name: zod.string(),
+            title: zod.string().nullable(),
+            photo: zod.instanceof(Buffer).nullable()
+          })
+          .array()
       })
     }),
     `${process.env.REST_API_URL}/v1/employees/details/${employeeId}`
@@ -49,7 +60,7 @@ export const getEmployeesById = async (employeeId = 1) => {
 
 export const addEmployees = async (requestBody: typeof createEmployeeZodSchema) => {
   const data = await api.post(
-    zod.object({      
+    zod.object({
       status: zod.string(),
       data: zod.object({
         queryData: zod.any().array()

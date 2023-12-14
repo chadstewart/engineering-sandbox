@@ -59,6 +59,8 @@ export const typeDefs = `#graphql
     notes: String
     reports_to: Int
     photo_path: String
+    totalRows: Int!
+    totalPages: Int!
   }
 
   type Customer {
@@ -98,6 +100,8 @@ export const typeDefs = `#graphql
     category_name: String
     description: String
     picture: String
+    totalRows: Int!
+    totalPages: Int!
   }
 
   type Supplier {
@@ -113,6 +117,8 @@ export const typeDefs = `#graphql
     phone: String
     fax: String
     homepage: String
+    totalRows: Int!
+    totalPages: Int!
   }
 
   type EmployeeTerritory {
@@ -120,6 +126,8 @@ export const typeDefs = `#graphql
     territory_id: ID!
     employee: [Employee]
     territory: [Territory]
+    totalRows: Int!
+    totalPages: Int!
   }
 
   type Territory {
