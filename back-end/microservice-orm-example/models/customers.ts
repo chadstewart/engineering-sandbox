@@ -64,3 +64,14 @@ export const updateCustomer = async (customerId: string, reqBody: unknown) => {
     throw error;
   }
 };
+
+export const customerCountryDistribution = async () => {
+  const queryData = await prisma.customers.groupBy({
+    by: ["country"],
+    _count: {
+      country: true
+    }
+  });
+
+  return queryData;
+};

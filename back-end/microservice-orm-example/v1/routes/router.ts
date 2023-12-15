@@ -12,7 +12,12 @@ import {
   getTerritoriesDetails
 } from "../controllers/territories-controller";
 import { getProducts, getProductDetails } from "../controllers/products-controller";
-import { getCustomerDetails, getCustomers, updateCustomerById } from "../controllers/customers-controller";
+import {
+  getCustomerCountryDistribution,
+  getCustomerDetails,
+  getCustomers,
+  updateCustomerById
+} from "../controllers/customers-controller";
 import { getUSStates } from "../controllers/us-states-controller";
 import { getCategories, getCategoryDetails } from "../controllers/categories-controller";
 import { getSupplierDetails, getSuppliers } from "../controllers/suppliers-controller";
@@ -38,6 +43,7 @@ router.get("/products/details/:product_id?", getProductDetails);
 router.get("/customers/:page?", getCustomers);
 router.get("/customers/details/:customer_id?", getCustomerDetails);
 router.put("/customers/:customer_id", updateCustomerById);
+router.get("/customers/distribution/country", getCustomerCountryDistribution);
 
 //Categories
 router.get("/categories/:page?", getCategories);
