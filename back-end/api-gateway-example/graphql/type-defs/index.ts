@@ -79,6 +79,11 @@ export const typeDefs = `#graphql
     totalPages: Int!
   }
 
+  type CustomerCountryDistribution {
+    country: String!
+    customerCount: Int!
+  }
+
   type Product {
     product_id: ID!
     supplier_id: ID!
@@ -190,6 +195,7 @@ export const typeDefs = `#graphql
     getEmployees(page: Int): [Employee]
     getCustomers(page: Int): Customer
     getCustomerDetails(id: ID!): [Customer]
+    getCustomerCountryDistribution: [CustomerCountryDistribution]
     getProducts(page: Int): Product
     getCategories(page: Int): [Category]
     getSuppliers(page: Int): [Supplier]

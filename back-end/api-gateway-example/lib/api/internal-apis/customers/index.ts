@@ -83,3 +83,29 @@ export const addCustomer = async (customerId = "", requestBody: typeof updateCus
   );
   return data;
 };
+
+export const getCustomerCountryDistribution = async () => {
+  const data = await api.get(
+    zod.object({
+      status: zod.string(),
+      data: zod
+        .object({
+          _count: zod.object({
+            country: zod.number()
+          }),
+          country: zod.string()
+        })
+        .array()
+    }),
+    `${process.env.REST_API_URL}/v1/customers/distribution/country`
+  );
+
+  const resultMap = data.data.map((countryResponse) => {
+    return {
+      country: countryResponse.country,
+      customerCount: countryResponse._count.country
+    };
+  });
+
+  return resultMap;
+};

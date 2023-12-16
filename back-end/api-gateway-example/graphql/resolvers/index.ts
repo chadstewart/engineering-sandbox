@@ -1,6 +1,11 @@
 import { getCats } from "../../lib/api/external-apis/cats";
 import { getCategories, getCategoryDetails } from "../../lib/api/internal-apis/categories";
-import { addCustomer, getCustomerDetails, getCustomers } from "../../lib/api/internal-apis/customers";
+import {
+  addCustomer,
+  getCustomerCountryDistribution,
+  getCustomerDetails,
+  getCustomers
+} from "../../lib/api/internal-apis/customers";
 import { addEmployees, getEmployees, getEmployeesById } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
 import { getProductDetails, getProducts } from "../../lib/api/internal-apis/products";
@@ -33,6 +38,7 @@ export const resolvers = {
     getEmployees: (_: unknown, args: QueryPaginationArgs) => getEmployees(args.page),
     getCustomers: (_: unknown, args: QueryPaginationArgs) => getCustomers(args.page),
     getCustomerDetails: (_: unknown, args: { id: string }) => getCustomerDetails(args.id),
+    getCustomerCountryDistribution: () => getCustomerCountryDistribution(),
     getProducts: (_: unknown, args: QueryPaginationArgs) => getProducts(args.page),
     getCategories: (_: unknown, args: QueryPaginationArgs) => getCategories(args.page),
     getSuppliers: (_: unknown, args: QueryPaginationArgs) => getSuppliers(args.page),
