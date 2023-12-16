@@ -72,6 +72,12 @@ export type Customer = {
   totalRows: Scalars['Int']['output'];
 };
 
+export type CustomerCountryDistribution = {
+  __typename?: 'CustomerCountryDistribution';
+  country: Scalars['String']['output'];
+  customerCount: Scalars['Int']['output'];
+};
+
 export type CustomerUserInput = {
   address?: InputMaybe<Scalars['String']['input']>;
   city?: InputMaybe<Scalars['String']['input']>;
@@ -189,6 +195,7 @@ export type Query = {
   __typename?: 'Query';
   getCategories?: Maybe<Array<Maybe<Category>>>;
   getCats?: Maybe<Array<Maybe<Cat>>>;
+  getCustomerCountryDistribution?: Maybe<Array<Maybe<CustomerCountryDistribution>>>;
   getCustomerDetails?: Maybe<Array<Maybe<Customer>>>;
   getCustomers?: Maybe<Customer>;
   getEmployeeTerritories?: Maybe<Array<Maybe<EmployeeTerritory>>>;
@@ -311,8 +318,8 @@ export type GetCatsQuery = { __typename?: 'Query', getCats?: Array<{ __typename?
 export type GetHomeDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomeDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'Order', totalRows: number } | null, getTotalRevenue?: { __typename?: 'Revenue', total_revenue: number } | null, getProducts?: { __typename?: 'Product', totalRows: number } | null, getCustomers?: { __typename?: 'Customer', totalRows: number } | null };
+export type GetHomeDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'Order', totalRows: number } | null, getTotalRevenue?: { __typename?: 'Revenue', total_revenue: number } | null, getProducts?: { __typename?: 'Product', totalRows: number } | null, getCustomers?: { __typename?: 'Customer', totalRows: number } | null, getCustomerCountryDistribution?: Array<{ __typename?: 'CustomerCountryDistribution', country: string, customerCount: number } | null> | null };
 
 
 export const GetCatsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCats"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCats"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"getDog"},"value":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<GetCatsQuery, GetCatsQueryVariables>;
-export const GetHomeDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomeData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getTotalRevenue"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total_revenue"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}}]}}]} as unknown as DocumentNode<GetHomeDataQuery, GetHomeDataQueryVariables>;
+export const GetHomeDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomeData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getTotalRevenue"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total_revenue"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomerCountryDistribution"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"customerCount"}}]}}]}}]} as unknown as DocumentNode<GetHomeDataQuery, GetHomeDataQueryVariables>;

@@ -17,6 +17,10 @@ export const getHomeData = async () => {
         getCustomers {
           totalRows
         }
+        getCustomerCountryDistribution {
+          country
+          customerCount
+        }
       }
     `),
     variables: {}
