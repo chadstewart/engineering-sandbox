@@ -63,11 +63,11 @@ export const testQuery = async () => {
     requestBody.variables
   );
 
-  return data; 
+  return data;
 };
 ```
 
-Note: Types for the graphql query is generated after the query is written. These can be generated in 2 ways, by running `npm run generate`, which will generates the types immediately or `npm run generate-watch` which generates types when code changes are detected.
+Note: Types for the graphql query is generated after the query is written. These can be generated in 2 ways, by running `npm run gql-generate`, which will generates the types immediately or `npm run gql-generate-watch` which generates types when code changes are detected.
 
 ## Types
 
@@ -93,18 +93,18 @@ Tanstack Query works with both REST API & GraphQL queries without any specific c
 ```tsx
 //filename: /component/example-usage-component.ts
 
-import { useState } from 'react'
-import reactLogo from '@/assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Button } from '@/components/atoms/button/button'
-import { useQuery } from '@tanstack/react-query'
-import { testQuery } from '@/lib/api/graphql/internal-apis/test'
+import { useState } from "react";
+import reactLogo from "@/assets/react.svg";
+import viteLogo from "/vite.svg";
+import { Button } from "@/components/atoms/button/button";
+import { useQuery } from "@tanstack/react-query";
+import { testQuery } from "@/lib/api/graphql/internal-apis/test";
 
 function Test() {
-  const [count, setCount, error] = useState(0)
+  const [count, setCount, error] = useState(0);
 
   const { data, isLoading } = useQuery({
-    queryKey: ['responseData'],
+    queryKey: ["responseData"],
     queryFn: testQuery
   });
 
@@ -123,22 +123,17 @@ function Test() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
+        <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>
-  )
+  );
 }
 
-export default Test
-
+export default Test;
 ```
 
 ## References for building this API Layer
