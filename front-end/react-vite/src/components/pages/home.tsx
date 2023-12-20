@@ -3,8 +3,11 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import { getHomeData } from "@/lib/api/graphql/internal-apis/home";
 import { Skeleton } from "../ui/skeleton";
 import { Pie, PieChart } from "recharts";
+import { updateTitle } from "@/lib/util/update-title";
 
 const Home = () => {
+  updateTitle("Home");
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["responseData"],
     queryFn: getHomeData

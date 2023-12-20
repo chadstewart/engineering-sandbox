@@ -2,8 +2,11 @@ import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
 import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
 import Icon from "../atoms/icon/icon";
 import { RiExternalLinkLine, RiTwitterXFill } from "react-icons/ri";
+import { updateTitle } from "@/lib/util/update-title";
 
 const About = () => {
+  updateTitle("About");
+
   return (
     <div className="flex flex-wrap w-full p-4">
       <Card className="w-full p-4">
