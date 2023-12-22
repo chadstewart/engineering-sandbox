@@ -4,6 +4,7 @@ import { PageLayout } from "@/components/templates/layout/page";
 import CuteAnimals from "@/components/pages/cute-animals";
 import About from "@/components/pages/about";
 import Home from "@/components/pages/home";
+import Architecture from "@/components/pages/architecture";
 
 const rootRoute = new RootRoute({
   component: MainLayout
@@ -33,7 +34,15 @@ const aboutRoute = new Route({
   component: About
 });
 
-const routeTree = rootRoute.addChildren([pageLayoutRoute.addChildren([indexRoute, catRoute, aboutRoute])]);
+const architectureRoute = new Route({
+  getParentRoute: () => pageLayoutRoute,
+  path: "/architecture",
+  component: Architecture
+});
+
+const routeTree = rootRoute.addChildren([
+  pageLayoutRoute.addChildren([indexRoute, catRoute, aboutRoute, architectureRoute])
+]);
 
 const router = new Router({ routeTree });
 

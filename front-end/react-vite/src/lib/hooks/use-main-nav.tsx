@@ -2,6 +2,7 @@ import { NavItems } from "../types/nav-item";
 import { IoHomeSharp } from "react-icons/io5";
 import { FaCat } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";
+import { BiSolidNetworkChart } from "react-icons/bi";
 
 const useMainNav = () => {
   const navList: NavItems[] = [
@@ -22,6 +23,12 @@ const useMainNav = () => {
       text: "About",
       icon: IoIosInformationCircle,
       iconAlt: "About page link icon"
+    },
+    {
+      url: "/architecture",
+      text: "Architecture",
+      icon: BiSolidNetworkChart,
+      iconAlt: "Architecture page link icon"
     }
   ];
 
