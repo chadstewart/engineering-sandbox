@@ -4,6 +4,7 @@ import { getHomeData } from "@/lib/api/graphql/internal-apis/home";
 import { Skeleton } from "../ui/skeleton";
 import { Pie, PieChart } from "recharts";
 import { updateTitle } from "@/lib/util/update-title";
+import { toCurrency } from "@/lib/util/to-currency";
 
 const Home = () => {
   updateTitle("Home");
@@ -25,7 +26,9 @@ const Home = () => {
         <Card className="min-w-[250px]">
           <CardHeader>Total Revenue</CardHeader>
           {isLoading && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
-          {data?.getTotalRevenue?.total_revenue && <CardContent>${data.getTotalRevenue.total_revenue}</CardContent>}
+          {data?.getTotalRevenue?.total_revenue && (
+            <CardContent>{toCurrency(data.getTotalRevenue.total_revenue)}</CardContent>
+          )}
           {error && <CardContent>Well that's not good...</CardContent>}
         </Card>
         <Card className="min-w-[250px]">
