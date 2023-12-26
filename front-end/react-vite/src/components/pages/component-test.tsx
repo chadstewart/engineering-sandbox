@@ -24,7 +24,9 @@ export const ComponentTest = () => {
               <TableCaption>A list of your recent invoices.</TableCaption>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[100px]">Invoice</TableHead>
+                  {Object.keys(data.getOrders.order[0] as object).map((key) => (
+                    <TableHead className="capitalize">{key.toLowerCase()}</TableHead>
+                  ))}
                   <TableHead>Status</TableHead>
                   <TableHead>Method</TableHead>
                   <TableHead className="text-right">Amount</TableHead>
