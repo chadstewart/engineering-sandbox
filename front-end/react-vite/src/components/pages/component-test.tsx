@@ -10,14 +10,14 @@ export const ComponentTest = () => {
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["responseData"],
-    queryFn: getOrderData
+    queryFn: () => getOrderData(1)
   });
 
   return (
     <div className="flex flex-wrap gap-6 justify-center p-4">
       {isLoading && <Skeleton className="w-72 h-40" />}
       {error && <div>That's not good...</div>}
-      {data?.getOrders && (
+      {data?.getOrders?.order && (
         <Card>
           <CardContent>
             <Table>
