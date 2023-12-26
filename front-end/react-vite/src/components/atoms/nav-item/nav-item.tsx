@@ -7,6 +7,7 @@ type NavItemProps = NavItems;
 
 export const NavItem = ({
   url,
+  params,
   text,
   icon,
   iconAlt = "",
@@ -14,12 +15,10 @@ export const NavItem = ({
   externalLinkAlt = ""
 }: NavItemProps) => {
   return (
-    <Link className="flex gap-2 w-full m-2" to={url} target={externalLink ? "_blank" : "_self"}>
-      {icon && <Icon Icon={icon} iconAlt={iconAlt}/>}
-      <div className="font-bold">
-        {text}
-      </div>
+    <Link className="flex gap-2 w-full m-2" to={url} params={params} target={externalLink ? "_blank" : "_self"}>
+      {icon && <Icon Icon={icon} iconAlt={iconAlt} />}
+      <div className="font-bold">{text}</div>
       {externalLink && <Icon Icon={RiExternalLinkLine} iconAlt={externalLinkAlt} />}
     </Link>
-  )
+  );
 };

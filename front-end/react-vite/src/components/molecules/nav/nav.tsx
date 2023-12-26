@@ -8,13 +8,14 @@ interface NavProps {
 
 export const Nav = ({ navItems }: NavProps) => {
   return (
-    <nav aria-label="Main" className="w-full px-2" >
+    <nav aria-label="Main" className="w-full px-2">
       <ul className="flex flex-col gap-2">
-        {navItems.map((navItem, index) =>
+        {navItems.map((navItem, index) => (
           <Fragment key={index}>
             <li className={`flex items-center h-12 rounded-md hover:bg-sky-100`}>
               <NavItem
                 url={navItem.url}
+                params={navItem.params}
                 text={navItem.text}
                 icon={navItem.icon}
                 iconAlt={navItem.iconAlt}
@@ -23,7 +24,7 @@ export const Nav = ({ navItems }: NavProps) => {
               />
             </li>
           </Fragment>
-        )}
+        ))}
       </ul>
     </nav>
   );

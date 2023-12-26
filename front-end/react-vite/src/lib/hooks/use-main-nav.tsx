@@ -20,7 +20,8 @@ const useMainNav = () => {
       iconAlt: "Cat page link icon"
     },
     {
-      url: "/orders",
+      url: "/orders/details/$page",
+      params: { page: 1 },
       text: "Orders",
       icon: IoCart,
       iconAlt: "Order page link icon"

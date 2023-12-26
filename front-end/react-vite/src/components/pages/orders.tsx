@@ -3,20 +3,30 @@ import { useQuery } from "@tanstack/react-query";
 import { getOrderData } from "@/lib/api/graphql/internal-apis/orders";
 import { Skeleton } from "../ui/skeleton";
 import { GraphQlDataTable } from "../organisms/graphql-data-table/graphql-data-table";
+import { ordersPageRoute } from "@/router/router";
+import { useEffect } from "react";
 
 export const Orders = () => {
   updateTitle("Orders");
 
-  const { data, isLoading, error } = useQuery({
+  const { page } = ordersPageRoute.useParams();
+
+  const { data, isLoading, error, refetch, isRefetching, isRefetchError } = useQuery({
     queryKey: ["responseData"],
-    queryFn: () => getOrderData(1)
+    queryFn: () => getOrderData(Number(page))
   });
+
+  useEffect(() => {
+    refetch();
+  }, [page, refetch]);
 
   return (
     <div className="flex flex-wrap gap-6 justify-center p-4">
-      {isLoading && <Skeleton className="w-72 h-40" />}
-      {error && <div>That's not good...</div>}
-      {data?.getOrders?.order && <GraphQlDataTable responseObject={data.getOrders.order as object[]} />}
+      {(isLoading || isRefetching) && <Skeleton className="w-72 h-40" />}
+      {(error || isRefetchError) && <div>That's not good...</div>}
+      {!isRefetching && data?.getOrders?.order && (
+        <GraphQlDataTable responseObject={data.getOrders.order as object[]} />
+      )}
     </div>
   );
 };

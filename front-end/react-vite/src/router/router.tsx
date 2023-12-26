@@ -41,14 +41,30 @@ const architectureRoute = new Route({
   component: Architecture
 });
 
-const componentTestRoute = new Route({
+const ordersRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
-  path: "/orders",
+  path: "/orders"
+});
+
+const orderDetailsRoute = new Route({
+  getParentRoute: () => ordersRoute,
+  path: "/details",
   component: Orders
 });
 
+export const ordersPageRoute = new Route({
+  getParentRoute: () => orderDetailsRoute,
+  path: "/$page"
+});
+
 const routeTree = rootRoute.addChildren([
-  pageLayoutRoute.addChildren([indexRoute, catRoute, aboutRoute, architectureRoute, componentTestRoute])
+  pageLayoutRoute.addChildren([
+    indexRoute,
+    catRoute,
+    aboutRoute,
+    architectureRoute,
+    ordersRoute.addChildren([orderDetailsRoute.addChildren([ordersPageRoute])])
+  ])
 ]);
 
 const router = new Router({ routeTree });
