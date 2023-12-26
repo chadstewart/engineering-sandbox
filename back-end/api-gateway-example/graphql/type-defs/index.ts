@@ -16,6 +16,10 @@ export const typeDefs = `#graphql
     ship_country: String
     customer: [Customer]
     employee: [Employee]
+  }
+
+  type OrderResponse {
+    order: [Order]
     totalRows: Int!
     totalPages: Int!
   }
@@ -188,7 +192,7 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    getOrders(page: Int): Order
+    getOrders(page: Int): OrderResponse
     getOrderDetails(id: ID!): [OrderDetail]
     getTotalRevenue: Revenue
     getShipppers(page: Int): [Shipper]
