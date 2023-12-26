@@ -21,24 +21,22 @@ export const ComponentTest = () => {
         <Card>
           <CardContent>
             <Table>
-              <TableCaption>A list of your recent invoices.</TableCaption>
+              <TableCaption>Testing a component.</TableCaption>
               <TableHeader>
                 <TableRow>
                   {Object.keys(data.getOrders.order[0] as object).map((key) => (
                     <TableHead className="capitalize">{key.toLowerCase()}</TableHead>
                   ))}
-                  <TableHead>Status</TableHead>
-                  <TableHead>Method</TableHead>
-                  <TableHead className="text-right">Amount</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium">INV001</TableCell>
-                  <TableCell>Paid</TableCell>
-                  <TableCell>Credit Card</TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
+                {data.getOrders.order.map((orderEntry) => (
+                  <TableRow>
+                    {Object.values(orderEntry as object).map((value) => (
+                      <TableCell>{value}</TableCell>
+                    ))}
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </CardContent>
