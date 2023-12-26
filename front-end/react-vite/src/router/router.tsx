@@ -5,7 +5,7 @@ import CuteAnimals from "@/components/pages/cute-animals";
 import About from "@/components/pages/about";
 import Home from "@/components/pages/home";
 import Architecture from "@/components/pages/architecture";
-import { ComponentTest } from "@/components/pages/component-test";
+import { Orders } from "@/components/pages/orders";
 
 const rootRoute = new RootRoute({
   component: MainLayout
@@ -43,8 +43,8 @@ const architectureRoute = new Route({
 
 const componentTestRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
-  path: "/component-test",
-  component: ComponentTest
+  path: "/orders",
+  component: Orders
 });
 
 const routeTree = rootRoute.addChildren([

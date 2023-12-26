@@ -3,6 +3,7 @@ import { IoHomeSharp } from "react-icons/io5";
 import { FaCat } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";
 import { BiSolidNetworkChart } from "react-icons/bi";
+import { IoCart } from "react-icons/io5";
 
 const useMainNav = () => {
   const navList: NavItems[] = [
@@ -17,6 +18,12 @@ const useMainNav = () => {
       text: "Cute Animals",
       icon: FaCat,
       iconAlt: "Cat page link icon"
+    },
+    {
+      url: "/orders",
+      text: "Orders",
+      icon: IoCart,
+      iconAlt: "Order page link icon"
     },
     {
       url: "/about",
