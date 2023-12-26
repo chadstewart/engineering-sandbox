@@ -15,6 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n    query GetCats($getDog: Boolean) {\n      getCats(getDog: $getDog) {\n        url\n        width\n        height\n      }\n    }": types.GetCatsDocument,
     "\n      query GetHomeData {\n        getOrders {\n          totalRows\n        }\n        getTotalRevenue {\n          total_revenue\n        }\n        getProducts {\n          totalRows\n        }\n        getCustomers {\n          totalRows\n        }\n        getCustomerCountryDistribution {\n          country\n          customerCount\n        }\n      }\n    ": types.GetHomeDataDocument,
+    "\n      query GetOrderData {\n        getOrders {\n          order_date\n          totalPages\n          shipped_date\n          ship_name\n          ship_country\n          ship_city\n          ship_address\n        }\n      }\n    ": types.GetOrderDataDocument,
 };
 
 /**
@@ -39,6 +40,10 @@ export function graphql(source: "\n    query GetCats($getDog: Boolean) {\n      
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n      query GetHomeData {\n        getOrders {\n          totalRows\n        }\n        getTotalRevenue {\n          total_revenue\n        }\n        getProducts {\n          totalRows\n        }\n        getCustomers {\n          totalRows\n        }\n        getCustomerCountryDistribution {\n          country\n          customerCount\n        }\n      }\n    "): (typeof documents)["\n      query GetHomeData {\n        getOrders {\n          totalRows\n        }\n        getTotalRevenue {\n          total_revenue\n        }\n        getProducts {\n          totalRows\n        }\n        getCustomers {\n          totalRows\n        }\n        getCustomerCountryDistribution {\n          country\n          customerCount\n        }\n      }\n    "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n      query GetOrderData {\n        getOrders {\n          order_date\n          totalPages\n          shipped_date\n          ship_name\n          ship_country\n          ship_city\n          ship_address\n        }\n      }\n    "): (typeof documents)["\n      query GetOrderData {\n        getOrders {\n          order_date\n          totalPages\n          shipped_date\n          ship_name\n          ship_country\n          ship_city\n          ship_address\n        }\n      }\n    "];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
