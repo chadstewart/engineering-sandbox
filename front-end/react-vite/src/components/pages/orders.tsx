@@ -25,7 +25,11 @@ export const Orders = () => {
       {(isLoading || isRefetching) && <Skeleton className="w-72 h-40" />}
       {(error || isRefetchError) && <div>That's not good...</div>}
       {!isRefetching && data?.getOrders?.order && (
-        <GraphQlDataTable responseObject={data.getOrders.order as object[]} />
+        <GraphQlDataTable
+          responseObject={data.getOrders.order as object[]}
+          currentPage={Number(page)}
+          totalPages={data?.getOrders?.totalPages}
+        />
       )}
     </div>
   );

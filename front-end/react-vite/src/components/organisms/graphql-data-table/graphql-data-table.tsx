@@ -1,11 +1,21 @@
+import { useNavigate } from "@tanstack/react-router";
 import { Card, CardContent } from "../../ui/card";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../../ui/table";
+import { PaginationNav } from "@/components/molecules/pagination-nav/pagination-nav";
 
 interface GraphQlDataTableProps {
   responseObject: object[];
+  currentPage: number;
+  totalPages: number;
 }
 
-export const GraphQlDataTable = ({ responseObject }: GraphQlDataTableProps) => {
+export const GraphQlDataTable = ({ responseObject, currentPage, totalPages }: GraphQlDataTableProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = (pageToNavigateTo: string) => {
+    navigate({ to: "/orders/details/$page", params: { page: pageToNavigateTo } });
+  };
+
   return (
     <div className="flex flex-wrap gap-6 justify-center p-4">
       <Card>
@@ -27,6 +37,9 @@ export const GraphQlDataTable = ({ responseObject }: GraphQlDataTableProps) => {
                   ))}
                 </TableRow>
               ))}
+              <TableRow className="flex justify-end items-center w-full gap-2 px-3 py-4">
+                <PaginationNav currentPage={currentPage} totalPages={totalPages} handleClick={handleClick} />
+              </TableRow>
             </TableBody>
           </Table>
         </CardContent>
