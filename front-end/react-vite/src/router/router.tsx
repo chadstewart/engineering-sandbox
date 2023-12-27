@@ -1,4 +1,4 @@
-import { Router, RootRoute, Route } from "@tanstack/react-router";
+import { Router, RootRoute, Route, NotFoundRoute } from "@tanstack/react-router";
 import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
 import CuteAnimals from "@/components/pages/cute-animals";
@@ -6,6 +6,8 @@ import About from "@/components/pages/about";
 import Home from "@/components/pages/home";
 import Architecture from "@/components/pages/architecture";
 import { Orders } from "@/components/pages/orders";
+import NotFound from "@/components/pages/not-found";
+//import NotFound from "@/components/pages/not-found";
 
 const rootRoute = new RootRoute({
   component: MainLayout
@@ -57,6 +59,11 @@ export const ordersPageRoute = new Route({
   path: "/$page"
 });
 
+const notFoundRoute = new NotFoundRoute({
+  getParentRoute: () => rootRoute,
+  component: () => NotFound()
+});
+
 const routeTree = rootRoute.addChildren([
   pageLayoutRoute.addChildren([
     indexRoute,
@@ -67,7 +74,7 @@ const routeTree = rootRoute.addChildren([
   ])
 ]);
 
-const router = new Router({ routeTree });
+const router = new Router({ routeTree, notFoundRoute });
 
 declare module "@tanstack/react-router" {
   interface Register {
