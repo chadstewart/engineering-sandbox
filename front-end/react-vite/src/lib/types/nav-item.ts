@@ -1,8 +1,8 @@
-import { MakeLinkOptions } from "@tanstack/react-router";
+import { LinkOptions } from "@tanstack/react-router";
 import { IconType } from "react-icons";
 
 export interface NavItems {
-  url: MakeLinkOptions["to"];
+  url: LinkOptions["to"];
   params?: object;
   text: string;
   icon?: IconType;

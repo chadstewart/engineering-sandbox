@@ -1,3 +1,3 @@
-import { MakeLinkOptions } from "@tanstack/react-router";
+import { LinkOptions } from "@tanstack/react-router";
 
-export type NavUrl = MakeLinkOptions["to"];
+export type NavUrl = LinkOptions["to"];

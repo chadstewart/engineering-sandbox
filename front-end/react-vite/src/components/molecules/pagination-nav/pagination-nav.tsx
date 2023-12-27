@@ -16,11 +16,11 @@ export const PaginationNav = ({ currentPage, totalPages, navUrl }: PaginationNav
 
   return (
     <>
-      <Link disabled={isFirstPage} to={navUrl} params={{ page: currentPage - 1 }}>
+      <Link disabled={isFirstPage} to={navUrl} params={{ page: `${currentPage - 1}` }}>
         <Icon Icon={IoMdArrowDropleftCircle} iconAlt="Go to Previous Page" color={isFirstPage ? "gray" : ""} />
       </Link>
       <div>{`${currentPage} of ${totalPages}`}</div>
-      <Link disabled={currentPage === totalPages} to={navUrl} params={{ page: currentPage + 1 }}>
+      <Link disabled={currentPage === totalPages} to={navUrl} params={{ page: `${currentPage + 1}` }}>
         <Icon Icon={IoMdArrowDroprightCircle} iconAlt="Go to Next Page" color={isLastPage ? "gray" : ""} />
       </Link>
     </>
