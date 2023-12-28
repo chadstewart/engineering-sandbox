@@ -37,7 +37,7 @@ export const getSuppliers = async (page = 1) => {
 
   const result = data.data;
   return {
-    ...result.queryData,
+    supplier: result.queryData,
     totalRows: result.totalRows,
     totalPages: result.totalPages
   };

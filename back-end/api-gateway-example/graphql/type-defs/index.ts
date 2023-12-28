@@ -44,6 +44,12 @@ export const typeDefs = `#graphql
     phone: String
   }
 
+  type ShipperResponse {
+    shipper: [Shipper]
+    totalRows: Int!
+    totalPages: Int!
+  }
+
   type Employee {
     employee_id: ID!
     last_name: String
@@ -63,6 +69,10 @@ export const typeDefs = `#graphql
     notes: String
     reports_to: Int
     photo_path: String
+  }
+
+  type EmployeeResponse {
+    employee: [Employee]
     totalRows: Int!
     totalPages: Int!
   }
@@ -79,6 +89,10 @@ export const typeDefs = `#graphql
     country: String
     phone: String
     fax: String
+  }
+
+  type CustomerResponse {
+    customer: [Customer]
     totalRows: Int!
     totalPages: Int!
   }
@@ -100,6 +114,10 @@ export const typeDefs = `#graphql
     discontinued: String
     supplier: [Supplier]
     category: [Category]
+  }
+
+  type ProductResponse {
+    product: [Product]
     totalRows: Int!
     totalPages: Int!
   }
@@ -109,6 +127,10 @@ export const typeDefs = `#graphql
     category_name: String
     description: String
     picture: String
+  }
+
+  type CategoryResponse {
+    category: [Category]
     totalRows: Int!
     totalPages: Int!
   }
@@ -126,6 +148,10 @@ export const typeDefs = `#graphql
     phone: String
     fax: String
     homepage: String
+  }
+
+  type SupplierResponse {
+    supplier: [Supplier]
     totalRows: Int!
     totalPages: Int!
   }
@@ -135,8 +161,6 @@ export const typeDefs = `#graphql
     territory_id: ID!
     employee: [Employee]
     territory: [Territory]
-    totalRows: Int!
-    totalPages: Int!
   }
 
   type Territory {
@@ -195,14 +219,14 @@ export const typeDefs = `#graphql
     getOrders(page: Int): OrderResponse
     getOrderDetails(id: ID!): [OrderDetail]
     getTotalRevenue: Revenue
-    getShipppers(page: Int): [Shipper]
-    getEmployees(page: Int): [Employee]
-    getCustomers(page: Int): Customer
+    getShipppers(page: Int): ShipperResponse
+    getEmployees(page: Int): EmployeeResponse
+    getCustomers(page: Int): CustomerResponse
     getCustomerDetails(id: ID!): [Customer]
     getCustomerCountryDistribution: [CustomerCountryDistribution]
-    getProducts(page: Int): Product
-    getCategories(page: Int): [Category]
-    getSuppliers(page: Int): [Supplier]
+    getProducts(page: Int): ProductResponse
+    getCategories(page: Int): CategoryResponse
+    getSuppliers(page: Int): SupplierResponse
     getEmployeeTerritories(territory_id: String!, page: Int): [EmployeeTerritory]
     getCats(getDog: Boolean): [Cat]
   }

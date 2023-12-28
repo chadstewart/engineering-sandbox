@@ -31,7 +31,7 @@ export const getEmployees = async (page = 1) => {
 
   const result = data.data;
   return {
-    ...result.queryData,
+    employee: result.queryData,
     totalRows: result.totalRows,
     totalPages: result.totalPages
   };

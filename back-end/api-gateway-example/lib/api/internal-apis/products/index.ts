@@ -31,7 +31,7 @@ export const getProducts = async (page = 1) => {
 
   const result = data.data;
   return {
-    ...result.queryData,
+    product: result.queryData,
     totalRows: result.totalRows,
     totalPages: result.totalPages
   };

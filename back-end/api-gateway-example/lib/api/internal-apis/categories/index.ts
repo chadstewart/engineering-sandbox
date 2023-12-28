@@ -29,7 +29,7 @@ export const getCategories = async (page = 1) => {
 
   const result = data.data;
   return {
-    ...result.queryData,
+    category: result.queryData,
     totalRows: result.totalRows,
     totalPages: result.totalPages
   };

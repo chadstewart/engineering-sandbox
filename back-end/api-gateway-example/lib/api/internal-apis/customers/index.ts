@@ -30,7 +30,7 @@ export const getCustomers = async (page = 1) => {
 
   const result = data.data;
   return {
-    ...result.queryData,
+    customer: result.queryData,
     totalRows: result.totalRows,
     totalPages: result.totalPages
   };
