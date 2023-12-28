@@ -1,13 +1,8 @@
 import { Router, RootRoute, Route, NotFoundRoute } from "@tanstack/react-router";
+import { lazyRouteComponent } from "@tanstack/react-router";
 import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
-import CuteAnimals from "@/components/pages/cute-animals";
-import About from "@/components/pages/about";
-import Home from "@/components/pages/home";
-import Architecture from "@/components/pages/architecture";
-import { Orders } from "@/components/pages/orders";
 import NotFound from "@/components/pages/not-found";
-//import NotFound from "@/components/pages/not-found";
 
 const rootRoute = new RootRoute({
   component: MainLayout
@@ -22,25 +17,25 @@ const pageLayoutRoute = new Route({
 const indexRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
   path: "/",
-  component: Home
+  component: lazyRouteComponent(() => import("@/components/pages/home"))
 });
 
 const catRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
   path: "/cat",
-  component: CuteAnimals
+  component: lazyRouteComponent(() => import("@/components/pages/cute-animals"))
 });
 
 const aboutRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
   path: "/about",
-  component: About
+  component: lazyRouteComponent(() => import("@/components/pages/about"))
 });
 
 const architectureRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
   path: "/architecture",
-  component: Architecture
+  component: lazyRouteComponent(() => import("@/components/pages/architecture"))
 });
 
 const ordersRoute = new Route({
@@ -51,7 +46,7 @@ const ordersRoute = new Route({
 const orderDetailsRoute = new Route({
   getParentRoute: () => ordersRoute,
   path: "/details",
-  component: Orders
+  component: lazyRouteComponent(() => import("@/components/pages/orders"))
 });
 
 export const ordersPageRoute = new Route({

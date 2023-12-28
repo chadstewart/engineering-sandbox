@@ -7,7 +7,7 @@ import { ordersPageRoute } from "@/router/router";
 import { useEffect } from "react";
 import { NavUrl } from "../molecules/pagination-nav/pagination-nav-types";
 
-export const Orders = () => {
+const Orders = () => {
   updateTitle("Orders");
 
   const orderNavUrl: NavUrl = "/orders/details/$page";
@@ -39,3 +39,5 @@ export const Orders = () => {
     </div>
   );
 };
+
+export default Orders;
