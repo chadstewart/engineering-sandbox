@@ -6,7 +6,7 @@ import { Logo } from "@/components/molecules/logo/logo";
 
 const MobileHeader = () => {
   return (
-    <aside className="flex gap-4 justify-between lg:hidden">
+    <aside className="flex gap-4 justify-between">
       <Logo link />
       <Sheet>
         <SheetTrigger className="flex justify-start items-center">

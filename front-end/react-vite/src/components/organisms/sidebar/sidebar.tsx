@@ -3,7 +3,7 @@ import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content"
 
 const Sidebar = () => {
   return (
-    <aside className="hidden lg:flex lg:flex-col p-3 w-96 border-r-2">
+    <aside className="flex flex-col p-3 w-96 border-r-2">
       <SidebarHeader />
       <SidebarContent />
     </aside>
