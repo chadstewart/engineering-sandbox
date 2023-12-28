@@ -4,7 +4,7 @@ import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content"
 import Icon from "@/components/atoms/icon/icon";
 import { Logo } from "@/components/molecules/logo/logo";
 
-export const MobileHeader = () => {
+const MobileHeader = () => {
   return (
     <aside className="flex gap-4 justify-between lg:hidden">
       <Logo link />
@@ -24,3 +24,5 @@ export const MobileHeader = () => {
     </aside>
   );
 };
+
+export default MobileHeader;

@@ -1,7 +1,7 @@
 import { SidebarHeader } from "@/components/molecules/sidebar-header/sidebar-header";
 import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content";
 
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
     <aside className="hidden lg:flex lg:flex-col p-3 w-96 border-r-2">
       <SidebarHeader />
@@ -9,3 +9,5 @@ export const Sidebar = () => {
     </aside>
   );
 };
+
+export default Sidebar;

@@ -1,14 +1,20 @@
+import { lazy, Suspense } from "react";
 import { Outlet } from "@tanstack/react-router";
-import { Sidebar } from "@/components/organisms/sidebar/sidebar";
 import { Footer } from "@/components/organisms/footer/footer";
-import { MobileHeader } from "@/components/organisms/mobile-header/mobile-header";
+
+const Sidebar = lazy(() => import("@/components/organisms/sidebar/sidebar"));
+const MobileHeader = lazy(() => import("@/components/organisms/mobile-header/mobile-header"));
 
 export const MainLayout = () => {
   return (
     <div className="flex">
-      <Sidebar />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Sidebar />
+      </Suspense>
       <main className="w-full p-4 min-h-screen">
-        <MobileHeader />
+        <Suspense fallback={<div>Loading...</div>}>
+          <MobileHeader />
+        </Suspense>
         <Outlet />
         <Footer />
       </main>
