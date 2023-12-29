@@ -32,9 +32,9 @@ export const GraphQlDataTable = ({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {responseObject.map((orderEntry) => (
+              {responseObject.map((entry) => (
                 <TableRow>
-                  {Object.values(orderEntry as object).map((value) => (
+                  {Object.values(entry as object).map((value) => (
                     <TableCell>{value}</TableCell>
                   ))}
                 </TableRow>

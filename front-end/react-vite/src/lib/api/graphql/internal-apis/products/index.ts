@@ -8,9 +8,6 @@ export const getProductData = async (page = 1) => {
         getProducts(page: $page) {
           product {
             unit_price
-            category {
-              category_name
-            }
             units_in_stock
             units_on_order
             discontinued

@@ -16,7 +16,7 @@ const documents = {
     "\n    query GetCats($getDog: Boolean) {\n      getCats(getDog: $getDog) {\n        url\n        width\n        height\n      }\n    }": types.GetCatsDocument,
     "\n      query GetHomeData {\n        getOrders {\n          totalRows\n        }\n        getTotalRevenue {\n          total_revenue\n        }\n        getProducts {\n          totalRows\n        }\n        getCustomers {\n          totalRows\n        }\n        getCustomerCountryDistribution {\n          country\n          customerCount\n        }\n      }\n    ": types.GetHomeDataDocument,
     "\n      query GetOrderData($page: Int) {\n        getOrders(page: $page) {\n          order {\n            order_date\n            shipped_date\n            ship_name\n            ship_country\n            ship_city\n            ship_address\n          }\n          totalPages\n        }\n      }\n    ": types.GetOrderDataDocument,
-    "\n      query GetProductData($page: Int) {\n        getProducts(page: $page) {\n          product {\n            unit_price\n            category {\n              category_name\n            }\n            units_in_stock\n            units_on_order\n            discontinued\n          }\n          totalPages\n        }\n      }\n    ": types.GetProductDataDocument,
+    "\n      query GetProductData($page: Int) {\n        getProducts(page: $page) {\n          product {\n            unit_price\n            units_in_stock\n            units_on_order\n            discontinued\n          }\n          totalPages\n        }\n      }\n    ": types.GetProductDataDocument,
 };
 
 /**
@@ -48,7 +48,7 @@ export function graphql(source: "\n      query GetOrderData($page: Int) {\n     
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n      query GetProductData($page: Int) {\n        getProducts(page: $page) {\n          product {\n            unit_price\n            category {\n              category_name\n            }\n            units_in_stock\n            units_on_order\n            discontinued\n          }\n          totalPages\n        }\n      }\n    "): (typeof documents)["\n      query GetProductData($page: Int) {\n        getProducts(page: $page) {\n          product {\n            unit_price\n            category {\n              category_name\n            }\n            units_in_stock\n            units_on_order\n            discontinued\n          }\n          totalPages\n        }\n      }\n    "];
+export function graphql(source: "\n      query GetProductData($page: Int) {\n        getProducts(page: $page) {\n          product {\n            unit_price\n            units_in_stock\n            units_on_order\n            discontinued\n          }\n          totalPages\n        }\n      }\n    "): (typeof documents)["\n      query GetProductData($page: Int) {\n        getProducts(page: $page) {\n          product {\n            unit_price\n            units_in_stock\n            units_on_order\n            discontinued\n          }\n          totalPages\n        }\n      }\n    "];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

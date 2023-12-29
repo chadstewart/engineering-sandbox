@@ -18,7 +18,7 @@ interface MyContext {
   token?: string;
 }
 
-const ALLOW_URLS = ["http://172.20.0.2:4000", "http://localhost:4000"];
+const ALLOW_URLS = ["http://172.20.0.2:4000", "http://localhost:4000", "http://localhost:4001"];
 
 const startServer = async () => {
   const httpServer = http.createServer(app);
