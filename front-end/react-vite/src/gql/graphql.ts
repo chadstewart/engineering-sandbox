@@ -30,6 +30,11 @@ export type Category = {
   category_name?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   picture?: Maybe<Scalars['String']['output']>;
+};
+
+export type CategoryResponse = {
+  __typename?: 'CategoryResponse';
+  category?: Maybe<Array<Maybe<Category>>>;
   totalPages: Scalars['Int']['output'];
   totalRows: Scalars['Int']['output'];
 };
@@ -68,14 +73,19 @@ export type Customer = {
   phone?: Maybe<Scalars['String']['output']>;
   postal_code?: Maybe<Scalars['String']['output']>;
   region?: Maybe<Scalars['String']['output']>;
-  totalPages: Scalars['Int']['output'];
-  totalRows: Scalars['Int']['output'];
 };
 
 export type CustomerCountryDistribution = {
   __typename?: 'CustomerCountryDistribution';
   country: Scalars['String']['output'];
   customerCount: Scalars['Int']['output'];
+};
+
+export type CustomerResponse = {
+  __typename?: 'CustomerResponse';
+  customer?: Maybe<Array<Maybe<Customer>>>;
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
 };
 
 export type CustomerUserInput = {
@@ -110,6 +120,11 @@ export type Employee = {
   reports_to?: Maybe<Scalars['Int']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   title_of_courtesy?: Maybe<Scalars['String']['output']>;
+};
+
+export type EmployeeResponse = {
+  __typename?: 'EmployeeResponse';
+  employee?: Maybe<Array<Maybe<Employee>>>;
   totalPages: Scalars['Int']['output'];
   totalRows: Scalars['Int']['output'];
 };
@@ -120,8 +135,6 @@ export type EmployeeTerritory = {
   employee_id: Scalars['ID']['output'];
   territory?: Maybe<Array<Maybe<Territory>>>;
   territory_id: Scalars['ID']['output'];
-  totalPages: Scalars['Int']['output'];
-  totalRows: Scalars['Int']['output'];
 };
 
 export type Mutation = {
@@ -189,27 +202,32 @@ export type Product = {
   reorder_level?: Maybe<Scalars['String']['output']>;
   supplier?: Maybe<Array<Maybe<Supplier>>>;
   supplier_id: Scalars['ID']['output'];
-  totalPages: Scalars['Int']['output'];
-  totalRows: Scalars['Int']['output'];
-  unit_price?: Maybe<Scalars['Int']['output']>;
+  unit_price?: Maybe<Scalars['String']['output']>;
   units_in_stock?: Maybe<Scalars['Int']['output']>;
   units_on_order?: Maybe<Scalars['Int']['output']>;
 };
 
+export type ProductResponse = {
+  __typename?: 'ProductResponse';
+  product?: Maybe<Array<Maybe<Product>>>;
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
+};
+
 export type Query = {
   __typename?: 'Query';
-  getCategories?: Maybe<Array<Maybe<Category>>>;
+  getCategories?: Maybe<CategoryResponse>;
   getCats?: Maybe<Array<Maybe<Cat>>>;
   getCustomerCountryDistribution?: Maybe<Array<Maybe<CustomerCountryDistribution>>>;
   getCustomerDetails?: Maybe<Array<Maybe<Customer>>>;
-  getCustomers?: Maybe<Customer>;
+  getCustomers?: Maybe<CustomerResponse>;
   getEmployeeTerritories?: Maybe<Array<Maybe<EmployeeTerritory>>>;
-  getEmployees?: Maybe<Array<Maybe<Employee>>>;
+  getEmployees?: Maybe<EmployeeResponse>;
   getOrderDetails?: Maybe<Array<Maybe<OrderDetail>>>;
   getOrders?: Maybe<OrderResponse>;
-  getProducts?: Maybe<Product>;
-  getShipppers?: Maybe<Array<Maybe<Shipper>>>;
-  getSuppliers?: Maybe<Array<Maybe<Supplier>>>;
+  getProducts?: Maybe<ProductResponse>;
+  getShipppers?: Maybe<ShipperResponse>;
+  getSuppliers?: Maybe<SupplierResponse>;
   getTotalRevenue?: Maybe<Revenue>;
 };
 
@@ -287,6 +305,13 @@ export type Shipper = {
   shipper_id: Scalars['ID']['output'];
 };
 
+export type ShipperResponse = {
+  __typename?: 'ShipperResponse';
+  shipper?: Maybe<Array<Maybe<Shipper>>>;
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
+};
+
 export type Supplier = {
   __typename?: 'Supplier';
   address?: Maybe<Scalars['String']['output']>;
@@ -301,6 +326,11 @@ export type Supplier = {
   postal_code?: Maybe<Scalars['String']['output']>;
   region?: Maybe<Scalars['String']['output']>;
   suppier_id: Scalars['ID']['output'];
+};
+
+export type SupplierResponse = {
+  __typename?: 'SupplierResponse';
+  supplier?: Maybe<Array<Maybe<Supplier>>>;
   totalPages: Scalars['Int']['output'];
   totalRows: Scalars['Int']['output'];
 };
@@ -323,7 +353,7 @@ export type GetCatsQuery = { __typename?: 'Query', getCats?: Array<{ __typename?
 export type GetHomeDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomeDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'OrderResponse', totalRows: number } | null, getTotalRevenue?: { __typename?: 'Revenue', total_revenue: number } | null, getProducts?: { __typename?: 'Product', totalRows: number } | null, getCustomers?: { __typename?: 'Customer', totalRows: number } | null, getCustomerCountryDistribution?: Array<{ __typename?: 'CustomerCountryDistribution', country: string, customerCount: number } | null> | null };
+export type GetHomeDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'OrderResponse', totalRows: number } | null, getTotalRevenue?: { __typename?: 'Revenue', total_revenue: number } | null, getProducts?: { __typename?: 'ProductResponse', totalRows: number } | null, getCustomers?: { __typename?: 'CustomerResponse', totalRows: number } | null, getCustomerCountryDistribution?: Array<{ __typename?: 'CustomerCountryDistribution', country: string, customerCount: number } | null> | null };
 
 export type GetOrderDataQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
@@ -332,7 +362,15 @@ export type GetOrderDataQueryVariables = Exact<{
 
 export type GetOrderDataQuery = { __typename?: 'Query', getOrders?: { __typename?: 'OrderResponse', totalPages: number, order?: Array<{ __typename?: 'Order', order_date?: string | null, shipped_date?: string | null, ship_name?: string | null, ship_country?: string | null, ship_city?: string | null, ship_address?: string | null } | null> | null } | null };
 
+export type GetProductDataQueryVariables = Exact<{
+  page?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type GetProductDataQuery = { __typename?: 'Query', getProducts?: { __typename?: 'ProductResponse', totalPages: number, product?: Array<{ __typename?: 'Product', unit_price?: string | null, units_in_stock?: number | null, units_on_order?: number | null, discontinued?: string | null, category?: Array<{ __typename?: 'Category', category_name?: string | null } | null> | null } | null> | null } | null };
+
 
 export const GetCatsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCats"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCats"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"getDog"},"value":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<GetCatsQuery, GetCatsQueryVariables>;
 export const GetHomeDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomeData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getTotalRevenue"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total_revenue"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomerCountryDistribution"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"customerCount"}}]}}]}}]} as unknown as DocumentNode<GetHomeDataQuery, GetHomeDataQueryVariables>;
 export const GetOrderDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetOrderData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order_date"}},{"kind":"Field","name":{"kind":"Name","value":"shipped_date"}},{"kind":"Field","name":{"kind":"Name","value":"ship_name"}},{"kind":"Field","name":{"kind":"Name","value":"ship_country"}},{"kind":"Field","name":{"kind":"Name","value":"ship_city"}},{"kind":"Field","name":{"kind":"Name","value":"ship_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}}]}}]} as unknown as DocumentNode<GetOrderDataQuery, GetOrderDataQueryVariables>;
+export const GetProductDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProductData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"product"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"unit_price"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"category_name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"units_in_stock"}},{"kind":"Field","name":{"kind":"Name","value":"units_on_order"}},{"kind":"Field","name":{"kind":"Name","value":"discontinued"}}]}},{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}}]}}]} as unknown as DocumentNode<GetProductDataQuery, GetProductDataQueryVariables>;

@@ -4,6 +4,7 @@ import { FaCat } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";
 import { BiSolidNetworkChart } from "react-icons/bi";
 import { IoCart } from "react-icons/io5";
+import { TbPackages } from "react-icons/tb";
 
 const useMainNav = () => {
   const navList: NavItems[] = [
@@ -14,7 +15,7 @@ const useMainNav = () => {
       iconAlt: "Home page link icon"
     },
     {
-      url: "/cat",
+      url: "/cute-animals",
       text: "Cute Animals",
       icon: FaCat,
       iconAlt: "Cat page link icon"
@@ -25,6 +26,13 @@ const useMainNav = () => {
       text: "Orders",
       icon: IoCart,
       iconAlt: "Order page link icon"
+    },
+    {
+      url: "/products/details/$page",
+      params: { page: 1 },
+      text: "Products",
+      icon: TbPackages,
+      iconAlt: "Product page link icon"
     },
     {
       url: "/about",

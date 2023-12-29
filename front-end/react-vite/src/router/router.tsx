@@ -22,7 +22,7 @@ const indexRoute = new Route({
 
 const catRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
-  path: "/cat",
+  path: "/cute-animals",
   component: lazyRouteComponent(() => import("@/components/pages/cute-animals"))
 });
 
@@ -54,6 +54,22 @@ export const ordersPageRoute = new Route({
   path: "/$page"
 });
 
+const productsRoute = new Route({
+  getParentRoute: () => pageLayoutRoute,
+  path: "/products"
+});
+
+const productDetailsRoute = new Route({
+  getParentRoute: () => productsRoute,
+  path: "/details",
+  component: lazyRouteComponent(() => import("@/components/pages/products"))
+});
+
+export const productsPageRoute = new Route({
+  getParentRoute: () => productDetailsRoute,
+  path: "/$page"
+});
+
 const notFoundRoute = new NotFoundRoute({
   getParentRoute: () => rootRoute,
   component: () => NotFound()
@@ -65,7 +81,8 @@ const routeTree = rootRoute.addChildren([
     catRoute,
     aboutRoute,
     architectureRoute,
-    ordersRoute.addChildren([orderDetailsRoute.addChildren([ordersPageRoute])])
+    ordersRoute.addChildren([orderDetailsRoute.addChildren([ordersPageRoute])]),
+    productsRoute.addChildren([productDetailsRoute.addChildren([productsPageRoute])])
   ])
 ]);
 
