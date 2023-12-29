@@ -5,14 +5,6 @@ import { ROW_LIMIT } from "../util/row-limit";
 export const products = async (page = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
   const queryData = await prisma.products.findMany({
-    select: {
-      product_id: true,
-      product_name: true,
-      unit_price: true,
-      units_in_stock: true,
-      units_on_order: true,
-      discontinued: true
-    },
     skip,
     take
   });

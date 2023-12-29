@@ -107,7 +107,7 @@ export const typeDefs = `#graphql
     supplier_id: ID!
     category_id: ID!
     quantity_per_unit: String
-    unit_price: Int
+    unit_price: String
     units_in_stock: Int
     units_on_order: Int
     reorder_level: String

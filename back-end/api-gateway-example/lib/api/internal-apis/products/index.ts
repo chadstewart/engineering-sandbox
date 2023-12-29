@@ -16,6 +16,8 @@ export const getProducts = async (page = 1) => {
           .object({
             product_id: zod.number(),
             product_name: zod.string(),
+            supplier_id: zod.number(),
+            category_id: zod.number(),
             unit_price: zod.number(),
             units_in_stock: zod.number().nullable(),
             units_on_order: zod.number().nullable(),
