@@ -6,13 +6,6 @@ import { createEmployeeZodSchema } from "../util/schemas/employee-zod-schema";
 export const employees = async (page = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
   const queryData = await prisma.employees.findMany({
-    select: {
-      employee_id: true,
-      first_name: true,
-      last_name: true,
-      title: true,
-      photo: true
-    },
     skip,
     take
   });
