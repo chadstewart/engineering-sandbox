@@ -22,17 +22,6 @@ export const customers = async (page = 1) => {
 
 export const customerDetails = async (customerId: string) => {
   const queryData = await prisma.customers.findMany({
-    select: {
-      customer_id: true,
-      company_name: true,
-      contact_name: true,
-      contact_title: true,
-      customer_customer_demo: {
-        select: {
-          customer_demographics: true
-        }
-      }
-    },
     where: {
       customer_id: customerId
     }

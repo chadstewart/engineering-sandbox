@@ -71,9 +71,7 @@ export const getOrderDetails = async (orderId = 1) => {
     return {
       ...dataEntry.orders,
       ...dataEntry.products,
-      order_id: dataEntry.order_id,
-      unit_price: dataEntry.unit_price,
-      quantity: dataEntry.quantity
+      ...dataEntry
     };
   });
 
