@@ -1,18 +1,12 @@
 import { useState, useEffect } from "react";
-import { ScreenSize } from "../util/screen-size-type";
 
-export const useScreenSize = (): ScreenSize => {
-  const [screenSize, setScreenSize] = useState<ScreenSize>("md");
+export const useScreenSize = () => {
+  const [screenSize, setScreenSize] = useState(0);
 
   useEffect(() => {
-    function getScreenSize(): ScreenSize {
-      if (window.innerWidth < 640) return "xs";
-      if (window.innerWidth < 768) return "sm";
-      if (window.innerWidth < 1024) return "md";
-      if (window.innerWidth < 1280) return "lg";
-      if (window.innerWidth < 1536) return "xl";
-      return "2xl";
-    }
+    const getScreenSize = (): number => {
+      return window.innerWidth;
+    };
 
     function handleResize() {
       setScreenSize(getScreenSize());

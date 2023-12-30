@@ -11,9 +11,7 @@ export const MainLayout = () => {
     <div className="flex">
       <ResponsiveComponent>
         {({ size }) =>
-          size !== "xs" &&
-          size !== "sm" &&
-          size !== "md" && (
+          size > 1279 && (
             <Suspense fallback={<div>Loading...</div>}>
               <Sidebar />
             </Suspense>
@@ -23,7 +21,8 @@ export const MainLayout = () => {
       <main className="w-full p-4 min-h-screen">
         <ResponsiveComponent>
           {({ size }) =>
-            (size === "xs" || size === "sm" || size === "md") && (
+            size > 1 &&
+            size < 1279 && (
               <Suspense fallback={<div>Loading...</div>}>
                 <MobileHeader />
               </Suspense>
