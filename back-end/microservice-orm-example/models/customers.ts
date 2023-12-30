@@ -7,12 +7,6 @@ import { updateCustomerZodSchema } from "../util/schemas/update-customer-zod-sch
 export const customers = async (page = 1) => {
   const { skip, take } = prismaPaginationHelper(page);
   const queryData = await prisma.customers.findMany({
-    select: {
-      customer_id: true,
-      company_name: true,
-      contact_name: true,
-      contact_title: true
-    },
     skip,
     take
   });

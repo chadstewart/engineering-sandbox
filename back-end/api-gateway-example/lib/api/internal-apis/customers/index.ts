@@ -18,7 +18,14 @@ export const getCustomers = async (page = 1) => {
             customer_id: zod.string(),
             company_name: zod.string(),
             contact_name: zod.string().nullable(),
-            contact_title: zod.string().nullable()
+            contact_title: zod.string().nullable(),
+            address: zod.string(),
+            city: zod.string(),
+            region: zod.string().nullable(),
+            postal_code: zod.string(),
+            country: zod.string(),
+            phone: zod.string(),
+            fax: zod.string().nullable()
           })
           .array(),
         totalRows: zod.number(),
