@@ -27,9 +27,10 @@ export const typeDefs = `#graphql
   type OrderDetail {
     order_id: ID!
     product_id: ID!
-    unit_price: Int
+    unit_price: String
     quantity: Int
-    discount: Int
+    order_date: String
+    shipped_date: String
     order: [Order]
     product: [Product]
   }
