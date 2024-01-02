@@ -64,7 +64,23 @@ export const getEmployeesById = async (employeeId = 1) => {
             first_name: zod.string(),
             last_name: zod.string(),
             title: zod.string().nullable(),
-            photo: zod.instanceof(Buffer).nullable()
+            title_of_courtesy: zod.string(),
+            birth_date: zod.string(),
+            hire_date: zod.string(),
+            address: zod.string(),
+            city: zod.string(),
+            region: zod.string().nullable(),
+            postal_code: zod.string(),
+            country: zod.string(),
+            home_phone: zod.string(),
+            extension: zod.string(),
+            photo: zod.object({
+              type: zod.string(),
+              data: zod.any().array()
+            }),
+            notes: zod.string(),
+            reports_to: zod.number().nullable(),
+            photo_path: zod.string()
           })
           .array()
       })

@@ -21,13 +21,6 @@ export const employees = async (page = 1) => {
 
 export const employeesFromId = async (employeeId = 1) => {
   const queryData = await prisma.employees.findMany({
-    select: {
-      employee_id: true,
-      first_name: true,
-      last_name: true,
-      title: true,
-      photo: true
-    },
     where: {
       employee_id: employeeId
     }
