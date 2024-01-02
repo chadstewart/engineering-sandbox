@@ -12,7 +12,7 @@ import { getProductDetails, getProducts } from "../../lib/api/internal-apis/prod
 import { getRegionById } from "../../lib/api/internal-apis/regions";
 import { getTotalRevenue } from "../../lib/api/internal-apis/revenue";
 import { getSupplierDetails, getSuppliers } from "../../lib/api/internal-apis/suppliers";
-import { getTerritories, getTerritoriesById } from "../../lib/api/internal-apis/territories";
+import { getEmployeeTerritories, getTerritoriesById } from "../../lib/api/internal-apis/territories";
 import { createEmployeeZodSchema } from "../../lib/util/schemas/employee-zod-schema";
 import { updateCustomerZodSchema } from "../../lib/util/schemas/update-customer-zod-schema";
 /* import { ResolverContext } from "../../lib/util/types/context-resolver-types"; */
@@ -42,7 +42,7 @@ export const resolvers = {
     getProducts: (_: unknown, args: QueryPaginationArgs) => getProducts(args.page),
     getCategories: (_: unknown, args: QueryPaginationArgs) => getCategories(args.page),
     getSuppliers: (_: unknown, args: QueryPaginationArgs) => getSuppliers(args.page),
-    getEmployeeTerritories: (_: unknown, args: { page: number; territory_id: number }) => getTerritories(args.page),
+    getEmployeeTerritories: (_: unknown, args: { page: number }) => getEmployeeTerritories(args.page),
     getCats: (_: unknown, args: { getDog: boolean }) => getCats(args.getDog)
   },
   Order: {

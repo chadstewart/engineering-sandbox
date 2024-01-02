@@ -52,3 +52,32 @@ export const getTerritoriesById = async (territoryId = 1) => {
   );
   return data.data.queryData;
 };
+
+export const getEmployeeTerritories = async (page = 1) => {
+  const data = await api.get(
+    zod.object({
+      status: zod.string(),
+      data: zod.object({
+        queryData: zod
+          .object({
+            employee_id: zod.number(),
+            territory_id: zod.string()
+          })
+          .array(),
+        totalRows: zod.number(),
+        totalPages: zod.number()
+      })
+    }),
+    `${process.env.REST_API_URL}/v1/employee_territories/${page}`
+  );
+
+  const result = data.data;
+  const test = {
+    employee_territory: result.queryData,
+    totalRows: result.totalRows,
+    totalPages: result.totalPages
+  };
+
+  console.log(test);
+  return test;
+};

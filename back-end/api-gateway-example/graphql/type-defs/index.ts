@@ -158,10 +158,16 @@ export const typeDefs = `#graphql
   }
 
   type EmployeeTerritory {
-    employee_id: ID!
-    territory_id: ID!
+    employee_id: Int!
+    territory_id: String!
     employee: [Employee]
     territory: [Territory]
+  }
+
+  type EmployeeTerritoryResponse {
+    employee_territory: [EmployeeTerritory]
+    totalRows: Int!
+    totalPages: Int!
   }
 
   type Territory {
@@ -228,7 +234,7 @@ export const typeDefs = `#graphql
     getProducts(page: Int): ProductResponse
     getCategories(page: Int): CategoryResponse
     getSuppliers(page: Int): SupplierResponse
-    getEmployeeTerritories(territory_id: String!, page: Int): [EmployeeTerritory]
+    getEmployeeTerritories(page: Int): EmployeeTerritoryResponse
     getCats(getDog: Boolean): [Cat]
   }
 
