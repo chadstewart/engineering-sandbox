@@ -178,7 +178,7 @@ export const typeDefs = `#graphql
 
   type Region {
     region_id: ID!
-    description: String
+    region_description: String
   }
 
   type Cat {
