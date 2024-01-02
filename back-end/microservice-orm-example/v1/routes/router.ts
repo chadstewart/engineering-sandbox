@@ -7,6 +7,7 @@ import {
 } from "../controllers/orders-controller";
 import { addEmployee, getEmployeeById, getEmployees } from "../controllers/employees-controller";
 import {
+  getEmployeeTerritories,
   getEmployeesByTerritories,
   getTerritories,
   getTerritoriesDetails
@@ -53,6 +54,9 @@ router.get("/categories/details/:category_id?", getCategoryDetails);
 router.get("/employees/:page?", getEmployees);
 router.get("/employees/details/:employee_id?", getEmployeeById);
 router.post("/employees", addEmployee);
+
+//Employee Territories
+router.get("/employee_territories/:page?", getEmployeeTerritories);
 
 //Suppliers
 router.get("/suppliers/:page?", getSuppliers);

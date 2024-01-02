@@ -96,3 +96,19 @@ export const territoriesById = async (territoryId = "") => {
   };
   return data;
 };
+
+export const employeeTerritories = async (page = 1) => {
+  const { skip, take } = prismaPaginationHelper(page);
+  const queryData = await prisma.employee_territories.findMany({
+    skip,
+    take
+  });
+  const totalRows = await prisma.territories.count();
+  const totalPages = Math.ceil(totalRows / ROW_LIMIT);
+  const data = {
+    queryData,
+    totalRows,
+    totalPages
+  };
+  return data;
+};
