@@ -20,26 +20,6 @@ export const products = async (page = 1) => {
 
 export const productDetails = async (productId = 1) => {
   const queryData = await prisma.products.findMany({
-    select: {
-      product_name: true,
-      unit_price: true,
-      discontinued: true,
-      categories: {
-        select: {
-          category_name: true,
-          description: true
-        }
-      },
-      suppliers: {
-        select: {
-          company_name: true,
-          contact_name: true,
-          contact_title: true,
-          phone: true,
-          homepage: true
-        }
-      }
-    },
     where: {
       product_id: productId
     }

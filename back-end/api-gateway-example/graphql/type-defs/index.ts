@@ -31,7 +31,6 @@ export const typeDefs = `#graphql
     quantity: Int
     order_date: String
     shipped_date: String
-    order: [Order]
     product: [Product]
   }
 

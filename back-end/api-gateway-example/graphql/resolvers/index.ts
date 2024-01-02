@@ -50,7 +50,6 @@ export const resolvers = {
     employee: (parent: { employee_id: number }) => getEmployeesById(parent.employee_id)
   },
   OrderDetail: {
-    order: (parent: { order_id: number }) => getOrderDetails(parent.order_id),
     product: (parent: { product_id: number }) => getProductDetails(parent.product_id)
   },
   EmployeeTerritory: {
