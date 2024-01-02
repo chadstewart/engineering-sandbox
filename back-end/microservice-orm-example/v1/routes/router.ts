@@ -60,7 +60,7 @@ router.get("/employee_territories/:page?", getEmployeeTerritories);
 
 //Suppliers
 router.get("/suppliers/:page?", getSuppliers);
-router.get("/suppliers/details/:suppliers_id?", getSupplierDetails);
+router.get("/suppliers/details/:supplier_id?", getSupplierDetails);
 
 //US States
 router.get("/states/:page?", getUSStates);
