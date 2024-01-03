@@ -70,6 +70,22 @@ export const productsPageRoute = new Route({
   path: "/$page"
 });
 
+const customersRoute = new Route({
+  getParentRoute: () => pageLayoutRoute,
+  path: "/customers"
+});
+
+const customerDetailsRoute = new Route({
+  getParentRoute: () => customersRoute,
+  path: "/details",
+  component: lazyRouteComponent(() => import("@/components/pages/customers"))
+});
+
+export const customersPageRoute = new Route({
+  getParentRoute: () => customerDetailsRoute,
+  path: "/$page"
+});
+
 const notFoundRoute = new NotFoundRoute({
   getParentRoute: () => rootRoute,
   component: () => NotFound()
@@ -82,7 +98,8 @@ const routeTree = rootRoute.addChildren([
     aboutRoute,
     architectureRoute,
     ordersRoute.addChildren([orderDetailsRoute.addChildren([ordersPageRoute])]),
-    productsRoute.addChildren([productDetailsRoute.addChildren([productsPageRoute])])
+    productsRoute.addChildren([productDetailsRoute.addChildren([productsPageRoute])]),
+    customersRoute.addChildren([customerDetailsRoute.addChildren([customersPageRoute])])
   ])
 ]);
 

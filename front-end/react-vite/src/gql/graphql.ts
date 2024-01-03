@@ -132,9 +132,16 @@ export type EmployeeResponse = {
 export type EmployeeTerritory = {
   __typename?: 'EmployeeTerritory';
   employee?: Maybe<Array<Maybe<Employee>>>;
-  employee_id: Scalars['ID']['output'];
+  employee_id: Scalars['Int']['output'];
   territory?: Maybe<Array<Maybe<Territory>>>;
-  territory_id: Scalars['ID']['output'];
+  territory_id: Scalars['String']['output'];
+};
+
+export type EmployeeTerritoryResponse = {
+  __typename?: 'EmployeeTerritoryResponse';
+  employee_territory?: Maybe<Array<Maybe<EmployeeTerritory>>>;
+  totalPages: Scalars['Int']['output'];
+  totalRows: Scalars['Int']['output'];
 };
 
 export type Mutation = {
@@ -176,13 +183,13 @@ export type Order = {
 
 export type OrderDetail = {
   __typename?: 'OrderDetail';
-  discount?: Maybe<Scalars['Int']['output']>;
-  order?: Maybe<Array<Maybe<Order>>>;
+  order_date?: Maybe<Scalars['String']['output']>;
   order_id: Scalars['ID']['output'];
   product?: Maybe<Array<Maybe<Product>>>;
   product_id: Scalars['ID']['output'];
   quantity?: Maybe<Scalars['Int']['output']>;
-  unit_price?: Maybe<Scalars['Int']['output']>;
+  shipped_date?: Maybe<Scalars['String']['output']>;
+  unit_price?: Maybe<Scalars['String']['output']>;
 };
 
 export type OrderResponse = {
@@ -221,7 +228,7 @@ export type Query = {
   getCustomerCountryDistribution?: Maybe<Array<Maybe<CustomerCountryDistribution>>>;
   getCustomerDetails?: Maybe<Array<Maybe<Customer>>>;
   getCustomers?: Maybe<CustomerResponse>;
-  getEmployeeTerritories?: Maybe<Array<Maybe<EmployeeTerritory>>>;
+  getEmployeeTerritories?: Maybe<EmployeeTerritoryResponse>;
   getEmployees?: Maybe<EmployeeResponse>;
   getOrderDetails?: Maybe<Array<Maybe<OrderDetail>>>;
   getOrders?: Maybe<OrderResponse>;
@@ -254,7 +261,6 @@ export type QueryGetCustomersArgs = {
 
 export type QueryGetEmployeeTerritoriesArgs = {
   page?: InputMaybe<Scalars['Int']['input']>;
-  territory_id: Scalars['String']['input'];
 };
 
 
@@ -289,7 +295,7 @@ export type QueryGetSuppliersArgs = {
 
 export type Region = {
   __typename?: 'Region';
-  description?: Maybe<Scalars['String']['output']>;
+  region_description?: Maybe<Scalars['String']['output']>;
   region_id: Scalars['ID']['output'];
 };
 
@@ -350,6 +356,13 @@ export type GetCatsQueryVariables = Exact<{
 
 export type GetCatsQuery = { __typename?: 'Query', getCats?: Array<{ __typename?: 'Cat', url?: string | null, width?: number | null, height?: number | null } | null> | null };
 
+export type GetCustomerDataQueryVariables = Exact<{
+  page?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type GetCustomerDataQuery = { __typename?: 'Query', getCustomers?: { __typename?: 'CustomerResponse', totalPages: number, customer?: Array<{ __typename?: 'Customer', company_name?: string | null, contact_name?: string | null, contact_title?: string | null, city?: string | null, region?: string | null } | null> | null } | null };
+
 export type GetHomeDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -371,6 +384,7 @@ export type GetProductDataQuery = { __typename?: 'Query', getProducts?: { __type
 
 
 export const GetCatsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCats"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCats"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"getDog"},"value":{"kind":"Variable","name":{"kind":"Name","value":"getDog"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<GetCatsQuery, GetCatsQueryVariables>;
+export const GetCustomerDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCustomerData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"customer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"company_name"}},{"kind":"Field","name":{"kind":"Name","value":"contact_name"}},{"kind":"Field","name":{"kind":"Name","value":"contact_title"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"region"}}]}},{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}}]}}]} as unknown as DocumentNode<GetCustomerDataQuery, GetCustomerDataQueryVariables>;
 export const GetHomeDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomeData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getTotalRevenue"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total_revenue"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"totalRows"}}]}},{"kind":"Field","name":{"kind":"Name","value":"getCustomerCountryDistribution"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"customerCount"}}]}}]}}]} as unknown as DocumentNode<GetHomeDataQuery, GetHomeDataQueryVariables>;
 export const GetOrderDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetOrderData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getOrders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order_date"}},{"kind":"Field","name":{"kind":"Name","value":"shipped_date"}},{"kind":"Field","name":{"kind":"Name","value":"ship_name"}},{"kind":"Field","name":{"kind":"Name","value":"ship_country"}},{"kind":"Field","name":{"kind":"Name","value":"ship_city"}},{"kind":"Field","name":{"kind":"Name","value":"ship_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}}]}}]} as unknown as DocumentNode<GetOrderDataQuery, GetOrderDataQueryVariables>;
 export const GetProductDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetProductData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"product"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"unit_price"}},{"kind":"Field","name":{"kind":"Name","value":"units_in_stock"}},{"kind":"Field","name":{"kind":"Name","value":"units_on_order"}},{"kind":"Field","name":{"kind":"Name","value":"discontinued"}}]}},{"kind":"Field","name":{"kind":"Name","value":"totalPages"}}]}}]}}]} as unknown as DocumentNode<GetProductDataQuery, GetProductDataQueryVariables>;

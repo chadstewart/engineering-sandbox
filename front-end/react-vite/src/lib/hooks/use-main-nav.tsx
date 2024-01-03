@@ -5,6 +5,7 @@ import { IoIosInformationCircle } from "react-icons/io";
 import { BiSolidNetworkChart } from "react-icons/bi";
 import { IoCart } from "react-icons/io5";
 import { TbPackages } from "react-icons/tb";
+import { PiUsersFill } from "react-icons/pi";
 
 const useMainNav = () => {
   const navList: NavItems[] = [
@@ -33,6 +34,13 @@ const useMainNav = () => {
       text: "Products",
       icon: TbPackages,
       iconAlt: "Product page link icon"
+    },
+    {
+      url: "/customers/details/$page",
+      params: { page: 1 },
+      text: "Customers",
+      icon: PiUsersFill,
+      iconAlt: "Customer page link icon"
     },
     {
       url: "/about",
