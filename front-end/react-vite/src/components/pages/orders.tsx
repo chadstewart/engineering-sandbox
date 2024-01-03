@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getOrderData } from "@/lib/api/graphql/internal-apis/orders";
 import { Skeleton } from "../ui/skeleton";
 import { GraphQlDataTable } from "../organisms/graphql-data-table/graphql-data-table";
-import { ordersPageRoute } from "@/router/router";
 import { useEffect } from "react";
 import { NavUrl } from "../molecules/pagination-nav/pagination-nav-types";
+import { ordersPageRoute } from "@/router/orders";
 
 const Orders = () => {
   updateTitle("Orders");
