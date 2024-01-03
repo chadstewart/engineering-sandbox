@@ -16,3 +16,5 @@ export const customersPageRoute = new Route({
   getParentRoute: () => customerDetailsRoute,
   path: "/$page"
 });
+
+export const customersRouteTree = customersRoute.addChildren([customerDetailsRoute.addChildren([customersPageRoute])]);

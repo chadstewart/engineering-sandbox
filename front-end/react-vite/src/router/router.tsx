@@ -6,9 +6,9 @@ import { notFoundRoute } from "./not-found/not-found";
 import { catRoute } from "./cat";
 import { aboutRoute } from "./about";
 import { architectureRoute } from "./architecture";
-import { orderDetailsRoute, ordersPageRoute, ordersRoute } from "./orders";
-import { productDetailsRoute, productsPageRoute, productsRoute } from "./products";
-import { customerDetailsRoute, customersPageRoute, customersRoute } from "./customers";
+import { ordersRouteTree } from "./orders";
+import { productsRouteTree } from "./products";
+import { customersRouteTree } from "./customers";
 
 export const rootRoute = new RootRoute({
   component: MainLayout
@@ -26,9 +26,9 @@ const routeTree = rootRoute.addChildren([
     catRoute,
     aboutRoute,
     architectureRoute,
-    ordersRoute.addChildren([orderDetailsRoute.addChildren([ordersPageRoute])]),
-    productsRoute.addChildren([productDetailsRoute.addChildren([productsPageRoute])]),
-    customersRoute.addChildren([customerDetailsRoute.addChildren([customersPageRoute])])
+    ordersRouteTree,
+    productsRouteTree,
+    customersRouteTree
   ])
 ]);
 
