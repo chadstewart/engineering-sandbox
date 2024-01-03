@@ -11,7 +11,7 @@ dotenv.config();
 app.use(express.json({ limit: "10mb" }));
 
 //Initialize Routers
-import v1AuthRouter from "./v1/routes/authn-router";
+import v1AuthRouter from "./rest/v1/routes/authn-router";
 import notDefined from "./middleware/not-defined";
 
 //Initialize notDefined Middleware
