@@ -4,5 +4,5 @@ import { pageLayoutRoute } from "../router";
 export const indexRoute = new Route({
   getParentRoute: () => pageLayoutRoute,
   path: "/",
-  component: lazyRouteComponent(() => import("@/components/pages/home"))
+  component: lazyRouteComponent(() => import("@/components/pages/home/"))
 });

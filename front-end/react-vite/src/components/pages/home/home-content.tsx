@@ -1,19 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { getHomeData } from "@/lib/api/graphql/internal-apis/home";
-import { Skeleton } from "../ui/skeleton";
+import { Card, CardContent, CardHeader } from "../../ui/card";
+import { Skeleton } from "../../ui/skeleton";
 import { Pie, PieChart } from "recharts";
-import { updateTitle } from "@/lib/util/update-title";
 import { toCurrency } from "@/lib/util/to-currency";
+import { GetHomeDataQuery } from "@/gql/graphql";
 
-const Home = () => {
-  updateTitle("Home");
+interface HomeContentProps {
+  content: GetHomeDataQuery | undefined;
+  error: Error | null;
+  isLoading: boolean;
+}
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["responseData"],
-    queryFn: getHomeData
-  });
-
+const HomeContent = ({ content: data, error, isLoading }: HomeContentProps) => {
   return (
     <div className="flex flex-col p-4 gap-4">
       <section className="flex flex-wrap gap-6 justify-center">
@@ -73,4 +70,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeContent;
