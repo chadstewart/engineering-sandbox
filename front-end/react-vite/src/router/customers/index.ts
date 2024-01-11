@@ -9,7 +9,7 @@ export const customersRoute = new Route({
 export const customerDetailsRoute = new Route({
   getParentRoute: () => customersRoute,
   path: "/details",
-  component: lazyRouteComponent(() => import("@/components/pages/customers"))
+  component: lazyRouteComponent(() => import("@/components/pages/customers/"))
 });
 
 export const customersPageRoute = new Route({
