@@ -1,6 +1,6 @@
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io";
-import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
-import Icon from "../atoms/icon/icon";
+import { Card, CardContent, CardDescription, CardHeader } from "../../ui/card";
+import Icon from "../../atoms/icon/icon";
 import { RiExternalLinkLine, RiTwitterXFill } from "react-icons/ri";
 import { updateTitle } from "@/lib/util/update-title";
 

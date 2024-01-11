@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../../ui/card";
 import { updateTitle } from "@/lib/util/update-title";
 import architectureImage from "@/assets/engineering-sandbox-project-architecture-image.png";
 
