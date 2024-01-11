@@ -3,7 +3,7 @@ import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
 import { indexRoute } from "./index";
 import { notFoundRoute } from "./not-found/not-found";
-import { catRoute } from "./cat";
+import { cuteAnimalsRoute } from "./cute-animals";
 import { aboutRoute } from "./about";
 import { architectureRoute } from "./architecture";
 import { ordersRouteTree } from "./orders";
@@ -23,7 +23,7 @@ export const pageLayoutRoute = new Route({
 const routeTree = rootRoute.addChildren([
   pageLayoutRoute.addChildren([
     indexRoute,
-    catRoute,
+    cuteAnimalsRoute,
     aboutRoute,
     architectureRoute,
     ordersRouteTree,

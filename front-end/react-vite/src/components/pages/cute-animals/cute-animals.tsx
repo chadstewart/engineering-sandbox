@@ -1,71 +1,38 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import { getCats } from "@/lib/api/graphql/internal-apis/cats";
-import { Skeleton } from "../ui/skeleton";
-import { Button } from "../atoms/button/button";
-import { useEffect, useState } from "react";
-import { Switch } from "../ui/switch";
-import { updateTitle } from "@/lib/util/update-title";
+import { Card, CardContent, CardHeader } from "../../ui/card";
+import { Skeleton } from "../../ui/skeleton";
+import { Button } from "../../atoms/button/button";
+import { Switch } from "../../ui/switch";
+import { GetCatsQuery } from "@/gql/graphql";
 
 const MAX_REFRESH = 5;
 
-const CuteAnimals = () => {
-  updateTitle("Cute Animals");
+interface CuteAnimalsContentProps {
+  content: GetCatsQuery | undefined;
+  queryError: Error | null;
+  queryRefetchError: boolean;
+  queryLoading: boolean;
+  queryReFetching: boolean;
+  mutationPending: boolean;
+  mutationError: Error | null;
+  refreshes: number;
+  handleClickButton: () => void;
+  getDog: boolean;
+  setGetDog: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-  const [getDog, setGetDog] = useState(false);
-
-  const {
-    data: queryData,
-    isLoading: queryLoading,
-    refetch: refetchQuery,
-    isRefetching: queryReFetching,
-    error: queryError,
-    isRefetchError: queryRefetchError
-  } = useQuery({
-    queryKey: ["responseData"],
-    queryFn: () => getCats(getDog)
-  });
-
-  const {
-    mutate,
-    isPending: mutationPending,
-    error: mutationError
-  } = useMutation({
-    mutationFn: () => getCats(getDog),
-    onSuccess: (data) =>
-      setCats((prevState) => {
-        if (prevState?.getCats && data?.getCats) {
-          const newState = {
-            ...prevState
-          };
-
-          newState.getCats?.push(...data.getCats);
-
-          return newState;
-        }
-
-        return prevState;
-      })
-  });
-
-  const [cats, setCats] = useState<typeof queryData>();
-  const [refreshes, setRefreshes] = useState(1);
-
-  useEffect(() => {
-    setCats(queryData);
-  }, [queryData]);
-
-  useEffect(() => {
-    setCats({});
-    refetchQuery();
-    setRefreshes(1);
-  }, [refetchQuery, getDog]);
-
-  const handleClickButton = () => {
-    mutate();
-    setRefreshes((prevState) => prevState + 1);
-  };
-
+const CuteAnimalsContent = ({
+  content: cats,
+  queryError,
+  queryRefetchError,
+  queryLoading,
+  queryReFetching,
+  mutationPending,
+  mutationError,
+  refreshes,
+  handleClickButton,
+  getDog,
+  setGetDog
+}: CuteAnimalsContentProps) => {
   const handleClickSwitch = () => {
     setGetDog((prevState) => !prevState);
   };
@@ -131,4 +98,4 @@ const CuteAnimals = () => {
   );
 };
 
-export default CuteAnimals;
+export default CuteAnimalsContent;
