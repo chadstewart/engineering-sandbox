@@ -1,0 +1,57 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+  "name": "The Engineering Sandbox Dev Environment",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": ["--init", "--privileged"],
+  "overrideCommand": false,
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [4001, 4000, 6006],
+  "portsAttributes": {
+    "6006": {
+      "label": "Storybook",
+      "onAutoForward": "openPreview"
+    },
+    "4001": {
+      "label": "Front-End Dev Instance",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "updateContentCommand": "npm ci",
+  "postAttachCommand": "docker compose up -d && npm run storybook",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "front-end/react-vite/src/stories/atoms/button.stories.tsx",
+        "front-end/react-vite/src/router/router.tsx"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "deque-systems.vscode-axe-linter",
+        "apollographql.vscode-apollo",
+        "Prisma.prisma",
+        "bradlc.vscode-tailwindcss",
+        "GraphQL.vscode-graphql",
+        "GraphQL.vscode-graphql-syntax"
+      ]
+    }
+  },
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+
+  "workspaceFolder": "/workspaces/engineering-sandbox/front-end/react-vite/"
+}
