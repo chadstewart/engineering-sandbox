@@ -1,12 +1,13 @@
-FROM node:lts-alpine as rest-api
-USER 0
-COPY package.json /tmp
-COPY package-lock.json /tmp
-COPY ./prisma /tmp
-RUN cd /tmp && npm ci
-RUN mkdir /app && cp -a /tmp/node_modules /app
-COPY ./ /app
+FROM node:lts-alpine AS builder
 WORKDIR /app
+COPY ./ ./
+RUN npm ci
 RUN npm run swagger-autogen && npm run build
+
+FROM node:lts-alpine as rest-api
+RUN mkdir /app
+COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/dist /app/dist
+WORKDIR /app
 EXPOSE 3001
 CMD ["node", "dist/services/server.js"]
