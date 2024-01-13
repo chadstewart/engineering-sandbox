@@ -72,12 +72,12 @@ export async function addEmployee(req: Request, res: Response, next: NextFunctio
                       postal_code: "Hello",
                       country: "Hello",
                       home_phone: "Hello",
-                      extension: "Hello",
+                      extension: "Boo",
                       photo: "Hello",
                       notes: "Hello",
                       reports_to: 1,
                       photo_path: "Hello",
-                      territory_id: "Hello"
+                      territory_id: "06897"
                     }    
                 }
             }
@@ -88,7 +88,7 @@ export async function addEmployee(req: Request, res: Response, next: NextFunctio
 
     const data = await createEmployee(addEmployeesReqBody);
 
-    res.status(200).json({
+    res.status(201).json({
       status: "success",
       data: data
     });

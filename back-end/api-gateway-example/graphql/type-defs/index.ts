@@ -1,4 +1,9 @@
 export const typeDefs = `#graphql
+  type Photo {
+    type: String,
+    data: [String]
+  }
+
   type Order {
     order_id: ID!
     customer_id: ID!
@@ -65,10 +70,32 @@ export const typeDefs = `#graphql
     country: String
     home_phone: String
     extension: String
-    photo: String
+    photo: Photo
     notes: String
     reports_to: Int
     photo_path: String
+  }
+
+  type EmployeeMutationResponse {
+    employee_id: ID!
+    last_name: String
+    first_name: String
+    title: String
+    title_of_courtesy: String
+    birth_date: String
+    hire_date: String
+    address: String
+    city: String
+    region: String
+    postal_code: String
+    country: String
+    home_phone: String
+    extension: String
+    photo: Photo
+    notes: String
+    reports_to: Int
+    photo_path: String
+    territory_id: String
   }
 
   type EmployeeResponse {
@@ -126,7 +153,7 @@ export const typeDefs = `#graphql
     category_id: ID!
     category_name: String
     description: String
-    picture: String
+    picture: Photo
   }
 
   type CategoryResponse {
@@ -214,11 +241,16 @@ export const typeDefs = `#graphql
     country: String!
     home_phone: String!
     extension: String!
-    photo: String!
+    photo: PhotoInput!
     notes: String!
     reports_to: Int!
     photo_path: String!
     territory_id: ID!
+  }
+
+  input PhotoInput {
+    type: String,
+    data: [String]
   }
 
   type Query {
@@ -239,6 +271,6 @@ export const typeDefs = `#graphql
 
   type Mutation {
     updateCustomer(id: ID!, customerUserInput: CustomerUserInput): Customer
-    createEmployee(createEmployeeInput: CreateEmployeeInput): [Employee]
+    createEmployee(createEmployeeInput: CreateEmployeeInput): EmployeeMutationResponse
   }
 `;
