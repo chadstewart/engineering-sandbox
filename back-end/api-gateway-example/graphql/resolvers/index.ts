@@ -1,7 +1,7 @@
 import { getCats } from "../../lib/api/external-apis/cats";
 import { getCategories, getCategoryDetails } from "../../lib/api/internal-apis/categories";
 import {
-  addCustomer,
+  updateCustomer,
   getCustomerCountryDistribution,
   getCustomerDetails,
   getCustomers
@@ -64,7 +64,7 @@ export const resolvers = {
     region: (parent: { region_id: number }) => getRegionById(parent.region_id)
   },
   Mutation: {
-    updateCustomer: (_: unknown, args: CustomerMutationArgs) => addCustomer(args.id, args.customerUserInput),
+    updateCustomer: (_: unknown, args: CustomerMutationArgs) => updateCustomer(args.id, args.customerUserInput),
     createEmployee: (_: unknown, args: CreateEmployeeMutationArgs) => addEmployees(args.createEmployeeInput)
   }
 };

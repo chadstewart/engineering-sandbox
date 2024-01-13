@@ -238,7 +238,7 @@ export const typeDefs = `#graphql
   }
 
   type Mutation {
-    updateCustomer(id: ID!, customerUserInput: CustomerUserInput): [Customer]
+    updateCustomer(id: ID!, customerUserInput: CustomerUserInput): Customer
     createEmployee(createEmployeeInput: CreateEmployeeInput): [Employee]
   }
 `;

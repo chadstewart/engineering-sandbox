@@ -68,26 +68,29 @@ export const getCustomerDetails = async (customerId = "") => {
   return data.data;
 };
 
-export const addCustomer = async (customerId = "", requestBody: typeof updateCustomerZodSchema) => {
+export const updateCustomer = async (customerId: string, requestBody: typeof updateCustomerZodSchema) => {
   const data = await api.put(
     zod.object({
-      customer_id: zod.string(),
-      company_name: zod.string(),
-      contact_name: zod.string().nullable(),
-      contact_title: zod.string().nullable(),
-      address: zod.string().nullable(),
-      city: zod.string().nullable(),
-      region: zod.string().nullable(),
-      postal_code: zod.string().nullable(),
-      country: zod.string().nullable(),
-      phone: zod.string().nullable(),
-      fax: zod.string().nullable()
+      status: zod.string(),
+      data: zod.object({
+        customer_id: zod.string(),
+        company_name: zod.string(),
+        contact_name: zod.string().nullable(),
+        contact_title: zod.string().nullable(),
+        address: zod.string().nullable(),
+        city: zod.string().nullable(),
+        region: zod.string().nullable(),
+        postal_code: zod.string().nullable(),
+        country: zod.string().nullable(),
+        phone: zod.string().nullable(),
+        fax: zod.string().nullable()
+      })
     }),
     `${process.env.REST_API_URL}/v1/customers/${customerId}`,
     requestBody,
     CONFIG
   );
-  return data;
+  return data.data;
 };
 
 export const getCustomerCountryDistribution = async () => {

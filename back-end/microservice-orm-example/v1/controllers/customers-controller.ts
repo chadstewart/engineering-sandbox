@@ -91,7 +91,7 @@ export async function updateCustomerById(req: Request, res: Response, next: Next
     await updateCustomerZodSchema.parse(req.body);
     const data = await updateCustomer(customerId, req.body);
 
-    res.status(204).json({
+    res.status(200).json({
       status: "success",
       data: data
     });
