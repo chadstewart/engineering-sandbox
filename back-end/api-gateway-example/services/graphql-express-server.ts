@@ -20,16 +20,16 @@ interface MyContext {
 
 const ALLOW_URLS = ["http://172.20.0.2:4000", "http://localhost:4000", "http://localhost:4001"];
 
+const httpServer = http.createServer(app);
+
+const server = new ApolloServer<MyContext>({
+  typeDefs,
+  resolvers,
+  cache: new KeyvAdapter(new Keyv(`redis://${process.env.REDIS_PUBLIC_URL}`)),
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
+});
+
 const startServer = async () => {
-  const httpServer = http.createServer(app);
-
-  const server = new ApolloServer<MyContext>({
-    typeDefs,
-    resolvers,
-    cache: new KeyvAdapter(new Keyv(`redis://${process.env.REDIS_PUBLIC_URL}`)),
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
-  });
-
   await server.start();
 
   app.use(
@@ -53,3 +53,13 @@ const startServer = async () => {
 };
 
 startServer();
+
+process.on("SIGTERM", async () => {
+  console.log("SIGTERM signal received.");
+  await httpServer.close(() => {
+    console.log("Closed out remaining connections");
+    // Additional cleanup tasks go here
+  });
+  await server.stop();
+  process.exit(0);
+});

@@ -9,4 +9,4 @@ COPY ./ /app
 WORKDIR /app
 RUN npm run swagger-autogen && npm run build
 EXPOSE 3001
-CMD node dist/services/server.js
+CMD ["node", "dist/services/server.js"]
