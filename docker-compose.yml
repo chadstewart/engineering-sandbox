@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 volumes:
   postgres-data:
@@ -57,10 +57,10 @@ services:
       context: ./back-end/redis-example
       target: redis-container
     ports:
-      -  "6379:6379"
+      - "6379:6379"
     networks:
       - api
-        
+
   rest-api:
     environment:
       - POSTGRESQL_USER=${POSTGRESQL_USER}
@@ -85,8 +85,20 @@ services:
       - api-gateway
     build:
       context: ./front-end/react-vite
+      target: react-prod
     ports:
       - "4000:4000"
     networks:
       front-end:
         ipv4_address: 172.20.0.2
+
+  storybook:
+    container_name: storybook-sandbox
+    build:
+      context: ./front-end/react-vite
+      target: storybook
+    ports:
+      - "3999:3999"
+    networks:
+      front-end:
+        ipv4_address: 172.20.0.4

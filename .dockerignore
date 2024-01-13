@@ -3,3 +3,5 @@ logs
 .env*
 *.js
 dist
+build
+*static
