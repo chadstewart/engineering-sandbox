@@ -1,36 +1,15 @@
 import { createContext, useState } from "react";
 
 const ThemeContext = createContext({});
-const UserContext = createContext({});
 
 const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [ theme, setTheme ] = useState("light");
-  
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
+  const [theme, setTheme] = useState("light");
 
-const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [ user, setUser ] = useState({ authenication: null });
-  
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };
 
 const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <UserContextProvider>
-      <ThemeContextProvider>
-        {children}
-      </ThemeContextProvider>
-    </UserContextProvider>
-  );
+  return <ThemeContextProvider>{children}</ThemeContextProvider>;
 };
 
-export { ThemeContext, UserContext, AppContextProvider };
+export { ThemeContext, AppContextProvider };
