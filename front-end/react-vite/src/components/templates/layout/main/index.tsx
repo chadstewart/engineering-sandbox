@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Outlet } from "@tanstack/react-router";
 import { Footer } from "@/components/organisms/footer/footer";
-import ResponsiveComponent from "@/components/particle/responsive-component";
+import ResponsiveComponent from "@/components/particle/responsive-component/responsive-component";
 
 const Sidebar = lazy(() => import("@/components/organisms/sidebar/sidebar"));
 const MobileHeader = lazy(() => import("@/components/organisms/mobile-header/mobile-header"));

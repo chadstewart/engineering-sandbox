@@ -15,6 +15,7 @@
     "reset-deps": "rm -rf node_modules && npm ci"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
