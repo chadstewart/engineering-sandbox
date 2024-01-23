@@ -6,7 +6,7 @@ export const PageLayout = () => {
   return (
     <div className="px-2">
       <header className="hidden xl:block capitalize py-2 border-b-2">
-        <h2 className="font-semibold">{pageName ? pageName : "Home"}</h2>
+        <h2 className="font-semibold">{pageName && !pageName.includes("redirect") ? pageName : "Home"}</h2>
       </header>
       <Outlet />
     </div>
