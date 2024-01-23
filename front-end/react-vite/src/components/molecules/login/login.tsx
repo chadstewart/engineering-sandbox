@@ -2,7 +2,7 @@ import { Button } from "@/components/atoms/button/button";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const Login = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
   const handleLogin = async () => {
     await loginWithRedirect({
@@ -27,13 +27,27 @@ export const Login = () => {
     });
   };
 
+  const handleLogout = async () => {
+    {
+      logout({
+        logoutParams: {
+          returnTo: window.location.origin
+        }
+      });
+    }
+  };
+
   return (
     <div className="flex justify-between">
+      <span>{!isAuthenticated && <Button onClick={handleSignUp}>Sign up</Button>}</span>
       <span>
-        <Button onClick={handleSignUp}>Sign up</Button>
-      </span>
-      <span>
-        <Button onClick={handleLogin}>Login</Button>
+        {!isAuthenticated && <Button onClick={handleLogin}>Login</Button>}
+        {isAuthenticated && (
+          <div className="flex gap-2">
+            <span>Hello {user?.name}!</span>
+            <Button onClick={handleLogout}>Logout</Button>
+          </div>
+        )}
       </span>
     </div>
   );
