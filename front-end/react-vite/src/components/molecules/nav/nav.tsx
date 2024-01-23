@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { NavItem } from "@/components/atoms/nav-item/nav-item";
-import { NavItems } from "@/lib/types/nav-item";
+import { NavItemProps } from "@/lib/types/nav-item";
 
 interface NavProps {
-  navItems: NavItems[];
+  navItems: NavItemProps[];
 }
 
 export const Nav = ({ navItems }: NavProps) => {
@@ -19,8 +19,7 @@ export const Nav = ({ navItems }: NavProps) => {
                 text={navItem.text}
                 icon={navItem.icon}
                 iconAlt={navItem.iconAlt}
-                externalLink={navItem.externalLink}
-                externalLinkAlt={navItem.externalLinkAlt}
+                externalLinkAlt={""}
               />
             </li>
           </Fragment>
