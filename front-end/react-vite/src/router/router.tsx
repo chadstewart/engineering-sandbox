@@ -1,4 +1,4 @@
-import { Router, RootRoute, Route } from "@tanstack/react-router";
+import { Router, Route, rootRouteWithContext } from "@tanstack/react-router";
 import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
 import { indexRoute } from "./index";
@@ -10,7 +10,11 @@ import { ordersRouteTree } from "./orders";
 import { productsRouteTree } from "./products";
 import { customersRouteTree } from "./customers";
 
-export const rootRoute = new RootRoute({
+interface RouteContext {
+  isAuthenticated: boolean;
+}
+
+export const rootRoute = rootRouteWithContext<RouteContext>()({
   component: MainLayout
 });
 
@@ -32,7 +36,13 @@ const routeTree = rootRoute.addChildren([
   ])
 ]);
 
-const router = new Router({ routeTree, notFoundRoute });
+const router = new Router({
+  routeTree,
+  notFoundRoute,
+  context: {
+    isAuthenticated: false
+  }
+});
 
 declare module "@tanstack/react-router" {
   interface Register {
