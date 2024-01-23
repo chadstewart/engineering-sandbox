@@ -14,6 +14,7 @@ export const Login = () => {
       }
     });
   };
+
   const handleSignUp = async () => {
     await loginWithRedirect({
       appState: {
