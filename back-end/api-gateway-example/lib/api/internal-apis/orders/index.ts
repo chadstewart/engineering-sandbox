@@ -7,7 +7,7 @@ const CONFIG: RequestInit = {
   }
 };
 
-export const getOrders = async (page = 1) => {
+export const getOrders = async (page = 1, accessToken: string) => {
   const data = await api.get(
     zod.object({
       status: zod.string(),
@@ -34,7 +34,13 @@ export const getOrders = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `${process.env.REST_API_URL}/v1/orders/${page}`
+    `${process.env.REST_API_URL}/v1/orders/${page}`,
+    {
+      headers: {
+        ...CONFIG.headers,
+        Authorization: `Bearer ${accessToken}`
+      }
+    }
   );
 
   const result = data.data;
