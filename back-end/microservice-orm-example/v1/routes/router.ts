@@ -24,11 +24,12 @@ import { getCategories, getCategoryDetails } from "../controllers/categories-con
 import { getSupplierDetails, getSuppliers } from "../controllers/suppliers-controller";
 import { getRegionDetails } from "../controllers/regions-controller";
 import { getTotalRevenue } from "../controllers/revenue-controller";
+import routeAuth from "../../middleware/route-authz";
 
 const router = express.Router();
 
 //Orders
-router.get("/orders/:page?", getOrders);
+router.get("/orders/:page?", routeAuth, getOrders);
 router.get("/orders/details/:order_id?", getOrderDetails);
 router.post("/orders", addOrderAddNewCustomer);
 router.post("/orders/:customer_id", addOrderAddExistingCustomer);
