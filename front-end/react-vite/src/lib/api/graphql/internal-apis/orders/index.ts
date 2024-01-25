@@ -1,7 +1,7 @@
 import api from "@/lib/api/config/api";
 import { graphql } from "@/gql";
 
-export const getOrderData = async (page = 1) => {
+export const getOrderData = async (page = 1, accessToken: unknown) => {
   const requestBody = {
     query: graphql(/* GraphQL */ `
       query GetOrderData($page: Int) {
@@ -19,7 +19,8 @@ export const getOrderData = async (page = 1) => {
       }
     `),
     variables: {
-      page
+      page,
+      accessToken
     }
   };
 
