@@ -1,11 +1,11 @@
 import api from "@/lib/api/config/api";
 import { graphql } from "@/gql";
 
-export const getOrderData = async (page = 1, accessToken = "") => {
+export const getOrderData = async (page = 1) => {
   const requestBody = {
     query: graphql(/* GraphQL */ `
-      query GetOrderData($page: Int, $accessToken: String) {
-        getOrders(page: $page, accessToken: $accessToken) {
+      query GetOrderData($page: Int) {
+        getOrders(page: $page) {
           order {
             order_date
             shipped_date
@@ -19,8 +19,7 @@ export const getOrderData = async (page = 1, accessToken = "") => {
       }
     `),
     variables: {
-      page,
-      accessToken
+      page
     }
   };
 
