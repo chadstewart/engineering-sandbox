@@ -27,15 +27,16 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "updateContentCommand": "npm ci",
-  "postAttachCommand": "docker compose up -d && npm run storybook",
+  "postAttachCommand": "docker compose up -d",
 
   // Configure tool-specific properties.
   "customizations": {
     "codespaces": {
       "openFiles": [
         "front-end/react-vite/src/stories/atoms/button.stories.tsx",
-        "front-end/react-vite/src/router/router.tsx"
+        "front-end/react-vite/src/router/router.tsx",
+        "back-end/api-gateway-example/graphql/resolvers/index.tsx",
+        "back-end/microservice-orm-example/v1/routes/router.ts"
       ]
     },
     "vscode": {
@@ -53,5 +54,5 @@
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
 
-  "workspaceFolder": "/workspaces/engineering-sandbox/front-end/react-vite/"
+  "workspaceFolder": "/workspaces/engineering-sandbox/"
 }
