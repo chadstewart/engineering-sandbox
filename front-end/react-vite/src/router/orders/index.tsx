@@ -20,7 +20,7 @@ export const ordersPageRoute = new Route({
 export const orderTestProtected = new Route({
   getParentRoute: () => ordersRoute,
   path: "/protected-route",
-  component: lazyRouteComponent(() => import("@/components/pages/about/")),
+  component: lazyRouteComponent(() => import("@/components/pages/testing/")),
   beforeLoad: ({ location, context }) => {
     if (context.isAuthenticated)
       throw redirect({
