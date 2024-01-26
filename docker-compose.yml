@@ -69,6 +69,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - AUTH0_URL=${AUTH0_URL}
       - AUTH0_AUDIENCE_URL=${AUTH0_AUDIENCE_URL}
+      - AUTH0_SIGNING_ALG=${AUTH0_SIGNING_ALG}
     container_name: rest-api-sandbox
     depends_on:
       - db

@@ -8,7 +8,8 @@ export default async function routeAuth(req: Request, res: Response, next: NextF
 
   const checkJwt = auth({
     audience: `${process.env.AUTH0_AUDIENCE_URL}`,
-    issuerBaseURL: `${process.env.AUTH0_URL}`
+    issuerBaseURL: `https://${process.env.AUTH0_URL}`,
+    tokenSigningAlg: `${process.env.AUTH0_SIGNING_ALG}`
   });
 
   checkJwt(req, res, (err) => {
