@@ -29,10 +29,10 @@ import routeAuth from "../../middleware/route-authz";
 const router = express.Router();
 
 //Orders
-router.get("/orders/:page?", routeAuth, getOrders);
+router.get("/orders/:page?", getOrders);
 router.get("/orders/details/:order_id?", getOrderDetails);
-router.post("/orders", addOrderAddNewCustomer);
-router.post("/orders/:customer_id", addOrderAddExistingCustomer);
+router.post("/orders", routeAuth, addOrderAddNewCustomer);
+router.post("/orders/:customer_id", routeAuth, addOrderAddExistingCustomer);
 
 //Revenue
 router.get("/revenue/total", getTotalRevenue);
@@ -54,7 +54,7 @@ router.get("/categories/details/:category_id?", getCategoryDetails);
 //Employees
 router.get("/employees/:page?", getEmployees);
 router.get("/employees/details/:employee_id?", getEmployeeById);
-router.post("/employees", addEmployee);
+router.post("/employees", routeAuth, addEmployee);
 
 //Employee Territories
 router.get("/employee_territories/:page?", getEmployeeTerritories);
