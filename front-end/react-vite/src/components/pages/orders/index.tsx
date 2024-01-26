@@ -15,7 +15,7 @@ const Orders = () => {
 
   const { data, isLoading, error, refetch, isRefetching, isRefetchError } = useQuery({
     queryKey: ["responseData"],
-    queryFn: async () => getOrderData(Number(page), await getAccessTokenSilently())
+    queryFn: async () => getOrderData(Number(page), `${await getAccessTokenSilently()}`)
   });
 
   useEffect(() => {

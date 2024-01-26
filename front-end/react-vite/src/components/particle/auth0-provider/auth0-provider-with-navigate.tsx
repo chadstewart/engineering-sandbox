@@ -8,6 +8,7 @@ export const Auth0ProviderWithNavigate = ({ children }: Auth0ProviderWithNavigat
   const domain = import.meta.env.VITE_AUTH0_URL;
   const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
   const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL;
+  const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
 
   if (!(domain && clientId && redirectUri)) {
     return null;
@@ -18,7 +19,8 @@ export const Auth0ProviderWithNavigate = ({ children }: Auth0ProviderWithNavigat
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: redirectUri
+        redirect_uri: redirectUri,
+        audience: audience
       }}
     >
       {children}
