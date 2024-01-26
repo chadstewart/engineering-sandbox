@@ -32,7 +32,7 @@ interface CreateEmployeeMutationArgs {
 
 export const resolvers = {
   Query: {
-    getOrders: (_: unknown, args: { page: number; accessToken: string }) => getOrders(args.page, args.accessToken),
+    getOrders: (_: unknown, args: QueryPaginationArgs) => getOrders(args.page),
     getOrderDetails: (_: unknown, args: { id: number }) => getOrderDetails(args.id),
     getTotalRevenue: () => getTotalRevenue(),
     getEmployees: (_: unknown, args: QueryPaginationArgs) => getEmployees(args.page),

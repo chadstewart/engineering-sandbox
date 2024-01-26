@@ -254,7 +254,7 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    getOrders(page: Int, accessToken: String): OrderResponse
+    getOrders(page: Int): OrderResponse
     getOrderDetails(id: ID!): [OrderDetail]
     getTotalRevenue: Revenue
     getShipppers(page: Int): ShipperResponse
