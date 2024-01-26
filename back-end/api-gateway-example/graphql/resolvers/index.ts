@@ -23,10 +23,12 @@ interface QueryPaginationArgs {
 
 interface CustomerMutationArgs {
   id: string;
+  accessToken: string;
   customerUserInput: typeof updateCustomerZodSchema;
 }
 
 interface CreateEmployeeMutationArgs {
+  accessToken: string;
   createEmployeeInput: typeof createEmployeeZodSchema;
 }
 
@@ -64,7 +66,9 @@ export const resolvers = {
     region: (parent: { region_id: number }) => getRegionById(parent.region_id)
   },
   Mutation: {
-    updateCustomer: (_: unknown, args: CustomerMutationArgs) => updateCustomer(args.id, args.customerUserInput),
-    createEmployee: (_: unknown, args: CreateEmployeeMutationArgs) => addEmployees(args.createEmployeeInput)
+    updateCustomer: (_: unknown, args: CustomerMutationArgs) =>
+      updateCustomer(args.id, args.accessToken, args.customerUserInput),
+    createEmployee: (_: unknown, args: CreateEmployeeMutationArgs) =>
+      addEmployees(args.accessToken, args.createEmployeeInput)
   }
 };

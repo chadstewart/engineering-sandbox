@@ -68,7 +68,11 @@ export const getCustomerDetails = async (customerId = "") => {
   return data.data;
 };
 
-export const updateCustomer = async (customerId: string, requestBody: typeof updateCustomerZodSchema) => {
+export const updateCustomer = async (
+  customerId: string,
+  accessToken: string,
+  requestBody: typeof updateCustomerZodSchema
+) => {
   const data = await api.put(
     zod.object({
       status: zod.string(),
@@ -88,7 +92,12 @@ export const updateCustomer = async (customerId: string, requestBody: typeof upd
     }),
     `${process.env.REST_API_URL}/v1/customers/${customerId}`,
     requestBody,
-    CONFIG
+    {
+      headers: {
+        ...CONFIG.headers,
+        Authorization: `Bearer ${accessToken}`
+      }
+    }
   );
   return data.data;
 };
