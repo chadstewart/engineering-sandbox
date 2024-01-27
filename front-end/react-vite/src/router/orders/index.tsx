@@ -22,7 +22,7 @@ export const orderTestProtected = new Route({
   path: "/protected-route",
   component: lazyRouteComponent(() => import("@/components/pages/testing/")),
   beforeLoad: ({ location, context }) => {
-    if (context.isAuthenticated)
+    if (!context.isAuthenticated)
       throw redirect({
         to: "/",
         search: {
