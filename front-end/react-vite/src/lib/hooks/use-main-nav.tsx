@@ -6,6 +6,8 @@ import { BiSolidNetworkChart } from "react-icons/bi";
 import { IoCart } from "react-icons/io5";
 import { TbPackages } from "react-icons/tb";
 import { PiUsersFill } from "react-icons/pi";
+import { BiDetail } from "react-icons/bi";
+import { LuTestTube2 } from "react-icons/lu";
 
 const useMainNav = () => {
   const navList: NavItemProps[] = [
@@ -22,11 +24,24 @@ const useMainNav = () => {
       iconAlt: "Cat page link icon"
     },
     {
-      url: "/orders/details/$page",
-      params: { page: 1 },
       text: "Orders",
       icon: IoCart,
-      iconAlt: "Order page link icon"
+      iconAlt: "Order dropdown link icon",
+      children: [
+        {
+          url: "/orders/details/$page",
+          params: { page: 1 },
+          text: "Details",
+          icon: BiDetail,
+          iconAlt: "Details page link icon"
+        },
+        {
+          url: "/orders/protected-route",
+          text: "Test",
+          icon: LuTestTube2,
+          iconAlt: "Test page link icon"
+        }
+      ]
     },
     {
       url: "/products/details/$page",
