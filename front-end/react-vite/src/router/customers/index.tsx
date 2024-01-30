@@ -1,4 +1,4 @@
-import { Route, lazyRouteComponent } from "@tanstack/react-router";
+import { Route, lazyRouteComponent, redirect } from "@tanstack/react-router";
 import { pageLayoutRoute } from "../router";
 
 export const customersRoute = new Route({
@@ -17,4 +17,22 @@ export const customersPageRoute = new Route({
   path: "/$page"
 });
 
-export const customersRouteTree = customersRoute.addChildren([customerDetailsRoute.addChildren([customersPageRoute])]);
+export const customerTestProtected = new Route({
+  getParentRoute: () => customersRoute,
+  path: "/protected-route",
+  component: lazyRouteComponent(() => import("@/components/pages/testing/")),
+  beforeLoad: ({ location, context }) => {
+    if (!context.isAuthenticated)
+      throw redirect({
+        to: "/",
+        search: {
+          redirect: location.href
+        }
+      });
+  }
+});
+
+export const customersRouteTree = customersRoute.addChildren([
+  customerTestProtected,
+  customerDetailsRoute.addChildren([customersPageRoute])
+]);

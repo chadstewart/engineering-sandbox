@@ -27,21 +27,8 @@ const useMainNav = () => {
       text: "Orders",
       icon: IoCart,
       iconAlt: "Order dropdown link icon",
-      children: [
-        {
-          url: "/orders/details/$page",
-          params: { page: 1 },
-          text: "Details",
-          icon: BiDetail,
-          iconAlt: "Details page link icon"
-        },
-        {
-          url: "/orders/protected-route",
-          text: "Test",
-          icon: LuTestTube2,
-          iconAlt: "Test page link icon"
-        }
-      ]
+      url: "/orders/details/$page",
+      params: { page: 1 }
     },
     {
       url: "/products/details/$page",
@@ -51,11 +38,24 @@ const useMainNav = () => {
       iconAlt: "Product page link icon"
     },
     {
-      url: "/customers/details/$page",
-      params: { page: 1 },
       text: "Customers",
       icon: PiUsersFill,
-      iconAlt: "Customer page link icon"
+      iconAlt: "Customer page link icon",
+      children: [
+        {
+          url: "/customers/details/$page",
+          params: { page: 1 },
+          text: "Details",
+          icon: BiDetail,
+          iconAlt: "Details page link icon"
+        },
+        {
+          url: "/customers/protected-route",
+          text: "Test",
+          icon: LuTestTube2,
+          iconAlt: "Test page link icon"
+        }
+      ]
     },
     {
       url: "/about",
