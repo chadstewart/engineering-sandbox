@@ -4,7 +4,8 @@ import {
   updateCustomer,
   getCustomerCountryDistribution,
   getCustomerDetails,
-  getCustomers
+  getCustomers,
+  getAllCustomerIDs
 } from "../../lib/api/internal-apis/customers";
 import { addEmployees, getEmployees, getEmployeesById } from "../../lib/api/internal-apis/employees";
 import { getOrderDetails, getOrders } from "../../lib/api/internal-apis/orders";
@@ -41,6 +42,7 @@ export const resolvers = {
     getCustomers: (_: unknown, args: QueryPaginationArgs) => getCustomers(args.page),
     getCustomerDetails: (_: unknown, args: { id: string }) => getCustomerDetails(args.id),
     getCustomerCountryDistribution: () => getCustomerCountryDistribution(),
+    getAllCustomerIDs: (_: unknown, args: { accessToken: string }) => getAllCustomerIDs(args.accessToken),
     getProducts: (_: unknown, args: QueryPaginationArgs) => getProducts(args.page),
     getCategories: (_: unknown, args: QueryPaginationArgs) => getCategories(args.page),
     getSuppliers: (_: unknown, args: QueryPaginationArgs) => getSuppliers(args.page),

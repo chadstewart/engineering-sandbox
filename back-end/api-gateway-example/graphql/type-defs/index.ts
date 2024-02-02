@@ -261,6 +261,7 @@ export const typeDefs = `#graphql
     getEmployees(page: Int): EmployeeResponse
     getCustomers(page: Int): CustomerResponse
     getCustomerDetails(id: ID!): [Customer]
+    getAllCustomerIDs(accessToken: String!): [String]
     getCustomerCountryDistribution: [CustomerCountryDistribution]
     getProducts(page: Int): ProductResponse
     getCategories(page: Int): CategoryResponse

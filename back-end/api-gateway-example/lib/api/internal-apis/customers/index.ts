@@ -127,3 +127,27 @@ export const getCustomerCountryDistribution = async () => {
 
   return resultMap;
 };
+
+export const getAllCustomerIDs = async (accessToken: string) => {
+  const data = await api.get(
+    zod.object({
+      status: zod.string(),
+      data: zod
+        .object({
+          customer_id: zod.string()
+        })
+        .array()
+    }),
+    `${process.env.REST_API_URL}/v1/customers/customer_id/all`,
+    {
+      headers: {
+        ...CONFIG.headers,
+        Authorization: `Bearer ${accessToken}`
+      }
+    }
+  );
+
+  const result = data.data.map((dataEntry) => dataEntry.customer_id);
+
+  return result;
+};
