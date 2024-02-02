@@ -1,5 +1,11 @@
 import { Request, Response, NextFunction } from "express";
-import { customers, customerDetails, updateCustomer, customerCountryDistribution } from "../../models/customers";
+import {
+  customers,
+  customerDetails,
+  updateCustomer,
+  customerCountryDistribution,
+  allCustomerIDs
+} from "../../models/customers";
 import { updateCustomerZodSchema } from "../../util/schemas/update-customer-zod-schema";
 
 export async function getCustomers(req: Request, res: Response, next: NextFunction) {
@@ -109,6 +115,17 @@ export async function updateCustomerById(req: Request, res: Response, next: Next
 
 export async function getCustomerCountryDistribution(req: Request, res: Response, next: NextFunction) {
   const data = await customerCountryDistribution();
+
+  res.status(200).json({
+    status: "success",
+    data: data
+  });
+
+  return next();
+}
+
+export async function getAllCustomerIDs(req: Request, res: Response, next: NextFunction) {
+  const data = await allCustomerIDs();
 
   res.status(200).json({
     status: "success",

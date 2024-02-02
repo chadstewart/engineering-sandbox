@@ -14,6 +14,7 @@ import {
 } from "../controllers/territories-controller";
 import { getProducts, getProductDetails } from "../controllers/products-controller";
 import {
+  getAllCustomerIDs,
   getCustomerCountryDistribution,
   getCustomerDetails,
   getCustomers,
@@ -46,6 +47,7 @@ router.get("/customers/:page?", getCustomers);
 router.get("/customers/details/:customer_id?", getCustomerDetails);
 router.put("/customers/:customer_id", updateCustomerById);
 router.get("/customers/distribution/country", getCustomerCountryDistribution);
+router.get("/customers/customer_id/all", routeAuth, getAllCustomerIDs);
 
 //Categories
 router.get("/categories/:page?", getCategories);

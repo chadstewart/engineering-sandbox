@@ -58,3 +58,13 @@ export const customerCountryDistribution = async () => {
 
   return queryData;
 };
+
+export const allCustomerIDs = async () => {
+  const queryData = await prisma.customers.findMany({
+    select: {
+      customer_id: true
+    }
+  });
+
+  return queryData;
+};
