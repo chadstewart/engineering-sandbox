@@ -15,7 +15,7 @@ export const Nav = ({ navItems }: NavProps) => {
       <ul className="flex flex-col gap-2">
         {navItems.map((navItem, index) => (
           <Fragment key={index}>
-            <li className={`flex items-center min-h-12 rounded-md hover:bg-sky-100`}>
+            <li className={`flex items-center min-h-12`}>
               {navItem.children ? (
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="item-1" className={cn("border-none")}>
