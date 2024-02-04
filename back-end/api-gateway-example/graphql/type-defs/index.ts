@@ -216,6 +216,7 @@ export const typeDefs = `#graphql
   }
 
   input CustomerUserInput {
+    company_name: String
     contact_name: String
     contact_title: String
     address: String
