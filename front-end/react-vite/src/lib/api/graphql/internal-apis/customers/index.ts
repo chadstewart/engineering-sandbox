@@ -50,3 +50,20 @@ export const updateCustomerData = async (customerData: updateCustomerType, acces
 
   return data;
 };
+
+export const getAllCustomerIDs = async (accessToken: string) => {
+  const requestBody = {
+    query: graphql(/* GraphQL */ `
+      query getAllCustomerIDs($accessToken: String!) {
+        getAllCustomerIDs(accessToken: $accessToken)
+      }
+    `),
+    variables: {
+      accessToken
+    }
+  };
+
+  const data = api.graphqlQuery(`http://172.20.0.3:3000/graphql`, requestBody.query, requestBody.variables);
+
+  return data;
+};
