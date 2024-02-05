@@ -91,6 +91,7 @@ services:
       - VITE_AUTH0_CLIENT_SECRET={AUTH0_CLIENT_SECRET}
       - VITE_AUTH0_SIGNING_ALG=${AUTH0_SIGNING_ALG}
       - VITE_AUTH0_CALLBACK_URL={AUTH0_CALLBACK_URL}
+      - VITE_API_GATEWAY_URL=${API_GATEWAY_URL}
     container_name: react-sandbox
     depends_on:
       - api-gateway

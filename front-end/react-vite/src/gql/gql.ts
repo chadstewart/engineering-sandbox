@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n    query GetCats($getDog: Boolean) {\n      getCats(getDog: $getDog) {\n        url\n        width\n        height\n      }\n    }": types.GetCatsDocument,
+    "\n      query GetCats($getDog: Boolean) {\n        getCats(getDog: $getDog) {\n          url\n          width\n          height\n        }\n      }\n    ": types.GetCatsDocument,
     "\n      query GetCustomerData($page: Int) {\n        getCustomers(page: $page) {\n          customer {\n            company_name\n            contact_name\n            contact_title\n            city\n            region\n          }\n          totalPages\n        }\n      }\n    ": types.GetCustomerDataDocument,
     "\n      mutation UpdateCustomer($updateCustomerId: ID!, $accessToken: String!, $customerUserInput: CustomerUserInput) {\n        updateCustomer(id: $updateCustomerId, accessToken: $accessToken, customerUserInput: $customerUserInput) {\n          customer_id\n        }\n      }\n    ": types.UpdateCustomerDocument,
     "\n      query getAllCustomerIDs($accessToken: String!) {\n        getAllCustomerIDs(accessToken: $accessToken)\n      }\n    ": types.GetAllCustomerIDsDocument,
@@ -39,7 +39,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n    query GetCats($getDog: Boolean) {\n      getCats(getDog: $getDog) {\n        url\n        width\n        height\n      }\n    }"): (typeof documents)["\n    query GetCats($getDog: Boolean) {\n      getCats(getDog: $getDog) {\n        url\n        width\n        height\n      }\n    }"];
+export function graphql(source: "\n      query GetCats($getDog: Boolean) {\n        getCats(getDog: $getDog) {\n          url\n          width\n          height\n        }\n      }\n    "): (typeof documents)["\n      query GetCats($getDog: Boolean) {\n        getCats(getDog: $getDog) {\n          url\n          width\n          height\n        }\n      }\n    "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

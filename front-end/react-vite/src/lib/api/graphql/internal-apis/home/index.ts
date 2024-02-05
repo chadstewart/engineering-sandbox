@@ -26,7 +26,7 @@ export const getHomeData = async () => {
     variables: {}
   };
 
-  const data = api.graphqlQuery(`http://172.20.0.3:3000/graphql`, requestBody.query, requestBody.variables);
+  const data = api.graphqlQuery(import.meta.env.VITE_API_GATEWAY_URL, requestBody.query, requestBody.variables);
 
   return data;
 };
