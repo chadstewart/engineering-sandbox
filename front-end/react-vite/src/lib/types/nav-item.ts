@@ -10,6 +10,7 @@ export type NavItemProps = {
   iconAlt: string;
   activeLink?: boolean;
   externalLinkAlt?: string;
+  isProtectedLink?: boolean;
 };
 
 type NavItemChildren = {
@@ -20,4 +21,5 @@ type NavItemChildren = {
   iconAlt: string;
   activeLink?: boolean;
   externalLinkAlt?: string;
+  isProtectedLink?: boolean;
 };

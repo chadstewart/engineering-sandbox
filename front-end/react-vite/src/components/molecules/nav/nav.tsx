@@ -25,28 +25,14 @@ export const Nav = ({ navItems }: NavProps) => {
                     <AccordionContent className="pl-8">
                       {navItem.children.map((navItemChild, index) => (
                         <div className={`pt-3 min-h-12 ${index + 1 !== navItem.children?.length && "border-b"}`}>
-                          <NavItem
-                            url={navItemChild.url}
-                            params={navItemChild.params}
-                            text={navItemChild.text}
-                            icon={navItemChild.icon}
-                            iconAlt={navItemChild.iconAlt}
-                            externalLinkAlt={navItemChild.externalLinkAlt}
-                          />
+                          <NavItem {...navItemChild} />
                         </div>
                       ))}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
               ) : (
-                <NavItem
-                  url={navItem.url}
-                  params={navItem.params}
-                  text={navItem.text}
-                  icon={navItem.icon}
-                  iconAlt={navItem.iconAlt}
-                  externalLinkAlt={navItem.externalLinkAlt}
-                />
+                <NavItem {...navItem} />
               )}
             </li>
           </Fragment>

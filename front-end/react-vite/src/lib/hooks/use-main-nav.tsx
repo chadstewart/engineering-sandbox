@@ -53,7 +53,8 @@ const useMainNav = () => {
           url: "/customers/protected-route",
           text: "Test",
           icon: LuTestTube2,
-          iconAlt: "Test page link icon"
+          iconAlt: "Test page link icon",
+          isProtectedLink: true
         }
       ]
     },
