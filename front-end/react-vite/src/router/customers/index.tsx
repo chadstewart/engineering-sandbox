@@ -17,7 +17,7 @@ export const customersPageRoute = new Route({
   path: "/$page"
 });
 
-export const customerTestProtected = new Route({
+export const customerAddCustomer = new Route({
   getParentRoute: () => customersRoute,
   path: "/add-customer",
   component: lazyRouteComponent(() => import("@/components/pages/customers/add_customer")),
@@ -33,6 +33,6 @@ export const customerTestProtected = new Route({
 });
 
 export const customersRouteTree = customersRoute.addChildren([
-  customerTestProtected,
+  customerAddCustomer,
   customerDetailsRoute.addChildren([customersPageRoute])
 ]);
