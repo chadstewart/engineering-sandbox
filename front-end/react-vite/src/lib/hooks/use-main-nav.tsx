@@ -7,7 +7,7 @@ import { IoCart } from "react-icons/io5";
 import { TbPackages } from "react-icons/tb";
 import { PiUsersFill } from "react-icons/pi";
 import { BiDetail } from "react-icons/bi";
-import { LuTestTube2 } from "react-icons/lu";
+import { IoMdPersonAdd } from "react-icons/io";
 
 const useMainNav = () => {
   const navList: NavItemProps[] = [
@@ -50,10 +50,10 @@ const useMainNav = () => {
           iconAlt: "Details page link icon"
         },
         {
-          url: "/customers/protected-route",
-          text: "Test",
-          icon: LuTestTube2,
-          iconAlt: "Test page link icon",
+          url: "/customers/add-customer",
+          text: "Add Customer",
+          icon: IoMdPersonAdd,
+          iconAlt: "Add Customer link icon",
           isProtectedLink: true
         }
       ]

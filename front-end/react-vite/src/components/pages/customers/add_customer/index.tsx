@@ -8,8 +8,8 @@ import { getAllCustomerIDs, updateCustomerData } from "@/lib/api/graphql/interna
 import { updateCustomerType, updateCustomerZodSchema } from "@/lib/types/update-customer-schema";
 import { useState } from "react";
 
-const Testing = () => {
-  updateTitle("Test");
+const AddCustomer = () => {
+  updateTitle("Customer | Add Customer");
 
   const { getAccessTokenSilently } = useAuth0();
   const [accessToken, setAccessToken] = useState("");
@@ -202,4 +202,4 @@ const Testing = () => {
   );
 };
 
-export default Testing;
+export default AddCustomer;

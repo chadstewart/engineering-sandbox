@@ -1,6 +1,6 @@
-import { Skeleton } from "../../ui/skeleton";
-import { GraphQlDataTable } from "../../organisms/graphql-data-table/graphql-data-table";
-import { NavUrl } from "../../molecules/pagination-nav/pagination-nav-types";
+import { Skeleton } from "../../../ui/skeleton";
+import { GraphQlDataTable } from "../../../organisms/graphql-data-table/graphql-data-table";
+import { NavUrl } from "../../../molecules/pagination-nav/pagination-nav-types";
 import { GetCustomerDataQuery } from "@/gql/graphql";
 
 interface CustomersContentProps {

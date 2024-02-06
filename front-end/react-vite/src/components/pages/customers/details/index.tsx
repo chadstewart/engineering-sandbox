@@ -6,7 +6,7 @@ import { customersPageRoute } from "@/router/customers";
 import CustomersContent from "./customers-content";
 
 const Customers = () => {
-  updateTitle("Products");
+  updateTitle("Customers | Details");
 
   const { page } = customersPageRoute.useParams();
 

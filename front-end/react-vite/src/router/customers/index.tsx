@@ -9,7 +9,7 @@ export const customersRoute = new Route({
 export const customerDetailsRoute = new Route({
   getParentRoute: () => customersRoute,
   path: "/details",
-  component: lazyRouteComponent(() => import("@/components/pages/customers/"))
+  component: lazyRouteComponent(() => import("@/components/pages/customers/details"))
 });
 
 export const customersPageRoute = new Route({
@@ -19,8 +19,8 @@ export const customersPageRoute = new Route({
 
 export const customerTestProtected = new Route({
   getParentRoute: () => customersRoute,
-  path: "/protected-route",
-  component: lazyRouteComponent(() => import("@/components/pages/testing/")),
+  path: "/add-customer",
+  component: lazyRouteComponent(() => import("@/components/pages/customers/add_customer")),
   beforeLoad: ({ location, context }) => {
     if (!context.isAuthenticated)
       throw redirect({
