@@ -1,9 +1,9 @@
-import { updateTitle } from "@/lib/util/update-title";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { getCustomerData } from "@/lib/api/graphql/internal-apis/customers";
 import { customersPageRoute } from "@/router/customers";
 import CustomersContent from "./customers-content";
+import { updateTitle } from "@/lib/util/update-title";
 
 const Customers = () => {
   updateTitle("Customers | Details");
