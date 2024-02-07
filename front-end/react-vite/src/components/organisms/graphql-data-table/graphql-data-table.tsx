@@ -26,16 +26,18 @@ export const GraphQlDataTable = ({
             <TableCaption>{tableCaption}</TableCaption>
             <TableHeader>
               <TableRow>
-                {Object.keys(responseObject[0] as object).map((key) => (
-                  <TableHead className="capitalize">{key.toLowerCase()}</TableHead>
+                {Object.keys(responseObject[0] as object).map((key, index) => (
+                  <TableHead key={index} className="capitalize">
+                    {key.toLowerCase()}
+                  </TableHead>
                 ))}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {responseObject.map((entry) => (
-                <TableRow>
-                  {Object.values(entry as object).map((value) => (
-                    <TableCell>{value}</TableCell>
+              {responseObject.map((entry, index) => (
+                <TableRow key={index}>
+                  {Object.values(entry as object).map((value, valueIndex) => (
+                    <TableCell key={valueIndex}>{value}</TableCell>
                   ))}
                 </TableRow>
               ))}

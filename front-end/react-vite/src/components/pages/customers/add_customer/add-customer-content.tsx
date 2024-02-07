@@ -32,8 +32,8 @@ const AddCustomerContent = ({ content: data, error, isLoading, onSubmit }: AddCu
                   <FormLabel>Customer ID</FormLabel>
                   <FormControl>
                     <select className="px-2 border border-slate-600/50 rounded" {...field}>
-                      {data?.getAllCustomerIDs?.map((customerID, key) => (
-                        <option key={key} value={`${customerID}`}>
+                      {data?.getAllCustomerIDs?.map((customerID, index) => (
+                        <option key={index} value={`${customerID}`}>
                           {customerID}
                         </option>
                       ))}
