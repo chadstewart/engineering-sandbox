@@ -1,6 +1,6 @@
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import { IoMdMenu } from "react-icons/io";
-import { SidebarContent } from "../../molecules/sidebar-content/sidebar-content";
+import { SidebarContentWrapper } from "../../molecules/sidebar-content/sidebar-content-wrapper";
 import Icon from "@/components/atoms/icon/icon";
 import { Logo } from "@/components/molecules/logo/logo";
 
@@ -18,7 +18,7 @@ const MobileHeader = () => {
               <Logo />
             </header>
           </SheetHeader>
-          <SidebarContent />
+          <SidebarContentWrapper />
         </SheetContent>
       </Sheet>
     </aside>

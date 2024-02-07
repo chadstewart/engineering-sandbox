@@ -1,14 +1,16 @@
 import { Nav } from "@/components/molecules/nav/nav";
-import useMainNav from "@/lib/hooks/use-main-nav";
 import { Login } from "../login/login";
+import { NavItemProps } from "@/lib/types/nav-item";
 
-export const SidebarContent = () => {
-  const mainNav = useMainNav();
+interface SidebarContentProps {
+  navItems: NavItemProps[];
+}
 
+export const SidebarContent = ({ navItems }: SidebarContentProps) => {
   return (
     <>
       <Login />
-      <Nav navItems={mainNav} />
+      <Nav navItems={navItems} />
     </>
   );
 };
