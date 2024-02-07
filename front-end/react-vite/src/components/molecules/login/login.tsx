@@ -1,5 +1,5 @@
-import { Button } from "@/components/atoms/button/button";
 import { useAuth0 } from "@auth0/auth0-react";
+import { LoginContent } from "./login-content";
 
 export const Login = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -38,17 +38,12 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex justify-between">
-      <span>{!isAuthenticated && <Button onClick={handleSignUp}>Sign up</Button>}</span>
-      <span>
-        {!isAuthenticated && <Button onClick={handleLogin}>Login</Button>}
-        {isAuthenticated && (
-          <div className="flex gap-2">
-            <span>Hello {user?.name}!</span>
-            <Button onClick={handleLogout}>Logout</Button>
-          </div>
-        )}
-      </span>
-    </div>
+    <LoginContent
+      handleLogin={handleLogin}
+      handleLogout={handleLogout}
+      handleSignUp={handleSignUp}
+      isAuthenticated={isAuthenticated}
+      userName={user?.name}
+    />
   );
 };
