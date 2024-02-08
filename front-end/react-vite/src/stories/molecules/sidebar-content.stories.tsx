@@ -19,6 +19,17 @@ const navItems: NavItemProps[] = [
   }
 ];
 
+const userName = "test";
+const emptyFunc = async () => {};
+
+const storybook = {
+  handleLogin: emptyFunc,
+  handleLogout: emptyFunc,
+  handleSignUp: emptyFunc,
+  isAuthenticated: false,
+  userName
+};
+
 export default storyConfig;
 
-export const SidebarContentStory = () => <SidebarContent navItems={navItems} />;
+export const SidebarContentStory = () => <SidebarContent navItems={navItems} storybook={storybook} />;
