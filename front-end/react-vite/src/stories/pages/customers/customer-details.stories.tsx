@@ -1,7 +1,7 @@
 import CustomerDetails from "@/components/pages/customers/details/customers-content";
 
 const storyConfig = {
-  title: "Design System/Pages/Customer/Add Customer"
+  title: "Design System/Pages/Customer/Customer Details"
 };
 
 export default storyConfig;
@@ -189,7 +189,7 @@ const testData = {
   }
 };
 
-export const AddCustomerStory = () => (
+export const CustomerDetailsStory = () => (
   <CustomerDetails
     content={testData}
     isLoading={false}
