@@ -1,18 +1,29 @@
 const MAX_RETRIES = 3;
 const BASE_DELAY_IN_MS = 1000;
+const TIMEOUT_IN_MS = 8000;
 
-type exponentialBackOffArgs = [url: URL | RequestInfo, config?: RequestInit];
+type fetchApiArgs = [url: URL | RequestInfo, config?: RequestInit];
 
 export const exponentialBackOff =
-  (fetchFunc: (...args: exponentialBackOffArgs) => Promise<Response>) =>
-  async (...args: exponentialBackOffArgs) => {
+  (fetchFunc: (...args: fetchApiArgs) => Promise<Response>) =>
+  async (...args: fetchApiArgs) => {
     let retries = 0;
     const isUnderMaxRetries = retries < MAX_RETRIES;
 
+    const controller = new AbortController();
+
     while (isUnderMaxRetries) {
       try {
-        const res = await fetchFunc(...args);
+        const timeoutID = setTimeout(() => {
+          controller.abort("API call timed out.");
+        }, TIMEOUT_IN_MS);
+        const res = await fetchFunc(args[0], {
+          signal: controller.signal,
+          ...args[1]
+        });
         const data = res.json();
+
+        clearTimeout(timeoutID);
         return data;
       } catch (error) {
         console.error(`Error calling API: ${(error as Error).message}`);
