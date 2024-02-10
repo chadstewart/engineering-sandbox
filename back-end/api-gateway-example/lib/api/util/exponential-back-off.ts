@@ -2,11 +2,11 @@ const MAX_RETRIES = 3;
 const BASE_DELAY_IN_MS = 1000;
 const TIMEOUT_IN_MS = 8000;
 
-type fetchApiArgs = [url: URL | RequestInfo, config?: RequestInit];
+type apiFuncType = typeof fetch;
 
 export const exponentialBackOff =
-  (fetchFunc: (...args: fetchApiArgs) => Promise<Response>) =>
-  async (...args: fetchApiArgs) => {
+  (fetchFunc: apiFuncType) =>
+  async (...args: Parameters<apiFuncType>) => {
     let retries = 0;
     const isUnderMaxRetries = retries < MAX_RETRIES;
 
