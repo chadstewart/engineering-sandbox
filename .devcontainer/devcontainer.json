@@ -7,7 +7,12 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "runArgs": ["--init", "--privileged"],
+  "runArgs": [
+    "--init",
+    "--privileged",
+    "--env-file",
+    ".devcontainer/devcontainer.env"
+  ],
   "overrideCommand": false,
 
   // Features to add to the dev container. More info: https://containers.dev/features.
