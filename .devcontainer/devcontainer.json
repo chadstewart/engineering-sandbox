@@ -32,7 +32,7 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postAttachCommand": "docker compose up -d",
+  "postAttachCommand": "docker compose --profile backend up -d && sls config credentials --provider aws --key $ACCESS_KEY --secret $SECRET_ACCESS_KEY",
 
   // Configure tool-specific properties.
   "customizations": {
@@ -48,6 +48,7 @@
       "extensions": [
         "deque-systems.vscode-axe-linter",
         "apollographql.vscode-apollo",
+        "redhat.vscode-yaml",
         "Prisma.prisma",
         "bradlc.vscode-tailwindcss",
         "GraphQL.vscode-graphql",
