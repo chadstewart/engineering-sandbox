@@ -1,4 +1,4 @@
 import { app } from "../app";
 import sls from "serverless-http";
 
-module.exports.lambdaFunction = sls(app);
+export const lambda = sls(app);
