@@ -23,6 +23,15 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "secretsmanager:GetSecretValue"
+      Resource: "arn:aws:secretsmanager:us-east-2:293877434882:secret:pro/lambda/monolith-356TOG"
+
+plugins:
+  - serverless-plugin-typescript
 
 # you can overwrite defaults here
 #  stage: dev
