@@ -24,7 +24,7 @@ app.use(express.json({ limit: "10mb" }));
 //Initialize Routers
 import notDefined from "./middleware/not-defined";
 import v1Router from "./v1/routes/router";
-import serverLogger from "./middleware/logger";
+// import serverLogger from "./middleware/logger";
 import { startPerformanceTest } from "./middleware/perf-test-start";
 import { endPerformanceTest } from "./middleware/perf-test-complete";
 import { internalServerErrorMiddleware } from "./middleware/internal-server-error";
@@ -47,4 +47,4 @@ app.use(endPerformanceTest);
 app.use(internalServerErrorMiddleware);
 
 //Initialize Logger
-app.use(serverLogger);
+// app.use(serverLogger);

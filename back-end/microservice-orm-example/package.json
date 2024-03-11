@@ -35,6 +35,7 @@
     "nodemon": "^2.0.22",
     "prettier": "^3.1.0",
     "prisma": "^5.2.0",
+    "serverless-dotenv-plugin": "^6.0.0",
     "serverless-plugin-typescript": "^2.1.5",
     "swagger-autogen": "^2.23.7",
     "tsx": "^3.12.7",
