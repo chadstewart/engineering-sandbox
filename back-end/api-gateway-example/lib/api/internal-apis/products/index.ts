@@ -1,5 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
+import { secretsServicesUrl } from "../../util/secrets-services-url";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -28,7 +29,7 @@ export const getProducts = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `${process.env.REST_API_URL}/v1/products/${page}`
+    `${await secretsServicesUrl()}/v1/products/${page}`
   );
 
   const result = data.data;
@@ -56,7 +57,7 @@ export const getProductDetails = async (productId = 1) => {
         })
         .array()
     }),
-    `${process.env.REST_API_URL}/v1/products/details/${productId}`
+    `${await secretsServicesUrl()}/v1/products/details/${productId}`
   );
   return data.data;
 };

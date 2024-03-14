@@ -1,6 +1,7 @@
 import zod from "zod";
 import api from "../../config/api";
 import { createEmployeeZodSchema } from "../../../util/schemas/employee-zod-schema";
+import { secretsServicesUrl } from "../../util/secrets-services-url";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -42,7 +43,7 @@ export const getEmployees = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `${process.env.REST_API_URL}/v1/employees/${page}`
+    `${await secretsServicesUrl()}/v1/employees/${page}`
   );
 
   const result = data.data;
@@ -85,7 +86,7 @@ export const getEmployeesById = async (employeeId = 1) => {
           .array()
       })
     }),
-    `${process.env.REST_API_URL}/v1/employees/details/${employeeId}`
+    `${await secretsServicesUrl()}/v1/employees/details/${employeeId}`
   );
   return data.data.queryData;
 };
@@ -126,7 +127,7 @@ export const addEmployees = async (accessToken: string, requestBody: typeof crea
         })
       ])
     }),
-    `${process.env.REST_API_URL}/v1/employees`,
+    `${await secretsServicesUrl()}/v1/employees`,
     requestBody,
     {
       headers: {

@@ -1,6 +1,7 @@
 import zod from "zod";
 import api from "../../config/api";
 import { updateCustomerZodSchema } from "../../../util/schemas/update-customer-zod-schema";
+import { secretsServicesUrl } from "../../util/secrets-services-url";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -32,7 +33,7 @@ export const getCustomers = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `${process.env.REST_API_URL}/v1/customers/${page}`
+    `${await secretsServicesUrl()}/v1/customers/${page}`
   );
 
   const result = data.data;
@@ -63,7 +64,7 @@ export const getCustomerDetails = async (customerId = "") => {
         })
         .array()
     }),
-    `${process.env.REST_API_URL}/v1/customers/details/${customerId}`
+    `${await secretsServicesUrl()}/v1/customers/details/${customerId}`
   );
   return data.data;
 };
@@ -90,7 +91,7 @@ export const updateCustomer = async (
         fax: zod.string().nullable()
       })
     }),
-    `${process.env.REST_API_URL}/v1/customers/${customerId}`,
+    `${await secretsServicesUrl()}/v1/customers/${customerId}`,
     requestBody,
     {
       headers: {
@@ -115,7 +116,7 @@ export const getCustomerCountryDistribution = async () => {
         })
         .array()
     }),
-    `${process.env.REST_API_URL}/v1/customers/distribution/country`
+    `${await secretsServicesUrl()}/v1/customers/distribution/country`
   );
 
   const resultMap = data.data.map((countryResponse) => {
@@ -138,7 +139,7 @@ export const getAllCustomerIDs = async (accessToken: string) => {
         })
         .array()
     }),
-    `${process.env.REST_API_URL}/v1/customers/customer_id/all`,
+    `${await secretsServicesUrl()}/v1/customers/customer_id/all`,
     {
       headers: {
         ...CONFIG.headers,

@@ -1,5 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
+import { secretsServicesUrl } from "../../util/secrets-services-url";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -23,7 +24,7 @@ export const getTerritories = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `${process.env.REST_API_URL}/v1/territories/${page}`
+    `${await secretsServicesUrl()}/v1/territories/${page}`
   );
 
   const result = data.data;
@@ -48,7 +49,7 @@ export const getTerritoriesById = async (territoryId = 1) => {
           .array()
       })
     }),
-    `${process.env.REST_API_URL}/v1/territories/details/${territoryId}`
+    `${await secretsServicesUrl()}/v1/territories/details/${territoryId}`
   );
   return data.data.queryData;
 };
@@ -68,7 +69,7 @@ export const getEmployeeTerritories = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `${process.env.REST_API_URL}/v1/employee_territories/${page}`
+    `${await secretsServicesUrl()}/v1/employee_territories/${page}`
   );
 
   const result = data.data;

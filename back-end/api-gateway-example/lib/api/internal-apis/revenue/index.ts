@@ -1,5 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
+import { secretsServicesUrl } from "../../util/secrets-services-url";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -17,7 +18,7 @@ export const getTotalRevenue = async () => {
         })
         .array()
     }),
-    `${process.env.REST_API_URL}/v1/revenue/total`
+    `${await secretsServicesUrl()}/v1/revenue/total`
   );
   const result = data.data[0].total_revenue;
   return {

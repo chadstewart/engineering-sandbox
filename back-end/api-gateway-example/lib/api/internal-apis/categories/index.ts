@@ -1,5 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
+import { secretsServicesUrl } from "../../util/secrets-services-url";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -27,7 +28,7 @@ export const getCategories = async (page = 1) => {
         totalPages: zod.number()
       })
     }),
-    `${process.env.REST_API_URL}/v1/categories/${page}`
+    `${await secretsServicesUrl()}/v1/categories/${page}`
   );
 
   const result = data.data;
@@ -54,7 +55,7 @@ export const getCategoryDetails = async (categoryId = 1) => {
         })
         .array()
     }),
-    `${process.env.REST_API_URL}/v1/categories/details/${categoryId}`
+    `${await secretsServicesUrl()}/v1/categories/details/${categoryId}`
   );
   return data.data;
 };

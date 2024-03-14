@@ -1,5 +1,6 @@
 import zod from "zod";
 import api from "../../config/api";
+import { secretsServicesUrl } from "../../util/secrets-services-url";
 
 const CONFIG: RequestInit = {
   headers: {
@@ -18,7 +19,7 @@ export const getRegionById = async (regionId = 1) => {
         })
         .array()
     }),
-    `${process.env.REST_API_URL}/v1/regions/details/${regionId}`
+    `${await secretsServicesUrl()}/v1/regions/details/${regionId}`
   );
   return data.data;
 };
