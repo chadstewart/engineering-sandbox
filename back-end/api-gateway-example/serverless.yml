@@ -33,7 +33,7 @@ provider:
     - Effect: "Allow"
       Action:
         - "secretsmanager:GetSecretValue"
-      Resource: "arn:aws:secretsmanager:us-east-2:293877434882:secret:pro/lambda/monolith-356TOG"
+      Resource: "arn:aws:secretsmanager:us-east-2:293877434882:secret:prod/lambda/api-gateway-7zaFsI"
 
 plugins:
   - serverless-plugin-typescript
