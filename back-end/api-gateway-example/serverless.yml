@@ -27,6 +27,8 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: us-east-1
+  httpApi:
+    cors: true
   environment:
     NODE_ENV: ${self:custom.secrets.NODE_ENV} # reference the NODE_ENV from the secrets.json file
   iamRoleStatements:
@@ -37,6 +39,7 @@ provider:
 
 plugins:
   - serverless-plugin-typescript
+  - serverless-offline
 
 # you can overwrite defaults here
 #  stage: dev
@@ -79,11 +82,9 @@ functions:
       - http:
           path: /
           method: ANY
-          cors: false
       - http:
           path: /{proxy+}
           method: ANY
-          cors: false
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

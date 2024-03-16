@@ -7,10 +7,10 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import { app } from "../app";
 import { typeDefs } from "../graphql/type-defs";
 import { resolvers } from "../graphql/resolvers";
-import { KeyvAdapter } from "@apollo/utils.keyvadapter";
-import serverlessExpress from "@vendia/serverless-express";
+import serverlessExpress, { getCurrentInvoke } from "@codegenie/serverless-express";
+/* import { KeyvAdapter } from "@apollo/utils.keyvadapter";
 import Keyv from "keyv";
-/* import { handlers, startServerAndCreateLambdaHandler } from "@as-integrations/aws-lambda";
+import { handlers, startServerAndCreateLambdaHandler } from "@as-integrations/aws-lambda";
 import rateLimit from "../middleware/rate-limit";
 import routeAuth from "../middleware/route-authz"; */
 
@@ -18,14 +18,14 @@ interface MyContext {
   token?: string;
 }
 
-const ALLOW_URLS = ["http://172.20.0.2:4000", "http://localhost:4000", "http://localhost:4001"];
+const ALLOW_URLS = ["*"];
 
 const httpServer = http.createServer(app);
 
 const server = new ApolloServer<MyContext>({
   typeDefs,
   resolvers,
-  cache: new KeyvAdapter(new Keyv(`redis://${process.env.REDIS_PUBLIC_URL}`)),
+  /* cache: new KeyvAdapter(new Keyv(`redis://${process.env.REDIS_PUBLIC_URL}`)), */
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
 });
 
@@ -40,8 +40,16 @@ app.use(
   /* routeAuth,
   rateLimit,*/
   expressMiddleware(server, {
-    context: async ({ req }) => {
-      return { requestObject: req };
+    context: async ({ req, res }) => {
+      const { event, context } = getCurrentInvoke();
+      event.requestContext = context;
+      return {
+        expressRequest: req,
+        expressResponse: res,
+        lambdaEvent: event,
+        lambdaContext: context,
+        requestObject: req
+      };
     }
   })
 );
