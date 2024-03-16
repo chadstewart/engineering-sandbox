@@ -11,12 +11,10 @@ dotenv.config();
 app.use(express.json({ limit: "10mb" }));
 
 //Initialize Routers
-import v1AuthRouter from "./rest/v1/routes/authn-router";
 import notDefined from "./middleware/not-defined";
 
 //Initialize notDefined Middleware
 app.use(notDefined);
 
 //Use Routers
-app.use("/v1/auth", v1AuthRouter);
 app.get("/", (req, res) => res.send("Hello World!!"));
