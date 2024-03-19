@@ -18,7 +18,7 @@ interface MyContext {
   token?: string;
 }
 
-const ALLOW_URLS = ["*"];
+const ALLOW_URLS = ["https://d2a3kv2z6ecrel.cloudfront.net"];
 
 const httpServer = http.createServer(app);
 
@@ -34,7 +34,8 @@ server.startInBackgroundHandlingStartupErrorsByLoggingAndFailingAllRequests();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>({
-    origin: ALLOW_URLS
+    origin: ALLOW_URLS,
+    methods: ["POST", "GET", "OPTIONS"]
   }),
   json(),
   /* routeAuth,
