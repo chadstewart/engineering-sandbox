@@ -6,4 +6,4 @@ const storyConfig = {
 
 export default storyConfig;
 
-export const PaginatedNavStory = () => <PaginationNav currentPage={1} totalPages={4} navUrl="" />;
+export const PaginatedNavStory = () => <PaginationNav currentPage={1} totalPages={4} navUrl="/" />;
