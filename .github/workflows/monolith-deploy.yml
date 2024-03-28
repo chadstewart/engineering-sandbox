@@ -1,0 +1,35 @@
+name: Deploy API Monolith to AWS Lambda
+
+on:
+  push:
+    paths:
+      - "back-end/microservices-orm-example/**"
+    branches: ["main"]
+
+defaults:
+  run:
+    working-directory: ./back-end/microservices-orm-example
+
+jobs:
+  lambda-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to repo
+        uses: actions/checkout@v2
+
+      - name: Setup node environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: Install serverless globally
+        run: npm install -g serverless
+
+      - name: Configure serverless authentication
+        run: sls config credentials --provider aws --key ${{ secrets.ACCESS_KEY }} --secret ${{ secrets.SECRET_ACCESS_KEY }}
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Deploy lambda functions
+        run: sls deploy
