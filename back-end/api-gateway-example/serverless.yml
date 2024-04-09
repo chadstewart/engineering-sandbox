@@ -23,6 +23,10 @@ frameworkVersion: "3"
 custom:
   secrets: ${file(secrets.json)} # reference the secrets.json file
 
+package:
+  patterns:
+    - "!test/**"
+
 provider:
   name: aws
   runtime: nodejs18.x
