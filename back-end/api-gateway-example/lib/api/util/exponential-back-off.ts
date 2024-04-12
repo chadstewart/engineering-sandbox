@@ -8,11 +8,10 @@ export const exponentialBackOff =
   (fetchFunc: apiFuncType) =>
   async (...args: Parameters<apiFuncType>) => {
     let retries = 0;
-    const isUnderMaxRetries = retries < MAX_RETRIES;
 
     const controller = new AbortController();
 
-    while (isUnderMaxRetries) {
+    while (retries < MAX_RETRIES) {
       try {
         const timeoutID = setTimeout(() => {
           controller.abort("API call timed out.");
@@ -26,10 +25,10 @@ export const exponentialBackOff =
         clearTimeout(timeoutID);
         return data;
       } catch (error) {
-        console.error(`Error calling API: ${(error as Error).message}`);
+        console.error(`Error calling API`);
         retries++;
 
-        if (isUnderMaxRetries) {
+        if (retries < MAX_RETRIES) {
           const delay = BASE_DELAY_IN_MS * Math.pow(2, retries);
           console.log(`Retrying API after ${delay} ms`);
           await new Promise((resolve) => setTimeout(resolve, delay));
