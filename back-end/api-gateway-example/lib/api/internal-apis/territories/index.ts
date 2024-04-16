@@ -29,7 +29,7 @@ export const getTerritories = async (page = 1) => {
 
   const result = data.data;
   return {
-    ...result.queryData,
+    territories: result.queryData,
     totalRows: result.totalRows,
     totalPages: result.totalPages
   };
@@ -73,12 +73,9 @@ export const getEmployeeTerritories = async (page = 1) => {
   );
 
   const result = data.data;
-  const test = {
+  return {
     employee_territory: result.queryData,
     totalRows: result.totalRows,
     totalPages: result.totalPages
   };
-
-  console.log(test);
-  return test;
 };
