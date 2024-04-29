@@ -91,7 +91,7 @@ export const getEmployeesById = async (employeeId = 1) => {
   return data.data.queryData;
 };
 
-export const addEmployees = async (accessToken: string, requestBody: typeof createEmployeeZodSchema) => {
+export const addEmployees = async (accessToken: string, requestBody: createEmployeeZodSchema) => {
   const data = await api.post(
     zod.object({
       status: zod.string(),
