@@ -69,11 +69,7 @@ export const getCustomerDetails = async (customerId = "") => {
   return data.data;
 };
 
-export const updateCustomer = async (
-  customerId: string,
-  accessToken: string,
-  requestBody: typeof updateCustomerZodSchema
-) => {
+export const updateCustomer = async (customerId: string, accessToken: string, requestBody: updateCustomerZodSchema) => {
   const data = await api.put(
     zod.object({
       status: zod.string(),

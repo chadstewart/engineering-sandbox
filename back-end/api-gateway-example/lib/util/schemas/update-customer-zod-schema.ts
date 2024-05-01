@@ -1,14 +1,12 @@
-import zod from "zod";
-
-export const updateCustomerZodSchema = zod.object({
-  company_name: zod.optional(zod.string()),
-  contact_name: zod.optional(zod.string()),
-  contact_title: zod.optional(zod.string()),
-  address: zod.optional(zod.string()),
-  city: zod.optional(zod.string()),
-  region: zod.optional(zod.string()),
-  postal_code: zod.optional(zod.string()),
-  country: zod.optional(zod.string()),
-  phone: zod.optional(zod.string()),
-  fax: zod.optional(zod.string())
-});
+export type updateCustomerZodSchema = {
+  company_name: string | null;
+  contact_name: string | null;
+  contact_title: string | null;
+  address: string | null;
+  city: string | null;
+  region: string | null;
+  postal_code: string | null;
+  country: string | null;
+  phone: string | null;
+  fax: string | null;
+};
