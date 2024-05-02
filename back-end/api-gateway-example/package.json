@@ -17,6 +17,7 @@
     "@apollo/server": "^4.9.3",
     "@apollo/utils.keyvadapter": "^3.1.0",
     "@as-integrations/aws-lambda": "^3.1.0",
+    "@aws-sdk/client-secrets-manager": "^3.533.0",
     "@codegenie/serverless-express": "^4.14.0",
     "@keyv/redis": "^2.8.0",
     "cors": "^2.8.5",
@@ -31,7 +32,6 @@
     "zod-fetch": "^0.1.1"
   },
   "devDependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.533.0",
     "@types/cors": "^2.8.14",
     "@types/express": "^4.17.17",
     "@types/node": "^18.15.7",
