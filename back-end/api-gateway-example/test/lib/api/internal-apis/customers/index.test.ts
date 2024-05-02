@@ -8,7 +8,7 @@ import {
   updateCustomer
 } from "../../../../../lib/api/internal-apis/customers";
 
-describe("Internal API Function: Categories", () => {
+describe("Internal API Function: Customers", () => {
   beforeEach(() => {
     vi.mock("../../../../../lib/api/config/api");
     vi.mock("../../../../../lib/api/util/secrets-services-url", () => {

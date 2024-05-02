@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, expectTypeOf, it, vi } from "v
 import api from "../../../../../lib/api/config/api";
 import { getOrderDetails, getOrders } from "../../../../../lib/api/internal-apis/orders";
 
-describe("Internal API Function: Categories", () => {
+describe("Internal API Function: Orders", () => {
   beforeEach(() => {
     vi.mock("../../../../../lib/api/config/api");
     vi.mock("../../../../../lib/api/util/secrets-services-url", () => {
