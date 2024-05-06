@@ -22,6 +22,9 @@ frameworkVersion: "3"
 
 custom:
   secrets: ${file(secrets.json)} # reference the secrets.json file
+  bundle:
+    esbuild: true
+    excludeFiles: "**/*.test.ts"
 
 package:
   patterns:
@@ -44,6 +47,7 @@ provider:
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-bundle
 
 # you can overwrite defaults here
 #  stage: dev

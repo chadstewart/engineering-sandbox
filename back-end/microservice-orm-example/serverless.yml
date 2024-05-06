@@ -22,6 +22,9 @@ frameworkVersion: "3"
 
 custom:
   secrets: ${file(secrets.json)} # reference the secrets.json file
+  bundle:
+    esbuild: true
+    excludeFiles: "**/*.test.ts"
 
 provider:
   name: aws
@@ -38,6 +41,7 @@ provider:
 plugins:
   - serverless-plugin-typescript
   - serverless-dotenv-plugin
+  - serverless-bundle
 
 # you can overwrite defaults here
 #  stage: dev
@@ -74,10 +78,10 @@ plugins:
 #    - include-me-dir/**
 package:
   patterns:
-    - '!node_modules/.prisma/client/libquery_engine-*'
-    - 'node_modules/.prisma/client/libquery_engine-rhel-*'
-    - '!node_modules/prisma/libquery_engine-*'
-    - '!node_modules/@prisma/engines/**'
+    - "!node_modules/.prisma/client/libquery_engine-*"
+    - "node_modules/.prisma/client/libquery_engine-rhel-*"
+    - "!node_modules/prisma/libquery_engine-*"
+    - "!node_modules/@prisma/engines/**"
 
 functions:
   monolith:

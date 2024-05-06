@@ -40,6 +40,7 @@
     "eslint": "^8.55.0",
     "nodemon": "^2.0.22",
     "prettier": "^3.1.0",
+    "serverless-bundle": "^6.1.0",
     "serverless-offline": "^13.3.3",
     "serverless-plugin-typescript": "^2.1.5",
     "tsx": "^3.12.7",
