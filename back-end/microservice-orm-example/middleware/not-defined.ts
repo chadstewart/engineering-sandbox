@@ -6,7 +6,7 @@ export default function notDefined(req: Request, res: Response, next: NextFuncti
   const isNotValidRoute = path !== "/" && !path.includes("/v1");
   if (isNotValidRoute) {
     return res.status(405).json({
-      success: false,
+      status: false,
       message: "The route you tried to access is not defined"
     });
   }
