@@ -32,7 +32,7 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postAttachCommand": "docker compose --profile backend up -d && sls config credentials --provider aws --key $ACCESS_KEY --secret $SECRET_ACCESS_KEY",
+  "postAttachCommand": "docker compose --profile backend up -d && sls config credentials --provider aws --key $ACCESS_KEY --secret $SECRET_ACCESS_KEY --overwrite",
 
   // Configure tool-specific properties.
   "customizations": {
