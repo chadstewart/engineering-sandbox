@@ -41,7 +41,7 @@ services:
       - redis
       - rest-api
     build:
-      context: ./back-end/api-gateway-example
+      context: ./back-end/api-gateway
       target: api-gateway
     ports:
       - "3000:3000"
@@ -74,7 +74,7 @@ services:
     depends_on:
       - db
     build:
-      context: ./back-end/microservice-orm-example
+      context: ./back-end/monolithic-api
       target: rest-api
     ports:
       - "3001:3001"
@@ -91,8 +91,6 @@ services:
       - VITE_AUTH0_CALLBACK_URL={AUTH0_CALLBACK_URL}
       - VITE_API_GATEWAY_URL=${API_GATEWAY_URL}
     container_name: react-sandbox
-    depends_on:
-      - api-gateway
     build:
       context: ./front-end/react-vite
       target: react-prod

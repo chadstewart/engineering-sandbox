@@ -3,12 +3,12 @@ name: Deploy API Monolith to AWS Lambda
 on:
   push:
     paths:
-      - "back-end/microservices-orm-example/**"
+      - "back-end/monolithic-api/**"
     branches: ["main"]
 
 defaults:
   run:
-    working-directory: ./back-end/microservices-orm-example
+    working-directory: ./back-end/monolithic-api
 
 jobs:
   lambda-deploy:

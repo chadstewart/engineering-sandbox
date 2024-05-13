@@ -3,12 +3,12 @@ name: Deploy API Gateway to AWS Lambda
 on:
   push:
     paths:
-      - "back-end/api-gateway-example/**"
+      - "back-end/api-gateway/**"
     branches: ["main"]
 
 defaults:
   run:
-    working-directory: ./back-end/api-gateway-example
+    working-directory: ./back-end/api-gateway
 
 jobs:
   lambda-deploy:

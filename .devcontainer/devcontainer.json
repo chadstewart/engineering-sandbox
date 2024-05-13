@@ -40,8 +40,8 @@
       "openFiles": [
         "front-end/react-vite/src/stories/atoms/button.stories.tsx",
         "front-end/react-vite/src/router/router.tsx",
-        "back-end/api-gateway-example/graphql/resolvers/index.tsx",
-        "back-end/microservice-orm-example/v1/routes/router.ts"
+        "back-end/api-gateway/graphql/resolvers/index.tsx",
+        "back-end/monolithic-api/v1/routes/router.ts"
       ]
     },
     "vscode": {

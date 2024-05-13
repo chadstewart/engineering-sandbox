@@ -25,12 +25,12 @@ interface QueryPaginationArgs {
 interface CustomerMutationArgs {
   id: string;
   accessToken: string;
-  customerUserInput: typeof updateCustomerZodSchema;
+  customerUserInput: updateCustomerZodSchema;
 }
 
 interface CreateEmployeeMutationArgs {
   accessToken: string;
-  createEmployeeInput: typeof createEmployeeZodSchema;
+  createEmployeeInput: createEmployeeZodSchema;
 }
 
 export const resolvers = {
