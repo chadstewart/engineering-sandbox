@@ -34,7 +34,7 @@ export async function getEmployeeById(req: Request, res: Response, next: NextFun
   const isEmployeeIdInRoute = req.params.employee_id;
   if (isEmployeeIdInRoute) employeeId = Number(req.params.employee_id);
 
-  const isEmployeeIdIsNaN = Number.isNaN(employeeId);
+  const isEmployeeIdIsNaN = Number.isNaN(employeeId) || employeeId === 0;
   if (isEmployeeIdIsNaN) {
     res.status(400).json({
       status: "failed",

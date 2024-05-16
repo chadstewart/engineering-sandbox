@@ -37,7 +37,7 @@ export async function getOrderDetails(req: Request, res: Response, next: NextFun
   const isOrderIdInRoute = req.params.order_id;
   if (isOrderIdInRoute) orderId = Number(req.params.order_id);
 
-  const isOrderIdNaN = Number.isNaN(orderId);
+  const isOrderIdNaN = Number.isNaN(orderId) || orderId === 0;
   if (isOrderIdNaN) {
     res.status(400).json({
       status: "failed",
