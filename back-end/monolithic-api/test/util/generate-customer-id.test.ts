@@ -1,5 +1,4 @@
-import { afterEach } from "node:test";
-import { expect, describe, it, vi } from "vitest";
+import { expect, describe, it, vi, afterEach } from "vitest";
 import { generateCustomerId } from "../../util/generate-customer-id";
 
 describe("Util Function: Generate Customer ID", () => {
