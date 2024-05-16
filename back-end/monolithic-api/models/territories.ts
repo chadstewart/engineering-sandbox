@@ -2,7 +2,7 @@ import { prisma } from "../services/database";
 import { prismaPaginationHelper } from "../util/pagination-helper";
 import { ROW_LIMIT } from "../util/row-limit";
 
-export const employeeFromTerritories = async (page = 1, territoryId = 1) => {
+export const employeeFromTerritories = async (page = 1, territoryId = "") => {
   const { skip, take } = prismaPaginationHelper(page);
   const queryData = await prisma.employee_territories.findMany({
     select: {

@@ -3,7 +3,7 @@ import { employeeFromTerritories, employeeTerritories, territories, territoriesB
 
 export async function getEmployeesByTerritories(req: Request, res: Response, next: NextFunction) {
   let page = 1;
-  let territoryId = 1;
+  let territoryId = "";
 
   const isPageNumberInRoute = req.params.page;
   if (isPageNumberInRoute) page = Number(req.params.page);
@@ -19,10 +19,10 @@ export async function getEmployeesByTerritories(req: Request, res: Response, nex
   }
 
   const isTerritoryIdInRoute = req.params.territory_id;
-  if (isTerritoryIdInRoute) territoryId = Number(req.params.territory_id);
+  if (isTerritoryIdInRoute) territoryId = req.params.territory_id;
 
-  const isTerritoryIdNaN = Number.isNaN(territoryId);
-  if (isTerritoryIdNaN) {
+  const isTerritoryIdNotAValue = territoryId.length === 0;
+  if (isTerritoryIdNotAValue) {
     res.status(400).json({
       status: "failed",
       error: "territories/employees/'territory_id' must be a number"

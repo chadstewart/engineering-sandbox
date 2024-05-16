@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { supplier, supplierDetails } from "../../models/suppliers";
 
-export async function getSuppliers (req: Request, res: Response, next: NextFunction) {
+export async function getSuppliers(req: Request, res: Response, next: NextFunction) {
   let page = 1;
 
   const isPageNumberInRoute = req.params.page;
-  if(isPageNumberInRoute) page = Number(req.params.page);
+  if (isPageNumberInRoute) page = Number(req.params.page);
 
   const isPageNumberNaN = Number.isNaN(page);
-  if(isPageNumberNaN) {
+  if (isPageNumberNaN) {
     res.status(400).json({
       status: "failed",
       error: "supplier/'page' must be a number"
@@ -25,16 +25,16 @@ export async function getSuppliers (req: Request, res: Response, next: NextFunct
   });
 
   return next();
-};
+}
 
-export async function getSupplierDetails (req: Request, res: Response, next: NextFunction) {
+export async function getSupplierDetails(req: Request, res: Response, next: NextFunction) {
   let supplierId = 1;
 
   const isSupplierIdInRoute = req.params.supplier_id;
-  if(isSupplierIdInRoute) supplierId = Number(req.params.supplier_id);
+  if (isSupplierIdInRoute) supplierId = Number(req.params.supplier_id);
 
-  const isSupplierIdNaN = Number.isNaN(supplierId);
-  if(isSupplierIdNaN) {
+  const isSupplierIdNaN = Number.isNaN(supplierId) || supplierId === 1;
+  if (isSupplierIdNaN) {
     res.status(400).json({
       status: "failed",
       error: "supplier/details/'supplier_id' must be a number"
@@ -51,4 +51,4 @@ export async function getSupplierDetails (req: Request, res: Response, next: Nex
   });
 
   return next();
-};
+}
