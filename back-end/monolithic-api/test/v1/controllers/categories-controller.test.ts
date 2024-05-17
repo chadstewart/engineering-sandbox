@@ -146,7 +146,7 @@ describe("Controller: Categories", () => {
   it("getCategoryDetails: Should return a response object that says it failed because page isn't a number", async () => {
     const mockRequest = {
       params: {
-        category: "hello"
+        category_id: "hello"
       }
     };
 
