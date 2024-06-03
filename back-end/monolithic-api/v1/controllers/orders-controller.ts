@@ -41,7 +41,7 @@ export async function getOrderDetails(req: Request, res: Response, next: NextFun
   if (isOrderIdNaN) {
     res.status(400).json({
       status: "failed",
-      error: "orders/'order_id' must be a number"
+      error: "orders/details/'order_id' must be a number"
     });
 
     return next();
@@ -116,7 +116,7 @@ export async function addOrderAddNewCustomer(req: Request, res: Response, next: 
   } catch (error) {
     res.status(400).json({
       status: "failed",
-      error
+      error: "The request body is not what was expected."
     });
 
     return next();
@@ -156,10 +156,25 @@ export async function addOrderAddExistingCustomer(req: Request, res: Response, n
             }
         } 
     */
+  let customerId = "";
+
+  const isCustomerIdInRoute = req.params.customer_id;
+  if (isCustomerIdInRoute) customerId = req.params.customer_id;
+
+  const isCustomerIdNotAValue = customerId.length === 0;
+  if (isCustomerIdNotAValue) {
+    res.status(400).json({
+      status: "failed",
+      error: "orders/'order_id' must be a number"
+    });
+
+    return next();
+  }
+
   try {
     const validRequestBody = await addOrdersExistingCustomerZodSchema.parse(req.body);
 
-    const data = addOrderExistingCustomer(validRequestBody, req.params.customer_id);
+    const data = addOrderExistingCustomer(validRequestBody, customerId);
 
     res.status(201).json({
       status: "success",
@@ -170,7 +185,7 @@ export async function addOrderAddExistingCustomer(req: Request, res: Response, n
   } catch (error) {
     res.status(400).json({
       status: "failed",
-      error
+      error: "The request body is not what was expected."
     });
 
     return next();
