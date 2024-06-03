@@ -44,7 +44,7 @@ export async function getCustomerDetails(req: Request, res: Response, next: Next
   if (isCustomerIdNotAValue) {
     res.status(400).json({
       status: "failed",
-      error: "customers/'customerId' must have a value"
+      error: "customers/details/'customer_id' must have a value"
     });
 
     return next();
@@ -90,7 +90,7 @@ export async function updateCustomerById(req: Request, res: Response, next: Next
   if (isCustomerIdNotAValue)
     return res.status(400).json({
       status: "failed",
-      error: "customers/'customerId' must have a value"
+      error: "customers/'customer_id' must have a value"
     });
 
   try {
@@ -106,7 +106,7 @@ export async function updateCustomerById(req: Request, res: Response, next: Next
   } catch (error) {
     res.status(400).json({
       status: "failed",
-      error
+      error: "The request body is not what was expected."
     });
 
     return next();
