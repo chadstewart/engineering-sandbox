@@ -58,12 +58,12 @@ describe("Models: Products", () => {
   });
 
   it("productDetails: Should call prismaPagiantionHelper with appropriate page number", async () => {
-    const testCategoryId = 2;
+    const testProductId = 2;
     const mockFindManyFn = vi.mocked(prisma.products.findMany);
-    await productDetails(testCategoryId);
+    await productDetails(testProductId);
     expect(mockFindManyFn).toHaveBeenCalledWith({
       where: {
-        product_id: testCategoryId
+        product_id: testProductId
       }
     });
   });
