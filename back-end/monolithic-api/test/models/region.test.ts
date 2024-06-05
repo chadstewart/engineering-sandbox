@@ -24,12 +24,12 @@ describe("Models: Regions", () => {
   });
 
   it("regionDetails: Should call prismaPagiantionHelper with appropriate page number", async () => {
-    const testCategoryId = 2;
+    const testRegionId = 2;
     const mockFindManyFn = vi.mocked(prisma.region.findMany);
-    await regionDetails(testCategoryId);
+    await regionDetails(testRegionId);
     expect(mockFindManyFn).toHaveBeenCalledWith({
       where: {
-        region_id: testCategoryId
+        region_id: testRegionId
       }
     });
   });
