@@ -58,12 +58,12 @@ describe("Models: Suppliers", () => {
   });
 
   it("supplierDetails: Should call prismaPagiantionHelper with appropriate page number", async () => {
-    const testCategoryId = 2;
+    const testSupplierId = 2;
     const mockFindManyFn = vi.mocked(prisma.suppliers.findMany);
-    await supplierDetails(testCategoryId);
+    await supplierDetails(testSupplierId);
     expect(mockFindManyFn).toHaveBeenCalledWith({
       where: {
-        supplier_id: testCategoryId
+        supplier_id: testSupplierId
       }
     });
   });
