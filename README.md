@@ -53,13 +53,6 @@ The PostgreSQL database is currently hosted on Supabase.
 Create a `.env` file in the root folder of the project with the following data:
 
 ```text
-#Auth Config
-AUTH0_URL=
-AUTH0_CLIENT_ID=
-AUTH0_AUDIENCE_URL=
-AUTH0_SIGNING_ALG=
-AUTH0_CALLBACK_URL=
-
 #REST API Config
 REST_API_URL=http://rest-api:3001
 
@@ -73,10 +66,23 @@ REDIS_PUBLIC_URL=redis:6379
 DATABASE_URL=postgresql://postgres:postgres@db:5432/northwind
 ```
 
+You'll also need to create a `.env.development` file in the `front-end/react-vite` folder with the following data:
+
+```text
+#Auth Config
+VITE_AUTH0_URL=
+VITE_AUTH0_CLIENT_ID=
+VITE_AUTH0_AUDIENCE=
+VITE_AUTH0_CALLBACK_URL=
+
+#API Gateway Config
+VITE_API_GATEWAY_URL=http://172.20.0.3:3000/graphql
+```
+
 After the `.env` is created, you can start the project with command:
 
 ```shell
-docker compose up
+docker compose --profile full up -d
 ```
 
 This project is also has a dev container set up so that you can spin up a dev environment specifically to work on this project.
