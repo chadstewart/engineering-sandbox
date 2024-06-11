@@ -14,8 +14,10 @@ describe("API Layer Config", () => {
       return {
         createZodFetcher:
           (fetchFunc: (...args: unknown[]) => unknown) =>
-          (schema: unknown, ...args: unknown[]) =>
-            fetchFunc(...args)
+          (schema: unknown, ...args: unknown[]) => {
+            schema;
+            return fetchFunc(...args);
+          }
       };
     });
 

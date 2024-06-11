@@ -4,7 +4,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run build
+RUN npm run build-dev
 RUN npm run build-storybook
 
 

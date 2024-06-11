@@ -27,7 +27,7 @@ services:
       - postgres-data:/bitnami/postgresql/data
     networks:
       - database
-    profiles: [backend]
+    profiles: [backend, full]
 
   api-gateway:
     environment:
@@ -49,7 +49,7 @@ services:
       front-end:
         ipv4_address: 172.20.0.3
       api:
-    profiles: [backend]
+    profiles: [backend, full]
 
   redis:
     container_name: redis-db
@@ -61,7 +61,7 @@ services:
       - "6379:6379"
     networks:
       - api
-    profiles: [backend]
+    profiles: [backend, full]
 
   rest-api:
     environment:
@@ -81,15 +81,9 @@ services:
     networks:
       - database
       - api
-    profiles: [backend]
+    profiles: [backend, full]
 
   react:
-    environment:
-      - VITE_AUTH0_URL=${AUTH0_URL}
-      - VITE_AUTH0_AUDIENCE_URL=${AUTH0_AUDIENCE_URL}
-      - VITE_AUTH0_CLIENT_ID={AUTH0_CLIENT_ID}
-      - VITE_AUTH0_CALLBACK_URL={AUTH0_CALLBACK_URL}
-      - VITE_API_GATEWAY_URL=${API_GATEWAY_URL}
     container_name: react-sandbox
     build:
       context: ./front-end/react-vite
@@ -99,7 +93,7 @@ services:
     networks:
       front-end:
         ipv4_address: 172.20.0.2
-    profiles: [frontend]
+    profiles: [frontend, full]
 
   storybook:
     container_name: storybook-sandbox
@@ -111,4 +105,4 @@ services:
     networks:
       front-end:
         ipv4_address: 172.20.0.4
-    profiles: [frontend]
+    profiles: [frontend, full]
