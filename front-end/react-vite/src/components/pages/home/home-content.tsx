@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "../../ui/card";
 import { Skeleton } from "../../ui/skeleton";
-import { Pie, PieChart } from "recharts";
+import { Pie, PieChart, ResponsiveContainer } from "recharts";
 import { toCurrency } from "@/lib/util/to-currency";
 import { GetHomeDataQuery } from "@/gql/graphql";
 
@@ -47,20 +47,22 @@ const HomeContent = ({ content: data, error, isLoading }: HomeContentProps) => {
           {isLoading && <Skeleton className="w-[200px] h-[200px] rounded-full" />}
           {data?.getCustomerCountryDistribution && (
             <CardContent>
-              <PieChart width={1000} height={500}>
-                <Pie
-                  data={data.getCustomerCountryDistribution.map((distributionEntry) => {
-                    return {
-                      name: distributionEntry?.country,
-                      value: distributionEntry?.customerCount
-                    };
-                  })}
-                  dataKey="value"
-                  nameKey="name"
-                  outerRadius={100}
-                  fill="#8884d8"
-                />
-              </PieChart>
+              <ResponsiveContainer width="80%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={data.getCustomerCountryDistribution.map((distributionEntry) => {
+                      return {
+                        name: distributionEntry?.country,
+                        value: distributionEntry?.customerCount
+                      };
+                    })}
+                    dataKey="value"
+                    nameKey="name"
+                    outerRadius={100}
+                    fill="#8884d8"
+                  />
+                </PieChart>
+              </ResponsiveContainer>
             </CardContent>
           )}
           {error && <CardContent>Well that's not good...</CardContent>}
