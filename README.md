@@ -53,6 +53,13 @@ The PostgreSQL database is currently hosted on Supabase.
 Create a `.env` file in the root folder of the project with the following data:
 
 ```text
+#Auth Config
+AUTH0_URL=
+AUTH0_CLIENT_ID=
+AUTH0_AUDIENCE_URL=
+AUTH0_SIGNING_ALG=
+AUTH0_CALLBACK_URL=http://localhost:4000/
+
 #REST API Config
 REST_API_URL=http://rest-api:3001
 
