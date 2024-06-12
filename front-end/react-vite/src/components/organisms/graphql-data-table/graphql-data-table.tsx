@@ -19,7 +19,7 @@ export const GraphQlDataTable = ({
   navUrl
 }: GraphQlDataTableProps) => {
   return (
-    <div className="flex flex-wrap gap-6 justify-center p-4">
+    <div className="flex flex-wrap gap-6 justify-center p-4 overflow-auto">
       <Card>
         <CardContent>
           <Table>
