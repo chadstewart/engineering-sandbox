@@ -28,6 +28,20 @@ The Back-End currently consists of 5 pieces:
 
 Auth is currently handled by Auth0 where the user can sign in on the Front-End application and certain API Endpoints are only accessible with valid Access Tokens.
 
+### Infrastructure
+
+#### Development
+
+In development, the app runs mainly in various Docker Containers which as spun up using `docker compose --profile *profile name* up`. There are 3 profiles available:
+
+- frontend: Spins up the React app and the Storybook instance
+- backend: Spins up the API Gateway, Monolithic API server, Redis and PostgreSQL databases
+- full: Spins up all services listed above
+
+#### Production
+
+In production, the Front-End is deployed to AWS S3 and CloudFront and the APIs are deployed to AWS Lambda. The database is deployed to Supabase. Redis is currently not being used in production.
+
 ## Deployment
 
 This application is deployed to various AWS services. GitHub Actions are used for CI / CD, with actions deploying each package independently whenever there's a change detected in the folder of a particular package.
