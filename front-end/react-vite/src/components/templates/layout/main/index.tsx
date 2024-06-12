@@ -18,7 +18,7 @@ export const MainLayout = () => {
           )
         }
       </ResponsiveComponent>
-      <main className="w-full p-4 min-h-screen">
+      <main className="flex content-between flex-wrap w-full p-4 min-h-screen">
         <ResponsiveComponent>
           {({ size }) =>
             size > 1 &&
