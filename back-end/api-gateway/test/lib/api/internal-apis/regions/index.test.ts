@@ -7,7 +7,7 @@ describe("Internal API Function: Region", () => {
     vi.mock("../../../../../lib/api/config/api", () => {
       return {
         default: {
-          get: (schema: unknown, url: URL | RequestInfo) =>
+          get: (schema: unknown, url: URL | RequestInit) =>
             Promise.resolve({
               data: [
                 {
