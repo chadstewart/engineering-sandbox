@@ -26,8 +26,8 @@ describe("GraphQL Internal API Function: Orders", () => {
     const mockGraphQLQueryFn = vi.mocked(api.graphqlQuery);
     const mockGraphQLFn = vi.mocked(graphql);
     await getOrderData();
-    expect(mockGraphQLQueryFn).toHaveBeenCalledWith("test", "test", { page: 1 });
-    expect(mockGraphQLFn).toHaveBeenCalledWith(`
+    expect(mockGraphQLQueryFn).toHaveBeenLastCalledWith("test", "test", { page: 1 });
+    expect(mockGraphQLFn).toHaveBeenLastCalledWith(`
       query GetOrderData($page: Int) {
         getOrders(page: $page) {
           order {
@@ -48,6 +48,6 @@ describe("GraphQL Internal API Function: Orders", () => {
     const variableToTest = 3;
     const mockGraphQLQueryFn = vi.mocked(api.graphqlQuery);
     await getOrderData(variableToTest);
-    expect(mockGraphQLQueryFn).toHaveBeenCalledWith("test", "test", { page: variableToTest });
+    expect(mockGraphQLQueryFn).toHaveBeenLastCalledWith("test", "test", { page: variableToTest });
   });
 });

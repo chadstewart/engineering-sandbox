@@ -26,8 +26,8 @@ describe("GraphQL Internal API Function: Cats", () => {
     const mockGraphQLQueryFn = vi.mocked(api.graphqlQuery);
     const mockGraphQLFn = vi.mocked(graphql);
     await getCats();
-    expect(mockGraphQLQueryFn).toHaveBeenCalledWith("test", "test", { getDog: false });
-    expect(mockGraphQLFn).toHaveBeenCalledWith(`
+    expect(mockGraphQLQueryFn).toHaveBeenLastCalledWith("test", "test", { getDog: false });
+    expect(mockGraphQLFn).toHaveBeenLastCalledWith(`
       query GetCats($getDog: Boolean) {
         getCats(getDog: $getDog) {
           url
@@ -42,6 +42,6 @@ describe("GraphQL Internal API Function: Cats", () => {
     const variableToTest = true;
     const mockGraphQLQueryFn = vi.mocked(api.graphqlQuery);
     await getCats(variableToTest);
-    expect(mockGraphQLQueryFn).toHaveBeenCalledWith("test", "test", { getDog: variableToTest });
+    expect(mockGraphQLQueryFn).toHaveBeenLastCalledWith("test", "test", { getDog: variableToTest });
   });
 });

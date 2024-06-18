@@ -26,8 +26,8 @@ describe("GraphQL Internal API Function: Products", () => {
     const mockGraphQLQueryFn = vi.mocked(api.graphqlQuery);
     const mockGraphQLFn = vi.mocked(graphql);
     await getProductData();
-    expect(mockGraphQLQueryFn).toHaveBeenCalledWith("test", "test", { page: 1 });
-    expect(mockGraphQLFn).toHaveBeenCalledWith(`
+    expect(mockGraphQLQueryFn).toHaveBeenLastCalledWith("test", "test", { page: 1 });
+    expect(mockGraphQLFn).toHaveBeenLastCalledWith(`
       query GetProductData($page: Int) {
         getProducts(page: $page) {
           product {
@@ -46,6 +46,6 @@ describe("GraphQL Internal API Function: Products", () => {
     const variableToTest = 3;
     const mockGraphQLQueryFn = vi.mocked(api.graphqlQuery);
     await getProductData(variableToTest);
-    expect(mockGraphQLQueryFn).toHaveBeenCalledWith("test", "test", { page: variableToTest });
+    expect(mockGraphQLQueryFn).toHaveBeenLastCalledWith("test", "test", { page: variableToTest });
   });
 });

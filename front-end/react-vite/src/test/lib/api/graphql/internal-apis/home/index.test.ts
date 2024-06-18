@@ -26,8 +26,8 @@ describe("GraphQL Internal API Function: Home", () => {
     const mockGraphQLQueryFn = vi.mocked(api.graphqlQuery);
     const mockGraphQLFn = vi.mocked(graphql);
     await getHomeData();
-    expect(mockGraphQLQueryFn).toHaveBeenCalledWith("test", "test", {});
-    expect(mockGraphQLFn).toHaveBeenCalledWith(`
+    expect(mockGraphQLQueryFn).toHaveBeenLastCalledWith("test", "test", {});
+    expect(mockGraphQLFn).toHaveBeenLastCalledWith(`
       query GetHomeData {
         getOrders {
           totalRows
