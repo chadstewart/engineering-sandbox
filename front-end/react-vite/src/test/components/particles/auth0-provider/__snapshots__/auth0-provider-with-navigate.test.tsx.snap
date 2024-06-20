@@ -1,3 +1,16 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Particle Component: Auth0ProviderWithNavigate > Should match the snapshot 1`] = `<div />`;
+exports[`Particle Component: Auth0ProviderWithNavigate > Should match the snapshot 1`] = `
+<Auth0Provider
+  authorizationParams={
+    {
+      "audience": "test",
+      "redirect_uri": "test",
+    }
+  }
+  clientId="test"
+  domain="test"
+>
+  <div />
+</Auth0Provider>
+`;
