@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Utility Function Hook: UseMainNav > Matches the snapshot of useMainNav 1`] = `
+[
+  {
+    "icon": [Function],
+    "iconAlt": "Home page link icon",
+    "text": "Home",
+    "url": "/",
+  },
+  {
+    "icon": [Function],
+    "iconAlt": "Cat page link icon",
+    "text": "Cute Animals",
+    "url": "/cute-animals",
+  },
+  {
+    "icon": [Function],
+    "iconAlt": "Order dropdown link icon",
+    "params": {
+      "page": 1,
+    },
+    "text": "Orders",
+    "url": "/orders/details/$page",
+  },
+  {
+    "icon": [Function],
+    "iconAlt": "Product page link icon",
+    "params": {
+      "page": 1,
+    },
+    "text": "Products",
+    "url": "/products/details/$page",
+  },
+  {
+    "children": [
+      {
+        "icon": [Function],
+        "iconAlt": "Details page link icon",
+        "params": {
+          "page": 1,
+        },
+        "text": "Details",
+        "url": "/customers/details/$page",
+      },
+      {
+        "icon": [Function],
+        "iconAlt": "Add Customer link icon",
+        "isProtectedLink": true,
+        "text": "Add Customer",
+        "url": "/customers/add-customer",
+      },
+    ],
+    "icon": [Function],
+    "iconAlt": "Customer page link icon",
+    "text": "Customers",
+  },
+  {
+    "icon": [Function],
+    "iconAlt": "About page link icon",
+    "text": "About",
+    "url": "/about",
+  },
+  {
+    "icon": [Function],
+    "iconAlt": "Architecture page link icon",
+    "text": "Architecture",
+    "url": "/architecture",
+  },
+]
+`;
