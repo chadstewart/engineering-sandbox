@@ -1,7 +1,7 @@
 import {
   PaginationRequest,
   PaginationRequestError
-} from "../../../util/pagination-utils/parse-pagination-request-types";
+} from "../../../../../util/pagination-utils/parse-pagination-request-types";
 
 export type UsStatesRequest = PaginationRequest;
 

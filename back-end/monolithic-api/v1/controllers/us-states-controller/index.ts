@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { handleUsStatesRequest } from "./handle-us-states-request";
-import { parseUsStatesRequest } from "./parse-us-states-request";
+import { handleUsStatesRequest } from "./util/handle-us-states-request";
+import { parseUsStatesRequest } from "./util/parse-us-states-request";
 import { usStates } from "../../../models/us-states";
 
 export async function getUSStates(req: Request, res: Response, next: NextFunction) {

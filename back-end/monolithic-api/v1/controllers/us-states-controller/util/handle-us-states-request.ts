@@ -1,6 +1,6 @@
-import { usStates } from "../../../models/us-states";
+import { usStates } from "../../../../models/us-states";
 import { createErrorMessage } from "./create-error-message";
-import { UsStatesEvaluatedRequest } from "./us-states-types";
+import { UsStatesEvaluatedRequest } from "./types/us-states-types";
 
 export const handleUsStatesRequest = async (
   evaluatedRequest: UsStatesEvaluatedRequest,
