@@ -1,6 +1,7 @@
 import { afterAll, describe, expect, it, vi } from "vitest";
 import { UsStatesEvaluatedRequest } from "../../../../../v1/controllers/us-states-controller/util/types/us-states-types";
 import { handleUsStatesRequest } from "../../../../../v1/controllers/us-states-controller/util/handle-us-states-request";
+import { usStates } from "../../../../../models/us-states";
 
 describe("US States Controller Util Function: HandleUsStatesRequest", () => {
   afterAll(() => {
@@ -20,7 +21,7 @@ describe("US States Controller Util Function: HandleUsStatesRequest", () => {
 
     const mockDataProvider = vi.fn(() => "test");
 
-    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as any);
+    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as unknown as typeof usStates);
     expect(variableToTest).toStrictEqual({
       statusCode: 400,
       status: "failed",
@@ -35,7 +36,7 @@ describe("US States Controller Util Function: HandleUsStatesRequest", () => {
 
     const mockDataProvider = vi.fn(() => "test");
 
-    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as any);
+    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as unknown as typeof usStates);
     expect(variableToTest).toStrictEqual({
       statusCode: 200,
       status: "success",
