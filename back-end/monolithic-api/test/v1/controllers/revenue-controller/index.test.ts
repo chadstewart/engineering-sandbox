@@ -1,24 +1,28 @@
-import { expect, it, describe, vi, afterEach, beforeEach } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { getTotalRevenue } from "../../../../v1/controllers/revenue-controller";
 import { Request, Response } from "express";
-import { getTotalRevenue } from "../../../v1/controllers/revenue-controller";
 
-describe("Controller: Revenue", () => {
-  beforeEach(() => {
-    vi.mock("../../../models/revenue", () => {
-      return {
-        totalRevenue: vi.fn(() => "test")
-      };
-    });
+describe("Controller: GetTotalRevenue", () => {
+  vi.mock("../../../../models/revenue", () => {
+    return {
+      totalRevenue: vi.fn(() => "test")
+    };
   });
 
-  afterEach(() => {
-    vi.resetAllMocks();
+  vi.mock("../../../../v1/controllers/revenue-controller/util/handle-revenue-request", () => {
+    return {
+      handleRevenueRequest: vi.fn(() => {
+        return {
+          statusCode: 200,
+          status: "success",
+          data: "test"
+        };
+      })
+    };
   });
 
   it("Should send proper data response when called", async () => {
-    const mockRequest = {
-      path: ""
-    };
+    const mockRequest = {};
     const mockNextFunc = vi.fn();
     const mockJsonFunc = vi.fn();
     const mockStatusFunc = vi.fn(() => {
