@@ -61,4 +61,31 @@ describe("Controller: US States", () => {
       data: "test"
     });
   });
+
+  it("Should call the next function", async () => {
+    const mockRequest = {
+      params: {
+        page: 1
+      }
+    };
+
+    const mockNextFunc = vi.fn();
+    const mockJsonFunc = vi.fn();
+    const mockStatusFunc = vi.fn(() => {
+      return {
+        json: mockJsonFunc
+      };
+    });
+    const mockResponse = {
+      status: mockStatusFunc
+    };
+
+    await getUSStates(
+      mockRequest as unknown as Request<{ page: string }>,
+      mockResponse as unknown as Response,
+      mockNextFunc
+    );
+
+    expect(mockNextFunc).toHaveBeenCalled();
+  });
 });
