@@ -34,7 +34,7 @@ describe("Controller: GetTotalRevenue", () => {
       status: mockStatusFunc
     };
 
-    await getTotalRevenue(mockRequest as Request, mockResponse as unknown as Response, mockNextFunc);
+    await getTotalRevenue(mockRequest as Request<null>, mockResponse as unknown as Response, mockNextFunc);
 
     expect(mockStatusFunc).toHaveBeenCalledWith(200);
     expect(mockJsonFunc).toHaveBeenCalledWith({
@@ -58,7 +58,7 @@ describe("Controller: GetTotalRevenue", () => {
       status: mockStatusFunc
     };
 
-    await getTotalRevenue(mockRequest as Request, mockResponse as unknown as Response, mockNextFunc);
+    await getTotalRevenue(mockRequest as Request<null>, mockResponse as unknown as Response, mockNextFunc);
 
     expect(mockNextFunc).toHaveBeenCalled();
   });
