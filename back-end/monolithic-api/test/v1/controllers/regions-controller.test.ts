@@ -1,6 +1,6 @@
 import { expect, it, describe, vi, afterEach, beforeEach } from "vitest";
 import { Request, Response } from "express";
-import { getRegionDetails } from "../../../v1/controllers/regions-controller";
+import { getRegionDetails } from "../../../v1/controllers/regions-controller/regions-controller";
 
 describe("Controller: Regions", () => {
   beforeEach(() => {

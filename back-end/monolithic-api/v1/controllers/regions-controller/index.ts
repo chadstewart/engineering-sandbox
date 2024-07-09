@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { regionDetails } from "../../models/region";
+import { regionDetails } from "../../../models/region";
 
 export async function getRegionDetails(req: Request, res: Response, next: NextFunction) {
   let regionId = 1;
