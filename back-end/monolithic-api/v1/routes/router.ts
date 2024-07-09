@@ -23,7 +23,7 @@ import {
 import { getUSStates } from "../controllers/us-states-controller";
 import { getCategories, getCategoryDetails } from "../controllers/categories-controller";
 import { getSupplierDetails, getSuppliers } from "../controllers/suppliers-controller";
-import { getRegionDetails } from "../controllers/regions-controller/regions-controller";
+import { getRegionDetails } from "../controllers/regions-controller/";
 import { getTotalRevenue } from "../controllers/revenue-controller";
 import routeAuth from "../../middleware/route-authz";
 
