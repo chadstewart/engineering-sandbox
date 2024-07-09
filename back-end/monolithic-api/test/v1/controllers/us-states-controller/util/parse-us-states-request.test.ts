@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { parseUsStatesRequest } from "../../../../../v1/controllers/us-states-controller/util/parse-us-states-request";
 import { Request } from "express";
+import { UsStatesParams } from "../../../../../v1/controllers/us-states-controller/util/types/us-states-types";
 
 describe("US States Controller Util Function: ParseUsStatesRequest", () => {
   beforeEach(() => {
@@ -16,7 +17,7 @@ describe("US States Controller Util Function: ParseUsStatesRequest", () => {
       page: "test"
     };
 
-    const variableToTest = parseUsStatesRequest(testObj as unknown as Request<{ page: string }>);
+    const variableToTest = parseUsStatesRequest(testObj as unknown as Request<UsStatesParams>);
     expect(variableToTest).toBe("test");
   });
 });

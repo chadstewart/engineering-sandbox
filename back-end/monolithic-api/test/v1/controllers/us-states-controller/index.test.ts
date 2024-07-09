@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { getUSStates } from "../../../../v1/controllers/us-states-controller";
 import { afterEach, beforeEach } from "node:test";
 import { Request, Response } from "express";
+import { UsStatesParams } from "../../../../v1/controllers/us-states-controller/util/types/us-states-types";
 
 describe("Controller: US States", () => {
   beforeEach(() => {
@@ -51,7 +52,7 @@ describe("Controller: US States", () => {
     };
 
     await getUSStates(
-      mockRequest as unknown as Request<{ page: string }>,
+      mockRequest as unknown as Request<UsStatesParams>,
       mockResponse as unknown as Response,
       mockNextFunc
     );
@@ -81,7 +82,7 @@ describe("Controller: US States", () => {
     };
 
     await getUSStates(
-      mockRequest as unknown as Request<{ page: string }>,
+      mockRequest as unknown as Request<UsStatesParams>,
       mockResponse as unknown as Response,
       mockNextFunc
     );
