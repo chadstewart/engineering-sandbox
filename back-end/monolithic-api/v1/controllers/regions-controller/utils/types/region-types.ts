@@ -1,3 +1,7 @@
+export type RegionParams = {
+  region_id: string;
+};
+
 export type RegionRequest = {
   region_id: number;
 };
