@@ -1,7 +1,7 @@
 import { Request } from "express";
-import { PaginationRequest, PaginationRequestError } from "./parse-pagination-request-types";
+import { PaginationParams, PaginationRequest, PaginationRequestError } from "./parse-pagination-request-types";
 
-type MustHavePageParamInRequest = Request<{ page: string }> & Request<unknown>;
+type MustHavePageParamInRequest = Request<PaginationParams> & Request<unknown>;
 
 export const parsePaginationRequest = (req: MustHavePageParamInRequest): PaginationRequest | PaginationRequestError => {
   if (!req.params.page) return { error: "MissingPage" };

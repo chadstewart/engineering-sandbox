@@ -4,3 +4,7 @@ export type PaginationRequestError = {
 export type PaginationRequest = {
   page: number;
 };
+
+export type PaginationParams = {
+  page: string;
+};

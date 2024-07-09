@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { parsePaginationRequest } from "../../../util/pagination-utils/parse-pagination-request";
 import { Request } from "express";
+import { PaginationParams } from "../../../util/pagination-utils/parse-pagination-request-types";
 
 describe("Util Function: Parse Pagination Request", () => {
   it("Should return an object with page attribute with a number on passing correct request object", () => {
@@ -10,7 +11,7 @@ describe("Util Function: Parse Pagination Request", () => {
       }
     };
 
-    const variableToTest = parsePaginationRequest(testObj as unknown as Request<{ page: string }>);
+    const variableToTest = parsePaginationRequest(testObj as unknown as Request<PaginationParams>);
     expect(variableToTest).toStrictEqual({
       page: 1
     });
@@ -23,7 +24,7 @@ describe("Util Function: Parse Pagination Request", () => {
       }
     };
 
-    const variableToTest = parsePaginationRequest(testObj as unknown as Request<{ page: string }>);
+    const variableToTest = parsePaginationRequest(testObj as unknown as Request<PaginationParams>);
     expect(variableToTest).toStrictEqual({
       error: "MissingPage"
     });
@@ -36,7 +37,7 @@ describe("Util Function: Parse Pagination Request", () => {
       }
     };
 
-    const variableToTest = parsePaginationRequest(testObj as unknown as Request<{ page: string }>);
+    const variableToTest = parsePaginationRequest(testObj as unknown as Request<PaginationParams>);
     expect(variableToTest).toStrictEqual({
       error: "PageIsNotAValidNumber"
     });
@@ -49,7 +50,7 @@ describe("Util Function: Parse Pagination Request", () => {
       }
     };
 
-    const variableToTest = parsePaginationRequest(testObj as unknown as Request<{ page: string }>);
+    const variableToTest = parsePaginationRequest(testObj as unknown as Request<PaginationParams>);
     expect(variableToTest).toStrictEqual({
       error: "PageIsNotAValidNumber"
     });
