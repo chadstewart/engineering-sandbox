@@ -5,7 +5,11 @@ import { parseGetCategoriesRequest } from "./util/get-categories/parse-get-categ
 import { GetCategoriesParams } from "./util/get-categories/types/get-categories-types";
 
 export async function getCategories(req: Request<GetCategoriesParams>, res: Response, next: NextFunction) {
-  const { statusCode, ...rest } = await handleGetCategoriesRequest(parseGetCategoriesRequest(req), categories, req);
+  const { statusCode, ...rest } = await handleGetCategoriesRequest(
+    parseGetCategoriesRequest(req),
+    categories,
+    req.path
+  );
   const getCategoriesResponse = rest;
   res.status(statusCode).json(getCategoriesResponse);
   return next();
