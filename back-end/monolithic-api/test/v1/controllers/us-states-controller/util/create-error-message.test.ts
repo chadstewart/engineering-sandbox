@@ -7,15 +7,15 @@ describe("US States Controller Util: Create Error Message", () => {
     const testObj: UsStatesRequestError = {
       error: "MissingPage"
     };
-    const variableToTest = createErrorMessage(testObj);
-    expect(variableToTest).toBe("parameter 'page' in states/'page' is missing");
+    const variableToTest = createErrorMessage(testObj, "/states");
+    expect(variableToTest).toBe("parameter 'page' in /states/'page' is missing");
   });
 
   it("Should output 'states/'page' must be a number' when error object is 'PageIsNotAValidNumber'", () => {
     const testObj: UsStatesRequestError = {
       error: "PageIsNotAValidNumber"
     };
-    const variableToTest = createErrorMessage(testObj);
-    expect(variableToTest).toBe("states/'page' must be a number");
+    const variableToTest = createErrorMessage(testObj, "/states");
+    expect(variableToTest).toBe("/states/'page' must be a number");
   });
 });

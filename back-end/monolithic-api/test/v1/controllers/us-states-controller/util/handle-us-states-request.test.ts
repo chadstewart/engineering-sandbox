@@ -21,7 +21,7 @@ describe("US States Controller Util Function: HandleUsStatesRequest", () => {
 
     const mockDataProvider = vi.fn(() => "test");
 
-    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as unknown as typeof usStates);
+    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as unknown as typeof usStates, "test");
     expect(variableToTest).toStrictEqual({
       statusCode: 400,
       status: "failed",
@@ -36,7 +36,7 @@ describe("US States Controller Util Function: HandleUsStatesRequest", () => {
 
     const mockDataProvider = vi.fn(() => "test");
 
-    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as unknown as typeof usStates);
+    const variableToTest = await handleUsStatesRequest(testObj, mockDataProvider as unknown as typeof usStates, "test");
     expect(variableToTest).toStrictEqual({
       statusCode: 200,
       status: "success",

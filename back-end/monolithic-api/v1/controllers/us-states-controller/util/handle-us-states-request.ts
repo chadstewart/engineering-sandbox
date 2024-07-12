@@ -4,13 +4,14 @@ import { UsStatesEvaluatedRequest } from "./types/us-states-types";
 
 export const handleUsStatesRequest = async (
   evaluatedRequest: UsStatesEvaluatedRequest,
-  dataProvider: typeof usStates
+  dataProvider: typeof usStates,
+  reqPath: string
 ) => {
   if ("error" in evaluatedRequest)
     return {
       statusCode: 400,
       status: "failed",
-      error: createErrorMessage(evaluatedRequest)
+      error: createErrorMessage(evaluatedRequest, reqPath)
     };
 
   return {
