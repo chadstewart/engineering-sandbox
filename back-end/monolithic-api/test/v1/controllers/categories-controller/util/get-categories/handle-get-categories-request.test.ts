@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it, vi } from "vitest";
-import { GetCategoriesEvaluatedRequest } from "../../../../../../v1/controllers/categories-controller/util/get-categories/types/get-categories-types";
+import { GetCategoriesEvaluatedRequest } from "../../../../../../v1/controllers/categories-controller/util/types/categories-types";
 import { handleGetCategoriesRequest } from "../../../../../../v1/controllers/categories-controller/util/get-categories/handle-get-categories-request";
 import { categories } from "../../../../../../models/categories";
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createErrorMessage } from "../../../../../../v1/controllers/categories-controller/util/get-categories/create-error-message";
-import { GetCategoriesRequestError } from "../../../../../../v1/controllers/categories-controller/util/get-categories/types/get-categories-types";
+import { GetCategoriesRequestError } from "../../../../../../v1/controllers/categories-controller/util/types/categories-types";
 
 describe("Get Categories Util: Create Error Message", () => {
   it("Should output 'parameter 'page' in states/'page' is missing' when error object is 'MissingPage'", () => {

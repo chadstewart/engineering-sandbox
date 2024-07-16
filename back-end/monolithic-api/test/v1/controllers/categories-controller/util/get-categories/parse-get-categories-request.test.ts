@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { parseGetCategoriesRequest } from "../../../../../../v1/controllers/categories-controller/util/get-categories/parse-get-categories-request";
 import { Request } from "express";
-import { GetCategoriesParams } from "../../../../../../v1/controllers/categories-controller/util/get-categories/types/get-categories-types";
+import { GetCategoriesParams } from "../../../../../../v1/controllers/categories-controller/util/types/categories-types";
 
 describe("Get Categories Util Function: ParseGetCategoriesRequest", () => {
   beforeEach(() => {

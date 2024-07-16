@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { getCategories } from "../../../../v1/controllers/categories-controller/index";
 import { Request, Response } from "express";
-import { GetCategoriesParams } from "../../../../v1/controllers/categories-controller/util/get-categories/types/get-categories-types";
+import { GetCategoriesParams } from "../../../../v1/controllers/categories-controller/util/types/categories-types";
 
 describe("Controller: Categories", () => {
   vi.mock("../../../../models/categories", () => {
