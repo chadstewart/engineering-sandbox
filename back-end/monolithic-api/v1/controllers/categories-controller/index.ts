@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { categories, categoryDetails } from "../../../models/categories";
 import { handleGetCategoriesRequest } from "./util/get-categories/handle-get-categories-request";
 import { parseGetCategoriesRequest } from "./util/get-categories/parse-get-categories-request";
-import { GetCategoriesParams } from "./util/get-categories/types/get-categories-types";
+import { GetCategoriesParams } from "./util/types/categories-types";
 
 export async function getCategories(req: Request<GetCategoriesParams>, res: Response, next: NextFunction) {
   const { statusCode, ...rest } = await handleGetCategoriesRequest(

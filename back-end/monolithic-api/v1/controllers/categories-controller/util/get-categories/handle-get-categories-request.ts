@@ -1,6 +1,6 @@
 import { categories } from "../../../../../models/categories";
 import { createErrorMessage } from "./create-error-message";
-import { GetCategoriesEvaluatedRequest } from "./types/get-categories-types";
+import { GetCategoriesEvaluatedRequest } from "../types/categories-types";
 
 export const handleGetCategoriesRequest = async (
   evaluatedRequest: GetCategoriesEvaluatedRequest,
