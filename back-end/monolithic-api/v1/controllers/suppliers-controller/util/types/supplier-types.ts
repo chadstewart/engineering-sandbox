@@ -14,11 +14,11 @@ export type GetSupplierRequestError = PaginationRequestError;
 export type GetSupplierEvaluatedRequest = GetSupplierRequest | GetSupplierRequestError;
 
 export type GetSupplierDetailsParams = {
-  Suppliers_id: string;
+  supplier_id: string;
 };
 
 export type GetSupplierDetailsRequest = {
-  Suppliers_id: number;
+  supplier_id: number;
 };
 
 export type GetSupplierDetailsRequestError = {
