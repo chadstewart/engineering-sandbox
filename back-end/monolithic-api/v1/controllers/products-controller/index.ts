@@ -1,29 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { products, productDetails } from "../../../models/products";
+import { handleGetProductsRequest } from "./util/get-products/handle-get-products-request";
+import { parseGetProductsRequest } from "./util/get-products/parse-get-products-request";
+import { GetProductsParams } from "./util/types/product-types";
 
-export async function getProducts(req: Request, res: Response, next: NextFunction) {
-  let page = 1;
-
-  const isPageNumberInRoute = req.params.page;
-  if (isPageNumberInRoute) page = Number(req.params.page);
-
-  const isPageNumberNaN = Number.isNaN(page);
-  if (isPageNumberNaN) {
-    res.status(400).json({
-      status: "failed",
-      error: "products/'page' must be a number"
-    });
-
-    return next();
-  }
-
-  const data = await products(page);
-
-  res.status(200).json({
-    status: "success",
-    data: data
-  });
-
+export async function getProducts(req: Request<GetProductsParams>, res: Response, next: NextFunction) {
+  const { statusCode, ...rest } = await handleGetProductsRequest(parseGetProductsRequest(req), products, req.path);
+  const productResponse = rest;
+  res.status(statusCode).json(productResponse);
   return next();
 }
 
