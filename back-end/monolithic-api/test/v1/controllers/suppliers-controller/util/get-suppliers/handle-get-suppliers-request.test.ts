@@ -2,9 +2,9 @@ import { afterAll, describe, expect, it, vi } from "vitest";
 import {
   GetSupplierRequestError,
   GetSupplierEvaluatedRequest
-} from "../../../../../v1/controllers/suppliers-controller/util/types/supplier-types";
-import { handleGetSupplierRequest } from "../../../../../v1/controllers/suppliers-controller/util/get-suppliers/handle-get-suppliers-request";
-import { supplier } from "../../../../../models/suppliers";
+} from "../../../../../../v1/controllers/suppliers-controller/util/types/supplier-types";
+import { handleGetSupplierRequest } from "../../../../../../v1/controllers/suppliers-controller/util/get-suppliers/handle-get-suppliers-request";
+import { supplier } from "../../../../../../models/suppliers";
 
 describe("Supplier Controller Util Function: Handle Get Supplier Request", () => {
   afterAll(() => {

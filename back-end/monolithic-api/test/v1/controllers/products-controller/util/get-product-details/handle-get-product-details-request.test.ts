@@ -6,7 +6,7 @@ import {
 } from "../../../../../../v1/controllers/products-controller/util/types/product-types";
 import { productDetails } from "../../../../../../models/products";
 
-describe("Category Controller Util Function: Handle Get Category Details Request", () => {
+describe("Products Controller Util Function: Handle Get Products Details Request", () => {
   afterAll(() => {
     vi.resetAllMocks();
   });
