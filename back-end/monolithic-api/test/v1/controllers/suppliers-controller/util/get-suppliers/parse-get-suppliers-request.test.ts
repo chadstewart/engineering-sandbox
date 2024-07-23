@@ -5,7 +5,7 @@ import { GetSuppliersParams } from "../../../../../../v1/controllers/suppliers-c
 
 describe("Get Supplier Util Function: Parse Get Supplier Request", () => {
   beforeEach(() => {
-    vi.mock("../../../../../util/pagination-utils/parse-pagination-request", () => {
+    vi.mock("../../../../../../util/pagination-utils/parse-pagination-request", () => {
       return {
         parsePaginationRequest: vi.fn(() => "test")
       };
@@ -14,7 +14,9 @@ describe("Get Supplier Util Function: Parse Get Supplier Request", () => {
 
   it("Should return a variable", () => {
     const testObj = {
-      page: "test"
+      params: {
+        page: "test"
+      }
     };
 
     const variableToTest = parseGetSupplierRequest(testObj as unknown as Request<GetSuppliersParams>);

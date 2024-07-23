@@ -12,7 +12,7 @@ describe("Supplier Controller Util Function: Handle Get Supplier Request", () =>
   });
 
   it("Should return a failed response object when it receives an object with an error attribute", async () => {
-    vi.mock("../../../../../v1/controllers/suppliers-controller/util/get-suppliers/create-error-message", () => {
+    vi.mock("../../../../../../v1/controllers/suppliers-controller/util/get-suppliers/create-error-message", () => {
       return {
         createErrorMessage: vi.fn(() => "test")
       };
