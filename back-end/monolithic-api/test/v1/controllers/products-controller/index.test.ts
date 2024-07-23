@@ -1,22 +1,22 @@
 import { describe, expect, it, vi } from "vitest";
-import { getCategories, getCategoryDetails } from "../../../../v1/controllers/categories-controller/index";
 import { Request, Response } from "express";
+import { getProductDetails, getProducts } from "../../../../v1/controllers/products-controller";
 import {
-  GetCategoriesParams,
-  GetCategoryDetailsParams
-} from "../../../../v1/controllers/categories-controller/util/types/categories-types";
+  GetProductDetailsParams,
+  GetProductsParams
+} from "../../../../v1/controllers/products-controller/util/types/product-types";
 
-describe("Controller: Categories", () => {
-  vi.mock("../../../../models/categories", () => {
+describe("Controller: Products", () => {
+  vi.mock("../../../../models/products", () => {
     return {
-      categories: vi.fn(() => "test"),
-      categoryDetails: vi.fn(() => "test")
+      products: vi.fn(() => "test"),
+      productDetails: vi.fn(() => "test")
     };
   });
 
-  vi.mock("../../../../v1/controllers/categories-controller/util/get-categories/handle-get-categories-request", () => {
+  vi.mock("../../../../v1/controllers/products-controller/util/get-products/handle-get-products-request", () => {
     return {
-      handleGetCategoriesRequest: vi.fn(() => {
+      handleGetProductsRequest: vi.fn(() => {
         return {
           statusCode: 200,
           data: "test"
@@ -25,17 +25,17 @@ describe("Controller: Categories", () => {
     };
   });
 
-  vi.mock("../../../../v1/controllers/categories-controller/util/get-categories/parse-get-categories-request", () => {
+  vi.mock("../../../../v1/controllers/products-controller/util/get-products/parse-get-products-request", () => {
     return {
-      parseGetCategoriesRequest: vi.fn(() => "test")
+      parseGetProductsRequest: vi.fn(() => "test")
     };
   });
 
   vi.mock(
-    "../../../../v1/controllers/categories-controller/util/get-categories-details/handle-get-category-details-request",
+    "../../../../v1/controllers/products-controller/util/get-products-details/handle-get-product-details-request",
     () => {
       return {
-        handleGetCategoryDetailsRequest: vi.fn(() => {
+        handleGetProductDetailsRequest: vi.fn(() => {
           return {
             statusCode: 200,
             data: "test"
@@ -46,15 +46,15 @@ describe("Controller: Categories", () => {
   );
 
   vi.mock(
-    "../../../../v1/controllers/categories-controller/util/get-categories-details/parse-get-category-details-request",
+    "../../../../v1/controllers/products-controller/util/get-products-details/parse-get-product-details-request",
     () => {
       return {
-        parseGetCategoryDetailsRequest: vi.fn(() => "test")
+        parseGetProductDetailsRequest: vi.fn(() => "test")
       };
     }
   );
 
-  it("getCategories: Should send a response", async () => {
+  it("getProducts: Should send a response", async () => {
     const mockRequest = {
       params: {
         page: 1
@@ -72,8 +72,8 @@ describe("Controller: Categories", () => {
       status: mockStatusFunc
     };
 
-    await getCategories(
-      mockRequest as unknown as Request<GetCategoriesParams>,
+    await getProducts(
+      mockRequest as unknown as Request<GetProductsParams>,
       mockResponse as unknown as Response,
       mockNextFunc
     );
@@ -84,7 +84,7 @@ describe("Controller: Categories", () => {
     });
   });
 
-  it("getCategories: Should call the next function", async () => {
+  it("getProducts: Should call the next function", async () => {
     const mockRequest = {
       params: {
         page: 1
@@ -102,8 +102,8 @@ describe("Controller: Categories", () => {
       status: mockStatusFunc
     };
 
-    await getCategories(
-      mockRequest as unknown as Request<GetCategoriesParams>,
+    await getProducts(
+      mockRequest as unknown as Request<GetProductsParams>,
       mockResponse as unknown as Response,
       mockNextFunc
     );
@@ -111,10 +111,10 @@ describe("Controller: Categories", () => {
     expect(mockNextFunc).toHaveBeenCalled();
   });
 
-  it("getCategoryDetails: Should send a response", async () => {
+  it("getProductDetails: Should send a response", async () => {
     const mockRequest = {
       params: {
-        category_id: 1
+        product_id: 1
       }
     };
 
@@ -129,8 +129,8 @@ describe("Controller: Categories", () => {
       status: mockStatusFunc
     };
 
-    await getCategoryDetails(
-      mockRequest as unknown as Request<GetCategoryDetailsParams>,
+    await getProductDetails(
+      mockRequest as unknown as Request<GetProductDetailsParams>,
       mockResponse as unknown as Response,
       mockNextFunc
     );
@@ -142,7 +142,7 @@ describe("Controller: Categories", () => {
     });
   });
 
-  it("getCategoryDetails: Should call the next function", async () => {
+  it("getProductDetails: Should call the next function", async () => {
     const mockRequest = {
       params: {
         category_id: 1
@@ -160,8 +160,8 @@ describe("Controller: Categories", () => {
       status: mockStatusFunc
     };
 
-    await getCategoryDetails(
-      mockRequest as unknown as Request<GetCategoryDetailsParams>,
+    await getProductDetails(
+      mockRequest as unknown as Request<GetProductDetailsParams>,
       mockResponse as unknown as Response,
       mockNextFunc
     );
