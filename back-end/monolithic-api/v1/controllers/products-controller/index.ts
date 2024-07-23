@@ -3,7 +3,7 @@ import { products, productDetails } from "../../../models/products";
 import { handleGetProductsRequest } from "./util/get-products/handle-get-products-request";
 import { parseGetProductsRequest } from "./util/get-products/parse-get-products-request";
 import { GetProductDetailsParams, GetProductsParams } from "./util/types/product-types";
-import { parseGetProductDetailsRequest } from "./util/get-product-details/parse-get-supplier-details-request";
+import { parseGetProductDetailsRequest } from "./util/get-product-details/parse-get-product-details-request";
 import { handleGetProductDetailsRequest } from "./util/get-product-details/handle-get-products-details-request";
 
 export async function getProducts(req: Request<GetProductsParams>, res: Response, next: NextFunction) {
