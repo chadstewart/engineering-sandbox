@@ -1,29 +1,29 @@
 import { afterAll, describe, expect, it, vi } from "vitest";
-import { GetProductEvaluatedRequest } from "../../../../../../v1/controllers/products-controller/util/types/product-types";
-import { handleGetProductsRequest } from "../../../../../../v1/controllers/products-controller/util/get-products/handle-get-products-request";
-import { products } from "../../../../../../models/products";
+import { GetEmployeeEvaluatedRequest } from "../../../../../../v1/controllers/employees-controller/util/types/employee-types";
+import { handleGetEmployeesRequest } from "../../../../../../v1/controllers/employees-controller/util/get-employees/handle-get-employee-request";
+import { employees } from "../../../../../../models/employees";
 
-describe("Products Controller Util Function: HandleGetProductRequest", () => {
+describe("Employees Controller Util Function: HandleGetEmployeeRequest", () => {
   afterAll(() => {
     vi.resetAllMocks();
   });
 
   it("Should return a failed response object when it receives an object with an error attribute", async () => {
-    vi.mock("../../../../../../v1/controllers/products-controller/util/get-products/create-error-message", () => {
+    vi.mock("../../../../../../v1/controllers/employees-controller/util/get-employees/create-error-message", () => {
       return {
         createErrorMessage: vi.fn(() => "test")
       };
     });
 
-    const testObj: GetProductEvaluatedRequest = {
+    const testObj: GetEmployeeEvaluatedRequest = {
       error: "MissingPage"
     };
 
     const mockDataProvider = vi.fn(() => "test");
 
-    const variableToTest = await handleGetProductsRequest(
+    const variableToTest = await handleGetEmployeesRequest(
       testObj,
-      mockDataProvider as unknown as typeof products,
+      mockDataProvider as unknown as typeof employees,
       "test"
     );
     expect(variableToTest).toStrictEqual({
@@ -34,15 +34,15 @@ describe("Products Controller Util Function: HandleGetProductRequest", () => {
   });
 
   it("Should return a success response object when it receives an object with a page attribute", async () => {
-    const testObj: GetProductEvaluatedRequest = {
+    const testObj: GetEmployeeEvaluatedRequest = {
       page: 2
     };
 
     const mockDataProvider = vi.fn(() => "test");
 
-    const variableToTest = await handleGetProductsRequest(
+    const variableToTest = await handleGetEmployeesRequest(
       testObj,
-      mockDataProvider as unknown as typeof products,
+      mockDataProvider as unknown as typeof employees,
       "test"
     );
     expect(variableToTest).toStrictEqual({
