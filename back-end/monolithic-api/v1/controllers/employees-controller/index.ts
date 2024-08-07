@@ -1,30 +1,14 @@
 import { Request, Response, NextFunction } from "express";
 import { createEmployee, employees, employeesFromId } from ".../../../models/employees";
 import { createEmployeeZodSchema } from "../../../util/schemas/employee-zod-schema";
+import { handleGetEmployeesRequest } from "./util/get-employees/handle-get-employee-request";
+import { parseGetEmployeesRequest } from "./util/get-employees/parse-get-employees-request";
+import { GetEmployeesParams } from "./util/types/employee-types";
 
-export async function getEmployees(req: Request, res: Response, next: NextFunction) {
-  let page = 1;
-
-  const isPageNumberInRoute = req.params.page;
-  if (isPageNumberInRoute) page = Number(req.params.page);
-
-  const isPageNumberNaN = Number.isNaN(page);
-  if (isPageNumberNaN) {
-    res.status(400).json({
-      status: "failed",
-      error: "employees/'page' must be a number"
-    });
-
-    return next();
-  }
-
-  const data = await employees(page);
-
-  res.status(200).json({
-    status: "success",
-    data: data
-  });
-
+export async function getEmployees(req: Request<GetEmployeesParams>, res: Response, next: NextFunction) {
+  const { statusCode, ...rest } = await handleGetEmployeesRequest(parseGetEmployeesRequest(req), employees, req.path);
+  const employeesResponse = rest;
+  res.status(statusCode).json(employeesResponse);
   return next();
 }
 
