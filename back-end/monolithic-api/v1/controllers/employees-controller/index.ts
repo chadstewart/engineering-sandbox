@@ -3,7 +3,9 @@ import { createEmployee, employees, employeesFromId } from ".../../../models/emp
 import { createEmployeeZodSchema } from "../../../util/schemas/employee-zod-schema";
 import { handleGetEmployeesRequest } from "./util/get-employees/handle-get-employee-request";
 import { parseGetEmployeesRequest } from "./util/get-employees/parse-get-employees-request";
-import { GetEmployeesParams } from "./util/types/employee-types";
+import { GetEmployeeByIdParams, GetEmployeesParams } from "./util/types/employee-types";
+import { parseGetEmployeeByIdRequest } from "./util/get-employee-by-id/parse-get-employee-by-id-request";
+import { handleGetEmployeeByIdRequest } from "./util/get-employee-by-id/handle-get-employee-by-id-request";
 
 export async function getEmployees(req: Request<GetEmployeesParams>, res: Response, next: NextFunction) {
   const { statusCode, ...rest } = await handleGetEmployeesRequest(parseGetEmployeesRequest(req), employees, req.path);
@@ -12,29 +14,10 @@ export async function getEmployees(req: Request<GetEmployeesParams>, res: Respon
   return next();
 }
 
-export async function getEmployeeById(req: Request, res: Response, next: NextFunction) {
-  let employeeId = 0;
-
-  const isEmployeeIdInRoute = req.params.employee_id;
-  if (isEmployeeIdInRoute) employeeId = Number(req.params.employee_id);
-
-  const isEmployeeIdIsNaN = Number.isNaN(employeeId) || employeeId === 0;
-  if (isEmployeeIdIsNaN) {
-    res.status(400).json({
-      status: "failed",
-      error: "employees/'employeeId' must be a number"
-    });
-
-    return next();
-  }
-
-  const data = await employeesFromId(employeeId);
-
-  res.status(200).json({
-    status: "success",
-    data: data
-  });
-
+export async function getEmployeeById(req: Request<GetEmployeeByIdParams>, res: Response, next: NextFunction) {
+  const { statusCode, ...rest } = await handleGetEmployeeByIdRequest(parseGetEmployeeByIdRequest(req), employeesFromId);
+  const employeesByIdResponse = rest;
+  res.status(statusCode).json(employeesByIdResponse);
   return next();
 }
 
