@@ -14,11 +14,11 @@ export type GetEmployeeRequestError = PaginationRequestError;
 export type GetEmployeeEvaluatedRequest = GetEmployeeRequest | GetEmployeeRequestError;
 
 export type GetEmployeeByIdParams = {
-  Employee_id: string;
+  employee_id: string;
 };
 
 export type GetEmployeeByIdRequest = {
-  Employee_id: number;
+  employee_id: number;
 };
 
 export type GetEmployeeByIdRequestError = {
