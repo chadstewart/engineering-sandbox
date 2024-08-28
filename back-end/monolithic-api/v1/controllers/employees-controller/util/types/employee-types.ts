@@ -29,9 +29,9 @@ export type GetEmployeeByIdRequestError = {
 
 export type GetEmployeeByIdEvaluatedRequest = GetEmployeeByIdRequest | GetEmployeeByIdRequestError;
 
-export type AddEmployeeParams = zod.infer<typeof createEmployeeZodSchema>;
+export type AddEmployeeRequestBody = zod.infer<typeof createEmployeeZodSchema>;
 
-export interface AddEmployeeRequest extends AddEmployeeParams {}
+export interface AddEmployeeRequest extends AddEmployeeRequestBody {}
 
 export type AddEmployeeRequestError = {
   error: "MissingParams";

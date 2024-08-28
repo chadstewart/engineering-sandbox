@@ -1,10 +1,14 @@
 import { Request } from "express";
-import { AddEmployeeEvaluatedRequest, AddEmployeeParams } from "../types/employee-types";
+import { AddEmployeeEvaluatedRequest, AddEmployeeRequestBody } from "../types/employee-types";
 import { createEmployeeZodSchema } from "../../../../../util/schemas/employee-zod-schema";
 
-export const parseAddEmployeeRequest = (req: Request<AddEmployeeParams>): AddEmployeeEvaluatedRequest => {
+type emptyObject = Record<string, never>;
+
+export const parseAddEmployeeRequest = (
+  req: Request<emptyObject, emptyObject, AddEmployeeRequestBody>
+): AddEmployeeEvaluatedRequest => {
   try {
-    const data = createEmployeeZodSchema.parse(req.params);
+    const data = createEmployeeZodSchema.parse(req.body);
     return data;
   } catch {
     return { error: "MissingParams" };

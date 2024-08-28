@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { createEmployee, employees, employeesFromId } from ".../../../models/employees";
 import { handleGetEmployeesRequest } from "./util/get-employees/handle-get-employee-request";
 import { parseGetEmployeesRequest } from "./util/get-employees/parse-get-employees-request";
-import { AddEmployeeParams, GetEmployeeByIdParams, GetEmployeesParams } from "./util/types/employee-types";
+import { AddEmployeeRequestBody, GetEmployeeByIdParams, GetEmployeesParams } from "./util/types/employee-types";
 import { parseGetEmployeeByIdRequest } from "./util/get-employee-by-id/parse-get-employee-by-id-request";
 import { handleGetEmployeeByIdRequest } from "./util/get-employee-by-id/handle-get-employee-by-id-request";
 import { handleAddEmployeeRequest } from "./util/add-employee/handle-add-employee-request";
@@ -22,7 +22,13 @@ export async function getEmployeeById(req: Request<GetEmployeeByIdParams>, res: 
   return next();
 }
 
-export async function addEmployee(req: Request<AddEmployeeParams>, res: Response, next: NextFunction) {
+type emptyObject = Record<string, never>;
+
+export async function addEmployee(
+  req: Request<emptyObject, emptyObject, AddEmployeeRequestBody>,
+  res: Response,
+  next: NextFunction
+) {
   /*  #swagger.requestBody = {
             required: true,
             content: {
