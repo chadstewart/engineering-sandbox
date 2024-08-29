@@ -4,30 +4,14 @@ import {
   addOrdersExistingCustomerZodSchema,
   addOrdersNewCustomerZodSchema
 } from "../../../util/schemas/add-orders-zod-schema";
+import { handleGetOrdersRequest } from "./util/get-orders/handle-get-orders-request";
+import { parseGetOrdersRequest } from "./util/get-orders/parse-get-orders-request";
+import { GetOrdersParams } from "./util/types/order-types";
 
-export async function getOrders(req: Request, res: Response, next: NextFunction) {
-  let page = 1;
-
-  const isPageNumberInRoute = req.params.page;
-  if (isPageNumberInRoute) page = Number(req.params.page);
-
-  const isPageNumberNaN = Number.isNaN(page);
-  if (isPageNumberNaN) {
-    res.status(400).json({
-      status: "failed",
-      error: "orders/'page' must be a number"
-    });
-
-    return next();
-  }
-
-  const data = await orders(page);
-
-  res.status(200).json({
-    status: "success",
-    data: data
-  });
-
+export async function getOrders(req: Request<GetOrdersParams>, res: Response, next: NextFunction) {
+  const { statusCode, ...rest } = await handleGetOrdersRequest(parseGetOrdersRequest(req), orders, req.path);
+  const orderResponse = rest;
+  res.status(statusCode).json(orderResponse);
   return next();
 }
 
