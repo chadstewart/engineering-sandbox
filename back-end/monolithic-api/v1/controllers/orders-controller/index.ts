@@ -6,7 +6,9 @@ import {
 } from "../../../util/schemas/add-orders-zod-schema";
 import { handleGetOrdersRequest } from "./util/get-orders/handle-get-orders-request";
 import { parseGetOrdersRequest } from "./util/get-orders/parse-get-orders-request";
-import { GetOrdersParams } from "./util/types/order-types";
+import { GetOrderDetailsParams, GetOrdersParams } from "./util/types/order-types";
+import { handleGetOrderDetailsRequest } from "./util/get-order-details/handle-get-order-details-request";
+import { parseGetOrderDetailsRequest } from "./util/get-order-details/parse-get-order-details-request";
 
 export async function getOrders(req: Request<GetOrdersParams>, res: Response, next: NextFunction) {
   const { statusCode, ...rest } = await handleGetOrdersRequest(parseGetOrdersRequest(req), orders, req.path);
@@ -15,29 +17,10 @@ export async function getOrders(req: Request<GetOrdersParams>, res: Response, ne
   return next();
 }
 
-export async function getOrderDetails(req: Request, res: Response, next: NextFunction) {
-  let orderId = 0;
-
-  const isOrderIdInRoute = req.params.order_id;
-  if (isOrderIdInRoute) orderId = Number(req.params.order_id);
-
-  const isOrderIdNaN = Number.isNaN(orderId) || orderId === 0;
-  if (isOrderIdNaN) {
-    res.status(400).json({
-      status: "failed",
-      error: "orders/details/'order_id' must be a number"
-    });
-
-    return next();
-  }
-
-  const data = await orderDetails(orderId);
-
-  res.status(200).json({
-    status: "success",
-    data: data
-  });
-
+export async function getOrderDetails(req: Request<GetOrderDetailsParams>, res: Response, next: NextFunction) {
+  const { statusCode, ...rest } = await handleGetOrderDetailsRequest(parseGetOrderDetailsRequest(req), orderDetails);
+  const orderDetailsResponse = rest;
+  res.status(statusCode).json(orderDetailsResponse);
   return next();
 }
 
