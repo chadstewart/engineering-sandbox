@@ -2,6 +2,8 @@ import {
   PaginationRequest,
   PaginationRequestError
 } from "../../../../../util/pagination-utils/parse-pagination-request-types";
+import zod from "zod";
+import { addOrdersNewCustomerZodSchema } from "../../../../../util/schemas/add-orders-zod-schema";
 
 export type GetOrdersParams = {
   page: string;
@@ -26,3 +28,13 @@ export type GetOrderDetailsRequestError = {
 };
 
 export type GetOrderDetailsEvaluatedRequest = GetOrderDetailsRequest | GetOrderDetailsRequestError;
+
+export type AddOrderNewCustomerRequestBody = zod.infer<typeof addOrdersNewCustomerZodSchema>;
+
+export interface AddOrderNewCustomerRequest extends AddOrderNewCustomerRequestBody {}
+
+export type AddOrderNewCustomerRequestError = {
+  error: "MissingParams";
+};
+
+export type AddOrderNewCustomerEvaluatedRequest = AddOrderNewCustomerRequest | AddOrderNewCustomerRequestError;
