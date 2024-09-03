@@ -16,7 +16,12 @@ export const parseAddOrderExistingCustomerRequest = (
   if (isNaN(customerId) || customerId === 0) return { error: "CustomerIdIsNotAValidNumber" };
   try {
     const data = addOrdersExistingCustomerZodSchema.parse(req.body);
-    return { requestBody: data, params: req.params };
+    return {
+      requestBody: data,
+      params: {
+        customer_id: customerId
+      }
+    };
   } catch {
     return { error: "MissingRequestBodyData" };
   }

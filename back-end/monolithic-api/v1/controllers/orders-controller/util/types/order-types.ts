@@ -37,7 +37,9 @@ export type AddOrderExistingCustomerRequestBody = zod.infer<typeof addOrdersExis
 
 export interface AddOrderExistingCustomerRequest {
   requestBody: AddOrderExistingCustomerRequestBody;
-  params: AddOrderExistingCustomerParams;
+  params: {
+    customer_id: number;
+  };
 }
 
 export type AddOrderExistingCustomerRequestError = {
