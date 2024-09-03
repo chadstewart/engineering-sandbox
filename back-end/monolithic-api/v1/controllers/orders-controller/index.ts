@@ -1,14 +1,20 @@
 import { Request, Response, NextFunction } from "express";
 import { orders, orderDetails, addOrderExistingCustomer, addOrderNewCustomer } from "../../../models/orders";
-import {
-  addOrdersExistingCustomerZodSchema,
-  addOrdersNewCustomerZodSchema
-} from "../../../util/schemas/add-orders-zod-schema";
+import { addOrdersNewCustomerZodSchema } from "../../../util/schemas/add-orders-zod-schema";
 import { handleGetOrdersRequest } from "./util/get-orders/handle-get-orders-request";
 import { parseGetOrdersRequest } from "./util/get-orders/parse-get-orders-request";
-import { GetOrderDetailsParams, GetOrdersParams } from "./util/types/order-types";
+import {
+  AddOrderExistingCustomerParams,
+  AddOrderExistingCustomerRequestBody,
+  GetOrderDetailsParams,
+  GetOrdersParams
+} from "./util/types/order-types";
 import { handleGetOrderDetailsRequest } from "./util/get-order-details/handle-get-order-details-request";
 import { parseGetOrderDetailsRequest } from "./util/get-order-details/parse-get-order-details-request";
+import { handleAddOrderExistingCustomerRequest } from "./util/add-order-existing-customer/handle-add-order-existing-customer-request";
+import { parseAddOrderExistingCustomerRequest } from "./util/add-order-existing-customer/parse-add-order-existing-customer-request";
+
+type emptyObject = Record<string, never>;
 
 export async function getOrders(req: Request<GetOrdersParams>, res: Response, next: NextFunction) {
   const { statusCode, ...rest } = await handleGetOrdersRequest(parseGetOrdersRequest(req), orders, req.path);
@@ -90,7 +96,11 @@ export async function addOrderAddNewCustomer(req: Request, res: Response, next: 
   }
 }
 
-export async function addOrderAddExistingCustomer(req: Request, res: Response, next: NextFunction) {
+export async function addOrderAddExistingCustomer(
+  req: Request<AddOrderExistingCustomerParams, emptyObject, AddOrderExistingCustomerRequestBody>,
+  res: Response,
+  next: NextFunction
+) {
   /*  #swagger.requestBody = {
             required: true,
             content: {
@@ -123,38 +133,11 @@ export async function addOrderAddExistingCustomer(req: Request, res: Response, n
             }
         } 
     */
-  let customerId = "";
-
-  const isCustomerIdInRoute = req.params.customer_id;
-  if (isCustomerIdInRoute) customerId = req.params.customer_id;
-
-  const isCustomerIdNotAValue = customerId.length === 0;
-  if (isCustomerIdNotAValue) {
-    res.status(400).json({
-      status: "failed",
-      error: "orders/'order_id' must be a number"
-    });
-
-    return next();
-  }
-
-  try {
-    const validRequestBody = await addOrdersExistingCustomerZodSchema.parse(req.body);
-
-    const data = addOrderExistingCustomer(validRequestBody, customerId);
-
-    res.status(201).json({
-      status: "success",
-      data: data
-    });
-
-    return next();
-  } catch (error) {
-    res.status(400).json({
-      status: "failed",
-      error: "The request body is not what was expected."
-    });
-
-    return next();
-  }
+  const { statusCode, ...rest } = await handleAddOrderExistingCustomerRequest(
+    parseAddOrderExistingCustomerRequest(req),
+    addOrderExistingCustomer
+  );
+  const addOrderExistingCustomerResponse = rest;
+  res.status(statusCode).json(addOrderExistingCustomerResponse);
+  return next();
 }
