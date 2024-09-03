@@ -3,7 +3,7 @@ import {
   PaginationRequestError
 } from "../../../../../util/pagination-utils/parse-pagination-request-types";
 import zod from "zod";
-import { addOrdersNewCustomerZodSchema } from "../../../../../util/schemas/add-orders-zod-schema";
+import { addOrdersExistingCustomerZodSchema } from "../../../../../util/schemas/add-orders-zod-schema";
 
 export type GetOrdersParams = {
   page: string;
@@ -29,19 +29,21 @@ export type GetOrderDetailsRequestError = {
 
 export type GetOrderDetailsEvaluatedRequest = GetOrderDetailsRequest | GetOrderDetailsRequestError;
 
-export type AddOrderNewCustomerParams = {
+export type AddOrderExistingCustomerParams = {
   customer_id: string;
 };
 
-export type AddOrderNewCustomerRequestBody = zod.infer<typeof addOrdersNewCustomerZodSchema>;
+export type AddOrderExistingCustomerRequestBody = zod.infer<typeof addOrdersExistingCustomerZodSchema>;
 
-export interface AddOrderNewCustomerRequest {
-  requestBody: AddOrderNewCustomerRequestBody;
-  params: AddOrderNewCustomerParams;
+export interface AddOrderExistingCustomerRequest {
+  requestBody: AddOrderExistingCustomerRequestBody;
+  params: AddOrderExistingCustomerParams;
 }
 
-export type AddOrderNewCustomerRequestError = {
+export type AddOrderExistingCustomerRequestError = {
   error: "MissingRequestBodyData" | "MissingCustomerId" | "CustomerIdIsNotAValidNumber";
 };
 
-export type AddOrderNewCustomerEvaluatedRequest = AddOrderNewCustomerRequest | AddOrderNewCustomerRequestError;
+export type AddOrderExistingCustomerEvaluatedRequest =
+  | AddOrderExistingCustomerRequest
+  | AddOrderExistingCustomerRequestError;
