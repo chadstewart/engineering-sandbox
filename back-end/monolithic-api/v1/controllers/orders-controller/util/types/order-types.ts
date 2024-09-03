@@ -29,12 +29,19 @@ export type GetOrderDetailsRequestError = {
 
 export type GetOrderDetailsEvaluatedRequest = GetOrderDetailsRequest | GetOrderDetailsRequestError;
 
+export type AddOrderNewCustomerParams = {
+  customer_id: string;
+};
+
 export type AddOrderNewCustomerRequestBody = zod.infer<typeof addOrdersNewCustomerZodSchema>;
 
-export interface AddOrderNewCustomerRequest extends AddOrderNewCustomerRequestBody {}
+export interface AddOrderNewCustomerRequest {
+  requestBody: AddOrderNewCustomerRequestBody;
+  params: AddOrderNewCustomerParams;
+}
 
 export type AddOrderNewCustomerRequestError = {
-  error: "MissingParams";
+  error: "MissingRequestBodyData" | "MissingCustomerId" | "CustomerIdIsNotAValidNumber";
 };
 
 export type AddOrderNewCustomerEvaluatedRequest = AddOrderNewCustomerRequest | AddOrderNewCustomerRequestError;
