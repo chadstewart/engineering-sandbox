@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 import { orders, orderDetails, addOrderExistingCustomer, addOrderNewCustomer } from "../../../models/orders";
-import { addOrdersNewCustomerZodSchema } from "../../../util/schemas/add-orders-zod-schema";
 import { handleGetOrdersRequest } from "./util/get-orders/handle-get-orders-request";
 import { parseGetOrdersRequest } from "./util/get-orders/parse-get-orders-request";
 import {
   AddOrderExistingCustomerParams,
   AddOrderExistingCustomerRequestBody,
+  AddOrderNewCustomerRequest,
   GetOrderDetailsParams,
   GetOrdersParams
 } from "./util/types/order-types";
@@ -13,6 +13,8 @@ import { handleGetOrderDetailsRequest } from "./util/get-order-details/handle-ge
 import { parseGetOrderDetailsRequest } from "./util/get-order-details/parse-get-order-details-request";
 import { handleAddOrderExistingCustomerRequest } from "./util/add-order-existing-customer/handle-add-order-existing-customer-request";
 import { parseAddOrderExistingCustomerRequest } from "./util/add-order-existing-customer/parse-add-order-existing-customer-request";
+import { parseAddOrderNewCustomerRequest } from "./util/add-order-new-customer/parse-add-order-new-customer-request";
+import { handleAddOrderNewCustomerRequest } from "./util/add-order-new-customer/handle-add-order-new-customer-request";
 
 type emptyObject = Record<string, never>;
 
@@ -30,7 +32,11 @@ export async function getOrderDetails(req: Request<GetOrderDetailsParams>, res: 
   return next();
 }
 
-export async function addOrderAddNewCustomer(req: Request, res: Response, next: NextFunction) {
+export async function addOrderAddNewCustomer(
+  req: Request<emptyObject, emptyObject, AddOrderNewCustomerRequest>,
+  res: Response,
+  next: NextFunction
+) {
   /*  #swagger.requestBody = {
             required: true,
             content: {
@@ -75,25 +81,13 @@ export async function addOrderAddNewCustomer(req: Request, res: Response, next: 
             }
         } 
     */
-  try {
-    const validRequestBody = await addOrdersNewCustomerZodSchema.parse(req.body);
-
-    const data = addOrderNewCustomer(validRequestBody);
-
-    res.status(201).json({
-      status: "success",
-      data: data
-    });
-
-    return next();
-  } catch (error) {
-    res.status(400).json({
-      status: "failed",
-      error: "The request body is not what was expected."
-    });
-
-    return next();
-  }
+  const { statusCode, ...rest } = await handleAddOrderNewCustomerRequest(
+    parseAddOrderNewCustomerRequest(req),
+    addOrderNewCustomer
+  );
+  const addOrderNewCustomerResponse = rest;
+  res.status(statusCode).json(addOrderNewCustomerResponse);
+  return next();
 }
 
 export async function addOrderAddExistingCustomer(
