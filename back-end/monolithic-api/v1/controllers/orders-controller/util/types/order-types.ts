@@ -3,7 +3,10 @@ import {
   PaginationRequestError
 } from "../../../../../util/pagination-utils/parse-pagination-request-types";
 import zod from "zod";
-import { addOrdersExistingCustomerZodSchema } from "../../../../../util/schemas/add-orders-zod-schema";
+import {
+  addOrdersExistingCustomerZodSchema,
+  addOrdersNewCustomerZodSchema
+} from "../../../../../util/schemas/add-orders-zod-schema";
 
 export type GetOrdersParams = {
   page: string;
@@ -28,6 +31,16 @@ export type GetOrderDetailsRequestError = {
 };
 
 export type GetOrderDetailsEvaluatedRequest = GetOrderDetailsRequest | GetOrderDetailsRequestError;
+
+export type AddOrderNewCustomerRequestBody = zod.infer<typeof addOrdersNewCustomerZodSchema>;
+
+export type AddOrderNewCustomerRequest = AddOrderExistingCustomerRequestBody;
+
+export type AddOrderNewCustomerRequestError = {
+  error: "MissingRequestBodyData";
+};
+
+export type AddOrderNewCustomerEvaluatedRequest = AddOrderNewCustomerRequest | AddOrderNewCustomerRequestError;
 
 export type AddOrderExistingCustomerParams = {
   customer_id: string;
