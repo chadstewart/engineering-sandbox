@@ -3,12 +3,13 @@ import { Request, Response } from "express";
 import {
   getOrders,
   getOrderDetails,
-  addOrderAddExistingCustomer
-  /* addOrderAddNewCustomer */
+  addOrderAddExistingCustomer,
+  addOrderAddNewCustomer
 } from "../../../../v1/controllers/orders-controller/";
 import {
   AddOrderExistingCustomerParams,
   AddOrderExistingCustomerRequestBody,
+  AddOrderNewCustomerRequestBody,
   GetOrderDetailsParams,
   GetOrdersParams
 } from "../../../../v1/controllers/orders-controller/util/types/order-types";
@@ -20,6 +21,7 @@ describe("Controller: Orders", () => {
     return {
       orders: vi.fn(() => "test"),
       orderDetails: vi.fn(() => "test"),
+      addOrderNewCustomer: vi.fn(() => "test"),
       addOrderExistingCustomer: vi.fn(() => "test")
     };
   });
@@ -60,6 +62,29 @@ describe("Controller: Orders", () => {
       parseGetOrderDetailsRequest: vi.fn(() => "test")
     };
   });
+
+  vi.mock(
+    "../../../../v1/controllers/orders-controller/util/add-order-new-customer/handle-add-order-new-customer-request",
+    () => {
+      return {
+        handleAddOrderNewCustomerRequest: vi.fn(() => {
+          return {
+            statusCode: 200,
+            data: "test"
+          };
+        })
+      };
+    }
+  );
+
+  vi.mock(
+    "../../../../v1/controllers/orders-controller/util/add-order-new-customer/parse-add-order-new-customer-request",
+    () => {
+      return {
+        parseAddOrderNewCustomerRequest: vi.fn(() => "test")
+      };
+    }
+  );
 
   vi.mock(
     "../../../../v1/controllers/orders-controller/util/add-order-existing-customer/handle-add-order-existing-customer-request",
@@ -110,8 +135,7 @@ describe("Controller: Orders", () => {
 
     expect(mockStatusFunc).toHaveBeenCalledWith(200);
     expect(mockJsonFunc).toHaveBeenCalledWith({
-      data: "test",
-      status: "success"
+      data: "test"
     });
   });
 
@@ -168,8 +192,7 @@ describe("Controller: Orders", () => {
 
     expect(mockStatusFunc).toHaveBeenCalledWith(200);
     expect(mockJsonFunc).toHaveBeenCalledWith({
-      data: "test",
-      status: "success"
+      data: "test"
     });
   });
 
@@ -200,35 +223,64 @@ describe("Controller: Orders", () => {
     expect(mockNextFunc).toHaveBeenCalled();
   });
 
-  it("addOrderAddExistingCustomer: Should send a response", async () => {
+  it("addOrderAddNewCustomer: Should send a response", async () => {
+    const mockRequest = {
+      test: "test"
+    };
+
+    const mockNextFunc = vi.fn();
+    const mockJsonFunc = vi.fn();
+    const mockStatusFunc = vi.fn(() => {
+      return {
+        json: mockJsonFunc
+      };
+    });
+    const mockResponse = {
+      status: mockStatusFunc
+    };
+
+    await addOrderAddNewCustomer(
+      mockRequest as unknown as Request<emptyObject, emptyObject, AddOrderNewCustomerRequestBody>,
+      mockResponse as unknown as Response,
+      mockNextFunc
+    );
+
+    expect(mockStatusFunc).toHaveBeenCalledWith(200);
+    expect(mockJsonFunc).toHaveBeenCalledWith({
+      data: "test"
+    });
+  });
+
+  it("AddOrderAddNewCustomer: Should call the next function", async () => {
     const mockRequest = {
       params: {
         customer_id: 1
-      },
-      body: {
-        orders: {
-          type: "object",
-          employee_id: 1,
-          order_date: "2023/12/1",
-          required_date: "2023/12/1",
-          shipped_date: "2023/12/1",
-          ship_via: 1,
-          freight: 1,
-          ship_name: "Hello",
-          ship_address: "Hello",
-          ship_city: "Hello",
-          ship_region: "Hello",
-          ship_postal_code: "Hello",
-          ship_country: "Hello"
-        },
-        order_details: {
-          type: "object",
-          product_id: 1,
-          unit_price: 1,
-          quantity: 1,
-          discount: 1
-        }
       }
+    };
+
+    const mockNextFunc = vi.fn();
+    const mockJsonFunc = vi.fn();
+    const mockStatusFunc = vi.fn(() => {
+      return {
+        json: mockJsonFunc
+      };
+    });
+    const mockResponse = {
+      status: mockStatusFunc
+    };
+
+    await addOrderAddNewCustomer(
+      mockRequest as unknown as Request<emptyObject, emptyObject, AddOrderNewCustomerRequestBody>,
+      mockResponse as unknown as Response,
+      mockNextFunc
+    );
+
+    expect(mockNextFunc).toHaveBeenCalled();
+  });
+
+  it("addOrderAddExistingCustomer: Should send a response", async () => {
+    const mockRequest = {
+      test: "test"
     };
 
     const mockNextFunc = vi.fn();
@@ -252,10 +304,9 @@ describe("Controller: Orders", () => {
       mockNextFunc
     );
 
-    expect(mockStatusFunc).toHaveBeenCalledWith(201);
+    expect(mockStatusFunc).toHaveBeenCalledWith(200);
     expect(mockJsonFunc).toHaveBeenCalledWith({
-      data: "test",
-      status: "success"
+      data: "test"
     });
   });
 

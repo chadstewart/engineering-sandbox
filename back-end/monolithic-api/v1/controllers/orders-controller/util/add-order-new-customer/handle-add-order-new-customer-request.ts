@@ -14,7 +14,7 @@ export const handleAddOrderNewCustomerRequest = async (
     };
 
   return {
-    statusCode: 200,
+    statusCode: 201,
     status: "success",
     data: await dataProvider(evaluatedRequest)
   };
