@@ -1,0 +1,1 @@
+FROM infisical/infisical:v0.160.7
