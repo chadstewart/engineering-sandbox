@@ -1,1 +1,1 @@
-FROM infisical/infisical:v0.160.7
+FROM infisical/infisical:v0.160.7 as secrets-manager

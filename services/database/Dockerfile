@@ -1,0 +1,3 @@
+FROM bitnami/postgresql:sha256-361040e054da5cfaffda7c60f0fd2ce279147642dc41dd2b60dfcb217f9fa7d2 as postgres-container
+USER 0
+EXPOSE 5432
