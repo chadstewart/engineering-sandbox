@@ -12,6 +12,6 @@
     "prettier": "^3.2.5",
     "turbo": "^2.9.16"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@11.5.2",
   "name": "with-vite-react"
 }
