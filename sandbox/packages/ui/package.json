@@ -8,9 +8,6 @@
     "./setup-counter": "./utils/counter.ts"
   },
   "license": "MIT",
-  "scripts": {
-    "lint": "npm --version"
-  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
