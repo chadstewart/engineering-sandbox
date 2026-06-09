@@ -7,5 +7,6 @@ dist-ssr
 *.local
 .env
 .cache
+storybook-static
 server/dist
 public/dist
