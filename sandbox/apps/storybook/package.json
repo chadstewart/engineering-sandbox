@@ -13,12 +13,15 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@engineering-sandbox/tailwind-base": "workspace:*",
+    "@tailwindcss/vite": "^4.3.1",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@engineering-sandbox/ui": "workspace:*",
     "@chromatic-com/storybook": "^5.2.1",
+    "@engineering-sandbox/ui": "workspace:*",
     "@storybook/addon-a11y": "^10.4.2",
     "@storybook/addon-docs": "^10.4.2",
     "@storybook/addon-vitest": "^10.4.2",
