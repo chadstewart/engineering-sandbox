@@ -27,7 +27,7 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^5.2.1
         version: 5.2.1(storybook@10.4.2(@testing-library/dom@10.4.1)(@types/react@19.2.17)(prettier@3.8.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
-      '@repo/ui':
+      '@engineering-sandbox/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@storybook/addon-a11y':
@@ -87,6 +87,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@engineering-sandbox/tailwind-base':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-base
       '@tailwindcss/vite':
         specifier: ^4.3.1
         version: 4.3.1(vite@8.0.16(@types/node@24.13.1)(esbuild@0.27.7)(jiti@2.7.0))
@@ -130,6 +133,12 @@ importers:
       vite:
         specifier: ^8.0.12
         version: 8.0.16(@types/node@24.13.1)(esbuild@0.27.7)(jiti@2.7.0)
+
+  packages/tailwind-base:
+    dependencies:
+      tailwindcss:
+        specifier: ^4.3.1
+        version: 4.3.1
 
   packages/ui:
     dependencies:
