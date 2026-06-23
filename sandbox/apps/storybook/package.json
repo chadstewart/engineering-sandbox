@@ -1,5 +1,5 @@
 {
-  "name": "storybook",
+  "name": "@engineering-sandbox/storybook",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -17,7 +17,7 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@repo/ui": "workspace:*",
+    "@engineering-sandbox/ui": "workspace:*",
     "@chromatic-com/storybook": "^5.2.1",
     "@storybook/addon-a11y": "^10.4.2",
     "@storybook/addon-docs": "^10.4.2",

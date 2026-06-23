@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@engineering-sandbox/web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@engineering-sandbox/tailwind-base": "workspace:*",
     "@tailwindcss/vite": "^4.3.1",
     "@tanstack/react-router": "^1.170.15",
     "@tanstack/react-router-devtools": "^1.167.0",
