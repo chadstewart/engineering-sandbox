@@ -20,6 +20,9 @@ const rootRoute = createRootRoute({
         <Link to="/about" className="[&.active]:font-bold">
           About
         </Link>
+        <h1 className="text-3xl font-bold underline">
+          Hello world!
+        </h1>
       </div>
       <hr />
       <App />
