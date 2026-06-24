@@ -1,4 +1,4 @@
-import { Logo } from "../logo/logo";
+import { Logo } from "@/components/molecules/logo/logo";
 
 export const SidebarHeader = () => {
   return (
