@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { NavItem } from "@/components/atoms/nav-item/nav-item";
 import { type NavItemProps } from "@/lib/types/nav-item-props";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { cn } from "@/lib/util";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@engineering-sandbox/ui/components/ui/accordion.tsx";
+import { cn } from "@engineering-sandbox/ui/lib/utils";
 import { NavItemDropdown } from "@/components/atoms/nav-item-dropdown/nav-item-dropdown";
 
 interface NavProps {
