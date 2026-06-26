@@ -1,5 +1,5 @@
 import Icon from "../icon/icon";
-import { NavItemProps } from "@/lib/types/nav-item";
+import { type NavItemProps } from "@/lib/types/nav-item-props";
 
 export const NavItemDropdown = ({ text, icon, iconAlt }: NavItemProps) => {
   return (
