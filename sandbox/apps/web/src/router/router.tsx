@@ -1,62 +1,32 @@
 import { Router } from "@tanstack/react-router";
+import { notFoundRoute } from "./not-found/not-found";
 import {
-  Outlet,
-  RouterProvider,
-  Link,
-  createRouter,
   createRoute,
-  createRootRoute,
+  createRootRoute
 } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import App from "../App";
+import { MainLayout } from "@/components/templates/layout/main";
+import { PageLayout } from "@/components/templates/layout/page";
+import { indexRoute } from "./index";
 
 export const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <div className="p-2 flex gap-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>{' '}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
-        </Link>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
-      </div>
-      <hr />
-      <App />
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
-})
+  component: MainLayout
+});
 
-
-const indexRoute = createRoute({
+export const pageLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
-  component: function Index() {
-    return (
-      <div className="p-2">
-        <h3>Welcome Home!</h3>
-      </div>
-    )
-  },
-})
+  component: PageLayout,
+  id: "pageLayout"
+});
 
-const aboutRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/about',
-  component: function About() {
-    return <div className="p-2">Hello from About!</div>
-  },
-})
-
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
+const routeTree = rootRoute.addChildren([
+  pageLayoutRoute.addChildren([
+    indexRoute
+  ])
+]);
 
 const router = new Router({
-  routeTree
+  routeTree,
+  notFoundRoute
 });
 
 declare module "@tanstack/react-router" {
