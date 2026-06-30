@@ -10,7 +10,7 @@ import {
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import App from "../App";
 
-const rootRoute = createRootRoute({
+export const rootRoute = createRootRoute({
   component: () => (
     <>
       <div className="p-2 flex gap-2">
