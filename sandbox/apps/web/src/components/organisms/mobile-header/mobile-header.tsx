@@ -1,4 +1,4 @@
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@engineering-sandbox/ui/components/ui/sheet.tsx";
 import { IoMdMenu } from "react-icons/io";
 import { SidebarContentWrapper } from "../../molecules/sidebar-content/sidebar-content-wrapper";
 import Icon from "@/components/atoms/icon/icon";
