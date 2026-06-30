@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "exports": {
-    "./base.css": "./src/base.css"
+    "./base.css": "./src/base.css",
+    ".": {
+      "style": "./src/base.css"
+    }
   },
   "keywords": [],
   "author": "",
