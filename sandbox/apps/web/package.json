@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@engineering-sandbox/tailwind-base": "workspace:*",
+		"@engineering-sandbox/tsconfig-base": "workspace:*",
 		"@engineering-sandbox/ui": "workspace:*",
 		"@tailwindcss/vite": "^4.3.1",
 		"@tanstack/react-router": "^1.170.15",

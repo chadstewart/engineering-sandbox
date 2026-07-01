@@ -99,6 +99,9 @@ importers:
       '@engineering-sandbox/tailwind-base':
         specifier: workspace:*
         version: link:../../packages/tailwind-base
+      '@engineering-sandbox/tsconfig-base':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig-base
       '@engineering-sandbox/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -155,8 +158,13 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
 
+  packages/tsconfig-base: {}
+
   packages/ui:
     dependencies:
+      '@engineering-sandbox/tsconfig-base':
+        specifier: workspace:*
+        version: link:../tsconfig-base
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1

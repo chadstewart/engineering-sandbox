@@ -1,4 +1,5 @@
 {
+	"extends": "@engineering-sandbox/tsconfig-base/src/tsconfig.base.json",
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"rootDir": "./src",
@@ -13,11 +14,8 @@
 		"jsx": "react-jsx",
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
 		"preserveWatchOutput": true,
 		"skipLibCheck": true,
-		"strict": true
 	},
 	"include": ["src"],
 	"exclude": ["dist", "build", "node_modules"]
