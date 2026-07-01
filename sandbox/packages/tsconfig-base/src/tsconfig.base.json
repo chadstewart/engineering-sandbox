@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+		/* Linting */
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"erasableSyntaxOnly": true,
+		"noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "allowUnreachableCode": false,
+    "strictNullChecks": true
+  }
+}

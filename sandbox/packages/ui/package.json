@@ -26,6 +26,7 @@
 		"dev:components": "tsc --watch"
 	},
 	"dependencies": {
+		"@engineering-sandbox/tsconfig-base": "workspace:*",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"lucide-react": "^1.21.0",
