@@ -1,7 +1,17 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
 	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-	"files": { "ignoreUnknown": false },
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**",
+			"!**/dist",
+			"!**/build",
+			"!**/node_modules",
+			"!apps/storybook",
+			"!packages/ui/src/globals.css"
+		]
+	},
 	"formatter": { "enabled": true, "indentStyle": "tab" },
 	"linter": {
 		"enabled": true,
