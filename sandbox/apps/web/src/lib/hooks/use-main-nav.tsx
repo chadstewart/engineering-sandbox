@@ -1,4 +1,5 @@
 import { type NavItemProps } from "../types/nav-item-props";
+
 /* import { IoHomeSharp } from "react-icons/io5";
 import { FaCat } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";
@@ -10,8 +11,8 @@ import { BiDetail } from "react-icons/bi";
 import { IoMdPersonAdd } from "react-icons/io"; */
 
 const useMainNav = () => {
-  const navList: NavItemProps[] = [
-    /* {
+	const navList: NavItemProps[] = [
+		/* {
       url: "/",
       text: "Home",
       icon: IoHomeSharp,
@@ -70,9 +71,9 @@ const useMainNav = () => {
       icon: BiSolidNetworkChart,
       iconAlt: "Architecture page link icon"
     }*/
-  ]; 
+	];
 
-  return navList;
+	return navList;
 };
 
 export default useMainNav;

@@ -1,19 +1,19 @@
 {
-  "name": "@engineering-sandbox/tailwind-base",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "exports": {
-    "./base.css": "./src/base.css",
-    ".": {
-      "style": "./src/base.css"
-    }
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "dependencies": {
-    "tailwindcss": "^4.3.1"
-  }
+	"name": "@engineering-sandbox/tailwind-base",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"exports": {
+		"./base.css": "./src/base.css",
+		".": {
+			"style": "./src/base.css"
+		}
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"dependencies": {
+		"tailwindcss": "^4.3.1"
+	}
 }

@@ -1,38 +1,32 @@
-import { Router } from "@tanstack/react-router";
-import { notFoundRoute } from "./not-found/not-found";
-import {
-  createRoute,
-  createRootRoute
-} from '@tanstack/react-router'
+import { createRootRoute, createRoute, Router } from "@tanstack/react-router";
 import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
 import { indexRoute } from "./index";
+import { notFoundRoute } from "./not-found/not-found";
 
 export const rootRoute = createRootRoute({
-  component: MainLayout
+	component: MainLayout,
 });
 
 export const pageLayoutRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  component: PageLayout,
-  id: "pageLayout"
+	getParentRoute: () => rootRoute,
+	component: PageLayout,
+	id: "pageLayout",
 });
 
 const routeTree = rootRoute.addChildren([
-  pageLayoutRoute.addChildren([
-    indexRoute
-  ])
+	pageLayoutRoute.addChildren([indexRoute]),
 ]);
 
 const router = new Router({
-  routeTree,
-  notFoundRoute
+	routeTree,
+	notFoundRoute,
 });
 
 declare module "@tanstack/react-router" {
-  interface Register {
-    router: typeof router;
-  }
+	interface Register {
+		router: typeof router;
+	}
 }
 
 export default router;
