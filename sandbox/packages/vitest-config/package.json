@@ -1,0 +1,14 @@
+{
+  "name": "@engineering-sandbox/vitest-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "merge-blob-reports": "node dist/scripts/merge-blob-reports.js",
+    "report": "vitest --merge-reports coverage/merged-blob --passWithNoTests --coverage --coverage.provider=istanbul --coverage.reporter=html --coverage.reporter=text --coverage.reportsDirectory=coverage/report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
