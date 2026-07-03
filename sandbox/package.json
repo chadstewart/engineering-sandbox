@@ -8,7 +8,8 @@
 		"dev": "turbo run dev",
 		"format-and-lint": "biome check .",
 		"format-and-lint:fix": "biome check . --write",
-		"test": "turbo run test"
+		"test": "turbo run test",
+		"test-report": "turbo run test && turbo run report"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.16",

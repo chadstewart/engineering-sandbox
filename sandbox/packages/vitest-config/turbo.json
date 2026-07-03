@@ -1,0 +1,23 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "merge-blob-reports": {
+      "dependsOn": ["build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/apps/*/coverage/blob/**",
+        "$TURBO_ROOT$/packages/*/coverage/blob/**"
+      ],
+      "outputs": ["coverage/merged-blob/**"]
+    },
+    "report": {
+      "dependsOn": ["merge-blob-reports"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/apps/*/coverage/blob/**",
+        "$TURBO_ROOT$/packages/*/coverage/blob/**"
+      ],
+      "outputs": ["coverage/report/**"]
+    }
+  }
+}

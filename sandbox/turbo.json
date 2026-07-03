@@ -14,7 +14,8 @@
       "dependsOn": ["^transit"]
     },
     "test": {
-      "dependsOn": ["transsit"]
+      "dependsOn": ["transsit", "@engineering-sandbox/vitest-config#build"],
+      "outputs": ["coverage/blob/**"]
     },
     "test:watch": {
       "cache": false,
