@@ -1,0 +1,34 @@
+name: Run Tests
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Fetch the source code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Install pnpm tool
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # Specify your version or omit to use latest
+
+      # 3. Setup Node.js with built-in pnpm caching
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      # 4. Install dependencies using lockfile
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 5. Run the lint check
+      - name: Run Linter
+        run: pnpm run test-report
