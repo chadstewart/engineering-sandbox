@@ -10,6 +10,16 @@
 			"cache": false,
 			"persistent": true
 		},
+    "transit": {
+      "dependsOn": ["^transit"]
+    },
+    "test": {
+      "dependsOn": ["transsit"]
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
 
 		"//#format-and-lint": {},
 		"//#format-and-lint:fix": {

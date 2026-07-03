@@ -23,7 +23,9 @@
 		"build:components": "tsc",
 		"check-types": "tsc --noEmit",
 		"dev:styles": "tailwindcss -i ./src/globals.css -o ./dist/globals.css --watch",
-		"dev:components": "tsc --watch"
+		"dev:components": "tsc --watch",
+		"test": "vitest run",
+		"test:watch": "vitest --watch"
 	},
 	"dependencies": {
 		"@engineering-sandbox/tsconfig-base": "workspace:*",
@@ -43,6 +45,7 @@
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
 		"tailwindcss": "^4.3.1",
-		"typescript": "6.0.3"
+		"typescript": "6.0.3",
+		"vitest": "^4.1.8"
 	}
 }
