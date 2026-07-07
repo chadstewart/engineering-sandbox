@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 24
           cache: 'pnpm'
-          cache-dependency-path: "**/pnpm-lock.json"
+          cache-dependency-path: "**/*/pnpm-lock.json"
 
       # 4. Install dependencies using lockfile
       - name: Install Dependencies
