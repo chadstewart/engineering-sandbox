@@ -3,10 +3,6 @@ name: Code Quality Check
 on:
   pull_request:
 
-defaults:
-  run:
-    working-directory: ./sandbox
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -28,11 +24,14 @@ jobs:
         with:
           node-version: 24
           cache: 'pnpm'
+          cache-dependency-path: 'sandbox/pnpm-lock.yaml'
 
       # 4. Install dependencies using lockfile
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+        working-directory: 'sandbox'
 
       # 5. Run the lint check
       - name: Run Linter
         run: pnpm run format-and-lint
+        working-directory: 'sandbox'
