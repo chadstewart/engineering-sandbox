@@ -10,11 +10,8 @@
 			"cache": false,
 			"persistent": true
 		},
-		"transit": {
-			"dependsOn": ["^transit"]
-		},
 		"test": {
-			"dependsOn": ["transsit", "@engineering-sandbox/vitest-config#build"],
+			"dependsOn": ["@engineering-sandbox/vitest-config#build"],
 			"outputs": ["coverage/blob/**"]
 		},
 		"test:watch": {
