@@ -3,12 +3,13 @@ name: Run Tests
 on:
   pull_request:
 
+defaults:
+  run:
+    working-directory: ./sandbox
+
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./sandbox
 
     steps:
       # 1. Fetch the source code
