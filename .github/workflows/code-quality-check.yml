@@ -6,6 +6,9 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./sandbox
 
     steps:
       # 1. Fetch the source code
@@ -24,7 +27,6 @@ jobs:
         with:
           node-version: 24
           cache: 'pnpm'
-          cache-dependency-path: 'sandbox/pnpm-lock.yaml'
 
       # 4. Install dependencies using lockfile
       - name: Install Dependencies
