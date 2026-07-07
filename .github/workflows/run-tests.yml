@@ -32,6 +32,6 @@ jobs:
         working-directory: 'sandbox'
 
       # 5. Run the lint check
-      - name: Run Linter
+      - name: Run Tests
         run: pnpm run test-report
         working-directory: 'sandbox'
