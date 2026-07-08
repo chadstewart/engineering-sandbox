@@ -1,6 +1,6 @@
 import { Outlet } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
-// import { Footer } from "@/components/organisms/footer/footer";
+import { Footer } from "@/components/organisms/footer/footer";
 import ResponsiveComponent from "@/components/particles/responsive-component";
 
 const Sidebar = lazy(() => import("@/components/organisms/sidebar/sidebar"));
@@ -32,7 +32,7 @@ export const MainLayout = () => {
 					}
 				</ResponsiveComponent>
 				<Outlet />
-				{/* <Footer /> */}
+				<Footer />
 			</main>
 		</div>
 	);
