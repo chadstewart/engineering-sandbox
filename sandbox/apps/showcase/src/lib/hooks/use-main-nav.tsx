@@ -6,18 +6,21 @@ import { RiGalleryView } from "react-icons/ri";
 const useMainNav = () => {
 	const navList: NavItemProps[] = [
 		{
+      id: 1,
       url: "/",
       text: "Home",
       icon: IoHomeSharp,
       iconAlt: "Home page link icon"
     },
     {
+      id: 2,
       url: "/",
       text: "About",
       icon: IoIosInformationCircle,
       iconAlt: "About page link icon"
     },
     {
+      id: 3,
       url: "/",
       text: "Showcase",
       icon: RiGalleryView,
