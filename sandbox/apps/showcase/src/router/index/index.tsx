@@ -1,6 +1,5 @@
 import { createRoute, Link } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import App from "@/App";
 import { rootRoute } from "../router";
 
 export const indexRoute = createRoute({
@@ -16,7 +15,6 @@ export const indexRoute = createRoute({
 					<h1 className="text-3xl font-bold underline">Hello world!</h1>
 				</div>
 				<hr />
-				<App />
 				<TanStackRouterDevtools />
 			</>
 		);
