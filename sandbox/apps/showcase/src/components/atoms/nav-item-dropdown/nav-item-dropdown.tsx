@@ -1,4 +1,4 @@
-import { type NavItemProps } from "@/lib/types/nav-item-props";
+import type { NavItemProps } from "@/lib/types/nav-item-props";
 import Icon from "../icon/icon";
 
 export const NavItemDropdown = ({ text, icon, iconAlt }: NavItemProps) => {

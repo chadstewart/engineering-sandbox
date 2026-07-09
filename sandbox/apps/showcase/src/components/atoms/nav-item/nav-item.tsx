@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { FaLock } from "react-icons/fa";
 import { RiExternalLinkLine } from "react-icons/ri";
 import Icon from "@/components/atoms/icon/icon";
-import { type NavItemProps } from "@/lib/types/nav-item-props";
+import type { NavItemProps } from "@/lib/types/nav-item-props";
 
 export const NavItem = ({
 	url,
