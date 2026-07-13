@@ -6,20 +6,22 @@ interface LinkProps {
 	link?: boolean;
 }
 
+const LogoTemplate = () => <h1 className="font-extrabold text-3xl">The Engineering Sandbox</h1>;
+
 export const Logo = ({ link }: LinkProps) => {
 	return (
 		<div className="flex items-center gap-2">
 			<Icon
 				Icon={PiCodesandboxLogoFill}
 				iconAlt="Engineering Sandbox Logo"
-				size={48}
+				size={32}
 			/>
 			{link && (
 				<Link to="/">
-					<h1 className="font-extrabold">The Engineering Sandbox</h1>
+					<LogoTemplate />
 				</Link>
 			)}
-			{!link && <h1 className="font-extrabold">The Engineering Sandbox</h1>}
+			{!link && <LogoTemplate />}
 		</div>
 	);
 };

@@ -7,7 +7,7 @@ export const Footer = () => {
 		<footer className="flex justify-end items-center h-10 w-full gap-2">
 			<div>© {new Date().getFullYear()} The Engineering Sandbox</div>
 			<a
-				className="flex"
+				className="flex gap-1"
 				href="https://www.github.com/chadstewart/engineering-sandbox"
 				rel="noopener noreferrer"
 				target="_blank"
