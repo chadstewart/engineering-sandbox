@@ -1,5 +1,5 @@
 /* Component-level styles for the UI package */
-@import "tailwindcss" prefix(ui);
+@import "tailwindcss";
 @import "@engineering-sandbox/tailwind-base";
 
 /* shad-cn specific configs */
@@ -121,9 +121,9 @@
 
 @layer base {
 	* {
-		@apply ui:border-border ui:outline-ring/50;
+		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply ui:bg-background ui:text-foreground;
+		@apply bg-background text-foreground;
 	}
 }
