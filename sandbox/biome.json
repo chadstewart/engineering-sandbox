@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.3/schema.json",
 	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
 	"files": {
 		"ignoreUnknown": false,
@@ -7,6 +7,7 @@
 			"**",
 			"!**/dist",
 			"!**/build",
+			"!**/coverage",
 			"!**/node_modules",
 			"!apps/storybook",
 			"!packages/ui/src/globals.css"
@@ -21,7 +22,6 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": false,
 			"complexity": {
 				"noAdjacentSpacesInRegex": "error",
 				"noBannedTypes": "error",
