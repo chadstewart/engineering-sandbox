@@ -3,12 +3,22 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"exports": {
+		".": "./src/configs/shared-configs.ts"
+	},
 	"scripts": {
+		"build": "tsc",
 		"merge-blob-reports": "node dist/scripts/merge-blob-reports.js",
-		"report": "vitest --merge-reports coverage/merged-blob --passWithNoTests --coverage --coverage.provider=istanbul --coverage.reporter=html --coverage.reporter=text --coverage.reportsDirectory=coverage/report"
+		"report": "vitest --merge-reports coverage/merged-blob --passWithNoTests --coverage --coverage.provider=istanbul --coverage.reporter=html --coverage.reporter=text --coverage.reportsDirectory=coverage/report --watch=false"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"type": "module"
+	"type": "module",
+	"devDependencies": {
+		"@types/node": "^24.13.1",
+		"@vitest/coverage-istanbul": "^4.1.10",
+		"typescript": "^7.0.2",
+		"vitest": "^4.1.10"
+	}
 }
