@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import "./styles/index.css";
 import "@engineering-sandbox/tailwind-base/base.css";
 import { RouterProvider } from "@tanstack/react-router";
 import router from "@/router/router.tsx";
