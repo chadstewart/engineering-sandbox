@@ -16,7 +16,7 @@ interface NavProps {
 
 export const Nav = ({ navItems }: NavProps) => {
 	return (
-		<nav aria-label="Main" className="w-full px-2">
+		<nav aria-label="Main Nav" className="w-full px-2">
 			<ul className="flex flex-col gap-2">
 				{navItems.map((navItem) => (
 					<Fragment key={navItem.id}>

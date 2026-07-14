@@ -11,7 +11,10 @@ import { SidebarContentWrapper } from "../../molecules/sidebar-content/sidebar-c
 
 const MobileHeader = () => {
 	return (
-		<nav className="flex gap-4 justify-between w-screen border-b-2 pb-4">
+		<nav
+			aria-label="Mobile Header"
+			className="flex gap-4 justify-between w-screen border-b-2 pb-4"
+		>
 			<Logo link />
 			<Sheet>
 				<SheetTrigger className="flex justify-start items-center">
