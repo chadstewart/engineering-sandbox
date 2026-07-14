@@ -6,7 +6,9 @@ interface LinkProps {
 	link?: boolean;
 }
 
-const LogoTemplate = () => <h1 className="font-extrabold text-3xl">The Engineering Sandbox</h1>;
+const LogoTemplate = () => (
+	<h1 className="font-extrabold text-3xl">The Engineering Sandbox</h1>
+);
 
 export const Logo = ({ link }: LinkProps) => {
 	return (

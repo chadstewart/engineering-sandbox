@@ -8,21 +8,17 @@
 		"dist"
 	],
 	"exports": {
-		".": "./index.ts",
-		"./counter": "./src/components/counter.ts",
-		"./header": "./src/components/header.ts",
-		"./setup-counter": "./src/utils/counter.ts",
-		"./globals.css": "./dist/globals.css",
+		"./globals.css": "./dist/styles/globals.css",
 		"./components/*": "./src/components/*",
 		"./lib/utils": "./src/lib/utils.ts",
 		"./*": "./dist/*.js"
 	},
 	"license": "MIT",
 	"scripts": {
-		"build:styles": "tailwindcss -i ./src/globals.css -o ./dist/globals.css",
+		"build:styles": "tailwindcss -i ./src/styles/globals.css -o ./dist/styles/globals.css",
 		"build:components": "tsc",
 		"check-types": "tsc --noEmit",
-		"dev:styles": "tailwindcss -i ./src/globals.css -o ./dist/globals.css --watch",
+		"dev:styles": "tailwindcss -i ./src/styles/globals.css -o ./dist/styles/globals.css --watch",
 		"dev:components": "tsc --watch",
 		"test": "vitest run",
 		"test:watch": "vitest --watch"

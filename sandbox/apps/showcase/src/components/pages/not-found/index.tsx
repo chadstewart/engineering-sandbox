@@ -1,7 +1,4 @@
-import {
-	Card,
-	CardContent,
-} from "@engineering-sandbox/ui/components/ui/card.tsx";
+import { Card, CardContent } from "@engineering-sandbox/ui/components/card.tsx";
 
 const NotFound = () => {
 	return (

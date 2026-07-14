@@ -15,7 +15,10 @@
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
 		"preserveWatchOutput": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"paths": {
+			"@engineering-sandbox/ui/*": ["./src/*"]
+		}
 	},
 	"include": ["src"],
 	"exclude": ["dist", "build", "node_modules"]
