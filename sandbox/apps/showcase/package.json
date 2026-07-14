@@ -23,6 +23,7 @@
 		"tailwindcss": "^4.3.1"
 	},
 	"devDependencies": {
+		"@engineering-sandbox/vitest-config": "workspace:*",
 		"@tanstack/router-plugin": "^1.168.18",
 		"@types/node": "^24.12.3",
 		"@types/react": "^19.2.14",
@@ -31,6 +32,6 @@
 		"globals": "^17.6.0",
 		"typescript": "~7.0.2",
 		"vite": "^8.0.12",
-		"vitest": "^4.1.8"
+		"vitest": "^4.1.10"
 	}
 }
