@@ -11,7 +11,7 @@ import { SidebarContentWrapper } from "../../molecules/sidebar-content/sidebar-c
 
 const MobileHeader = () => {
 	return (
-		<aside className="flex gap-4 justify-between">
+		<nav className="flex gap-4 justify-between w-screen border-b-2 pb-4">
 			<Logo link />
 			<Sheet>
 				<SheetTrigger className="flex justify-start items-center">
@@ -26,7 +26,7 @@ const MobileHeader = () => {
 					<SidebarContentWrapper />
 				</SheetContent>
 			</Sheet>
-		</aside>
+		</nav>
 	);
 };
 

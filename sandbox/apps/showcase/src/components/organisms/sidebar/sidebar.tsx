@@ -4,8 +4,10 @@ import { SidebarHeader } from "@/components/molecules/sidebar-header/sidebar-hea
 const Sidebar = () => {
 	return (
 		<aside className="flex flex-col h-screen sticky top-0 p-3 w-96 border-r-2">
-			<SidebarHeader />
-			<SidebarContentWrapper />
+			<nav>
+				<SidebarHeader />
+				<SidebarContentWrapper />
+			</nav>
 		</aside>
 	);
 };

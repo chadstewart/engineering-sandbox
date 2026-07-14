@@ -7,7 +7,7 @@ interface LinkProps {
 }
 
 const LogoTemplate = () => (
-	<h1 className="font-extrabold text-3xl">The Engineering Sandbox</h1>
+	<h1 className="font-extrabold text-xl">The Engineering Sandbox</h1>
 );
 
 export const Logo = ({ link }: LinkProps) => {
@@ -16,7 +16,7 @@ export const Logo = ({ link }: LinkProps) => {
 			<Icon
 				Icon={PiCodesandboxLogoFill}
 				iconAlt="Engineering Sandbox Logo"
-				size={32}
+				size={24}
 			/>
 			{link && (
 				<Link to="/">
