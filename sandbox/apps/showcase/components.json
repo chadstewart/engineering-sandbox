@@ -1,20 +1,20 @@
 {
 	"$schema": "https://ui.shadcn.com/schema.json",
 	"style": "radix-nova",
-	"rsc": false,
+	"rsc": true,
 	"tsx": true,
 	"tailwind": {
 		"config": "",
-		"css": "src/styles/globals.css",
+		"css": "../../packages/ui/src/styles/globals.css",
 		"baseColor": "neutral",
 		"cssVariables": true
 	},
+	"iconLibrary": "lucide",
 	"aliases": {
-		"components": "@engineering-sandbox/ui/components",
+		"components": "@/components",
+		"hooks": "@/hooks",
+		"lib": "@/lib",
 		"utils": "@engineering-sandbox/ui/lib/utils",
-		"hooks": "@engineering-sandbox/ui/hooks",
-		"lib": "@engineering-sandbox/ui/lib",
 		"ui": "@engineering-sandbox/ui/components"
-	},
-	"iconLibrary": "lucide"
+	}
 }

@@ -3,7 +3,7 @@ import {
 	SheetContent,
 	SheetHeader,
 	SheetTrigger,
-} from "@engineering-sandbox/ui/components/ui/sheet.tsx";
+} from "@engineering-sandbox/ui/components/sheet.tsx";
 import { IoMdMenu } from "react-icons/io";
 import Icon from "@/components/atoms/icon/icon";
 import { Logo } from "@/components/molecules/logo/logo";

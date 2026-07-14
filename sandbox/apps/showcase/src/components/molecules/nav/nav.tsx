@@ -3,7 +3,7 @@ import {
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@engineering-sandbox/ui/components/ui/accordion.tsx";
+} from "@engineering-sandbox/ui/components/accordion.tsx";
 import { cn } from "@engineering-sandbox/ui/lib/utils";
 import { Fragment } from "react";
 import { NavItem } from "@/components/atoms/nav-item/nav-item";
