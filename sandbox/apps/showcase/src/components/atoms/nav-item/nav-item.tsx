@@ -6,7 +6,7 @@ import type { NavItemProps } from "@/lib/types/nav-item-props";
 
 export const NavItem = ({
 	url,
-	params,
+	// params,
 	text,
 	icon,
 	iconAlt,
