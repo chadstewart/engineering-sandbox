@@ -1,0 +1,9 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"paths": {
+			"@/*": ["./src/*"],
+			"@engineering-sandbox/ui/*": ["../../packages/ui/src/*"]
+		}
+	}
+}
