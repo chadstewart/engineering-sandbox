@@ -12,8 +12,8 @@
 		"test-report": "turbo run test && turbo run report"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.16",
-		"turbo": "^2.9.16"
+		"@biomejs/biome": "2.5.3",
+		"turbo": "^2.10.4"
 	},
 	"packageManager": "pnpm@11.10.0"
 }
