@@ -1,5 +1,5 @@
 import { IoIosInformationCircle } from "react-icons/io";
-import { IoHomeSharp } from "react-icons/io5";
+import { IoHomeSharp, IoNewspaperOutline } from "react-icons/io5";
 import { RiGalleryView } from "react-icons/ri";
 import type { NavItemProps } from "../types/nav-item-props";
 
@@ -14,7 +14,7 @@ const useMainNav = () => {
 		},
 		{
 			id: 2,
-			url: "/",
+			url: "/about",
 			text: "About",
 			icon: IoIosInformationCircle,
 			iconAlt: "About page link icon",
@@ -25,6 +25,14 @@ const useMainNav = () => {
 			text: "Showcase",
 			icon: RiGalleryView,
 			iconAlt: "Showcase page link icon",
+		},
+		{
+			id: 4,
+			url: "/",
+			text: "Newsletter",
+			icon: IoNewspaperOutline,
+			iconAlt: "Newsletter link icon",
+			externalLinkAlt: "External link icon to Newsletter"
 		},
 	];
 
