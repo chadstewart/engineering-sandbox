@@ -1,9 +1,5 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": [
-		"@engineering-sandbox/tsconfig-base/src/tsconfig.base.json",
-		"@engineering-sandbox/tsconfig-base/src/tsconfig.paths.json"
-	],
 	"compilerOptions": {
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 		"target": "es2023",

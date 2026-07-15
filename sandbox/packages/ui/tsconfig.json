@@ -1,6 +1,6 @@
 {
-	"extends": "@engineering-sandbox/tsconfig-base/src/tsconfig.base.json",
 	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "@engineering-sandbox/tsconfig-base/src/tsconfig.base.json",
 	"compilerOptions": {
 		"rootDir": "./src",
 		"outDir": "./dist",
