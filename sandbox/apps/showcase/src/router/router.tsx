@@ -1,6 +1,7 @@
 import { createRootRoute, createRoute, Router } from "@tanstack/react-router";
 import { MainLayout } from "@/components/templates/layout/main";
 import { PageLayout } from "@/components/templates/layout/page";
+import { aboutRoute } from "./about";
 import { homeRoute } from "./home";
 import { notFoundRoute } from "./not-found/not-found";
 
@@ -15,7 +16,7 @@ export const pageLayoutRoute = createRoute({
 });
 
 const routeTree = rootRoute.addChildren([
-	pageLayoutRoute.addChildren([homeRoute]),
+	pageLayoutRoute.addChildren([homeRoute, aboutRoute]),
 ]);
 
 const router = new Router({

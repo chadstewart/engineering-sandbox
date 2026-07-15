@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-export const HomePageContent = () => (
+export const AboutPageContent = () => (
 	<>
 		<div className="p-2 flex gap-2">
 			<Link to="/" className="[&.active]:font-bold">
