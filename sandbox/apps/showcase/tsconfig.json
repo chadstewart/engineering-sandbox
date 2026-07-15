@@ -1,6 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"files": [],
+	"extends": "@engineering-sandbox/tsconfig-base/src/tsconfig.base.json",
 	"references": [
 		{ "path": "./tsconfig.app.json" },
 		{ "path": "./tsconfig.node.json" }
