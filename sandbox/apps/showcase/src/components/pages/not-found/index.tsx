@@ -1,13 +1,10 @@
-import { Card, CardContent } from "@engineering-sandbox/ui/components/card.tsx";
+import { NotFoundContent } from "@/components/pages/not-found/not-found-page-content.tsx";
+import { updateTitle } from "@/lib/util/update-title";
 
 const NotFound = () => {
-	return (
-		<div className="flex flex-wrap h-[calc(100vh-73px)] gap-6 p-4">
-			<Card className="flex items-center justify-center w-full">
-				<CardContent>404 | Well this isn't good...</CardContent>
-			</Card>
-		</div>
-	);
+	updateTitle("404 | Not Found");
+
+	return <NotFoundContent />;
 };
 
 export default NotFound;
