@@ -4,7 +4,6 @@ import { RiGalleryView } from "react-icons/ri";
 import type { NavItemProps } from "../types/nav-item-props";
 
 const useMainNav = () => {
-
 	const navListItems: NavItemProps[] = [
 		{
 			url: "/",
@@ -29,25 +28,25 @@ const useMainNav = () => {
 			text: "Newsletter",
 			icon: IoNewspaperOutline,
 			iconAlt: "Newsletter link icon",
-			externalLinkAlt: "External link icon to Newsletter"
+			externalLinkAlt: "External link icon to Newsletter",
 		},
 	];
-	
+
 	const NavItemFactory = () => {
 		let counter = 1;
 		const navList: NavItemProps[] = [];
-		
+
 		return {
 			items: navList,
 			add(item: NavItemProps) {
 				this.items.push({ ...item, id: counter++ });
-			}
+			},
 		};
 	};
 
 	const NavListManagement = NavItemFactory();
 
-	navListItems.map(navItem =>	NavListManagement.add(navItem));
+	navListItems.map((navItem) => NavListManagement.add(navItem));
 
 	const navList = NavListManagement.items;
 
