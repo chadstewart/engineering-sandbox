@@ -3,6 +3,6 @@ import { rootRoute } from "../router";
 
 export const aboutRoute = createRoute({
 	getParentRoute: () => rootRoute,
-	path: "/",
+	path: "/about",
 	component: lazyRouteComponent(() => import("@/components/pages/home")),
 });
