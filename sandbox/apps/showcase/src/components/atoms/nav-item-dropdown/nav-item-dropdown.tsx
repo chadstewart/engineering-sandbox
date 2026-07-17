@@ -1,7 +1,7 @@
-import type { NavItemProps } from "@/lib/types/nav-item-props";
+import type { NavItemBase } from "@/lib/types/nav-item-props";
 import Icon from "../icon/icon";
 
-export const NavItemDropdown = ({ text, icon, iconAlt }: NavItemProps) => {
+export const NavItemDropdown = ({ text, icon, iconAlt }: NavItemBase) => {
 	return (
 		<div className="flex gap-2 w-full m-2">
 			{icon && <Icon Icon={icon} iconAlt={iconAlt} />}
