@@ -4,5 +4,8 @@ import { rootRoute } from "../router";
 export const homeRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	path: "/",
-	component: lazyRouteComponent(() => import("@/components/pages/home")),
+	component: lazyRouteComponent(
+		() => import("@/components/pages/home"),
+		"HomePage",
+	),
 });
