@@ -6,29 +6,33 @@ import type { NavItemProps } from "../types/nav-item-props";
 const useMainNav = () => {
 	const navListItems: NavItemProps[] = [
 		{
-			url: "/",
+			appUrl: {
+				internalUrl: "/",
+			},
 			text: "Home",
 			icon: IoHomeSharp,
 			iconAlt: "Home page link icon",
 		},
 		{
-			url: "/about",
+			appUrl: { internalUrl: "/about" },
 			text: "About",
 			icon: IoIosInformationCircle,
 			iconAlt: "About page link icon",
 		},
 		{
-			url: "/",
+			appUrl: { internalUrl: "/" },
 			text: "Showcase",
 			icon: RiGalleryView,
 			iconAlt: "Showcase page link icon",
 		},
 		{
-			url: "/",
+			appUrl: {
+				externalUrl: "https://theengineeringsandbox.substack.com",
+				externalLinkAlt: "External link icon to Newsletter",
+			},
 			text: "Newsletter",
 			icon: IoNewspaperOutline,
 			iconAlt: "Newsletter link icon",
-			externalLinkAlt: "External link icon to Newsletter",
 		},
 	];
 
