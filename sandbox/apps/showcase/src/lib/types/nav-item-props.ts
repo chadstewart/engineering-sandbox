@@ -10,7 +10,7 @@ interface NavItemChildren extends NavItemBase {
 }
 
 type NavItemBase = {
-	id: number;
+	id?: number;
 	text: string;
 	icon: IconType;
 	url?: LinkOptions["to"];
