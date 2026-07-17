@@ -5,33 +5,50 @@ import Icon from "@/components/atoms/icon/icon";
 import type { NavItemProps } from "@/lib/types/nav-item-props";
 
 export const NavItem = ({
-	url,
+	appUrl,
 	// params,
 	text,
 	icon,
 	iconAlt,
-	externalLinkAlt,
 	isProtectedLink,
 }: NavItemProps) => {
 	return (
-		<Link
-			className="flex gap-2 items-center w-full m-2"
-			to={url}
-			/* params={params ? params : {}} */
-			target={externalLinkAlt ? "_blank" : "_self"}
-		>
-			{icon && <Icon Icon={icon} iconAlt={iconAlt} />}
-			<div className="font-bold">{text}</div>
-			{externalLinkAlt && (
-				<Icon Icon={RiExternalLinkLine} iconAlt={externalLinkAlt} />
+		<>
+			{appUrl.internalUrl && (
+				<Link
+					className="flex gap-2 items-center w-full m-2"
+					to={appUrl.internalUrl}
+					/* params={params ? params : {}} */
+				>
+					{icon && <Icon Icon={icon} iconAlt={iconAlt} />}
+					<div className="font-bold">{text}</div>
+					{isProtectedLink === true && (
+						<Icon
+							Icon={FaLock}
+							iconAlt="You need to be signed in to view this link"
+							size={16}
+						/>
+					)}
+				</Link>
 			)}
-			{isProtectedLink === true && (
-				<Icon
-					Icon={FaLock}
-					iconAlt="You need to be signed in to view this link"
-					size={16}
-				/>
+			{appUrl.externalUrl && (
+				<a
+					className="flex gap-2 items-center w-full m-2"
+					href={appUrl.externalUrl}
+					target={"blank"}
+				>
+					{icon && <Icon Icon={icon} iconAlt={iconAlt} />}
+					<div className="font-bold">{text}</div>
+					<Icon Icon={RiExternalLinkLine} iconAlt={appUrl.externalLinkAlt} />
+					{isProtectedLink === true && (
+						<Icon
+							Icon={FaLock}
+							iconAlt="You need to be signed in to view this link"
+							size={16}
+						/>
+					)}
+				</a>
 			)}
-		</Link>
+		</>
 	);
 };
