@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"delete-node-modules": "pnpm clean",
+		"clear-deps": "pnpm clean",
 		"build": "turbo run build",
 		"dev": "turbo run dev",
 		"format-and-lint": "biome check .",
@@ -15,5 +15,5 @@
 		"@biomejs/biome": "2.5.3",
 		"turbo": "^2.10.4"
 	},
-	"packageManager": "pnpm@11.10.0"
+	"packageManager": "pnpm@11.15.1"
 }
