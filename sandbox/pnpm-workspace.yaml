@@ -4,6 +4,7 @@ packages:
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
+  sharp: false
 minimumReleaseAgeExclude:
   - '@typescript/typescript-aix-ppc64@7.0.2'
   - '@typescript/typescript-darwin-arm64@7.0.2'
