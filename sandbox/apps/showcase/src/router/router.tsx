@@ -8,6 +8,7 @@ import { PageLayout } from "@/components/templates/layout/page";
 import { aboutRoute } from "./about";
 import { homeRoute } from "./home";
 import { notFoundRoute } from "./not-found/not-found";
+import { showcaseRoute } from "./showcase";
 
 export const rootRoute = createRootRoute({
 	component: MainLayout,
@@ -20,7 +21,7 @@ export const pageLayoutRoute = createRoute({
 });
 
 const routeTree = rootRoute.addChildren([
-	pageLayoutRoute.addChildren([homeRoute, aboutRoute]),
+	pageLayoutRoute.addChildren([homeRoute, aboutRoute, showcaseRoute]),
 ]);
 
 const router = createRouter({
