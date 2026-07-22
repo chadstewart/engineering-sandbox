@@ -20,7 +20,7 @@ const useMainNav = () => {
 			iconAlt: "About page link icon",
 		},
 		{
-			appUrl: { internalUrl: "/" },
+			appUrl: { internalUrl: "/showcase" },
 			text: "Showcase",
 			icon: RiGalleryView,
 			iconAlt: "Showcase page link icon",
