@@ -1,4 +1,4 @@
-import { ShowcasePageContent } from "@/components/pages/showcase/showcase-page-content";
+import { ShowcasePageContent } from "./showcase-page-content";
 
 const storyConfig = {
   title: "Showcase Project/Pages/Showcase"
@@ -6,4 +6,4 @@ const storyConfig = {
 
 export default storyConfig;
 
-export const ButtonStory = () => <ShowcasePageContent />;
+export const ShowcaseStory = () => <ShowcasePageContent />;
