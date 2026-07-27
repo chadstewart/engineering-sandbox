@@ -2,8 +2,8 @@ import * as zod from "zod/mini";
 import {
 	projectDataSchema,
 	type projectDataSchemaType,
-} from "@/lib/types/project-data-types";
-import jsonFileData from "@/project-data/project-data.json";
+} from "../lib/types/project-data-types";
+import jsonFileData from "../project-data/project-data.json";
 
 export const handleProjectData = () => {
 	return parseProjectData(jsonFileData);
