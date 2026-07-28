@@ -1,13 +1,19 @@
 import * as zod from "zod/mini";
 
-export const projectDataSchema = zod.array(
-	zod.object({
-		title: zod.string(),
-		subTitle: zod.string(),
-		imageLocation: zod.string(),
-		description: zod.string(),
-		githubAddress: zod.string(),
-	}),
-);
+const projectDataObjectBase = zod.object({
+	title: zod.string(),
+	subTitle: zod.string(),
+	imageLocation: zod.string(),
+	description: zod.string(),
+	githubAddress: zod.string(),
+});
 
-export type projectDataSchemaType = zod.infer<typeof projectDataSchema>;
+export const projectDataSchema = zod.array(projectDataObjectBase);
+
+type projectDataSchemaBaseType = zod.infer<typeof projectDataObjectBase>;
+
+interface projectDataSchemaIdType extends projectDataSchemaBaseType {
+	id: number;
+}
+
+export type projectDataSchemaType = projectDataSchemaIdType[];
