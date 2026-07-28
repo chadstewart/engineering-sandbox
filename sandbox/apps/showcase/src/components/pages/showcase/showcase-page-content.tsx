@@ -1,4 +1,5 @@
 import type { projectDataSchemaType } from "../../../lib/types/project-data-types";
+import { ShowcaseCard } from "../../molecules/showcase-card";
 
 type ShowcasePageContentProps = {
 	projectData: projectDataSchemaType;
@@ -10,9 +11,13 @@ export const ShowcasePageContent = ({
 	<>
 		<div className="p-2 flex gap-2">
 			{projectData.map((project) => (
-				<h1 key={project.id} className="text-3xl font-bold underline">
-					Hello world!
-				</h1>
+				<ShowcaseCard
+					key={project.id}
+					title={project.title}
+					description={project.description}
+					imageLocation={project.imageLocation}
+					githubAddress={project.githubAddress}
+				/>
 			))}
 		</div>
 		<hr />
