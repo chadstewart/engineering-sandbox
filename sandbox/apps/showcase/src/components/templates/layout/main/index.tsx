@@ -20,7 +20,7 @@ export const MainLayout = () => {
 					)
 				}
 			</ResponsiveComponent>
-			<main className="flex content-between flex-wrap w-full p-4 min-h-screen">
+			<div className="flex content-between flex-wrap w-full p-4 min-h-screen">
 				<ResponsiveComponent>
 					{({ size }) =>
 						size > 1 &&
@@ -33,7 +33,7 @@ export const MainLayout = () => {
 				</ResponsiveComponent>
 				<Outlet />
 				<Footer />
-			</main>
+			</div>
 		</div>
 	);
 };
