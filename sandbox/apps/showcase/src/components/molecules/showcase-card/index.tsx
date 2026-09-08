@@ -12,7 +12,6 @@ import { RiExternalLinkLine } from "react-icons/ri";
 import Icon from "../../atoms/icon/icon";
 
 interface ShowcaseCardProps {
-	mainCardClassname?: string;
 	title: string;
 	description: string;
 	githubAddress: string;
@@ -20,23 +19,25 @@ interface ShowcaseCardProps {
 }
 
 export const ShowcaseCard = ({
-	mainCardClassname,
 	title,
 	description,
 	githubAddress,
 	imageLocation,
 }: ShowcaseCardProps) => (
-	<Card className={cn(mainCardClassname)}>
-		<CardHeader>
+	// TODO: Storybook doesn't build stories outside of the ui package because it's a dependency.
+	// This is important because components use tailwind css for styling and the classes need to be built with tailwind
+	// Need to figure out how to get components from other packages to build in storybook
+	<Card className={cn("w-36")}>
+		<CardHeader className={cn("")}>
 			<CardTitle>{title}</CardTitle>
 			<CardDescription>{description}</CardDescription>
 		</CardHeader>
 		{imageLocation && (
-			<CardContent>
+			<CardContent className={cn("")}>
 				<img src={imageLocation} alt={`Display for ${title}`} />
 			</CardContent>
 		)}
-		<CardFooter>
+		<CardFooter className={cn("")}>
 			<a
 				className="flex gap-1"
 				href={githubAddress}
