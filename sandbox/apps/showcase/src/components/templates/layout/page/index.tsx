@@ -10,7 +10,9 @@ export const PageLayout = () => {
 					{pageName && !pageName.includes("redirect") ? pageName : "Home"}
 				</h2>
 			</header>
-			<Outlet />
+			<main className="px-2 w-full">
+				<Outlet />
+			</main>
 		</div>
 	);
 };
