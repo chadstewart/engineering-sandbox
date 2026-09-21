@@ -54,7 +54,11 @@
         "humao.rest-client",
         "Vercel.turbo-vsc",
         "vitest.explorer",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "Anthropic.claude-code",
+        "dotenv.dotenv-vscode",
+        "FanaticPythoner.better-todo-tree",
+        "ambar.bundle-size"
       ]
     }
   },
