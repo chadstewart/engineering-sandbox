@@ -13,7 +13,7 @@
   //   "--env-file",
   //   ".devcontainer/devcontainer.env"
   // ],
-  "overrideCommand": false,
+  //"overrideCommand": false,
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
