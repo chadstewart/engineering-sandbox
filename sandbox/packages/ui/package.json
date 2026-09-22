@@ -8,9 +8,11 @@
 		"dist"
 	],
 	"exports": {
+		"./storybook-globals.css": "./src/styles/globals.css",
 		"./globals.css": "./dist/styles/globals.css",
 		"./components/*": "./src/components/*",
 		"./lib/utils": "./src/lib/utils.ts",
+		"./package.json" : "./package.json",
 		"./*": "./dist/*.js"
 	},
 	"license": "MIT",

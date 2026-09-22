@@ -11,7 +11,7 @@
 		"test:watch": "vitest --watch"
 	},
 	"exports": {
-		"./src/*": "./src/*"
+		"./components/*": "./src/components/*"
 	},
 	"dependencies": {
 		"@engineering-sandbox/tailwind-base": "workspace:*",
