@@ -1,5 +1,8 @@
-/* Import for Components from Component Library */
-@source "@engineering-sandbox/ui/src/**/*.{ts,tsx}";
+/* Base Styles from Primary Design System */
+@import "@engineering-sandbox/ui/storybook-globals.css";
+
+/* Import for Components from Primary Design System */
+@source "../../../packages/ui/src/components/**/*.{ts,tsx}";
 
 /* Import for Components from Projects */
-@source "@engineering-sandbox/showcase/src/**/*.{ts,tsx}";
+@source "../../../apps/showcase/src/components/**/*.{ts,tsx}";
