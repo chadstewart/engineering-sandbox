@@ -1,0 +1,5 @@
+/* Import for Components from Component Library */
+@source "@engineering-sandbox/ui/src/**/*.{ts,tsx}";
+
+/* Import for Components from Projects */
+@source "@engineering-sandbox/showcase/src/**/*.{ts,tsx}";

@@ -10,6 +10,9 @@
 		"test": "vitest run",
 		"test:watch": "vitest --watch"
 	},
+	"exports": {
+		"./src/*": "./src/*"
+	},
 	"dependencies": {
 		"@engineering-sandbox/tailwind-base": "workspace:*",
 		"@engineering-sandbox/tsconfig-base": "workspace:*",
