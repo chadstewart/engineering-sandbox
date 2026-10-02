@@ -24,9 +24,6 @@ export const ShowcaseCard = ({
 	githubAddress,
 	imageLocation,
 }: ShowcaseCardProps) => (
-	// TODO: Storybook doesn't build stories outside of the ui package because it's a dependency.
-	// This is important because components use tailwind css for styling and the classes need to be built with tailwind
-	// Need to figure out how to get components from other packages to build in storybook
 	<Card className={cn("w-36")}>
 		<CardHeader className={cn("")}>
 			<CardTitle>{title}</CardTitle>
