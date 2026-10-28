@@ -14,6 +14,7 @@
 		"./components/*": "./src/components/*"
 	},
 	"dependencies": {
+		"@engineering-sandbox/project-data": "workspace:*",
 		"@engineering-sandbox/tailwind-base": "workspace:*",
 		"@engineering-sandbox/tsconfig-base": "workspace:*",
 		"@engineering-sandbox/ui": "workspace:*",

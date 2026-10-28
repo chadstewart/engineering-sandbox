@@ -1,3 +1,4 @@
+import type { projectDataSchemaBaseType } from "@engineering-sandbox/project-data/project-data-types";
 import {
 	Card,
 	CardContent,
@@ -10,7 +11,6 @@ import { cn } from "@engineering-sandbox/ui/lib/utils";
 import { FaGlobe } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { RiExternalLinkLine } from "react-icons/ri";
-import type { projectDataSchemaBaseType } from "@/lib/types/project-data-types";
 import Icon from "../../atoms/icon/icon";
 
 type ShowcaseCardProps = projectDataSchemaBaseType;

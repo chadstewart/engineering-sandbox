@@ -1,5 +1,5 @@
+import { projectDataSchema } from "@engineering-sandbox/project-data/project-data-types";
 import * as zod from "zod/mini";
-import { projectDataSchema } from "../lib/types/project-data-types";
 import jsonFileData from "../project-data/project-data.json";
 
 export const handleProjectData = () => {
