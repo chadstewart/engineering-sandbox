@@ -27,6 +27,7 @@ const projectData: projectDataSchemaType = [
 		title: "Test Title 3",
 		subTitle: "Test Subtitle 3",
 		imageLocation: "Test Location 3",
+		liveAddress: "Test Live Addy",
 		description: "Test Desc 3",
 		githubAddress: "Test Git Addy 3",
 	},
