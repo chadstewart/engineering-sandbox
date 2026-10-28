@@ -16,6 +16,7 @@ export const ShowcasePageContent = ({
 					title={project.title}
 					description={project.description}
 					imageLocation={project.imageLocation}
+					liveAddress={project.liveAddress}
 					githubAddress={project.githubAddress}
 				/>
 			))}
