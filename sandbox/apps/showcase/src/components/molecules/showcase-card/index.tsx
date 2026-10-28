@@ -24,17 +24,17 @@ export const ShowcaseCard = ({
 	githubAddress,
 	imageLocation,
 }: ShowcaseCardProps) => (
-	<Card className={cn("w-36")}>
+	<Card className={cn("max-md:w-full min-w-[32%]")}>
 		<CardHeader className={cn("")}>
 			<CardTitle>{title}</CardTitle>
 			<CardDescription>{description}</CardDescription>
 		</CardHeader>
 		{imageLocation && (
-			<CardContent className={cn("")}>
+			<CardContent className={cn("min-h-42")}>
 				<img src={imageLocation} alt={`Display for ${title}`} />
 			</CardContent>
 		)}
-		<CardFooter className={cn("")}>
+		<CardFooter className={cn("flex justify-end")}>
 			<a
 				className="flex gap-1"
 				href={githubAddress}

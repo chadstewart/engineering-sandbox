@@ -9,7 +9,7 @@ export const ShowcasePageContent = ({
 	projectData,
 }: ShowcasePageContentProps) => (
 	<>
-		<div className="p-2 flex gap-2">
+		<div className="p-2 flex flex-wrap gap-4">
 			{projectData.map((project) => (
 				<ShowcaseCard
 					key={project.id}
