@@ -1,4 +1,4 @@
-import type { projectDataSchemaType } from "../../../lib/types/project-data-types";
+import type { projectDataSchemaType } from "@engineering-sandbox/project-data/project-data-types";
 import { ShowcasePageContent } from "./showcase-page-content";
 
 const storyConfig = {

@@ -9,6 +9,12 @@ const projectDataObjectBase = zod.object({
 	githubAddress: zod.url(),
 });
 
+const showcaseSchemaObjectBase = zod.extend(projectDataObjectBase, {
+	ready: zod.boolean(),
+});
+
+export const showcaseSchema = showcaseSchemaObjectBase;
+
 export const projectDataSchema = zod.array(projectDataObjectBase);
 
 export type projectDataSchemaBaseType = zod.infer<typeof projectDataObjectBase>;
