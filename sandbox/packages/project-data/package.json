@@ -8,7 +8,8 @@
 		"test:watch": "vitest --watch"
 	},
 	"exports": {
-		"./project-data-types": "./src/project-data-types.ts"
+		"./project-data-types": "./src/project-data-types.ts",
+		"./project-data.json": "./generated/project-data.json"
 	},
 	"keywords": [],
 	"author": "",

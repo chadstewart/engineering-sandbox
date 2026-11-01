@@ -11,9 +11,15 @@ importers:
       '@biomejs/biome':
         specifier: 2.5.3
         version: 2.5.3
+      '@engineering-sandbox/project-data':
+        specifier: workspace:*
+        version: link:packages/project-data
       turbo:
         specifier: ^2.10.4
         version: 2.10.4
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
 
   apps/showcase:
     dependencies:

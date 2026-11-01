@@ -19,6 +19,32 @@
 			"persistent": true
 		},
 
+		"@engineering-sandbox/showcase#build": {
+			"dependsOn": ["^build", "//#generate:project-data"],
+			"inputs": ["$TURBO_DEFAULT$", ".env*"],
+			"outputs": ["dist/**"]
+		},
+		"@engineering-sandbox/showcase#dev": {
+			"dependsOn": ["//#generate:project-data"],
+			"cache": false,
+			"persistent": true
+		},
+		"@engineering-sandbox/showcase#test": {
+			"dependsOn": [
+				"@engineering-sandbox/vitest-config#build",
+				"//#generate:project-data"
+			],
+			"outputs": ["coverage/blob/**"]
+		},
+
+		"//#generate:project-data": {
+			"inputs": [
+				"apps/projects/*/showcase.json",
+				"scripts/generate-project-data.ts",
+				"packages/project-data/src/**"
+			],
+			"outputs": ["packages/project-data/generated/**"]
+		},
 		"//#format-and-lint": {},
 		"//#format-and-lint:fix": {
 			"cache": false
