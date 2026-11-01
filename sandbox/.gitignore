@@ -10,3 +10,4 @@ dist-ssr
 storybook-static
 server/dist
 public/dist
+packages/project-data/generated

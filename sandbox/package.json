@@ -2,18 +2,23 @@
 	"name": "engineering-sandbox",
 	"version": "0.0.0",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"clear-deps": "pnpm clean",
-		"build": "turbo run build",
+		"build": "pnpm run generate:project-data && turbo run build",
 		"dev": "turbo run dev",
+		"dev:update-project-data": "pnpm run generate:project-data && turbo run dev",
 		"format-and-lint": "biome check .",
 		"format-and-lint:fix": "biome check . --write",
 		"test": "turbo run test",
-		"test-report": "turbo run test && turbo run report"
+		"test-report": "turbo run test && turbo run report",
+		"generate:project-data": "node scripts/generate-project-data.ts"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.3",
-		"turbo": "^2.10.4"
+		"@engineering-sandbox/project-data": "workspace:*",
+		"turbo": "^2.10.4",
+		"zod": "^4.4.3"
 	},
 	"packageManager": "pnpm@11.15.1"
 }
